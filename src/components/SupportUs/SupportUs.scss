@@ -1,0 +1,17 @@
+@import "../../styles/_index.scss";
+
+.support{
+  h2 {
+    @include nunito-700-size-40;
+    @include position-center;
+    line-height: 55px;
+    color: $color-blue;
+  }
+  &-container {
+    @include position-center;
+    gap: 25px;
+    padding-top: 60px;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}

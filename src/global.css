@@ -1,0 +1,9 @@
+html, body {
+    background-color: #F5F5F5;
+    overflow-x: hidden;
+}
+
+.App {
+    margin: 0 auto;
+}
+

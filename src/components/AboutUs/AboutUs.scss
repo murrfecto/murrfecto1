@@ -1,0 +1,46 @@
+@import "../../styles/_index.scss";
+
+.about_container {
+  @include position-center;
+  padding: 120px 80px;
+  gap: 106px;
+}
+
+.about_collage {
+  width: 652px;
+  height: 656px;
+}
+
+.about_info {
+  @include flex-only;
+  flex-direction: column;
+  gap: 40px;
+  @include nunito-400-size-20;
+  line-height: 150%;
+  color: $color-blue;
+
+  &-block {
+    max-width: 523px;
+    @include position-center-na;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  &-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  h2 {
+    @include nunito-700-size-40;
+    line-height: 55px;
+    text-align: center;
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+    color: $color-blue;
+  }
+}

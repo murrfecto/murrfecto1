@@ -1,0 +1,19 @@
+@import "../../styles/_index.scss";
+img {
+  width: 100%;
+}
+
+.main_bg {
+  position: relative;
+}
+
+h1 {
+  @include nunito-400-size-50;
+  position: absolute;
+  left: calc(50% - 1208px/2 - 1px);
+  line-height: 68px;
+  text-align: center;
+  color: $color-white;
+  height: 68px;
+  top: 28px;
+}

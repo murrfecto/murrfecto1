@@ -1,0 +1,48 @@
+@import "../../styles/_index.scss";
+
+.cat_card {
+  color: $color-blue;
+  background: $color-card-bg;
+  border: 0.5px solid $color-border-card;
+  border-radius: 20px;
+  width: 305px;
+  height: 424px;
+
+  &-wrapper {
+    padding-left: 16px;
+  }
+
+  &-name {
+    padding-bottom: 4px;
+    padding-top: 20px;
+    @include nunito-600-size-24;
+  }
+
+  &-icon {
+    width: 305px;
+    height: 295px;
+  }
+
+  &-description {
+    padding-bottom: 4px;
+    @include nunito-700-size-16;
+    @include position-center-na;
+    gap: 4px;
+
+    img {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &-chipped {
+    gap: 4px;
+    @include nunito-700-size-16;
+    @include position-center-na;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
