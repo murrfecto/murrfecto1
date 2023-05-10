@@ -1,0 +1,28 @@
+@import "../../styles/_index.scss";
+
+article {
+  h2 {
+    @include nunito-700-size-40;
+    @include position-center;
+    padding-top: 120px;
+    padding-bottom: 60px;
+    line-height: 55px;
+    color: $color-blue;
+  }
+}
+
+.cats_cards {
+  flex-wrap: wrap;
+  @include position-center-a;
+  gap: 20px;
+  &-link {
+    width: 235px;
+    line-height: 33px;
+    @include position-center-a;
+    @include nunito-600-size-24;
+    margin: 75px auto 120px;
+    color: $color-blue;
+    text-transform: uppercase;
+    border-bottom: 1.5px solid $color-blue;
+  }
+}

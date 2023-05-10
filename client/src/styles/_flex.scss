@@ -1,0 +1,25 @@
+@mixin position-center { // without alignment
+  display: flex;
+  justify-content: center;
+}
+
+@mixin position-center-na { // not-aligned
+  display: flex;
+  align-items: center;
+}
+
+@mixin position-center-a { //aligned
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-only { // only flex
+  display: flex;
+}
+
+@mixin flex-column-a { // flex-column aligned
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

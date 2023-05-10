@@ -1,0 +1,52 @@
+@import "../../styles/_index.scss";
+
+nav {
+  max-width: 1440px;
+  margin: 9px 80px;
+  @include position-center-a;
+
+  .navbar_logo {
+    padding-right: 390px;
+  }
+
+  .navbar_icon {
+    width: 197px;
+    height: 82px;
+  }
+
+  .navbar_links {
+    a {
+      white-space: nowrap;
+      text-decoration: none;
+    }
+  }
+
+  .links {
+    @include inter-400-size-18;
+    @include flex-only;
+    line-height: 22px;
+    gap: 24px;
+
+    a {
+      color: $color-blue;
+    }
+  }
+
+  #donation {
+    margin-left: 61px;
+  }
+
+  .donation {
+    background: $color-btn;
+    border-radius: 12px;
+    @include position-center-a;
+    gap: 8px;
+    a {
+      @include nunito-400-size-24;
+      padding: 16px 40px;
+      line-height: 33px;
+      text-transform: uppercase;
+      color: $full-white;
+    }
+  }
+}
