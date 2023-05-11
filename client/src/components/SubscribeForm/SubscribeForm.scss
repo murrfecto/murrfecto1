@@ -1,0 +1,55 @@
+@import "../../styles/_index.scss";
+
+.subscribe_form {
+  @include flex-column-a;
+  margin: 0 auto;
+  padding-top: 120px;
+
+  &-header {
+    padding-bottom: 24px;
+    @include nunito-700-size-40;
+    line-height: 55px;
+    color: $color-subscribe-header;
+  }
+
+  &-form {
+    padding-bottom: 28px;
+    @include flex-only;
+    align-items: center;
+  }
+
+  &-text {
+    padding-bottom: 48px;
+    @include nunito-600-size-24;
+    line-height: 120%;
+    color: $color-subscribe-text;
+  }
+
+  &-input {
+    @include nunito-600-size-20;
+    font-weight: 600;
+    line-height: 120%;
+    color: $color-placeholder;
+    width: 512px;
+    height: 56px;
+    margin: 0px -9px;
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+    border-color: #928F8F;
+    border-radius: 8px 0 0 8px;
+    padding: 13px 8px 13px 12px;
+    gap: 10px;
+  }
+
+  &-button {
+    @include nunito-700-size-16;
+    text-align: center;
+    line-height: 147%;
+    color: $color-subscribe-btn;
+    background: $full-white;
+    width: 240px;
+    height: 59px;
+    border: 3px solid $color-subscribe-btn;
+    border-radius: 8px;
+  }
+}

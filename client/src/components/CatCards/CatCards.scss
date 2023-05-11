@@ -1,6 +1,7 @@
 @import "../../styles/_index.scss";
 
 .cat_card {
+  cursor: url('../../assets/paw.svg') 2 2, pointer;
   color: $color-blue;
   background: $color-card-bg;
   border: 0.5px solid $color-border-card;

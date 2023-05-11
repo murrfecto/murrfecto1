@@ -20,6 +20,7 @@ const CatCards = ({src, alt, name, description, chippedInfo}) => {
                     <p>{chippedInfo}</p>
                 </div>
             </div>
+
         </div>
     );
 };

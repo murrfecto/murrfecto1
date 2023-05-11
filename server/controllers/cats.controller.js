@@ -6,7 +6,7 @@ const addCat = async (req, res) => {
     const cats = client.db(process.env.DB_NAME).collection('cats');
 
     try {
-        const { error } = catsModel.validate(req.body);
+        const {error} = catsModel.validate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
@@ -95,6 +95,31 @@ const updateCatById = async (req, res) => {
     await client.close();
 };
 
+// const subscribeToCats = (req, res) => {
+//     const {email} = req.body;
+//
+//     const request = {
+//         method: 'PUT',
+//         url: `/v3/marketing/contacts/${email}`,
+//         headers: {
+//             'content-type': 'application/json',
+//             authorization: `Bearer ${process.env.SENDGRID_API_KEY}`
+//         },
+//         body: {
+//             list_ids: [YOUR_LIST_ID]
+//         },
+//         json: true
+//     };
+//
+//     sgMail.request(request)
+//         .then(() => {
+//             res.json({success: true});
+//         })
+//         .catch((error) => {
+//             console.error(error);
+//             res.json({success: false});
+//         });
+// }
 
 export {
     addCat, getCat, getCats, updateCatById, deleteCatById, addImageToCat

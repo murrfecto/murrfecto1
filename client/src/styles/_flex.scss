@@ -3,7 +3,7 @@
   justify-content: center;
 }
 
-@mixin position-center-na { // not-aligned
+@mixin position-center-na { // not-aligned ( justified ) todo need to refactor name
   display: flex;
   align-items: center;
 }

@@ -43,9 +43,52 @@ header {
     padding-bottom: 20px;
     padding-right: 706px;
     gap: 20px;
+
     img {
       width: 32px;
       height: 32px;
+    }
+  }
+
+
+  // temporarily mobile size & example
+  @media only screen and (max-width: 768px) {
+    margin: 20px;
+    padding: 0;
+
+    .socials_contacts {
+      flex-direction: column;
+      gap: 16px;
+
+      p {
+        @include inter-500-size-14;
+        line-height: 16px;
+        margin: 0;
+      }
+
+      &-phone {
+        gap: 4px;
+        margin-bottom: 8px;
+      }
+
+      &-email {
+        gap: 4px;
+        margin-bottom: 8px;
+      }
+
+      &-translation {
+        gap: 4px;
+        margin-bottom: 8px;
+      }
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .header_socials {
+      display: none;
     }
   }
 }
