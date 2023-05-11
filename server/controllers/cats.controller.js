@@ -1,5 +1,6 @@
 import {MongoClient, ObjectId} from "mongodb";
 import {catsModel} from "../model/cats.model.js";
+import sgMail from '@sendgrid/mail';
 
 const addCat = async (req, res) => {
     const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
@@ -95,32 +96,37 @@ const updateCatById = async (req, res) => {
     await client.close();
 };
 
-// const subscribeToCats = (req, res) => {
-//     const {email} = req.body;
-//
-//     const request = {
-//         method: 'PUT',
-//         url: `/v3/marketing/contacts/${email}`,
-//         headers: {
-//             'content-type': 'application/json',
-//             authorization: `Bearer ${process.env.SENDGRID_API_KEY}`
-//         },
-//         body: {
-//             list_ids: [YOUR_LIST_ID]
-//         },
-//         json: true
-//     };
-//
-//     sgMail.request(request)
-//         .then(() => {
-//             res.json({success: true});
-//         })
-//         .catch((error) => {
-//             console.error(error);
-//             res.json({success: false});
-//         });
-// }
+const subscribeToCats = (req, res) => {
+    const {email} = req.body;
+    sgMail.setApiKey(process.env.API_KEY);
+    const headers = {
+        Authorization: `Bearer ${process.env.API_KEY}`,
+        'Content-Type2': 'application/json'
+    };
+    const msg = {
+        to: email, // Change to your recipient
+        from: 'murrfecto@gmail.com', // Change to your verified sender
+        subject: 'MURRFECTO',
+        text: 'MURRFECTO - коротко про котів.',
+        html: `<div style="background-color: #f5f5f5; padding: 20px;">
+            <h2 style="color: #333; text-align: center;">Привіт, я твій кіт з Murrfecto</h2>
+            <p style="font-size: 16px; line-height: 1.5;">Дякую за корм, поїв. Напишу тобі через місяць.</p>
+            <p style="font-size: 16px; line-height: 1.5;">З повагою, Семен.</p>
+       </div>`
+    };
+    sgMail
+        .send({...msg, headers})
+        .then(() => {
+            console.log('Email sent');
+            res.send('Email sent');
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send(error);
+        });
+};
+
 
 export {
-    addCat, getCat, getCats, updateCatById, deleteCatById, addImageToCat
+    addCat, getCat, getCats, updateCatById, deleteCatById, addImageToCat, subscribeToCats
 }

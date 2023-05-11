@@ -21,12 +21,10 @@ const OurCats = () => {
         <article>
             <h2>Наші хвости</h2>
             <div className={'cats_cards'}>
-                {cats?.map(cat => {
-                    return (
+                {cats?.map((cat) => (
                         <CatCards src={cat?.image} alt={cat?.name} name={cat?.name} description={cat?.description}
                                   chippedInfo={cat?.chipped}/>
-                    )
-                })}
+                ))}
 
             </div>
             <a className={'cats_cards-link'} href="#">Переглянути усіх</a>
