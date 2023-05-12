@@ -23,3 +23,8 @@
   align-items: center;
   flex-direction: column;
 }
+
+@mixin flex-column-na { // flex-column not-aligned
+  display: flex;
+  flex-direction: column;
+}
