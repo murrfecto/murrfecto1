@@ -63,12 +63,12 @@ const Footer = () => {
           </a>
         </div>
         <ul className={"social_list"}>
-          <li>
+          <li className={"social_link"}>
             <a href="https://www.facebook.com/" target="_blank">
               <img src={facebook} alt="facebook icon" width={48} height={48} />
             </a>
           </li>
-          <li>
+          <li className={"social_link"}>
             <a href="https://www.linkedin.com/" target="_blank">
               <img src={linkedin} alt="lincedin icon" width={48} height={48} />
             </a>
