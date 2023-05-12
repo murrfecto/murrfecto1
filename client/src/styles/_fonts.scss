@@ -1,17 +1,17 @@
 @mixin nunito-400-size-20 {
   font-size: 20px;
   font-weight: 400;
-  font-family: 'Nunito Sans', serif;
+  font-family: "Nunito Sans", serif;
 }
 
 @mixin nunito-700-size-40 {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-weight: 700;
   font-size: 40px;
 }
 
 @mixin nunito-700-size-16 {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-weight: 700;
   font-size: 16px;
 }
@@ -19,50 +19,64 @@
 @mixin nunito-400-size-50 {
   font-size: 50px;
   font-weight: 400;
-  font-family: 'Nunito Sans', serif;
+  font-family: "Nunito Sans", serif;
 }
 
 @mixin inter-500-size-16 {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
 }
 
 @mixin inter-400-size-18 {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 18px;
   font-weight: 400;
 }
 
 @mixin nunito-400-size-24 {
   font-weight: 400;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 24px;
 }
 
 @mixin nunito-600-size-32 {
   font-weight: 600;
   font-size: 32px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 @mixin nunito-600-size-24 {
   font-weight: 600;
   font-size: 24px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 @mixin nunito-600-size-20 {
   font-weight: 600;
   font-size: 20px;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
-
 
 // mobile size
 @mixin inter-500-size-14 {
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 14px;
+}
+
+// footer fonts style
+@mixin nunito-400-size-14 {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Nunito Sans", serif;
+  font-style: normal;
+}
+
+@mixin nunito-600-size-16 {
+  font-weight: 600;
+  font-size: 16px;
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
 }
