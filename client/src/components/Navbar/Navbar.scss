@@ -37,16 +37,26 @@ nav {
   }
 
   .donation {
-    background: $color-btn;
+    background-color: $color-btn;
     border-radius: 12px;
     @include position-center-a;
     gap: 8px;
+    transition: background-color 300ms linear;
+
     a {
       @include nunito-400-size-24;
       padding: 16px 40px;
       line-height: 33px;
       text-transform: uppercase;
       color: $full-white;
+      transition: color 300ms linear;
+
+      &:hover {
+        color: $color-btn;
+      }
+    }
+    &:hover {
+      background-color: $color-btn-hover;
     }
   }
 }
