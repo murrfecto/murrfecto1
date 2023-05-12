@@ -32,11 +32,13 @@
   line-height: 1.37;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background-color 300ms linear;
+  transition: background-color 300ms linear, color 300ms linear;
 
   cursor: pointer;
+
   &:hover {
     background-color: $color-btn-hover;
+    color: $color-btn;
   }
 }
 
