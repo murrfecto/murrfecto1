@@ -90,6 +90,11 @@
   gap: 20px;
 }
 
+.social_link {
+  width: 48px;
+  height: 48px;
+}
+
 .footer_copyrights {
   @include nunito-400-size-14;
   margin-top: 52px;
