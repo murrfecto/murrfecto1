@@ -100,6 +100,13 @@
 .social_link {
   width: 48px;
   height: 48px;
+  box-shadow: transparent;
+  transition: box-shadow 300ms linear, scale 300ms linear;
+
+  &:hover {
+    box-shadow: 0px 3.43693px 3.43693px #766e78;
+    scale: 1.1;
+  }
 }
 
 .footer_copyrights {
