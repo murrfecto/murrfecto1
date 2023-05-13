@@ -67,13 +67,22 @@ const Footer = () => {
             <a className={"info_link"} href="#" target="_blank">
               Політика конфіденційності
             </a>
-            <a className={"info_link"} href="#" target="_blank">
+            <a
+              className={"info_link"}
+              href="#"
+              target="_blank"
+              rel="nofollow noreferrer noopener"
+            >
               Договір оферти
             </a>
           </div>
           <ul className={"social_list"}>
             <li className={"social_link"}>
-              <a href="https://www.facebook.com/" target="_blank">
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="nofollow noreferrer noopener"
+              >
                 <img
                   src={facebook}
                   alt="facebook icon"
@@ -83,7 +92,11 @@ const Footer = () => {
               </a>
             </li>
             <li className={"social_link"}>
-              <a href="https://www.linkedin.com/" target="_blank">
+              <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="nofollow noreferrer noopener"
+              >
                 <img
                   src={linkedin}
                   alt="lincedin icon"
