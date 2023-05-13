@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import './OurCats.scss'
 import CatCards from "../CatCards/CatCards";
 import CatsGallery from "../CatsGallery/CatsGallery"
-import axios from "axios";
+//import axios from "axios";
 
 
 const OurCats = () => {

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-//import './OurCats.scss'
+import "./CatsGallery.scss";
 import CatItem from "../CatItem/CatItem";
 import axios from "axios";
 
