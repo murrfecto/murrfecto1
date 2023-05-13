@@ -4,6 +4,7 @@ import "./Main.scss";
 import AboutUs from "../../components/AboutUs/AboutUs";
 import SupportUs from "../../components/SupportUs/SupportUs";
 import OurCats from "../../components/OurCats/OurCats";
+//import CatsGallery from "../../components/CatsGallery/CatsGallery";
 import SubscribeForm from "../../components/SubscribeForm/SubscribeForm";
 import ScrollToTop from "../../components/common/ScrollToTop/ScrollToTop";
 
