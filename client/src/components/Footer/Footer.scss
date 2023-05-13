@@ -6,10 +6,8 @@
 }
 
 .footer_container {
-  display: flex;
+  @include position-center-a;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   max-width: 1440px;
   padding: 60px 80px;
   margin-left: auto;
@@ -57,9 +55,8 @@
 }
 
 .column_title {
-  margin-bottom: 25px;
-  font-family: "Nunito";
   font-style: normal;
+  margin-bottom: 25px;
   font-weight: 700;
   font-size: 20px;
   line-height: 27px;
