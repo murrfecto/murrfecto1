@@ -4,8 +4,8 @@ import paw from '../../assets/paw.svg';
 import info from '../../assets/info-rounded.svg'
 import {Skeleton} from "@mui/material";
 const CatCards = ({src, alt, name, description, chippedInfo}) => {
-    const [loading, setLoading] = useState(true);
-
+    const [loading, setLoading] = useState(false);
+    console.log(src);
     const handleImageLoad = () => {
         setLoading(false);
     };

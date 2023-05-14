@@ -16,13 +16,14 @@ const OurCats = () => {
     }
     useEffect(() => {
         getData()
-    })
+    },[])
+    console.log(cats);
     return (
         <article>
             <h2>Наші хвости</h2>
             <div className={'cats_cards'}>
-                {cats?.map((cat) => (
-                        <CatCards src={cat?.image} alt={cat?.name} name={cat?.name} description={cat?.description}
+                {cats?.map((cat,index) => (
+                        <CatCards key={index} src={cat?.image} alt={cat?.name} name={cat?.name} description={cat?.description}
                                   chippedInfo={cat?.chipped}/>
                 ))}
 

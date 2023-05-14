@@ -1,0 +1,8 @@
+@import "../../../../styles/_index.scss";
+
+.dashboard {
+  margin: 0 auto;
+  height: 100%;
+  max-width: 1440px;
+  @include flex-only;
+}
