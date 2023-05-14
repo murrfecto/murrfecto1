@@ -3,7 +3,7 @@ import './OurCats.scss'
 import CatCards from "../CatCards/CatCards";
 import CatsGallery from "../CatsGallery/CatsGallery"
 //import axios from "axios";
-
+import {Link} from "react-router-dom";
 
 const OurCats = () => {
     // const [cats, setCats] = useState(null);
@@ -22,7 +22,7 @@ const OurCats = () => {
         <article>
             <h2>Наші хвости</h2>
             <CatsGallery />
-            <a className={'cats_cards-link'} href="#">Переглянути усіх</a>
+            <Link to="/tails" className={'cats_cards-link'} href="#">Переглянути усіх</Link>
         </article>
     );
 };
