@@ -3,8 +3,8 @@ import "./Title.scss";
 
 const Title = () => {
 return (
-<div className={"title_container"}>
-    <h1>Наші хвости</h1>
+<div className="title_container">
+    <h2 className={"page_title"}>Наші хвости</h2>
 </div>
 );
 };

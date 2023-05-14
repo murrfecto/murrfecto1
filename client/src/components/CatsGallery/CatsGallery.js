@@ -9,14 +9,14 @@ const CatsGallery = () => {
     const getData = async () => {
         try {
            const response = await axios.get('http://localhost:3000/cats')
-            setCats(response.data)
+            setCats(response.data);
         } catch (e) {
             console.log(e.message)
         }
     }
     useEffect(() => {
         getData()
-    })
+    }, []);
     return (
             <ul className={'cats_cards'}>
                 {cats?.map((cat) => (

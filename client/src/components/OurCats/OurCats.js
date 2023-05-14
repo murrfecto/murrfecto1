@@ -22,7 +22,7 @@ const OurCats = () => {
         <article>
             <h2>Наші хвости</h2>
             <CatsGallery />
-            <Link to="/tails" className={'cats_cards-link'} href="#">Переглянути усіх</Link>
+            <Link to="/tails" className={'cats_cards-link'}>Переглянути усіх</Link>
         </article>
     );
 };
