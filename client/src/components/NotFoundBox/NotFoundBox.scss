@@ -29,20 +29,16 @@
 
 .to-main_link {
   @include position-center-a;
+  @include inter-400-size-24;
   min-width: 365px;
   background-color: $color-btn;
   border-radius: 12px;
-
-  font-family: "Inter";
-  font-size: 24px;
   padding: 8px 115px;
   line-height: 1.47;
   color: $full-white;
   text-decoration: none;
   transition: background-color 300ms linear, color 300ms linear;
-
   cursor: pointer;
-
   &:hover {
     background-color: $color-btn-hover;
     color: $color-btn;

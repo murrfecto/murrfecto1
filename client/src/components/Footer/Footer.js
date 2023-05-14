@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.scss";
 import "../Navbar/Navbar.scss";
 
-import logo from "../../assets/footer/logo.png";
+import logo from "../../assets/footer/logo.svg";
 import email from "../../assets/footer/envelope.svg";
 import phone from "../../assets/footer/phone.svg";
 import facebook from "../../assets/footer/facebook.svg";
@@ -14,6 +14,7 @@ const Footer = () => {
       <div className="footer_container">
         <div className={"footer_info_wrapper"}>
           <div>
+            {/*todo fix tab-intex*/}
             <a href={"#"}>
               <img src={logo} alt="murfecto logo" className={"footer_logo"} />
             </a>

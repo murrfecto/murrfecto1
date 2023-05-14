@@ -3,7 +3,6 @@
 header {
   @include position-center;
   max-width: 1440px;
-  border-bottom: 1px solid $color-border;
   margin: 20px 80px 20px 80px;
 
   .socials_contacts {
@@ -12,7 +11,7 @@ header {
     align-items: center;
 
     p {
-      @include inter-500-size-16;
+      @include nunito-600-size-16;
       line-height: 19px;
       text-align: center;
     }
@@ -40,8 +39,7 @@ header {
 
   .header_socials {
     @include flex-only;
-    padding-bottom: 20px;
-    padding-right: 706px;
+    padding-right: 820px;
     gap: 20px;
 
     img {

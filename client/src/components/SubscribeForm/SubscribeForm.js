@@ -1,27 +1,55 @@
-import React, {useState} from 'react';
-import './SubscribeForm.scss'
-import axios from "axios";
+import React, { useState } from 'react';
+import './SubscribeForm.scss';
+import axios from 'axios';
+import { Alert } from '@mui/material';
 
 const SubscribeForm = () => {
     const [email, setEmail] = useState('');
+    const [isSent, setIsSent] = useState(false);
+    const [error, setError] = useState(false);
 
     const sendEmailHandler = async (e) => {
         e.preventDefault();
+        if (!validateEmail(email)) {
+            setError(true);
+            return;
+        }
         try {
             const res = await axios.post('http://localhost:3000/cats/subscribe', {
                 email,
             });
-            // console.log(res.data);
+            setIsSent(true);
+            setTimeout(() => {
+                setIsSent(false);
+            }, 10000);
         } catch (error) {
-            // console.log(error);
+            console.log(error);
+            setError(true);
         }
     };
+
+    const validateEmail = (email) => {
+        const re = /^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}$/i;
+        return re.test(email);
+    };
+
     return (
         <div className={'subscribe_form'}>
             <h3 className={'subscribe_form-header'}>Стежте за останніми подіями притулку</h3>
-            <p className={'subscribe_form-text'}>Залиште свій email, і ми вам надішлемо новини про вашого кота</p>
+            <p className={'subscribe_form-text'}>
+                Залиште свій email, і ми вам надішлемо новини про вашого кота
+            </p>
+            <div className={'subscribe_form-alert'}>
+                {isSent ? (
+                    <Alert onClose={() => setIsSent(false)}>Повідомлення надіслано, мяв!</Alert>
+                ) : error ? (
+                    <Alert onClose={() => setError(false)} severity="error">
+                        Щось пішло не так, спробуйте ще раз!
+                    </Alert>
+                ) : null}
+            </div>
             <form id={'data-form'} method={'POST'} onSubmit={sendEmailHandler} className={'subscribe_form-form'}>
-                <label htmlFor="subscribe">
+                <label htmlFor="subscribe" className={'subscribe_form-label'}>
                     <input
                         name={'subscribe'}
                         placeholder={'Ваш email'}
@@ -30,7 +58,9 @@ const SubscribeForm = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <button id={'data-form-btn'} className={'subscribe_form-button'}>Надіслати</button>
+                    <button id={'data-form-btn'} className={'subscribe_form-button'}>
+                        Надіслати
+                    </button>
                 </label>
             </form>
         </div>

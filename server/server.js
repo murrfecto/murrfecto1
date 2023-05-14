@@ -6,6 +6,7 @@ import CatsRoutes from "./routes/cats.routes.js";
 
 //dotenv
 import dotenv from 'dotenv'
+
 dotenv.config();
 // Establishing server
 export const app = express();

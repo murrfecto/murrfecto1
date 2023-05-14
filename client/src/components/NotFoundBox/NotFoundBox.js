@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./NotFoundBox.scss";
-import img404 from "../../assets/404page/cat404@2x.png";
+import img404 from "../../assets/404page/cat404.svg";
 
 const NotFoundBox = () => {
   return (
