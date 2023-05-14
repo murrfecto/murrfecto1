@@ -3,8 +3,9 @@ import './CatCards.scss'
 import paw from '../../assets/paw.svg';
 import info from '../../assets/info-rounded.svg'
 import {Skeleton} from "@mui/material";
-const CatCards = ({src, alt, name, description, chippedInfo}) => {
-    const [loading, setLoading] = useState(false);
+import {FaTrash} from "react-icons/fa";
+const CatCards = ({src, alt, name, description, chippedInfo,trash}) => {
+    const [loading, setLoading] = useState(true);
     console.log(src);
     const handleImageLoad = () => {
         setLoading(false);
@@ -33,6 +34,7 @@ const CatCards = ({src, alt, name, description, chippedInfo}) => {
                 <div className={'cat_card-chipped'}>
                     <img src={info} alt="info" />
                     <p>{chippedInfo}</p>
+                    {trash}
                 </div>
             </div>
         </div>

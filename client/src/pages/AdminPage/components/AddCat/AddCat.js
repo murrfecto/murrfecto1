@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-
+import './AddCat.scss'
 const _ENDPOINT = "http://localhost:3000/cats";
 const AddCat = () => {
 
@@ -15,7 +15,7 @@ const AddCat = () => {
 
     const [formStatus, setFormStatus] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         axios.post(_ENDPOINT, formData)
             .then(response => {
@@ -31,55 +31,26 @@ const AddCat = () => {
         setFormData({...formData, [e.target.name]: e.target.value});
     };
 
-    const handleImageChange = (e) => {
-        setFormData({...formData, image: e.target.files[0]});
-    };
+
 
     return (
         <div>
-            <form action={_ENDPOINT} onSubmit={handleSubmit}>
-                <h2>Добавити кота</h2>
-                <div>
-                    <label>
-                        Ім'я
-                    </label>
-                    <input type="text"
-                           name='name'
-                           value={formData.name}
-                           onChange={handleInputChange}
-                           required
-                    />
+            <form onSubmit={handleSubmit} className='formAdding'>
+                <h2 className='formAdding__title'>Добавити кота</h2>
+                <div className='formAdding__wrapper'>
+                    <label>Ім'я</label>
+                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} required />
 
-                    <label>
-                        Фото
-                    </label>
-                    <input type="file"
-                           name='image'
-                           onChange={handleImageChange}
-                           required
-                    />
+                    <label>Фото</label>
+                    <input type="text" value={formData.image} name="image" onChange={handleInputChange} required />
 
-                    <label>
-                        Опис
-                    </label>
-                    <input type="text"
-                           name='description'
-                           value={formData.description}
-                           onChange={handleInputChange}
-                           required
-                    />
+                    <label>Опис</label>
+                    <input type="text" name="description" value={formData.description} onChange={handleInputChange} required />
 
+                    <label htmlFor="Name">Наявність чіпу</label>
+                    <input type="text" name="chipped" value={formData.chipped} onChange={handleInputChange} required />
 
-                    <label htmlFor="Name">
-                        Наявність чіпу
-                    </label>
-                    <input type="text"
-                           name='chipped'
-                           value={formData.chipped}
-                           onChange={handleInputChange}
-                           required
-                    />
-                    <button type='submit'>Добавити</button>
+                    <button type="submit">Добавити</button>
                 </div>
             </form>
         </div>

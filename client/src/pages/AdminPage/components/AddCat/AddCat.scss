@@ -1,0 +1,36 @@
+@import "../../../../styles/_index.scss";
+
+.formAdding{
+  margin: 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+  @include flex-column-a;
+  &__wrapper{
+    @include flex-column-a;
+    label{
+      @include nunito-400-size-14
+    }
+    input{
+      width: 300px;
+      height: 30px;
+      border-radius: 10px;
+      outline: none;
+      background: none;
+    }
+    button{
+      margin-top: 10px;
+      background: $color-btn;
+      color:$full-white;
+      width: 300px;
+      height: 30px;
+      border-radius: 10px;
+      transition: all 0.3s;
+      cursor: pointer;
+      &:hover{
+        background:$color-btn-hover;
+      }
+    }
+  }
+}

@@ -52,7 +52,7 @@ export default function VerticalTabs() {
     return (
         <div className='dashboard'>
             <Box
-                sx={{ flexGrow: 1, bgcolor: 'none', display: 'flex', height: 'auto' }}
+                sx={{ flexGrow: 1, bgcolor: 'none', display: 'flex', height: 'auto'}}
             >
                 <Tabs
                     orientation="vertical"
@@ -60,16 +60,16 @@ export default function VerticalTabs() {
                     value={value}
                     onChange={handleChange}
                     aria-label="Vertical tabs example"
-                    sx={{ borderRight: 1, borderColor: 'divider',  }}
+                    sx={{ borderRight: 1, borderColor: 'divider', minWidth: '144px' }}
                 >
-                    <Tab sx={{fontWeight: 500}} label="View all cats" {...a11yProps(0)} />
-                    <Tab sx={{fontWeight: 500}} label="Add cats" {...a11yProps(1)} />
+                    <Tab sx={{fontWeight: 500, display:'flex'}} label="View all cats" {...a11yProps(0)} />
+                    <Tab sx={{fontWeight: 500,display:'flex',width:'100%'}} label="Add cats" {...a11yProps(1)} />
 
                 </Tabs>
-                <TabPanel value={value} index={0}>
+                <TabPanel style={{ width:'100%' }} value={value} index={0}>
                     <ViewAllCats/>
                 </TabPanel>
-                <TabPanel value={value} index={1}>
+                <TabPanel style={{ width:'100%' }} value={value} index={1}>
                     <AddCat/>
                 </TabPanel>
 

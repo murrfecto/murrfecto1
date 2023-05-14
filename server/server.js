@@ -6,7 +6,7 @@ import CatsRoutes from "./routes/cats.routes.js";
 
 //dotenv
 import dotenv from 'dotenv'
-import {addImageToCat} from "./controllers/cats.controller.js";
+
 dotenv.config();
 // Establishing server
 export const app = express();
@@ -22,7 +22,7 @@ app.use(cors({origin: '*'}));
 
 // Routes
 app.use(CatsRoutes)
-app.use(addImageToCat)
+
 
 const PORT = process.env.PORT || 8000;
 // Connecting MongoDB and running server
