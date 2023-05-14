@@ -1,0 +1,46 @@
+@import "../../styles/_index.scss";
+
+.main_wrapper {
+  @include position-center-a;
+  max-width: 1440px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 110px 281px 200px 297px;
+  font-weight: 600;
+  background-color: $main-bg-color;
+  gap: 84px;
+}
+
+.not-found_title {
+  font-size: 234px;
+  line-height: 319px;
+  text-align: center;
+
+  color: $color-card-text;
+}
+
+.not-found_text {
+  margin-top: 55px;
+  margin-bottom: 110px;
+  @include nunito-600-size-24;
+  line-height: 1.37;
+  color: $color-card-text;
+}
+
+.to-main_link {
+  @include position-center-a;
+  @include inter-400-size-24;
+  min-width: 365px;
+  background-color: $color-btn;
+  border-radius: 12px;
+  padding: 8px 115px;
+  line-height: 1.47;
+  color: $full-white;
+  text-decoration: none;
+  transition: background-color 300ms linear, color 300ms linear;
+  cursor: pointer;
+  &:hover {
+    background-color: $color-btn-hover;
+    color: $color-btn;
+  }
+}
