@@ -1,12 +1,20 @@
 @import "../../styles/_index.scss";
 
-nav {
-  max-width: 1440px;
+.navbar {
+  max-width: 1282px;
+  padding-top: 9px;
+  border-top: 1px solid $color-border;
+  width: 100%;
   margin: 9px 80px;
-  @include position-center-a;
+  display: flex;
+  justify-content: space-around;
+  gap: 390px;
+  align-items: center;
 
-  .navbar_logo {
-    padding-right: 390px;
+  .navbar_wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
   }
 
   .navbar_icon {
@@ -22,31 +30,49 @@ nav {
   }
 
   .links {
-    @include inter-400-size-18;
+    @include nunito-700-size-18;
     @include flex-only;
-    line-height: 22px;
     gap: 24px;
 
     a {
       color: $color-blue;
+      border-bottom: 1px solid transparent;
+      transition: border 0.3s ease;
+
+      &:hover {
+        color: $color-btn;
+        border-bottom: 1px solid $color-blue;;
+      }
     }
+
   }
 
   #donation {
-    margin-left: 61px;
+    margin-left: 62px;
   }
 
   .donation {
-    background: $color-btn;
+    background-color: $color-btn;
     border-radius: 12px;
     @include position-center-a;
     gap: 8px;
+    transition: background-color 300ms linear;
+
     a {
       @include nunito-400-size-24;
       padding: 16px 40px;
       line-height: 33px;
       text-transform: uppercase;
       color: $full-white;
+      transition: color 300ms linear;
+
+      &:hover {
+        color: $color-btn;
+      }
+    }
+
+    &:hover {
+      background-color: $color-btn-hover;
     }
   }
 }

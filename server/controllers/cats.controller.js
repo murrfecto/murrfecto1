@@ -1,5 +1,6 @@
 import {MongoClient, ObjectId} from "mongodb";
 import {catsModel} from "../model/cats.model.js";
+import sgMail from '@sendgrid/mail';
 
 const addCat = async (req, res) => {
     const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
@@ -95,32 +96,37 @@ const updateCatById = async (req, res) => {
     await client.close();
 };
 
-// const subscribeToCats = (req, res) => {
-//     const {email} = req.body;
-//
-//     const request = {
-//         method: 'PUT',
-//         url: `/v3/marketing/contacts/${email}`,
-//         headers: {
-//             'content-type': 'application/json',
-//             authorization: `Bearer ${process.env.SENDGRID_API_KEY}`
-//         },
-//         body: {
-//             list_ids: [YOUR_LIST_ID]
-//         },
-//         json: true
-//     };
-//
-//     sgMail.request(request)
-//         .then(() => {
-//             res.json({success: true});
-//         })
-//         .catch((error) => {
-//             console.error(error);
-//             res.json({success: false});
-//         });
-// }
+const subscribeToCats = (req, res) => {
+    const {email} = req.body;
+    sgMail.setApiKey(process.env.API_KEY);
+    const headers = {
+        Authorization: `Bearer ${process.env.API_KEY}`,
+        'Content-Type2': 'application/json'
+    };
+    const templateId = 'd-153ab25c71df48d0b2cec989e5bfcebb';
+
+    const msg = {
+        to: email,
+        from: 'murrfecto@gmail.com',
+        subject: 'Support for cats!',
+        templateId,
+        dynamicTemplateData: {
+            deliveryFrequency: 'every month'
+        }
+    };
+
+    sgMail.send({...msg, headers})
+        .then(() => {
+            console.log('Email sent');
+            res.send('Email sent');
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send(error);
+        });
+};
+
 
 export {
-    addCat, getCat, getCats, updateCatById, deleteCatById, addImageToCat
+    addCat, getCat, getCats, updateCatById, deleteCatById, addImageToCat, subscribeToCats
 }

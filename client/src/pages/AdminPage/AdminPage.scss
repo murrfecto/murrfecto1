@@ -1,0 +1,38 @@
+@import "../../styles/_index.scss";
+
+.login {
+  @include position-center;
+  height: 100vh;
+  &_container{
+    @include flex-column-na;
+    gap: 30px;
+    margin-top: 160px;
+    &__title{
+      @include inter-500-size-14;
+      text-align: center;
+    }
+    &__form{
+      @include flex-column-na;
+      .password{
+        padding: 10px;
+        border: 1px solid ;
+        border-radius: 6px;
+        outline: none;
+      }
+      .btnSubmit{
+        padding: 10px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 500;
+        background-color: $color-btn;
+        color: white;
+        cursor: pointer;
+        transition: color 300ms linear;
+        &:hover {
+          background-color: $color-btn-hover;
+        }
+      }
+    }
+  }
+}
