@@ -1,0 +1,69 @@
+@import "../../styles/_index.scss";
+
+.accordion-slider {
+  max-width: 836px;
+  margin: 0 auto;
+  &_flex {
+    display: flex;
+    height: 470px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    min-width: 100%;
+    cursor: pointer;
+  }
+
+  &_item {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    overflow: hidden;
+    border-radius: 0 20px 20px 0;
+    &:nth-child(2) {
+      margin: 0 -20px;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    &.active {
+      flex: 3;
+      margin: 0 -20px;
+      &::before {
+        background-color: rgba(255, 255, 255, 0);
+      }
+
+      .accordion-slider_text {
+        color: white;
+      }
+    }
+
+    &-img {
+      width: 516px;
+      height: 471px;
+      background-color: $color-btn;
+      border-radius: 0 20px 20px 0;
+    }
+    &-text {
+      @include nunito-400-size-24;
+      position: absolute;
+      right: 0;
+      bottom: 80px;
+      transform: rotate(-90deg);
+      color: $color-blue;
+    }
+  }
+}
