@@ -14,9 +14,8 @@ const Footer = () => {
       <div className="footer_container">
         <div className={"footer_info_wrapper"}>
           <div>
-            {/*todo fix tab-intex*/}
-            <a href={"#"}>
-              <img src={logo} alt="murfecto logo" className={"footer_logo"} />
+            <a href={"#"} className={"footer_logo-link"}>
+              <img src={logo} alt="murrfecto logo" width={197} height={82} />
             </a>
 
             <a id={"donation_footer"} className={"footer_donation"} href={"#"}>

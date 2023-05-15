@@ -73,9 +73,10 @@
 }
 
 @mixin nunito-600-size-16 {
+  font-family: "Nunito Sans", sans-serif;
+  font-style: normal;
   font-weight: 600;
   font-size: 16px;
-  font-family: "Nunito Sans", sans-serif;
 }
 
 @mixin inter-400-size-24 {
