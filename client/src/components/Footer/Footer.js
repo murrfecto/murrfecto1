@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.scss";
 import "../Navbar/Navbar.scss";
 
-import logo from "../../assets/footer/logo.png";
+import logo from "../../assets/footer/logo.svg";
 import email from "../../assets/footer/envelope.svg";
 import phone from "../../assets/footer/phone.svg";
 import facebook from "../../assets/footer/facebook.svg";
@@ -14,8 +14,8 @@ const Footer = () => {
       <div className="footer_container">
         <div className={"footer_info_wrapper"}>
           <div>
-            <a href={"#"}>
-              <img src={logo} alt="murfecto logo" className={"footer_logo"} />
+            <a href={"#"} className={"footer_logo-link"}>
+              <img src={logo} alt="murrfecto logo" width={197} height={82} />
             </a>
 
             <a id={"donation_footer"} className={"footer_donation"} href={"#"}>
@@ -67,13 +67,22 @@ const Footer = () => {
             <a className={"info_link"} href="#" target="_blank">
               Політика конфіденційності
             </a>
-            <a className={"info_link"} href="#" target="_blank">
+            <a
+              className={"info_link"}
+              href="#"
+              target="_blank"
+              rel="nofollow noreferrer noopener"
+            >
               Договір оферти
             </a>
           </div>
           <ul className={"social_list"}>
             <li className={"social_link"}>
-              <a href="https://www.facebook.com/" target="_blank">
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="nofollow noreferrer noopener"
+              >
                 <img
                   src={facebook}
                   alt="facebook icon"
@@ -83,7 +92,11 @@ const Footer = () => {
               </a>
             </li>
             <li className={"social_link"}>
-              <a href="https://www.linkedin.com/" target="_blank">
+              <a
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="nofollow noreferrer noopener"
+              >
                 <img
                   src={linkedin}
                   alt="lincedin icon"

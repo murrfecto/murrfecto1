@@ -6,10 +6,8 @@
 }
 
 .footer_container {
-  display: flex;
+  @include position-center-a;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   max-width: 1440px;
   padding: 60px 80px;
   margin-left: auto;
@@ -20,7 +18,8 @@
   display: flex;
 }
 
-.footer_logo {
+.footer_logo-link {
+  display: inline-block;
   width: 197px;
   height: 82px;
   margin-bottom: 40px;
@@ -58,7 +57,6 @@
 
 .column_title {
   margin-bottom: 25px;
-  font-family: "Nunito";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -100,6 +98,13 @@
 .social_link {
   width: 48px;
   height: 48px;
+  box-shadow: transparent;
+  transition: box-shadow 300ms linear, scale 300ms linear;
+
+  &:hover {
+    box-shadow: 0px 3.43693px 3.43693px #766e78;
+    scale: 1.1;
+  }
 }
 
 .footer_copyrights {

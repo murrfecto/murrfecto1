@@ -1,6 +1,5 @@
 @import "../../styles/_index.scss";
 
-
 .cat_card {
   cursor: url('../../assets/paw.svg') 2 2, pointer;
   color: $color-blue;
@@ -9,7 +8,6 @@
   border-radius: 20px;
   width: 305px;
   height: 424px;
-
 
   &-wrapper {
     padding-left: 16px;
@@ -42,8 +40,6 @@
     gap: 4px;
     @include nunito-700-size-16;
     @include position-center-na;
-    justify-content: space-between;
-
 
     img {
       width: 24px;

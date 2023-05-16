@@ -1,9 +1,9 @@
-html, body {
-    background-color: #F5F5F5;
+html,
+body {
+    background: #F2F2F2;
     overflow-x: hidden;
 }
 
 .App {
     margin: 0 auto;
 }
-

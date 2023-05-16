@@ -103,19 +103,19 @@ const subscribeToCats = (req, res) => {
         Authorization: `Bearer ${process.env.API_KEY}`,
         'Content-Type2': 'application/json'
     };
+    const templateId = 'd-153ab25c71df48d0b2cec989e5bfcebb';
+
     const msg = {
-        to: email, // Change to your recipient
-        from: 'murrfecto@gmail.com', // Change to your verified sender
-        subject: 'MURRFECTO',
-        text: 'MURRFECTO - коротко про котів.',
-        html: `<div style="background-color: #f5f5f5; padding: 20px;">
-            <h2 style="color: #333; text-align: center;">Привіт, я твій кіт з Murrfecto</h2>
-            <p style="font-size: 16px; line-height: 1.5;">Дякую за корм, поїв. Напишу тобі через місяць.</p>
-            <p style="font-size: 16px; line-height: 1.5;">З повагою, Семен.</p>
-       </div>`
+        to: email,
+        from: 'murrfecto@gmail.com',
+        subject: 'Support for cats!',
+        templateId,
+        dynamicTemplateData: {
+            deliveryFrequency: 'every month'
+        }
     };
-    sgMail
-        .send({...msg, headers})
+
+    sgMail.send({...msg, headers})
         .then(() => {
             console.log('Email sent');
             res.send('Email sent');

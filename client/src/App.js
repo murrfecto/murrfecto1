@@ -1,9 +1,10 @@
-import Main from "./pages/Main/Main";
-import './global.css'
+import "./global.css";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import {Admin,Home} from "./pages";
+import {Admin, Home} from "./pages";
+import Page404 from "./pages/Page404/Page404";
+import {OurTails} from "./pages/OurTailsPage/OurTailsPage";
 
 function App() {
     return (
@@ -13,6 +14,8 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home/>}/>
                     <Route path='/admin/*' element={<Admin/>}/>
+                    <Route path= '/tails' element={<OurTails/>}/>
+                    <Route path="*" element={<Page404/>}/>
                 </Routes>
                 <Footer/>
             </BrowserRouter>

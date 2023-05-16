@@ -25,7 +25,6 @@ const IsAdminFrom = ({setIsAdmin}) => {
                             value={password}
                             placeholder="Password"
                             onChange={(e) => setPassword(e.target.value)}
-
                         />
                         <button className="btnSubmit">Submit</button>
                     </form>
