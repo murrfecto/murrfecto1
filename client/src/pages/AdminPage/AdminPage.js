@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './AdminPage.scss';
-import Dashboard from "../../components/Dashboard/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 const IsAdminFrom = ({setIsAdmin}) => {
     const [password, setPassword] = useState('');
