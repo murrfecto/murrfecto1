@@ -6,8 +6,6 @@
 }
 
 .footer_container {
-  @include position-center-a;
-  flex-direction: column;
   max-width: 1440px;
   padding: 60px 80px;
   margin-left: auto;
@@ -47,7 +45,7 @@
 }
 
 .footer_address {
-  margin-left: 163px;
+  margin-right: 69px;
 }
 
 .contacts_list {
@@ -55,12 +53,15 @@
   gap: 15px;
 }
 
-.column_title {
+.footer_link,
+.contacts_title {
+  @include nunito-700-size-18;
   margin-bottom: 25px;
   font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 27px;
+}
+
+.footer_link {
+  text-decoration: underline;
 }
 
 .info_link {
@@ -81,13 +82,13 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: start;
-  margin: 0px 88px 0px 88px;
+  margin: 0px 69px 0px 163px;
 }
 
 .footer_documents-wrapper {
   display: flex;
   flex-direction: column;
-  margin-right: 96px;
+  margin-right: 119px;
 }
 
 .social_list {
