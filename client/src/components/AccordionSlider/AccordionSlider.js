@@ -44,7 +44,9 @@ const AccordionSlider = () => {
               onClick={() => toggleActive(i)}
             >
               <img className={"accordion-slider_item-img"} src={slider.img} />
-              <p className={"accordion-slider_item-text"}>{slider.text}</p>
+              <div className={'"accordion-slider_item-info'}>
+                <p className={"accordion-slider_item-text"}>{slider.text}</p>
+              </div>
             </div>
           );
         })}

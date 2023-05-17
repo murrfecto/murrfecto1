@@ -46,7 +46,7 @@
         background-color: rgba(255, 255, 255, 0);
       }
 
-      .accordion-slider_text {
+      .accordion-slider_item-text {
         color: white;
       }
     }
@@ -57,6 +57,7 @@
       background-color: $color-btn;
       border-radius: 0 20px 20px 0;
     }
+
     &-text {
       @include nunito-400-size-24;
       position: absolute;
