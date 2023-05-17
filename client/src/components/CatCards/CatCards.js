@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import {Skeleton} from "@mui/material";
+import {FaTrash} from "react-icons/fa";
 import "./CatCards.scss";
 import paw from "../../assets/paw.svg";
 import info from "../../assets/info-rounded.svg";
 
-const CatCards = ({src, alt, name, description, chippedInfo}) => {
-    const [loading, setLoading] = useState(true);
 
+const CatCards = ({src, alt, name, description, chippedInfo,trash}) => {
+    const [loading, setLoading] = useState(true);
+    console.log(src);
     const handleImageLoad = () => {
         setLoading(false);
     };
@@ -39,6 +41,7 @@ const CatCards = ({src, alt, name, description, chippedInfo}) => {
                 <div className={"cat_card-chipped"}>
                     <img src={info} alt="info"/>
                     <p>{chippedInfo}</p>
+                    {trash}
                 </div>
             </div>
         </div>

@@ -1,0 +1,8 @@
+@import "../../styles/_index.scss";
+
+.cats_cards {
+  flex-wrap: wrap;
+  @include position-center-a;
+  gap: 20px;
+  margin: 60px auto;
+}
