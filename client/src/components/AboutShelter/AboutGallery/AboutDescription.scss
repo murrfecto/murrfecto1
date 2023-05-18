@@ -1,0 +1,41 @@
+@import "../../../styles/_index.scss";
+
+.about_description {
+  padding-top: 32px;
+  padding-bottom: 40px;
+  background-color: $main-bg-color;
+}
+
+.container {
+  width: 100%;
+  margin: 0px auto;
+  padding-left: 15px;
+  padding-right: 16px;
+
+  @media screen and (min-width: 390px) {
+    max-width: 390px;
+  }
+}
+
+.list {
+  @include flex-column-a;
+  justify-content: center;
+  gap: 32px;
+}
+
+.img_wrap {
+  display: inline-block;
+}
+
+.img {
+  border-radius: 12px;
+}
+
+.description_text {
+  margin-top: 32px;
+  @include nunito-400-size-18;
+  line-height: 1.5;
+  text-align: center;
+
+  color: $color-card-text;
+}
