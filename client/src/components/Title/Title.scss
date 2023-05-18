@@ -2,9 +2,10 @@
 
 .title_container {
 @include position-center-a;
-background-color: $color-card;
-width: 100%;
+max-width: 1440px;
 height: 240px;
+margin: 0 auto;
+background-color: $color-card;
 }
 
 .page_title {
