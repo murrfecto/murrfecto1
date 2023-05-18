@@ -95,3 +95,10 @@
   font-size: 18px;
   font-weight: 700;
 }
+
+@mixin nunito-400-size-18 {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Nunito Sans", serif;
+  font-style: normal;
+}

@@ -1,0 +1,76 @@
+@import "../../../styles/_index.scss";
+
+.about_description {
+  padding-top: 32px;
+  padding-bottom: 40px;
+  background-color: $main-bg-color;
+}
+
+.container {
+  width: 100%;
+  margin: 0px auto;
+  padding-left: 15px;
+  padding-right: 16px;
+
+  @media screen and (min-width: 390px) {
+    max-width: 390px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    padding-left: 188px;
+    padding-right: 188px;
+  }
+}
+
+.list,
+.item {
+  @include flex-column-a;
+  justify-content: center;
+}
+
+.list {
+  gap: 32px;
+
+  @media screen and (min-width: 1440px) {
+    gap: 56px;
+  }
+}
+
+.item {
+  gap: 32px;
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    gap: 80px;
+
+    &:nth-child(2n) {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.img {
+  border-radius: 12px;
+  width: 100%;
+
+  @media screen and (min-width: 390px) {
+    width: 359px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 462px;
+  }
+}
+
+.description_text {
+  @include nunito-400-size-18;
+  line-height: 1.5;
+  text-align: center;
+
+  color: $color-card-text;
+
+  @media screen and (min-width: 1440px) {
+    @include nunito-400-size-20;
+  }
+}

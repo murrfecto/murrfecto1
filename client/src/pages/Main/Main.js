@@ -4,21 +4,21 @@ import AboutUs from "../../components/AboutUs/AboutUs";
 import SupportUs from "../../components/SupportUs/SupportUs";
 import OurCats from "../../components/OurCats/OurCats";
 import SubscribeForm from "../../components/SubscribeForm/SubscribeForm";
-import AccordionSlider from '../../components/AccordionSlider/AccordionSlider';
+import Donate from "../../components/Donate/Donate";
 import ScrollToTop from "../../components/common/ScrollToTop/ScrollToTop";
 
 const Main = () => {
-    return (
-        <>
-            <ImageContainer/>
-            <AboutUs/>
-            <SupportUs/>
-            <OurCats/>
-            <SubscribeForm/>
-            <AccordionSlider/>
-            <ScrollToTop/>
-        </>
-    );
+  return (
+    <>
+      <ImageContainer />
+      <AboutUs />
+      <SupportUs />
+      <OurCats />
+      <SubscribeForm />
+      <Donate />
+      <ScrollToTop />
+    </>
+  );
 };
 
 export default Main;
