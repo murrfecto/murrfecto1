@@ -1,0 +1,40 @@
+@import "../../styles/_index.scss";
+
+#donation {
+  color: $full-white;
+}
+.modal {
+  line-height: 33px;
+  @include nunito-600-size-24;
+  display: flex;
+  position: absolute;
+  width: 800px;
+  height: 523px;
+  left: calc(50% - 800px / 2 + 2px);
+  top: 177px;
+  border-radius: 12px;
+
+  .donation__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: $color-btn;
+
+    img {
+      object-fit: cover;
+      width: 308px;
+      height: 486px;
+    }
+
+    &_inner {
+      color: $color-blue;
+      padding: 40px 81px;
+      background-color: $full-white;
+
+      &-button {
+        white-space: nowrap;
+        color: $full-white;
+      }
+    }
+  }
+}

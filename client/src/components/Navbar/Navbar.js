@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.scss";
 import logo from "../../assets/logo.svg";
+import ModalButton from "../ModalButton/ModalButton";
 
 const Navbar = () => {
   return (
@@ -15,9 +16,7 @@ const Navbar = () => {
           <Link to={"/tails"}>Наші хвости</Link>
           <a href={"#"}>Контакти</a>
         </div>
-        <div id={"donation"} className={"navbar_links donation"}>
-          <a href={"#"}>Нагодуй кота</a>
-        </div>
+          <ModalButton title={'Нагодуй кота'}/>
       </div>
     </nav>
   );
