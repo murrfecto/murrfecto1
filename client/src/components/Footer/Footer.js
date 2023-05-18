@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
 
           <nav className={"footer_nav"}>
-            <Link className={"footer_link"} to={"/about"}>
+            <Link className={"footer_link"} to={"/about"} onClick={scrollToTop}>
               Про притулок
             </Link>
             <Link to="/tails" className={"footer_link"} onClick={scrollToTop}>
