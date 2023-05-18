@@ -15,9 +15,15 @@ const Footer = () => {
     <footer className={"footer"}>
       <div className="footer_container">
         <div className={"footer_info_wrapper"}>
-          <div>
+          <div className="wrapper">
             <Link to={"/"} className={"footer_logo-link"} onClick={scrollToTop}>
-              <img src={logo} alt="murrfecto logo" width={197} height={82} />
+              <img
+                className={"footer_logo-img"}
+                src={logo}
+                alt="murrfecto logo"
+                width={170}
+                height={70}
+              />
             </Link>
 
             <a id={"donation_footer"} className={"footer_donation"} href={"#"}>
