@@ -26,9 +26,9 @@ const Footer = () => {
           </div>
 
           <nav className={"footer_nav"}>
-            <a className={"footer_link"} href={"#"}>
+            <Link className={"footer_link"} to={"/about"}>
               Про притулок
-            </a>
+            </Link>
             <Link to="/tails" className={"footer_link"} onClick={scrollToTop}>
               Наші хвости
             </Link>
