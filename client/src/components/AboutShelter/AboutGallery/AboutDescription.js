@@ -1,23 +1,20 @@
 import "./AboutDescription.scss";
-import mobFirst from "../../../assets/about-page/desktop/about-one-min.jpg";
-import mobFirst2x from "../../../assets/about-page/desktop/about-one2x-min.jpg";
-import mobSecond from "../../../assets/about-page/desktop/about-two-min.jpg";
-import mobSecond2x from "../../../assets/about-page/desktop/about-two2x-min.jpg";
-import mobThird from "../../../assets/about-page/desktop/about-three-min.jpg";
-import mobThird2x from "../../../assets/about-page/desktop/about-three2x-min.jpg";
+import deskFirst from "../../../assets/about-page/desktop/about-one-min.jpg";
+import deskSecond from "../../../assets/about-page/desktop/about-two-min.jpg";
+import deskThird from "../../../assets/about-page/desktop/about-three-min.jpg";
 
 const AboutDescription = () => {
   return (
     <section className="about_description">
       <div className="container">
         <ul className="list">
-          <li>
+          <li className="item">
             <picture>
-              <source srcSet={mobFirst} media="(min-width: 390px)" />
+              <source srcSet={deskFirst} media="(min-width: 390px)" />
 
               <img
                 className="img"
-                src={mobFirst}
+                src={deskFirst}
                 alt="Дівчина грається з котом"
                 width={359}
               />
@@ -27,11 +24,16 @@ const AboutDescription = () => {
               причин: орендоване житло, спротив родини, переїзди і зайнятість.
             </p>
           </li>
-          <li>
+          <li className="item">
             <picture>
-              <source srcSet={mobSecond} media="(min-width: 390px)" />
+              <source srcSet={deskSecond} media="(min-width: 390px)" />
 
-              <img className="img" src={mobSecond} alt="Три коти" width={359} />
+              <img
+                className="img"
+                src={deskSecond}
+                alt="Три коти"
+                width={359}
+              />
             </picture>
             <p className="description_text">
               Є багато котів, які живуть прайдом в більш-менш безпечному місці,
@@ -39,11 +41,11 @@ const AboutDescription = () => {
               їжа.
             </p>
           </li>
-          <li>
+          <li className="item">
             <picture>
-              <source srcSet={mobThird} media="(min-width: 390px)" />
+              <source srcSet={deskThird} media="(min-width: 390px)" />
 
-              <img className="img" src={mobThird} alt="Три коти" width={359} />
+              <img className="img" src={deskThird} alt="Три коти" width={359} />
             </picture>
             <p className="description_text">
               Ми поєднуємо одних з другими, приймаючи від одних щомісячну
