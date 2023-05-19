@@ -1,0 +1,55 @@
+@import "../../../../styles/_index.scss";
+.section {
+  background-color: $main-bg-color;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 60px;
+    padding-bottom: 31px;
+  }
+}
+
+.statistic_list {
+  @include flex-column-na;
+  padding: 0px 67px;
+  gap: 32px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    padding: 0px 0px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    gap: 203px;
+  }
+}
+
+.statistic_item {
+  @include flex-column-a;
+  width: 216px;
+  gap: 24px;
+
+  &:last-child {
+    width: 223px;
+  }
+}
+
+.icon_wrapper {
+  @include position-center-a;
+  width: 200px;
+  height: 200px;
+  margin: 8px 0px;
+  border-radius: 50%;
+  background-color: $color-card;
+}
+
+.statistic_text {
+  padding: 0px 13px;
+}
+
+.mob_width {
+  @media screen and (max-width: 767.9px) {
+    width: 225px;
+  }
+}

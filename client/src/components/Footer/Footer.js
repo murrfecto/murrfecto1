@@ -27,7 +27,7 @@ const Footer = () => {
               />
             </Link>
 
-            <ModalButton title={'Нагодуй кота'}/>
+            <ModalButton title={"Нагодуй кота"} />
           </div>
 
           <nav className={"footer_nav"}>
@@ -100,7 +100,7 @@ const Footer = () => {
             </li>
             <li className={"social_link"}>
               <a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/profile.php?id=100092408450281"
                 target="_blank"
                 rel="nofollow noreferrer noopener"
               >
