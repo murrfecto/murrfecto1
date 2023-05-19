@@ -29,7 +29,7 @@ const StatisticDatas = () => {
             <div className="icon_wrapper">
               <HandsIcon width={130} height={130} />
             </div>
-            <p className="description_text">
+            <p className="description_text mob_width">
               Понад 7 років постійно годуємо стабільний прайд
             </p>
           </li>
