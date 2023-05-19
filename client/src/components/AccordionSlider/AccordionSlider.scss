@@ -3,6 +3,8 @@
 .donate-slider {
   display: flex;
   height: 470px;
+  max-width: 1280px;
+  margin: 0 auto;
 
   &_left {
     width: 445px;
@@ -14,7 +16,6 @@
   &_wrap {
     @include position-center-a;
     flex-direction: column;
-    max-width: 1280px;
     height: 100%;
   }
 
