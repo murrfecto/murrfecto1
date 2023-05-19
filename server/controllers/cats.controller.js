@@ -3,15 +3,20 @@ import {catsModel} from "../model/cats.model.js";
 import sgMail from '@sendgrid/mail';
 
 const addCat = async (req, res) => {
+    console.log(req.body)
+
     const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
     const cats = client.db(process.env.DB_NAME).collection('cats');
-
     try {
         const {error} = catsModel.validate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
-        const result = await cats.insertOne({...req.body, _id: new ObjectId()});
+        const result = await cats.insertOne({
+            ...req.body,
+            _id: new ObjectId(),
+            image: `http://localhost:3000/images/${req.file.filename}`
+        });
         res.send(result);
     } catch (err) {
         console.error(err);
@@ -48,21 +53,30 @@ const getCat = async (req, res) => {
 };
 
 
-const addImageToCat = async (req, res) => {
-    const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
-    const cats = client.db(process.env.DB_NAME).collection('cats');
-    const cat = cats.findOne({_id: new ObjectId(req.body.id)});
-    if (cat) {
-        await cats.updateOne({_id: new ObjectId(req.body.id)}, {
-            $set: {
-                image: `http://localhost:3000/images/${req.newFileName}`
-            }
-        })
-        res.sendStatus(200);
-    } else {
-        res.sendStatus(404);
-    }
-}
+// const addImageToCat = async (req, res) => {
+//     const client = await MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true });
+//     const cats = client.db(process.env.DB_NAME).collection('cats');
+//
+//     try {
+//         const result = await cats.insertOne({}); // Create a new cat without any fields
+//         const newCatId = result.insertedId;
+//
+//         await cats.updateOne(
+//             { _id: newCatId },
+//             {
+//                 $set: {
+//                     image: `http://localhost:3000/cats/images/${req.file.filename}`
+//                 }
+//             }
+//         );
+//         res.status(200).json({ message: "Image added to cat successfully" });
+//     } catch (error) {
+//         res.status(500).json({ message: "Failed to add image to cat" });
+//     } finally {
+//         client.close();
+//     }
+// };
+
 
 const deleteCatById = async (req, res) => {
     const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
@@ -128,5 +142,5 @@ const subscribeToCats = (req, res) => {
 
 
 export {
-    addCat, getCat, getCats, updateCatById, deleteCatById, addImageToCat, subscribeToCats
+    addCat, getCat, getCats, updateCatById, deleteCatById, subscribeToCats
 }
