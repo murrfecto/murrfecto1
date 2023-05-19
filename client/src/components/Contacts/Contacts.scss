@@ -3,8 +3,8 @@
 .contacts_container {
     width: 1440px;
     padding: 80px 188px 90px;
-    @include flex-column-na;
-    gap: 12px;
+    @include flex-only;
+    gap: 128px;
 }
 
 .contacts_wrapper {

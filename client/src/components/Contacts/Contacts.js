@@ -3,7 +3,8 @@ import "./Contacts.scss";
 import email from "../../assets/Email-contacts.svg";
 import phone from "../../assets/phone-contacts.svg";
 import insta from "../../assets/insta.svg";
-import facebook from "../../assets/socials-facebook.svg"
+import facebook from "../../assets/socials-facebook.svg";
+import FeedbackForm from "../FeedbackForm/FeedbackForm";
 
 const Contacts = () => {
     return ( 
@@ -27,7 +28,9 @@ const Contacts = () => {
                 <p className="contacts_registration_title">Реєстраційні дані ГО</p>
             </div>
         </div>
+        <FeedbackForm />
         </div>
+        
     )
 }
 
