@@ -1,10 +1,9 @@
-import AccordionSlider from "../AccordionSlider/AccordionSlider";
 import "./Donate.scss";
+import AccordionSlider from "../AccordionSlider/AccordionSlider";
 
 const SaveDonate = () => {
   return (
     <section className={"donate"}>
-      {/* ask about container */}
       <div className={"container"}>
         <div className={"donate-wrap"}>
           <h2 className={"donate-title"}>Безпечний донат</h2>
