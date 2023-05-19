@@ -1,6 +1,8 @@
 import React from "react";
 import "./AccordionSlider.scss";
 import { useState } from "react";
+import DonateForm from "../Donate/DonateForm/DonateForm";
+import HelpUs from "../HelpUs/HelpUs";
 import catWithPlate from "../../assets/cat_with_plate.png";
 import foodForCats from "../../assets/food_for_cats.png";
 import foodTreatsToys from "../../assets/food_treats_toys.png";
@@ -32,11 +34,8 @@ const defaultSliders = [
 ];
 
 const AccordionSlider = () => {
-  // const [isActive, setIsActive] = useState(0);
-
   const [sliders, setSliders] = useState(defaultSliders);
 
-  // const toggleActive = (i) => setIsActive(i);
   const handleActive = (clikedSlider) => {
     const newSliders = sliders.map((slider) => {
       if (slider.id === clikedSlider.id) {
@@ -56,114 +55,12 @@ const AccordionSlider = () => {
   return (
     <div className={"donate-slider"}>
       <div className={"donate-slider_left"}>
-        {activeSlider().id === "foodTreatsToys" ? (
-          <div className={"support"}>
-            <h3 className={"support_title-h3"}>
-              Існує багато способів допомоги - оберіть свій
-            </h3>
-            <p className={"support_description"}>
-              Допомога вуличним котам не обмежується лише фінансами. Постійно
-              потребуємо кормів, медикаментів, розповсюдження інформації тощо.
-            </p>
-            <div className={"support_post"}>
-              <h4 className={"support_title-h4"}>
-                Наше відділення НП для посилок
-              </h4>
-              <p className={"support_post-text"}>№225 м.Київ пр.С.Бандери</p>
-              <p className={"support_post-text"}>+38 063 6286630</p>
-            </div>
-          </div>
+        {activeSlider().id === "catWithPlate" ? (
+          <DonateForm title="Нагодуйте котів вже сьогодні - ваша допомога важлива" />
+        ) : activeSlider().id === "foodForCats" ? (
+          <DonateForm title="Ваша  підтримка змінить життя одного кота!" />
         ) : (
-          <div className={"donate-slider_wrap"}>
-            <h3 className={"donate-slider_title"}>
-              Ваша підтримка змінить життя одного кота!
-            </h3>
-            <form className={"donate-form"}>
-              <div className={"donate-form_box"}>
-                <div className={"donate-form_box-count"}>
-                  <input
-                    type="radio"
-                    name="donation_number"
-                    id="twenty"
-                    value="20"
-                    hidden
-                  />
-                  <label for="twenty" className={"donate-form_radio-label"}>
-                    <span className={"donate-form_number"}>20</span>
-                  </label>
-                </div>
-                <div className={"donate-form_box-count"}>
-                  <input
-                    type="radio"
-                    name="donation_number"
-                    id="fifty"
-                    value="50"
-                    hidden
-                  />
-                  <label for="fifty" className={"donate-form_radio-label"}>
-                    <span className={"donate-form_number"}>50</span>
-                  </label>
-                </div>
-                <div className={"donate-form_box-count"}>
-                  <input
-                    type="radio"
-                    name="donation_number"
-                    id="hundred"
-                    value="100"
-                    hidden
-                  />
-                  <label for="hundred" className={"donate-form_radio-label"}>
-                    <span className={"donate-form_number"}>100</span>
-                  </label>
-                </div>
-                <div className={"donate-form_box-count"}>
-                  <input
-                    type="radio"
-                    name="donation_number"
-                    id="two_hundred"
-                    value="200"
-                    hidden
-                  />
-                  <label
-                    for="two_hundred"
-                    className={"donate-form_radio-label"}
-                  >
-                    <span className={"donate-form_number"}>200</span>
-                  </label>
-                </div>
-                <div className={"donate-form_input-count"}>
-                  <input
-                    className={"donate-form_input-free"}
-                    type="number"
-                    name="donation_free"
-                    placeholder="Інша сума, UAH"
-                  />
-                </div>
-              </div>
-              <div className={"donate-form_select"}>
-                <label for="cats" className={"donate-form_select-label"}>
-                  Допомогти конкретному котику
-                </label>
-                <div className={"donate-form_select-box"}>
-                  <select name="cat" id="cats">
-                    <option value="0" selected hidden>
-                      Оберіть пухнастика
-                    </option>
-                    <option value="1">Черчіль</option>
-                    <option value="2">Зоя</option>
-                    <option value="3">Костик</option>
-                  </select>
-                </div>
-              </div>
-              <div>
-                <input
-                  className={"donate-form_btn"}
-                  type="button"
-                  value="Допомогти"
-                />
-              </div>
-            </form>
-          </div>
+          <HelpUs />
         )}
       </div>
       <div className={"accordion-slider"}>

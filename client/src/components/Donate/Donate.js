@@ -1,5 +1,5 @@
-import AccordionSlider from "../AccordionSlider/AccordionSlider";
 import "./Donate.scss";
+import AccordionSlider from "../AccordionSlider/AccordionSlider";
 
 const SaveDonate = () => {
   return (
