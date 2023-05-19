@@ -14,6 +14,7 @@
   &_wrap {
     @include position-center-a;
     flex-direction: column;
+    max-width: 1280px;
     height: 100%;
   }
 
@@ -97,17 +98,6 @@
         appearance: none;
         cursor: pointer;
       }
-
-      // &::after {
-      //   content: "";
-      //   width: 12px;
-      //   height: 8px;
-      //   display: inline-block;
-      //   border-bottom: 2px solid $color-btn;
-      //   border-right: 2px solid $color-btn;
-      //   transform: rotate(45deg);
-      //   transition: all 0.5s;
-      // }
     }
   }
 
