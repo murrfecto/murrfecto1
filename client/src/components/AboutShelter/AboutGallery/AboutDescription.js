@@ -9,7 +9,7 @@ import mobThird from "../../../assets/about-page/mobile/mobThird.jpg";
 
 const AboutDescription = () => {
   return (
-    <section className="about_description">
+    <section>
       <div className="container">
         <ul className="list">
           <li className="item">

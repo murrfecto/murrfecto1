@@ -1,0 +1,13 @@
+@import "../../styles/index";
+
+.main_about {
+  @include flex-column-a;
+  padding-top: 32px;
+  padding-bottom: 80px;
+  gap: 80px;
+  @media screen and (min-width: 1440px) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    gap: 100px;
+  }
+}

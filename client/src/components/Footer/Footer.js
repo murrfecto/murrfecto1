@@ -9,6 +9,7 @@ import phone from "../../assets/footer/phone.svg";
 import facebook from "../../assets/footer/facebook.svg";
 import insta from "../../assets/footer/insta.svg";
 import { scrollToTop } from "../../helpers/scrollToTop";
+import ModalButton from "../ModalButton/ModalButton";
 
 const Footer = () => {
   return (
@@ -26,9 +27,7 @@ const Footer = () => {
               />
             </Link>
 
-            <a id={"donation_footer"} className={"footer_donation"} href={"#"}>
-              Нагодуй кота
-            </a>
+            <ModalButton title={"Нагодуй кота"} />
           </div>
 
           <nav className={"footer_nav"}>
@@ -101,7 +100,7 @@ const Footer = () => {
             </li>
             <li className={"social_link"}>
               <a
-                href="https://www.facebook.com/"
+                href="https://www.facebook.com/profile.php?id=100092408450281"
                 target="_blank"
                 rel="nofollow noreferrer noopener"
               >

@@ -6,6 +6,7 @@ import CatsRoutes from "./routes/cats.routes.js";
 
 //dotenv
 import dotenv from 'dotenv'
+import path from "path";
 
 dotenv.config();
 // Establishing server
@@ -18,8 +19,8 @@ app.use(urlencodedParser);
 // CORS
 app.use(cors({origin: '*'}));
 
-// images ?
-
+// images
+app.use('/images', express.static(path.join(process.cwd(), 'images/')))
 // Routes
 app.use(CatsRoutes)
 
