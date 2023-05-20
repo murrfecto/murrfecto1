@@ -4,6 +4,7 @@
   @include flex-column-a;
   padding-top: 32px;
   padding-bottom: 80px;
+  background-color: $color-bg-about;
   gap: 80px;
   @media screen and (min-width: 1440px) {
     padding-top: 100px;

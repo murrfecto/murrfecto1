@@ -6,8 +6,8 @@ import { ReactComponent as HandsIcon } from "../../../../assets/about-page/stati
 
 const StatisticDatas = () => {
   return (
-    <section className="section">
-      <div className="container">
+    <section className="about_section">
+      <div className="about_wrapper">
         <ul className="statistic_list">
           <li className="statistic_item">
             <div className="icon_wrapper">
