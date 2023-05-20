@@ -90,6 +90,12 @@
   font-size: 24px;
 }
 
+@mixin inter-600-size-24 {
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
 @mixin nunito-700-size-18 {
   font-family: "Nunito Sans", sans-serif;
   font-size: 18px;

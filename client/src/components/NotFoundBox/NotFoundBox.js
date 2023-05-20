@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./NotFoundBox.scss";
-import img404 from "../../assets/404page/cat404.svg";
+import img404 from "../../assets/404page/cat404.png";
 
 const NotFoundBox = () => {
   return (
@@ -16,7 +16,7 @@ const NotFoundBox = () => {
           На Головну
         </Link>
       </div>
-      <img src={img404} alt="grey cat" width={365} height={619} />
+      <img src={img404} alt="grey cat" width={365} height={597} />
     </main>
   );
 };
