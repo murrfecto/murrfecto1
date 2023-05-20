@@ -39,10 +39,10 @@ const Footer = () => {
           </nav>
 
           <address className="footer_address">
-            <h2 className={"contacts_title"}>Контакти</h2>
-            <ul>
+            <h2 className="contacts_title">Контакти</h2>
+            <ul className="contacts_list">
               <li>
-                <a className={"info_link"} href="tel:+380636286630">
+                <a className="info_link contacts_link" href="tel:+380636286630">
                   <img
                     className={"contacts_icon"}
                     src={phone}
@@ -52,7 +52,10 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className={"info_link"} href="tel:+380675681788">
+                <a
+                  className={"info_link  contacts_link"}
+                  href="tel:+380675681788"
+                >
                   <img
                     className={"contacts_icon"}
                     src={phone}
@@ -62,7 +65,10 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className={"info_link"} href="mailto:info@example.com">
+                <a
+                  className={"info_link contacts_link"}
+                  href="mailto:info@example.com"
+                >
                   <img
                     className={"contacts_icon"}
                     src={email}

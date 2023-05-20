@@ -115,12 +115,12 @@
 }
 
 .contacts_list {
-  @include flex-column-a;
+  @include flex-column-na;
   gap: 15px;
+}
 
-  @media screen and (min-width: 1440px) {
-    gap: 25px;
-  }
+.contacts_link {
+  @include position-center-na;
 }
 
 .contacts_title {
