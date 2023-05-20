@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import './AddCat.scss'
+import {Alert} from "@mui/material";
 
 const _ENDPOINT = "http://localhost:3000/cats";
 const AddCat = () => {
@@ -44,7 +45,13 @@ const AddCat = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className='formAdding'>
+            {formStatus === 'success' && (
+                <Alert className={'alert-success'} severity="success">Card successfully created!</Alert>
+            )}
+            {formStatus === 'error' && (
+                <Alert className={'alert-failure'} severity="error">Error creating card. Please try again.</Alert>
+            )}
+            <form onSubmit={handleSubmit} className="formAdding">
                 <h2 className='formAdding__title'>Добавити кота</h2>
                 <div className='formAdding__wrapper'>
                     <label>Ім'я</label>
@@ -64,7 +71,6 @@ const AddCat = () => {
                 </div>
             </form>
         </div>
-
     );
 };
 

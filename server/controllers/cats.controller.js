@@ -86,6 +86,7 @@ const updateCatById = async (req, res) => {
 
 const subscribeToCats = (req, res) => {
     const {email} = req.body;
+    const recipientName = email.substring(0, email.indexOf('@'));
     sgMail.setApiKey(process.env.API_KEY);
     const headers = {
         Authorization: `Bearer ${process.env.API_KEY}`,
@@ -96,9 +97,10 @@ const subscribeToCats = (req, res) => {
     const msg = {
         to: email,
         from: 'murrfecto@gmail.com',
-        subject: 'Support for cats!',
-        templateId,
+        subject: 'Допомога котикам!',
+        templateId: templateId,
         dynamicTemplateData: {
+            name: recipientName,
             deliveryFrequency: 'every month'
         }
     };

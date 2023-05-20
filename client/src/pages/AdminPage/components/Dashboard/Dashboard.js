@@ -65,15 +65,17 @@ export default function VerticalTabs() {
                         minWidth: '144px',
                         color: '#4B3542',
                         '& .MuiTab-root:hover': {
-                            color: '#867584', // Text color on hover
+                            color: '#867584',
                         },
                         '& .MuiTab-root': {
                             color: '#4B3542'
                     },
                         "& .MuiTabs-indicator": {
-                            backgroundColor: "#D0BEC4", // Desired background color
+                            backgroundColor: "#D0BEC4",
                         },
-                    }}
+                        "& .Mui-selected": {
+                        color: "#4B3542",
+                    }}}
                 >
                     <Tab sx={{fontWeight: 500, display: 'flex'}} label="View all cats" {...a11yProps(0)} />
                     <Tab sx={{fontWeight: 500, display: 'flex', width: '100%'}} label="Add cats" {...a11yProps(1)} />
