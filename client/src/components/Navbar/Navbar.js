@@ -7,9 +7,11 @@ import ModalButton from "../ModalButton/ModalButton";
 const Navbar = () => {
   return (
     <nav className={"navbar"}>
-      <div className={"navbar_logo"}>
-        <img src={logo} alt="murfecto logo" />
-      </div>
+        <div className="navbar_logo">
+            <Link to="/">
+                <img src={logo} alt="murfecto logo" />
+            </Link>
+        </div>
       <div className={"navbar_wrapper"}>
         <div className={"navbar_links links"}>
           <Link to={"/about"}>Про притулок</Link>

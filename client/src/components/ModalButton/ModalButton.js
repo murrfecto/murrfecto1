@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import Modal from 'react-modal';
 import './ModalButton.scss'
 import cats from '../../assets/modal/donate_cats.svg'
-
 const ModalButton = ({title}) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 

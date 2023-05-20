@@ -10,7 +10,7 @@ import './Dashboard.scss'
 import {useState} from "react";
 
 function TabPanel(props) {
-    const { children, value, index, ...other } = props;
+    const {children, value, index, ...other} = props;
 
     return (
         <div
@@ -21,7 +21,7 @@ function TabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{p: 3}}>
                     <Typography>{children}</Typography>
                 </Box>
             )}
@@ -34,6 +34,7 @@ TabPanel.propTypes = {
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
 };
+
 
 function a11yProps(index) {
     return {
@@ -51,30 +52,39 @@ export default function VerticalTabs() {
 
     return (
         <div className='dashboard'>
-            <Box
-                sx={{ flexGrow: 1, bgcolor: 'none', display: 'flex', height: 'auto'}}
-            >
+            <Box sx={{flexGrow: 1, bgcolor: 'none', display: 'flex', height: 'auto'}}>
                 <Tabs
                     orientation="vertical"
                     variant="scrollable"
                     value={value}
                     onChange={handleChange}
                     aria-label="Vertical tabs example"
-                    sx={{ borderRight: 1, borderColor: 'divider', minWidth: '144px' }}
+                    sx={{
+                        borderRight: 1,
+                        borderColor: 'divider',
+                        minWidth: '144px',
+                        color: '#4B3542',
+                        '& .MuiTab-root:hover': {
+                            color: '#867584', // Text color on hover
+                        },
+                        '& .MuiTab-root': {
+                            color: '#4B3542'
+                    },
+                        "& .MuiTabs-indicator": {
+                            backgroundColor: "#D0BEC4", // Desired background color
+                        },
+                    }}
                 >
-                    <Tab sx={{fontWeight: 500, display:'flex'}} label="View all cats" {...a11yProps(0)} />
-                    <Tab sx={{fontWeight: 500,display:'flex',width:'100%'}} label="Add cats" {...a11yProps(1)} />
-
+                    <Tab sx={{fontWeight: 500, display: 'flex'}} label="View all cats" {...a11yProps(0)} />
+                    <Tab sx={{fontWeight: 500, display: 'flex', width: '100%'}} label="Add cats" {...a11yProps(1)} />
                 </Tabs>
-                <TabPanel style={{ width:'100%' }} value={value} index={0}>
+                <TabPanel style={{width: '100%'}} value={value} index={0}>
                     <ViewAllCats/>
                 </TabPanel>
-                <TabPanel style={{ width:'100%' }} value={value} index={1}>
+                <TabPanel style={{width: '100%'}} value={value} index={1}>
                     <AddCat/>
                 </TabPanel>
-
             </Box>
         </div>
-
     );
 }
