@@ -1,7 +1,7 @@
 @import "../../../../styles/_index.scss";
-.section {
+.about_section {
   background-color: $main-bg-color;
-  padding-top: 32px;
+  padding-top: 31px;
   padding-bottom: 32px;
 
   @media screen and (min-width: 768px) {
@@ -12,12 +12,12 @@
 
 .statistic_list {
   @include flex-column-na;
-  padding: 0px 67px;
+  padding: 8px 67px 0px 67px;
   gap: 32px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
-    padding: 0px 0px;
+    padding: 8px 0px 0px 0px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -28,10 +28,10 @@
 .statistic_item {
   @include flex-column-a;
   width: 216px;
-  gap: 24px;
+  gap: 32px;
 
   &:last-child {
-    width: 223px;
+    width: 225px;
   }
 }
 
@@ -39,7 +39,6 @@
   @include position-center-a;
   width: 200px;
   height: 200px;
-  margin: 8px 0px;
   border-radius: 50%;
   background-color: $color-card;
 }

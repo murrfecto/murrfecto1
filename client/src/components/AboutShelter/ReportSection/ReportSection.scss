@@ -1,0 +1,48 @@
+@import "../../../styles/_index.scss";
+
+.report_container {
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 24px;
+  border: 1px solid $color-card;
+  border-radius: 12px;
+
+  @include nunito-600-size-24;
+  line-height: 1.38;
+}
+
+.report_link {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 100%;
+  min-height: 76px;
+  padding: 16px 123px 16px 99px;
+  @include nunito-600-size-32;
+  color: $color-subscribe-btn;
+  background-color: $color-white;
+  border-radius: 12px;
+
+  @media screen and (min-width: 390px) {
+    width: 359px;
+  }
+
+  &::after {
+    content: "PDF";
+    position: absolute;
+    right: 0;
+    top: 24px;
+    width: 76px;
+    height: 28px;
+    @include position-center-a;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 1.25;
+    background-color: $color-card;
+  }
+}
+
+.report_text {
+  text-align: center;
+  color: $color-card-text;
+}
