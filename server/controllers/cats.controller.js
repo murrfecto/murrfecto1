@@ -52,32 +52,6 @@ const getCat = async (req, res) => {
     }
 };
 
-
-// const addImageToCat = async (req, res) => {
-//     const client = await MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true });
-//     const cats = client.db(process.env.DB_NAME).collection('cats');
-//
-//     try {
-//         const result = await cats.insertOne({}); // Create a new cat without any fields
-//         const newCatId = result.insertedId;
-//
-//         await cats.updateOne(
-//             { _id: newCatId },
-//             {
-//                 $set: {
-//                     image: `http://localhost:3000/cats/images/${req.file.filename}`
-//                 }
-//             }
-//         );
-//         res.status(200).json({ message: "Image added to cat successfully" });
-//     } catch (error) {
-//         res.status(500).json({ message: "Failed to add image to cat" });
-//     } finally {
-//         client.close();
-//     }
-// };
-
-
 const deleteCatById = async (req, res) => {
     const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
     const db = client.db(process.env.DB_NAME);
@@ -117,7 +91,7 @@ const subscribeToCats = (req, res) => {
         Authorization: `Bearer ${process.env.API_KEY}`,
         'Content-Type2': 'application/json'
     };
-    const templateId = 'd-153ab25c71df48d0b2cec989e5bfcebb';
+    const templateId = process.env.TEMPLATE_ID;
 
     const msg = {
         to: email,
