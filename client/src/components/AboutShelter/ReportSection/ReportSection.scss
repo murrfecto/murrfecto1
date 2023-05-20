@@ -16,6 +16,10 @@
     padding-bottom: 0px;
     font-size: 32px;
   }
+
+  @media screen and (min-width: 1440px) {
+    gap: 20px;
+  }
 }
 
 .report_link {
@@ -40,6 +44,10 @@
     top: 0px;
     left: 0px;
     text-decoration: underline;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 521px;
   }
 
   &::after {
@@ -67,6 +75,11 @@
   color: $color-card-text;
   @media screen and (min-width: 768px) {
     width: 359px;
-    height: 220px;
+    min-height: 220px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 522px;
+    padding: 50px 0px;
   }
 }
