@@ -88,8 +88,9 @@ const Footer = () => {
             </a>
           </div>
           <ul className={"social_list"}>
-            <li className={"social_link"}>
+            <li className={"social_item"}>
               <a
+                className={"social_link"}
                 href="https://www.instagramm.com/"
                 target="_blank"
                 rel="nofollow noreferrer noopener"
@@ -97,8 +98,9 @@ const Footer = () => {
                 <img src={insta} alt="instagramm" width={48} height={48} />
               </a>
             </li>
-            <li className={"social_link"}>
+            <li className={"social_item"}>
               <a
+                className={"social_link"}
                 href="https://www.facebook.com/profile.php?id=100092408450281"
                 target="_blank"
                 rel="nofollow noreferrer noopener"
