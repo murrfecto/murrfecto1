@@ -9,22 +9,37 @@
 
   @include nunito-600-size-24;
   line-height: 1.38;
+
+  @media screen and (min-width: 768px) {
+    @include position-center-na;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 32px;
+  }
 }
 
 .report_link {
   position: absolute;
-  top: -1px;
-  left: -1px;
+  top: -2px;
+  left: -0.5px;
   width: 100%;
   min-height: 76px;
-  padding: 16px 123px 16px 99px;
   @include nunito-600-size-32;
+  @include position-center-a;
   color: $color-subscribe-btn;
   background-color: $color-white;
   border-radius: 12px;
 
   @media screen and (min-width: 390px) {
     width: 359px;
+  }
+
+  @media screen and (min-width: 768px) {
+    min-height: 230px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
   }
 
   &::after {
@@ -39,10 +54,19 @@
     font-size: 15px;
     line-height: 1.25;
     background-color: $color-card;
+
+    @media screen and (min-width: 768px) {
+      top: 19px;
+      width: 88px;
+    }
   }
 }
 
 .report_text {
   text-align: center;
   color: $color-card-text;
+  @media screen and (min-width: 768px) {
+    width: 359px;
+    height: 220px;
+  }
 }
