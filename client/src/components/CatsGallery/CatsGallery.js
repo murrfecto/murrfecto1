@@ -21,7 +21,7 @@ const CatsGallery = () => {
             <ul className={'cats_cards'}>
                 {cats?.map((cat) => (
                         <CatItem key={cat._id} src={cat.image} alt={cat.name} name={cat.name} description={cat.description}
-                                  chippedInfo={cat?.chipped}/>
+                                  chippedInfo={cat?.chipped} id={cat._id} />
                 ))}
             </ul>
         
