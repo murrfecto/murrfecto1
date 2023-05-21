@@ -67,7 +67,7 @@ const CatsGallery = ({limit, displayIcon}) => {
             {cats?.slice(0, limit).map((cat) => (
                 <div key={cat._id}>
                     <CatItem
-                        src={cat.image}
+                        src={cat?.images && cat.images.length > 0 ? cat.images[0] : null}
                         alt={cat.name}
                         name={cat.name}
                         description={cat.description}

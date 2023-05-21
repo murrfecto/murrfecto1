@@ -6,12 +6,13 @@
   margin: 0 auto;
   text-align: center;
 }
-.formAdding{
+
+.formAdding {
   margin: 0 auto;
   flex-wrap: wrap;
   width: 100%;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
   @include flex-column-a;
   &__wrapper{
     @include flex-column-a;
@@ -28,15 +29,17 @@
     button{
       margin-top: 10px;
       background: $color-btn;
-      color:$full-white;
+      color: $full-white;
       width: 300px;
       height: 30px;
       border-radius: 10px;
       transition: all 0.3s;
       cursor: pointer;
-      &:hover{
-        background:$color-btn-hover;
+
+      &:hover {
+        background: $color-btn-hover;
       }
     }
   }
 }
+

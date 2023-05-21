@@ -8,19 +8,23 @@ const addCat = async (req, res) => {
     const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
     const cats = client.db(process.env.DB_NAME).collection('cats');
     try {
-        const {error} = catsModel.validate(req.body);
+        const { error } = catsModel.validate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
+
+        const images = req.files.map((file) => `http://localhost:3000/images/${file.filename}`);
+
         const result = await cats.insertOne({
             ...req.body,
             _id: new ObjectId(),
-            image: `http://localhost:3000/images/${req.file.filename}`
+            images: images,
         });
+
         res.send(result);
     } catch (err) {
         console.error(err);
-        res.status(500).send('Error connecting to database');
+        res.status(500).send('Error connecting to the database');
     } finally {
         await client.close();
     }

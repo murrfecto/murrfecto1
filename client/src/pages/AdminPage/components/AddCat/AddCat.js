@@ -14,18 +14,20 @@ const AddCat = () => {
     };
 
     const [formData, setFormData] = useState(initialState);
-    const [file, setFile] = useState()
+    const [files, setFiles] = useState([]);
     const [formStatus, setFormStatus] = useState('');
 
     const handleSubmit = async (e) => {
         const data = new FormData();
-        data.append('image', file)
+        files.forEach((file, index) => {
+            data.append('image', file, `image${index}`); // Use unique filenames for each file
+        });
         data.append('name', formData.name)
         data.append('description', formData.description)
         data.append('chipped', formData.chipped)
         e.preventDefault();
         axios.post(_ENDPOINT, data)
-            .then(response => {
+            .then(() => {
                 setFormStatus('success');
                 setFormData(initialState);
             })
@@ -40,25 +42,28 @@ const AddCat = () => {
 
 
     const handleFileUpload = (e) => {
-        setFile(e.target.files[0])
-    }
+        const selectedFiles = Array.from(e.target.files);
+        setFiles(selectedFiles);
+    };
 
     return (
         <div>
             {formStatus === 'success' && (
-                <Alert className={'alert-success'} severity="success">Card successfully created!</Alert>
+                <Alert className={'alert-success'} severity="success">Картка створена!</Alert>
             )}
             {formStatus === 'error' && (
-                <Alert className={'alert-failure'} severity="error">Error creating card. Please try again.</Alert>
+                <Alert className={'alert-failure'} severity="error">Помилка створення картки. Будь ласка, виберіть .png,
+                    .jpeg, .jpg формату картинки .</Alert>
             )}
             <form onSubmit={handleSubmit} className="formAdding">
-                <h2 className='formAdding__title'>Добавити кота</h2>
+                <h2 className='formAdding__title'>Додайте кота!</h2>
                 <div className='formAdding__wrapper'>
                     <label>Ім'я</label>
                     <input type="text" name="name" value={formData.name} onChange={handleInputChange} required/>
 
                     <label>Фото</label>
-                    <input type="file"  name="image" onChange={handleFileUpload} required/>
+                    <input type="file" multiple name="image" accept=".png, .jpeg, .jpg" onChange={handleFileUpload}
+                           required/>
 
                     <label>Опис</label>
                     <input type="text" name="description" value={formData.description} onChange={handleInputChange}

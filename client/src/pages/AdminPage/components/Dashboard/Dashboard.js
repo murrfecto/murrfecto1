@@ -74,11 +74,11 @@ export default function VerticalTabs() {
                             backgroundColor: "#D0BEC4",
                         },
                         "& .Mui-selected": {
-                        color: "#4B3542",
+                        color: "#4B3542 !important" ,
                     }}}
                 >
-                    <Tab sx={{fontWeight: 500, display: 'flex'}} label="View all cats" {...a11yProps(0)} />
-                    <Tab sx={{fontWeight: 500, display: 'flex', width: '100%'}} label="Add cats" {...a11yProps(1)} />
+                    <Tab sx={{fontWeight: 500, display: 'flex'}} label="Всі коти" {...a11yProps(0)} />
+                    <Tab sx={{fontWeight: 500, display: 'flex', width: '100%'}} label="Додати кота" {...a11yProps(1)} />
                 </Tabs>
                 <TabPanel style={{width: '100%'}} value={value} index={0}>
                     <ViewAllCats/>
