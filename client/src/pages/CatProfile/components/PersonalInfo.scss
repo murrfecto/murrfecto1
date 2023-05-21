@@ -1,0 +1,22 @@
+@import "../../../styles/_index.scss";
+.info__profile{
+  width: 197px;
+  height: 79px;
+  &_title{
+    @include nunito-600-size-24;
+  }
+  &_wrapper{
+    @include flex-only;
+    @include profile-info-style;
+    justify-content: space-between;
+    &-options{
+      @include nunito-400-size-20;
+
+    }
+   &-icon{
+     width: 24px;
+     margin-right: 9px;
+   }
+  }
+
+}

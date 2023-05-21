@@ -1,3 +1,4 @@
+@import "colors";
 @mixin position-center { // without alignment
   display: flex;
   justify-content: center;
@@ -27,4 +28,13 @@
 @mixin flex-column-na { // flex-column not-aligned
   display: flex;
   flex-direction: column;
+}
+
+@mixin profile-info-style {
+  color:$color-card-text;
+  border: 1px solid #4B3542;
+  border-radius: 8px;
+  width: 197px;
+  height: 42px;
+  padding: 6px 0 6px 8px;
 }
