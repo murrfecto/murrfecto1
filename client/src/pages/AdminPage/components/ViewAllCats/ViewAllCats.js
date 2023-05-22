@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import './ViewAll.scss';
-import Notiflix from "notiflix";
 import Spinner from "../../../../helpers/Spinner/Spinner";
 import CatsGallery from "../../../../components/CatsGallery/CatsGallery";
 
@@ -32,7 +31,7 @@ const ViewAllCats = () => {
 
     return (
         <div className="viewAll">
-            <CatsGallery displayIcon={true} />
+            <CatsGallery displayIcon={true} select={false} />
         </div>
     );
 };

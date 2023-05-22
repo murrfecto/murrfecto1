@@ -7,10 +7,11 @@ import Notiflix from "notiflix";
 import {FaTrash} from "react-icons/fa";
 
 
-const CatsGallery = ({limit, displayIcon}) => {
+const CatsGallery = ({limit, displayIcon, select}) => {
     const [cats, setCats] = useState(null);
     const [loading, setLoading] = useState(true);
     const [shouldDisplayTrashIcon, setShouldDisplayTrashIcon] = useState(displayIcon)
+    const [shouldBeSelected, setShouldBeSelected] = useState(select)
     const getData = async () => {
         try {
             const response = await axios.get('http://localhost:3000/cats');
@@ -55,6 +56,7 @@ const CatsGallery = ({limit, displayIcon}) => {
 
     useEffect(() => {
         setShouldDisplayTrashIcon(displayIcon)
+        setShouldBeSelected(select)
         getData();
     }, []);
 
@@ -72,15 +74,16 @@ const CatsGallery = ({limit, displayIcon}) => {
                         name={cat.name}
                         description={cat.description}
                         chippedInfo={cat?.chipped}
+                        select={select}
                         trash={
-                            shouldDisplayTrashIcon ? (
-                                <FaTrash
-                                    className="viewAll__trash"
-                                    size={25}
-                                    onClick={() => confirmDelete(cat._id, cat.name)}
-                                />
-                            ) : null
-                        }
+                        shouldDisplayTrashIcon ? (
+                            <FaTrash
+                                className="viewAll__trash"
+                                size={25}
+                                onClick={() => confirmDelete(cat._id, cat.name)}
+                            />
+                        ) : null
+                    }
                     />
                 </div>
             ))}

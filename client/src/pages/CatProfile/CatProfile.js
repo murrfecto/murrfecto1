@@ -82,7 +82,7 @@ const CatProfile = () => {
                 </section>
                 <section className='profile__others'>
                     <h2 className='profile__others_title'>Інші пухнастики</h2>
-                    <CatsGallery/>
+                    <CatsGallery select={true} limit={4}/>
                 </section>
             </div>
         </div>
