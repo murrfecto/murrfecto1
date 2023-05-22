@@ -2,6 +2,7 @@
 
 .contacts_container {
     width: 1440px;
+    margin: 0 auto;
     padding: 80px 188px 90px;
     @include flex-only;
     gap: 128px;
