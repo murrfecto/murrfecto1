@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.scss";
 import "../Navbar/Navbar.scss";
@@ -40,10 +39,10 @@ const Footer = () => {
           </nav>
 
           <address className="footer_address">
-            <h2 className={"contacts_title"}>Контакти</h2>
-            <ul>
+            <h2 className="contacts_title">Контакти</h2>
+            <ul className="contacts_list">
               <li>
-                <a className={"info_link"} href="tel:+380636286630">
+                <a className="info_link contacts_link" href="tel:+380636286630">
                   <img
                     className={"contacts_icon"}
                     src={phone}
@@ -53,7 +52,10 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className={"info_link"} href="tel:+380675681788">
+                <a
+                  className={"info_link  contacts_link"}
+                  href="tel:+380675681788"
+                >
                   <img
                     className={"contacts_icon"}
                     src={phone}
@@ -63,7 +65,10 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className={"info_link"} href="mailto:info@example.com">
+                <a
+                  className={"info_link contacts_link"}
+                  href="mailto:info@example.com"
+                >
                   <img
                     className={"contacts_icon"}
                     src={email}
@@ -89,8 +94,9 @@ const Footer = () => {
             </a>
           </div>
           <ul className={"social_list"}>
-            <li className={"social_link"}>
+            <li className={"social_item"}>
               <a
+                className={"social_link"}
                 href="https://www.instagramm.com/"
                 target="_blank"
                 rel="nofollow noreferrer noopener"
@@ -98,8 +104,9 @@ const Footer = () => {
                 <img src={insta} alt="instagramm" width={48} height={48} />
               </a>
             </li>
-            <li className={"social_link"}>
+            <li className={"social_item"}>
               <a
+                className={"social_link"}
                 href="https://www.facebook.com/profile.php?id=100092408450281"
                 target="_blank"
                 rel="nofollow noreferrer noopener"

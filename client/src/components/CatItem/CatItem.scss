@@ -10,6 +10,7 @@
   height: 424px;
 
   &-wrapper {
+    position: relative;
     padding-left: 16px;
   }
 
@@ -20,6 +21,8 @@
   }
 
   &-icon {
+    object-fit: cover;
+    border-radius: 20px;
     width: 305px;
     height: 295px;
   }
@@ -34,6 +37,12 @@
       height: 24px;
       width: 24px;
     }
+  }
+
+  &-trash {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
   }
 
   &-chipped {

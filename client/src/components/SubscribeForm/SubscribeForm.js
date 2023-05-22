@@ -15,7 +15,7 @@ const SubscribeForm = () => {
             return;
         }
         try {
-            const res = await axios.post('http://localhost:3000/cats/subscribe', {
+            await axios.post('http://localhost:3000/cats/subscribe', {
                 email,
             });
             setIsSent(true);
@@ -37,7 +37,7 @@ const SubscribeForm = () => {
         <div className={'subscribe_form'}>
             <h3 className={'subscribe_form-header'}>Стежте за останніми подіями притулку</h3>
             <p className={'subscribe_form-text'}>
-                Залиште свій email, і ми вам надішлемо новини про вашого кота
+                Залиште свій email, і ми вам надішлемо новини про життя притулку
             </p>
             <div className={'subscribe_form-alert'}>
                 {isSent ? (

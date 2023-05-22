@@ -5,7 +5,6 @@ import {
     getCats,
     updateCatById,
     deleteCatById,
-    // addImageToCat,
     subscribeToCats
 } from "../controllers/cats.controller.js";
 import * as path from "path";
@@ -21,10 +20,9 @@ const router = express.Router();
 router.post('/cats/subscribe', subscribeToCats)
 router.get('/cats', getCats);
 router.get('/cats/:id', getCat)
-router.post('/cats', upload.single('image'), addCat);
+router.post('/cats', upload.array('image'), addCat);
 router.delete('/cats/:id', deleteCatById);
 router.put('/cats/:id', updateCatById);
-// router.post('/cats/images/:id', upload.single('image'), addImageToCat);
 
 router.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', '..', 'client', 'public', 'index.html'));

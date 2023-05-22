@@ -1,6 +1,7 @@
 .viewAll{
   height: 100%;
   &__trash{
+    z-index: 1;
     padding-right: 10px;
   }
 }
