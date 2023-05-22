@@ -14,19 +14,58 @@
   justify-content: center;
   gap: 30px;
   @include flex-column-a;
-  &__wrapper{
+
+  &__wrapper {
     @include flex-column-a;
-    label{
+
+    label {
       @include nunito-400-size-14
     }
-    input{
+
+    input, select {
       width: 300px;
       height: 30px;
       border-radius: 10px;
       outline: none;
+
       background: none;
     }
-    button{
+
+    .input__file {
+      @include flex-only;
+      justify-content: center;
+      padding-top: 3px;
+      width: 300px;
+      min-height: 30px;
+      border-radius: 10px;
+      outline: none;
+      background: none;
+      border: 1px solid;
+      cursor: pointer;
+      text-align: center;
+      transition: 0.2s all;
+      &_none {
+        display: none;
+      }
+
+      &_selected {
+        width: 100%;
+        ul {
+          width: 100%;
+          @include flex-only;
+          justify-content: center;
+          li{
+            margin-left: 4px;}
+        }
+      }
+
+      &:hover {
+        background: $color-btn-hover;
+        color: $color-placeholder;
+      }
+    }
+
+    button {
       margin-top: 10px;
       background: $color-btn;
       color: $full-white;

@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import "./CatsGallery.scss";
 import CatItem from "../CatItem/CatItem";
 import axios from "axios";
-import Spinner from "../../helpers/Spinner/Spinner";
+
 import Notiflix from "notiflix";
 import {FaTrash} from "react-icons/fa";
+import Spinner from "../../helpers/Spinner/Spinner";
 
 
 const CatsGallery = ({limit, displayIcon, select}) => {
@@ -22,6 +23,8 @@ const CatsGallery = ({limit, displayIcon, select}) => {
             setLoading(false);
         }
     };
+
+    console.log(cats);
 
     const handleDelete = async (id) => {
         try {
@@ -72,8 +75,10 @@ const CatsGallery = ({limit, displayIcon, select}) => {
                         src={cat?.images && cat.images.length > 0 ? cat.images[0] : null}
                         alt={cat.name}
                         name={cat.name}
-                        description={cat.description}
+                        age={cat.age}
+                        gender={cat.gender}
                         chippedInfo={cat?.chipped}
+                        id={cat?._id}
                         select={select}
                         trash={
                         shouldDisplayTrashIcon ? (

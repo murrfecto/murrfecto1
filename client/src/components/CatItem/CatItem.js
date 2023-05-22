@@ -5,10 +5,10 @@ import info from '../../assets/info-rounded.svg'
 import {Skeleton} from "@mui/material";
 import {Link} from "react-router-dom";
 
-const CatItem = ({src, alt, name, description, chippedInfo, _id, trash, select}) => {
+const CatItem = ({src, alt, name, description, chippedInfo, id, trash, select,gender,age}) => {
     return (
-        <li className="cat_card" key={_id}>
-            {select ? (<Link to={`/cat/${_id}`}>
+        <li className="cat_card" key={id}>
+            {select ? (<Link to={`/cat/${id}`}>
                 {src === undefined ? (
                     <Skeleton variant="rect" style={{borderRadius: '20px'}} width={305} height={295}/>
                 ) : (
@@ -22,7 +22,7 @@ const CatItem = ({src, alt, name, description, chippedInfo, _id, trash, select})
                     </div>
                     <div className="cat_card-description">
                         <img src={paw} alt="paw"/>
-                        <p>{description}</p>
+                        <p>{gender}, {age}</p>
                     </div>
                     <div className="cat_card-chipped">
                         <img src={info} alt="info"/>
@@ -44,7 +44,7 @@ const CatItem = ({src, alt, name, description, chippedInfo, _id, trash, select})
                     </div>
                     <div className="cat_card-description">
                         <img src={paw} alt="paw"/>
-                        <p>{description}</p>
+                        <p>{gender}, {age}</p>
                     </div>
                     <div className="cat_card-chipped">
                         <img src={info} alt="info"/>

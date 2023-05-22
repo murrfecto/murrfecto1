@@ -47,7 +47,7 @@ const getCat = async (req, res) => {
     try {
         const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
         const cats = client.db(process.env.DB_NAME).collection('cats');
-        const result = await cats.findOne({})
+        const result = await cats.findOne({_id: new ObjectId(req.params.id)});
         res.send(result);
         await client.close();
     } catch (err) {
