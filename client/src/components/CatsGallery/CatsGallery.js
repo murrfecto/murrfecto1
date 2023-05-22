@@ -23,6 +23,8 @@ const CatsGallery = ({limit, displayIcon, select}) => {
         }
     };
 
+    console.log(cats);
+
     const handleDelete = async (id) => {
         try {
             const response = await axios.delete(`http://localhost:3000/cats/${id}`);
@@ -72,8 +74,10 @@ const CatsGallery = ({limit, displayIcon, select}) => {
                         src={cat?.images && cat.images.length > 0 ? cat.images[0] : null}
                         alt={cat.name}
                         name={cat.name}
-                        description={cat.description}
+                        age={cat.age}
+                        gender={cat.gender}
                         chippedInfo={cat?.chipped}
+                        id={cat?._id}
                         select={select}
                         trash={
                         shouldDisplayTrashIcon ? (

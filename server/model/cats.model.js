@@ -5,6 +5,8 @@ const catsModel = Joi.object({
     name: Joi.string(),
     description: Joi.string(),
     chipped: Joi.string(),
+    age: Joi.string(),
+    gender: Joi.string()
 });
 
-export {catsModel}
+export {catsModel};
