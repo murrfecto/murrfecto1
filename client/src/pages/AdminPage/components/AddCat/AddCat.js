@@ -15,10 +15,13 @@ const AddCat = () => {
         gender: '',
     };
 
+    const initialFilesState =[]
+
     const [formData, setFormData] = useState(initialState);
-    const [files, setFiles] = useState([]);
+    const [files, setFiles] = useState(initialFilesState);
     const [formStatus, setFormStatus] = useState('');
 
+    
     const handleSubmit = async (e) => {
         const data = new FormData();
         files.forEach((file, index) => {
@@ -34,6 +37,7 @@ const AddCat = () => {
             .then(() => {
                 setFormStatus('success');
                 setFormData(initialState);
+                setFiles(initialFilesState)
             })
             .catch(err => {
                 setFormStatus('error');

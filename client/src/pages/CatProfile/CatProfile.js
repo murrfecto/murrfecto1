@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import Title from "../../components/Title/Title";
 import './CatProfile.scss';
@@ -26,11 +26,11 @@ const CatProfile = () => {
         }
     };
 
-    console.log(photos);
+    console.log(cat);
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [id]);
     console.log(cat);
 
 
@@ -63,11 +63,11 @@ const CatProfile = () => {
                         </h2>
                         <PersonalInfo
                             type={'Стать'}
-                            title={cat.gender}
+                            title={cat?.gender}
                             icon={paw}/>
                         <PersonalInfo
                             type={'Вік'}
-                            title={cat.age}
+                            title={cat?.age}
                             icon={calendar}/>
                         <PersonalInfo
                             type={'Наявність чіпа'}
@@ -83,6 +83,7 @@ const CatProfile = () => {
                     <h2 className='profile__others_title'>Інші пухнастики</h2>
                     <CatsGallery select={true} limit={4}/>
                 </section>
+                <Link  to={'/tails'} className='profile__all'>Переглянути усіх</Link>
             </div>
         </div>
     );

@@ -74,4 +74,16 @@
       line-height: 55px;
     }
   }
+  &__all{
+    @include flex-column-a;
+    @include nunito-600-size-24;
+    line-height: 33px;
+    text-transform: uppercase;
+    color:$color-card-text;
+    margin: 32px auto 108px;
+    width: 235px;
+    border-bottom: 1.5px solid $color-card-text;
+    text-align: center;
+    cursor: pointer;
+  }
 }

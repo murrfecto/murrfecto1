@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import "./CatsGallery.scss";
 import CatItem from "../CatItem/CatItem";
 import axios from "axios";
-import Spinner from "../../helpers/Spinner/Spinner";
+
 import Notiflix from "notiflix";
 import {FaTrash} from "react-icons/fa";
+import Spinner from "../../helpers/Spinner/Spinner";
 
 
 const CatsGallery = ({limit, displayIcon, select}) => {
