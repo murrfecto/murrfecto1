@@ -16,9 +16,11 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^8.0.1",
+    "formik": "^2.2.9",
     "framer-motion": "^9.0.2",
     "react-icons": "^4.8.0",
     "react-responsive": "^9.0.2",
-    "react-router-dom": "^6.11.1"
+    "react-router-dom": "^6.11.1",
+    "yup": "^1.1.1"
   }
 }

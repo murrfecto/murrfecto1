@@ -1,5 +1,6 @@
 import React from "react";
 import "./Title.scss";
+import PropTypes from 'prop-types';
 
 const Title = ({ text }) => {
   return (

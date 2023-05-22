@@ -1,0 +1,83 @@
+@import "../../styles/_index.scss";
+
+.contacts_container {
+    width: 1440px;
+    margin: 0 auto;
+    padding: 80px 188px 90px;
+    @include flex-only;
+    gap: 128px;
+}
+
+.contacts_wrapper {
+    width: 414px;
+    @include flex-column-na;
+    gap: 20px;
+}
+
+.contacts_info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-height: 168px;
+    border: 0.5px solid $color-btn;
+    border-radius: 8px;
+    padding-top: 24px;
+    padding-left: 40px;
+    &_link {
+        @include position-center-na;
+        justify-content: flex-start;
+        gap: 8px;
+        @include nunito-400-size-20;
+        line-height: 1.5;
+        color: $color-blue;   
+    }
+    &_icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.contacts_social {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    &_icon {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.contacts_np {
+    width: 100%;
+    min-height: 149px;
+    border: 0.5px solid $color-btn;
+    border-radius: 8px;  
+    padding-top: 24px;
+    padding-left: 40px;
+    &_title {
+        margin-bottom: 12px;
+        @include nunito-600-size-20;
+        line-height: 1.5;
+        color: $color-blue;
+    }
+    &_text {
+        @include nunito-400-size-20;
+        line-height: 1.5;
+        color: $color-card-text;
+    }
+}
+
+.contacts_registration {
+    width: 100%;
+    min-height: 117px;
+    border: 0.5px solid $color-btn;
+    border-radius: 8px;
+    padding-top: 24px;
+    padding-left: 28px;
+    &_title {
+        @include nunito-600-size-20;
+        line-height: 1.5;
+        color: $color-blue;   
+    }
+}

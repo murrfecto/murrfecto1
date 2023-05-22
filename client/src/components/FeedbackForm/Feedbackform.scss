@@ -1,0 +1,75 @@
+@import "../../styles/_index.scss";
+
+.feedback_wrapper {
+    width: 522px;
+    min-height: 474px;
+}
+
+.feedback_title {
+    margin-bottom: 10px;
+    @include nunito-600-size-24;
+    line-height: 1.4;
+    color: $color-blue;
+    text-align: center;
+}
+
+.feedback_text {
+    margin-bottom: 20px;
+    @include nunito-400-size-20;
+    line-height: 1.5;
+    color: $color-card-text; 
+    text-align: center;
+}
+
+.feedback_form {
+     width: 100%;
+     @include flex-column-na;
+}
+
+.feedback_label {
+    @include nunito-400-size-20;
+    line-height: 1.5;
+    color: $color-card-text; 
+}
+
+.feedback_input {
+    width: 100%;
+    height: 38px;
+    border: 0.5px solid $color-border;
+    background-color: transparent;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+.input_error {
+    @extend .feedback_input;
+    border-color: red;
+    color: red;
+}
+
+.feedback_textarea {
+    width: 100%;
+    height: 105px;
+    border: 0.5px solid $color-border;
+    background-color: transparent;
+    border-radius: 8px;
+    margin-bottom: 32px;
+}
+
+.feedback_error {
+    color: red;  
+  }
+
+.feedback_button {
+    width: 365px;
+    height: 54px;
+    padding: 10px 110px;
+    margin: 0 auto;
+    border-radius: 8px;
+    background-color: $color-btn;
+    color: $color-white;
+    @include nunito-600-size-24;
+    line-height: 1.4;
+    text-transform:uppercase;
+
+}
+
