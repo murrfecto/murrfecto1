@@ -1,0 +1,77 @@
+@import "../../styles/_index.scss";
+
+.profile {
+  max-width: 1281px;
+  margin: 0 auto;
+  &__wrapper{
+    margin-top: 89px;
+    @include flex-only;
+    &_images{
+      max-width: 630px;
+      max-height: 689px;
+
+      img{
+        object-fit: cover;
+        border-radius: 12px;
+      }
+      img:first-child {
+        width: 630px;
+        height: 472px;
+      }
+
+      img:not(:first-child) {
+        margin-top: 20px;
+        width: 196px;
+        height: 197px;
+      }
+      img:nth-child(2){
+        margin-right: 21px;
+      }
+      img:nth-last-child(1) {
+        margin-left: 21px;
+      }
+    }
+    &_info{
+      margin-left: 128px;
+      .info__title{
+        margin-bottom: 12px;
+        text-align: center;
+        @include nunito-700-size-40;
+      }
+      .info__subtitle{
+        margin-top: 16px;
+        @include nunito-600-size-24;
+      }
+      .info__desc{
+        @include nunito-400-size-20;
+        line-height: 30px;
+        color:$color-card-text;
+      }
+      .info__help{
+        margin-top: 35px;
+        width: 332px;
+        height: 64px;
+        background: $color-btn;
+        @include nunito-600-size-24;
+        line-height: 35px;
+        color:$color-white;
+        border-radius: 8px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: 0.1s all;
+        &:hover{
+          background: $color-btn-hover;
+        }
+      }
+    }
+  }
+  &__others{
+    &_title{
+      margin-top: 100px;
+      text-align: center;
+      @include nunito-700-size-40;
+      color:$color-blue;
+      line-height: 55px;
+    }
+  }
+}

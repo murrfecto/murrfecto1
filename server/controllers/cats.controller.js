@@ -111,7 +111,6 @@ const subscribeToCats = (req, res) => {
 
     sgMail.send({...msg, headers})
         .then(() => {
-            console.log('Email sent');
             res.send('Email sent');
         })
         .catch((error) => {
