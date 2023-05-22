@@ -4,7 +4,7 @@ import sgMail from '@sendgrid/mail';
 
 const addCat = async (req, res) => {
     console.log(req.body)
-
+    console.log(req.files)
     const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
     const cats = client.db(process.env.DB_NAME).collection('cats');
     try {
@@ -13,7 +13,7 @@ const addCat = async (req, res) => {
             return res.status(400).send(error.details[0].message);
         }
 
-        const images = req.files.map((file) => `http://localhost:3000/images/${file.filename}`);
+        const images = req.files.map((file) => file.location);
 
         const result = await cats.insertOne({
             ...req.body,
