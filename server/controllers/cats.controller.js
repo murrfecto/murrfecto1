@@ -119,7 +119,32 @@ const subscribeToCats = (req, res) => {
         });
 };
 
+const sendMessage = (req, res) => {
+    const { email, text, name } = req.body;
+    sgMail.setApiKey(process.env.API_KEY);
+    const headers = {
+        Authorization: `Bearer ${process.env.API_KEY}`,
+        'x-custom-content-type': 'application/json',
+    };
+    const msg = {
+        to: 'vanyamironyuk5@gmail.com',
+        from: email,
+        subject: 'Message from User',
+        text: text,
+    };
+
+    sgMail
+        .send({ ...msg, headers })
+        .then(() => {
+            res.send('Email sent');
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send(error);
+        });
+};
+
 
 export {
-    addCat, getCat, getCats, updateCatById, deleteCatById, subscribeToCats
+    addCat, getCat, getCats, updateCatById, deleteCatById, subscribeToCats, sendMessage
 }

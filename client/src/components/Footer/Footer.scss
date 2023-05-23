@@ -7,7 +7,7 @@
 
 .footer_container {
   width: 100%;
-  margin: 0px auto;
+  margin: 0 auto;
   padding: 40px 15px;
 
   @media screen and (min-width: 390px) {
@@ -31,7 +31,7 @@
   @media screen and (min-width: 768px) {
     flex-wrap: wrap;
 
-    gap: 40px 0px;
+    gap: 40px 0;
     flex-direction: row;
     align-items: flex-start;
 
@@ -94,7 +94,7 @@
   gap: 15px;
 
   @media screen and (min-width: 768px) {
-    margin: 0px 61px;
+    margin: 0 61px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -102,7 +102,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: start;
-    margin: 0px 69px 0px 163px;
+    margin: 0 69px 0 163px;
     gap: 25px;
   }
 }
@@ -187,7 +187,7 @@
   transition: box-shadow 300ms linear, scale 300ms linear;
 
   &:hover {
-    box-shadow: 0px 3.43693px 3.43693px #766e78;
+    box-shadow: 0 3.43693px 3.43693px #766e78;
     scale: 1.1;
   }
 }
