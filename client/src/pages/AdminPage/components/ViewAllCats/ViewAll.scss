@@ -1,6 +1,15 @@
-.viewAll{
+@import "../../../../styles/_index.scss";
+
+.viewAll {
   height: 100%;
-  &__trash{
+
+  &__icons {
+    margin-right: 10px;
+    gap: 20px;
+    @include flex-column-a;
+  }
+
+  &__trash {
     z-index: 1;
     padding-right: 10px;
   }

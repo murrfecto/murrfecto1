@@ -21,7 +21,7 @@ const AddCat = () => {
     const [files, setFiles] = useState(initialFilesState);
     const [formStatus, setFormStatus] = useState('');
 
-    
+
     const handleSubmit = async (e) => {
         const data = new FormData();
         files.forEach((file, index) => {
@@ -116,12 +116,7 @@ const AddCat = () => {
                             required
                             className="input__file_none"
                         />
-
                     </div>
-                    {/*<label>Фото</label>*/}
-                    {/*<input type="file" multiple name="image" accept=".png, .jpeg, .jpg" onChange={handleFileUpload}*/}
-                    {/*       required/>*/}
-
                     <label>Наявність чіпу</label>
                     <select name="chipped" value={formData.chipped}
                             onChange={handleInputChange} required>
