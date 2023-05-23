@@ -1,6 +1,97 @@
+import { useEffect, useState } from "react";
 import "./DonateForm.scss";
+import Select from "react-select";
 
 const DonateForm = ({ title }) => {
+  const [cats, setCats] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedCat, setSelectedCat] = useState(null);
+
+  useEffect(() => {
+    try {
+      const fetchData = async () => {
+        const data = await fetch("http://localhost:3000/cats");
+        const json = await data.json();
+        const catOptions = json.map((elem) => {
+          return {
+            value: elem.id,
+            label: elem.name,
+          };
+        });
+        setCats(catOptions);
+        setIsLoading(false);
+      };
+      fetchData();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const styledSelect = {
+    control: (baseStyles, state) => ({
+      ...baseStyles,
+      fontSize: "20px",
+      fontWeight: "400",
+      fontFamily: "Nunito Sans, serif",
+      color: "#4F5A69",
+      marginBottom: "20px",
+      cursor: "pointer",
+      backgroundColor: "#FCFCFF",
+      boxShadow: "none",
+      borderRadius: "8px",
+      borderColor: state.isFocused
+        ? "#4B3542 !important"
+        : "#AEAEAE !important",
+      "&:hover": {
+        backgroundColor: "#F2F2F2",
+      },
+    }),
+
+    valueContainer: (baseStyles) => ({
+      ...baseStyles,
+      padding: "10px 12px",
+    }),
+
+    placeholder: (baseStyles) => ({
+      ...baseStyles,
+      fontSize: "20px",
+      fontWeight: "400",
+      fontFamily: "Nunito Sans, serif",
+      color: "#AEAEAE",
+    }),
+
+    indicatorSeparator: (baseStyles) => ({
+      ...baseStyles,
+      display: "none",
+    }),
+
+    menu: (baseStyles) => ({
+      ...baseStyles,
+      margin: "0",
+      borderColor: "#AEAEAE",
+      borderRadius: "9px",
+    }),
+
+    menuList: () => ({
+      overflow: "hidden",
+      borderRadius: "9px",
+      backgroundColor: "#FCFCFF",
+    }),
+
+    option: (baseStyles, state) => ({
+      ...baseStyles,
+      fontSize: "20px",
+      fontWeight: "400",
+      fontFamily: "Nunito Sans, serif",
+      color: "#4F5A69",
+      cursor: "pointer",
+      backgroundColor: state.isSelected ? "#D0BEC4" : "#FCFCFF",
+      "&:hover": {
+        backgroundColor: "#F2F2F2",
+      },
+    }),
+  };
+
   return (
     <div className={"donate-slider_wrap"}>
       <h3 className={"donate-slider_title"}>{title}</h3>
@@ -14,7 +105,7 @@ const DonateForm = ({ title }) => {
               value="20"
               hidden
             />
-            <label for="twenty" className={"donate-form_radio-label"}>
+            <label htmlFor="twenty" className={"donate-form_radio-label"}>
               <span className={"donate-form_number"}>20</span>
             </label>
           </div>
@@ -26,7 +117,7 @@ const DonateForm = ({ title }) => {
               value="50"
               hidden
             />
-            <label for="fifty" className={"donate-form_radio-label"}>
+            <label htmlFor="fifty" className={"donate-form_radio-label"}>
               <span className={"donate-form_number"}>50</span>
             </label>
           </div>
@@ -38,7 +129,7 @@ const DonateForm = ({ title }) => {
               value="100"
               hidden
             />
-            <label for="hundred" className={"donate-form_radio-label"}>
+            <label htmlFor="hundred" className={"donate-form_radio-label"}>
               <span className={"donate-form_number"}>100</span>
             </label>
           </div>
@@ -50,7 +141,7 @@ const DonateForm = ({ title }) => {
               value="200"
               hidden
             />
-            <label for="two_hundred" className={"donate-form_radio-label"}>
+            <label htmlFor="two_hundred" className={"donate-form_radio-label"}>
               <span className={"donate-form_number"}>200</span>
             </label>
           </div>
@@ -64,19 +155,18 @@ const DonateForm = ({ title }) => {
           </div>
         </div>
         <div className={"donate-form_select"}>
-          <label for="cats" className={"donate-form_select-label"}>
+          <label htmlFor="cats" className={"donate-form_select-label"}>
             Допомогти конкретному котику
           </label>
-          <div className={"donate-form_select-box"}>
-            <select name="cat" id="cats">
-              <option value="0" selected hidden>
-                Оберіть пухнастика
-              </option>
-              <option value="1">Черчіль</option>
-              <option value="2">Зоя</option>
-              <option value="3">Костик</option>
-            </select>
-          </div>
+          <Select
+            placeholder="Оберіть пухнастика"
+            options={cats}
+            isLoading={isLoading}
+            styles={styledSelect}
+            value={selectedCat}
+            onChange={(option) => setSelectedCat(option)}
+            getOptionValue={(option) => option.label}
+          />
         </div>
         <div>
           <input
