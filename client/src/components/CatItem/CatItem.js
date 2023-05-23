@@ -5,7 +5,7 @@ import info from '../../assets/info-rounded.svg'
 import {Skeleton} from "@mui/material";
 import {Link} from "react-router-dom";
 
-const CatItem = ({src, alt, name, description, chippedInfo, id, trash, select,gender,age}) => {
+const CatItem = ({src, alt, name, description, chippedInfo, id, trash, select, gender, age}) => {
     return (
         <li className="cat_card" key={id}>
             {select ? (<Link to={`/cat/${id}`}>

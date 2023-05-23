@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv'
+dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import {MongoClient} from 'mongodb';
@@ -5,10 +7,10 @@ import {jsonParser, urlencodedParser} from './helpers/bodyParserMiddleware.js';
 import CatsRoutes from "./routes/cats.routes.js";
 
 //dotenv
-import dotenv from 'dotenv'
+
 import path from "path";
 
-dotenv.config();
+
 // Establishing server
 export const app = express();
 
