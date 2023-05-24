@@ -65,30 +65,6 @@
     }
   }
 
-  &_select {
-    &-label {
-      @include nunito-400-size-20;
-      display: block;
-      line-height: 30px;
-      color: $color-blue;
-      margin-bottom: 8px;
-    }
-
-    &-box {
-      select {
-        @include nunito-400-size-20;
-        line-height: 30px;
-        width: 100%;
-        // padding: 10px 12px;
-        // border: 1px solid $color-border;
-        background-color: transparent;
-        // border-radius: 8px;
-        appearance: none;
-        // cursor: pointer;
-      }
-    }
-  }
-
   &_btn {
     width: 100%;
     @include nunito-600-size-24;
