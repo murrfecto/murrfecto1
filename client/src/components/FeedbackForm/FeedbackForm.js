@@ -77,7 +77,7 @@ const FeedbackForm = () => {
                                 <p className="feedback_error">{errors.email}</p>
                             )}
                         </div>
-                        <div className="input_wrapper">
+                        <div className="textarea_wrapper">
                             <label htmlFor="text" className="feedback_label">
                                 Повідомлення
                             </label>
