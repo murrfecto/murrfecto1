@@ -26,6 +26,19 @@
      @include flex-column-na;
 }
 
+.input_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 12px;
+}
+.textarea_wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 32px;
+}
+
 .feedback_label {
     @include nunito-400-size-20;
     line-height: 1.5;
@@ -38,12 +51,16 @@
     border: 0.5px solid $color-border;
     background-color: transparent;
     border-radius: 8px;
-    margin-bottom: 12px;
+    @include nunito-700-size-20;
+    line-height: 1.5;
+    color: $color-blue;
+    outline: none;
+
 }
 .input_error {
     @extend .feedback_input;
-    border-color: red;
-    color: red;
+    border-color: #df4242;
+    color: #df4242;
 }
 
 .feedback_textarea {
@@ -52,11 +69,16 @@
     border: 0.5px solid $color-border;
     background-color: transparent;
     border-radius: 8px;
-    margin-bottom: 32px;
+    @include nunito-700-size-20;
+    line-height: 1.5;
+    color: $color-blue;
+    outline: none;
 }
 
 .feedback_error {
-    color: red;  
+    @include nunito-700-size-20;
+    line-height: 1.5;
+    color: #df4242; 
   }
 
 .feedback_button {
@@ -70,6 +92,12 @@
     @include nunito-600-size-24;
     line-height: 1.4;
     text-transform:uppercase;
-
+    cursor: pointer;
+&:hover, &:focus {
+color: $color-btn;
+background-color: $color-card;
+border: none;
+box-shadow: 0px 4px 12px 0px #00000040;
+}
 }
 
