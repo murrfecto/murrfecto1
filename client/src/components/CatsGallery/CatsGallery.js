@@ -2,9 +2,8 @@ import React, {useEffect, useState} from 'react';
 import "./CatsGallery.scss";
 import CatItem from "../CatItem/CatItem";
 import axios from "axios";
-
 import Notiflix from "notiflix";
-import {FaTrash} from "react-icons/fa";
+import {FaEdit, FaTrash} from "react-icons/fa";
 import Spinner from "../../helpers/Spinner/Spinner";
 
 
@@ -66,31 +65,40 @@ const CatsGallery = ({limit, displayIcon, select}) => {
     }
 
     return (
-        <ul className="cats_cards">
-            {cats?.slice(0, limit).map((cat) => (
-                <div key={cat._id}>
-                    <CatItem
-                        src={cat?.images && cat.images.length > 0 ? cat.images[0] : null}
-                        alt={cat.name}
-                        name={cat.name}
-                        age={cat.age}
-                        gender={cat.gender}
-                        chippedInfo={cat?.chipped}
-                        id={cat?._id}
-                        select={select}
-                        trash={
-                        shouldDisplayTrashIcon ? (
-                            <FaTrash
-                                className="viewAll__trash"
-                                size={25}
-                                onClick={() => confirmDelete(cat._id, cat.name)}
-                            />
-                        ) : null
-                    }
-                    />
-                </div>
-            ))}
-        </ul>
+        <div>
+            <ul className="cats_cards">
+                {cats?.slice(0, limit).map((cat) => (
+                    <div key={cat._id}>
+                        <CatItem
+                            src={cat?.images && cat.images.length > 0 ? cat.images[0] : null}
+                            alt={cat.name}
+                            name={cat.name}
+                            age={cat.age}
+                            gender={cat.gender}
+                            chippedInfo={cat?.chipped}
+                            id={cat?._id}
+                            select={select}
+                            trash={
+                                shouldDisplayTrashIcon ? (
+                                    <div className={'viewAll__icons'}>
+                                        <FaEdit
+                                            className={'viewAll__edit'}
+                                            size={25}
+                                            onClick={() => console.log(cat._id)}
+                                        />
+                                        <FaTrash
+                                            className="viewAll__trash"
+                                            size={25}
+                                            onClick={() => confirmDelete(cat._id, cat.name)}
+                                        />
+                                    </div>
+                                ) : null
+                            }
+                        />
+                    </div>
+                ))}
+            </ul>
+        </div>
     );
 };
 

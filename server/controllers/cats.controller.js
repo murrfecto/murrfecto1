@@ -129,7 +129,7 @@ const sendMessage = (req, res) => {
     const msg = {
         to: 'vanyamironyuk5@gmail.com',
         from: email,
-        subject: 'Message from User',
+        subject: `Message from ${name}`,
         text: text,
     };
 
