@@ -1,0 +1,114 @@
+@import "../../../styles/index";
+
+.cookie_section {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  background-color: $color-white;
+}
+
+.cookie_notification {
+  position: relative;
+  width: 100%;
+  min-height: 10%;
+  @include position-center-na;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  margin: 0 auto;
+  padding: 15px 52px 15px 15px;
+
+  @media screen and (min-width: 390px) {
+    width: 390px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    flex-wrap: nowrap;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1440px;
+  }
+}
+
+.info_wrapper {
+  @include position-center-a;
+  margin-bottom: 16px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0px;
+  }
+}
+
+.info-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 16px;
+  @media screen and (min-width: 768px) {
+    margin-right: 32px;
+  }
+}
+
+.cookie_notification-text {
+  max-width: 272px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 400px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 1100px;
+  }
+}
+
+.cookie_notification-text,
+.cookie_privat-policy {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.33;
+
+  color: $color-footer-bg;
+}
+
+.accept-btn {
+  min-width: 359px;
+  min-height: 56px;
+  padding: 0;
+  color: $full-white;
+  background-color: $color-btn;
+  border: transparent;
+  border-radius: 8px;
+  @include position-center-a;
+  @include nunito-600-size-24;
+  line-height: 1.37;
+  text-decoration: none;
+  transition: background-color 300ms linear, color 300ms linear;
+
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    min-width: 196px;
+    border-radius: 12px;
+  }
+
+  &:hover {
+    background-color: $color-card;
+    color: $color-btn;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  @include position-center-a;
+  width: 24px;
+  height: 24px;
+  border: transparent;
+  background-color: inherit;
+  font-size: 30px;
+  line-height: 1;
+}
