@@ -96,7 +96,7 @@ const Footer = () => {
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
-              Правила поведінки на сайті
+              Правила користування сайтом
             </a>
           </div>
           <ul className={"social_list"}>
