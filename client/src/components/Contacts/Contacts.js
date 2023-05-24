@@ -7,6 +7,7 @@ import facebook from "../../assets/socials-facebook.svg";
 import FeedbackForm from "../FeedbackForm/FeedbackForm";
 
 const Contacts = () => {
+
     return (
         <div className="contacts_container">
             <div className="contacts_wrapper">
