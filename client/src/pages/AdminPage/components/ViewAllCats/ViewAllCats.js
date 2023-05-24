@@ -20,7 +20,6 @@ const ViewAllCats = () => {
     };
 
 
-
     useEffect(() => {
         getData();
     }, []);
@@ -31,7 +30,7 @@ const ViewAllCats = () => {
 
     return (
         <div className="viewAll">
-            <CatsGallery displayIcon={true} select={false} />
+                <CatsGallery displayIcon={true} select={false}/>
         </div>
     );
 };

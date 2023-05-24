@@ -5,7 +5,8 @@ import {
     getCats,
     updateCatById,
     deleteCatById,
-    subscribeToCats
+    subscribeToCats,
+    sendMessage,
 } from "../controllers/cats.controller.js";
 import * as path from "path";
 import {fileURLToPath} from 'url';
@@ -18,6 +19,7 @@ const __dirname = dirname(__filename);
 const router = express.Router();
 
 router.post('/cats/subscribe', subscribeToCats)
+router.post('/cats/send-message', sendMessage)
 router.get('/cats', getCats);
 router.get('/cats/:id', getCat)
 router.post('/cats', upload.array('image'), addCat);

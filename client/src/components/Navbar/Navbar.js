@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className={"navbar_links links"}>
           <Link to={"/about"}>Про притулок</Link>
           <Link to={"/tails"}>Наші хвости</Link>
-          <a href={"#"}>Контакти</a>
+          <Link to={"/contacts"}>Контакти</Link>
         </div>
           <ModalButton title={'Нагодуй кота'}/>
       </div>

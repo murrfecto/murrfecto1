@@ -10,6 +10,8 @@ import insta from "../../assets/footer/insta.svg";
 import { scrollToTop } from "../../helpers/scrollToTop";
 import ModalButton from "../ModalButton/ModalButton";
 
+import PrivacyPolicyPdf from "../../assets/dataDocs/privacy-policy.pdf";
+
 const Footer = () => {
   return (
     <footer className={"footer"}>
@@ -81,7 +83,11 @@ const Footer = () => {
           </address>
 
           <div className={"footer_documents-wrapper"}>
-            <a className={"footer_link"} href="#" target="_blank">
+            <a
+              className={"footer_link"}
+              href={PrivacyPolicyPdf}
+              target="_blank"
+            >
               Політика конфіденційності
             </a>
             <a
@@ -90,7 +96,7 @@ const Footer = () => {
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
-              Правила поведінки на сайті
+              Правила користування сайтом
             </a>
           </div>
           <ul className={"social_list"}>

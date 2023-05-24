@@ -7,13 +7,19 @@
 @mixin nunito-700-size-50 {
   font-family: "Nunito", sans-serif;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 @mixin nunito-700-size-40 {
   font-family: "Nunito", sans-serif;
   font-weight: 700;
   font-size: 40px;
+}
+
+@mixin nunito-700-size-20 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 @mixin nunito-700-size-16 {
