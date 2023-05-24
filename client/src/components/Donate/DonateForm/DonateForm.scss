@@ -66,7 +66,6 @@
   }
 
   &_select {
-    margin-bottom: 32px;
     &-label {
       @include nunito-400-size-20;
       display: block;
@@ -80,12 +79,12 @@
         @include nunito-400-size-20;
         line-height: 30px;
         width: 100%;
-        padding: 10px 12px;
-        border: 1px solid $color-border;
+        // padding: 10px 12px;
+        // border: 1px solid $color-border;
         background-color: transparent;
-        border-radius: 8px;
+        // border-radius: 8px;
         appearance: none;
-        cursor: pointer;
+        // cursor: pointer;
       }
     }
   }

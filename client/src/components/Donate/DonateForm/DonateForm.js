@@ -39,9 +39,7 @@ const DonateForm = ({ title }) => {
       backgroundColor: "#FCFCFF",
       boxShadow: "none",
       borderRadius: "8px",
-      borderColor: state.isFocused
-        ? "#4B3542 !important"
-        : "#AEAEAE !important",
+      borderColor: state.isFocused ? "#4B3542" : "#AEAEAE",
       "&:hover": {
         backgroundColor: "#F2F2F2",
       },
@@ -67,7 +65,7 @@ const DonateForm = ({ title }) => {
 
     menu: (baseStyles) => ({
       ...baseStyles,
-      margin: "0",
+      marginTop: "0",
       borderColor: "#AEAEAE",
       borderRadius: "9px",
     }),
@@ -89,6 +87,12 @@ const DonateForm = ({ title }) => {
       "&:hover": {
         backgroundColor: "#F2F2F2",
       },
+    }),
+
+    dropdownIndicator: (baseStyles, state) => ({
+      ...baseStyles,
+      transition: "all .3s ease",
+      transform: state.selectProps.menuIsOpen ? "rotate(180deg)" : null,
     }),
   };
 
