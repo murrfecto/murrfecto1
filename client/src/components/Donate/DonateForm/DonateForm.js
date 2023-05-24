@@ -1,4 +1,5 @@
 import "./DonateForm.scss";
+import FormSelect from "../FormSelect/FormSelect";
 
 const DonateForm = ({ title }) => {
   return (
@@ -14,7 +15,7 @@ const DonateForm = ({ title }) => {
               value="20"
               hidden
             />
-            <label for="twenty" className={"donate-form_radio-label"}>
+            <label htmlFor="twenty" className={"donate-form_radio-label"}>
               <span className={"donate-form_number"}>20</span>
             </label>
           </div>
@@ -26,7 +27,7 @@ const DonateForm = ({ title }) => {
               value="50"
               hidden
             />
-            <label for="fifty" className={"donate-form_radio-label"}>
+            <label htmlFor="fifty" className={"donate-form_radio-label"}>
               <span className={"donate-form_number"}>50</span>
             </label>
           </div>
@@ -38,7 +39,7 @@ const DonateForm = ({ title }) => {
               value="100"
               hidden
             />
-            <label for="hundred" className={"donate-form_radio-label"}>
+            <label htmlFor="hundred" className={"donate-form_radio-label"}>
               <span className={"donate-form_number"}>100</span>
             </label>
           </div>
@@ -50,7 +51,7 @@ const DonateForm = ({ title }) => {
               value="200"
               hidden
             />
-            <label for="two_hundred" className={"donate-form_radio-label"}>
+            <label htmlFor="two_hundred" className={"donate-form_radio-label"}>
               <span className={"donate-form_number"}>200</span>
             </label>
           </div>
@@ -63,21 +64,7 @@ const DonateForm = ({ title }) => {
             />
           </div>
         </div>
-        <div className={"donate-form_select"}>
-          <label for="cats" className={"donate-form_select-label"}>
-            Допомогти конкретному котику
-          </label>
-          <div className={"donate-form_select-box"}>
-            <select name="cat" id="cats">
-              <option value="0" selected hidden>
-                Оберіть пухнастика
-              </option>
-              <option value="1">Черчіль</option>
-              <option value="2">Зоя</option>
-              <option value="3">Костик</option>
-            </select>
-          </div>
-        </div>
+        <FormSelect />
         <div>
           <input
             className={"donate-form_btn"}

@@ -1,0 +1,11 @@
+@import "../../../styles/_index.scss";
+
+.form-select {
+  &_label {
+    @include nunito-400-size-20;
+    display: block;
+    line-height: 30px;
+    color: $color-blue;
+    margin-bottom: 8px;
+  }
+}
