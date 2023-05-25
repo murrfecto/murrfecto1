@@ -94,6 +94,14 @@ const FormSelect = () => {
       transition: "all .3s ease",
       transform: state.selectProps.menuIsOpen ? "rotate(180deg)" : null,
     }),
+
+    loadingMessage: (baseStyles) => ({
+      ...baseStyles,
+      fontSize: "20px",
+      fontWeight: "400",
+      fontFamily: "Nunito Sans, serif",
+      color: "#AEAEAE",
+    }),
   };
 
   return (
