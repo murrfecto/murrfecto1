@@ -3,7 +3,7 @@ import "./Contacts.scss";
 import email from "../../assets/Email-contacts.svg";
 import phone from "../../assets/phone-contacts.svg";
 import insta from "../../assets/insta.svg";
-import facebook from "../../assets/socials-facebook.svg";
+import facebook from "../../assets/facebook.svg";
 import FeedbackForm from "../FeedbackForm/FeedbackForm";
 
 const Contacts = () => {
