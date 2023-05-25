@@ -2,8 +2,9 @@
 
 .donate-slider {
   &_wrap {
-    @include position-center-a;
-    flex-direction: column;
+    @include flex-column-na;
+    align-items: center;
+    justify-content: space-between;
     height: 100%;
   }
 
@@ -27,6 +28,14 @@
     &-count {
       width: 100px;
       height: 42px;
+
+      input[type="radio"]:checked + label {
+        border: 1px solid #aeaeae;
+        background: #fcfcff;
+        & span {
+          color: #888888;
+        }
+      }
     }
   }
 
@@ -38,31 +47,41 @@
 
   &_radio-label {
     display: block;
-    width: 100%;
     padding: 6px;
-    border: 1px solid $color-btn;
-    border-radius: 8px;
     text-align: center;
     cursor: pointer;
+    transition: all 0.5s;
+    &:hover {
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+      background: #dfd2d6;
+    }
+    &:active {
+      background: #d0bec4;
+      box-shadow: none;
+    }
   }
 
-  &_input-count {
-    width: 216px;
-    height: 42px;
-  }
-
+  &_radio-label,
   &_input-free {
     width: 100%;
     height: 100%;
-    padding: 6px 24px 6px 12px;
     border: 1px solid $color-btn;
     border-radius: 8px;
+  }
+
+  &_input-free {
+    padding: 6px 12px;
 
     &::placeholder {
       @include nunito-400-size-20;
       line-height: 30px;
       color: $color-border;
     }
+  }
+
+  &_input-count {
+    width: 216px;
+    height: 42px;
   }
 
   &_btn {
