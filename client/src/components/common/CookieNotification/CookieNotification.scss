@@ -11,26 +11,14 @@
 
 .cookie_notification {
   position: relative;
-  width: 100%;
   min-height: 10%;
   @include position-center-na;
   justify-content: space-between;
   flex-wrap: wrap;
-
-  margin: 0 auto;
   padding: 15px 52px 15px 15px;
 
-  @media screen and (min-width: 390px) {
-    width: 390px;
-  }
-
   @media screen and (min-width: 768px) {
-    width: 768px;
     flex-wrap: nowrap;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 1440px;
   }
 }
 
