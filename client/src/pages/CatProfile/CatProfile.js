@@ -8,11 +8,12 @@ import paw from '../../assets/paw.svg';
 import calendar from '../../assets/calendar.svg';
 import infoRounded from '../../assets/info-rounded.svg';
 import CatsGallery from "../../components/CatsGallery/CatsGallery";
+import {Skeleton} from "@mui/material";
 
 
 const CatProfile = () => {
 
-
+    const [loading, setLoading] = useState(true);
     const {id} = useParams();
     const [cat, setCat] = useState(null);
     const [photos, setPhotos] = useState([]);
@@ -21,17 +22,17 @@ const CatProfile = () => {
             const response = await axios.get(`http://localhost:3000/cats/${id}`);
             setCat(response.data);
             setPhotos(response.data.images)
+            setLoading(false);
         } catch (e) {
             console.log(e.message);
+            setLoading(false);
         }
     };
 
-    console.log(cat);
 
     useEffect(() => {
         getData();
     }, [id]);
-    console.log(cat);
 
 
     const handlePhotoClick = (index) => {
@@ -48,14 +49,21 @@ const CatProfile = () => {
             <div className="profile">
                 <section className="profile__wrapper">
                     <div className="profile__wrapper_images">
-                        {photos.map((photo, index) => (
-                            <img
-                                key={index}
-                                src={photo}
-                                alt=""
-                                onClick={() => handlePhotoClick(index)}
-                            />
-                        ))}
+                        {loading ? (
+                            <>
+                                <Skeleton variant="rectangular" width={630}
+                                height={472} />
+                            </>
+                        ) : (
+                            photos.map((photo, index) => (
+                                <img
+                                    key={index}
+                                    src={photo}
+                                    alt=""
+                                    onClick={() => handlePhotoClick(index)}
+                                />
+                            ))
+                        )}
                     </div>
                     <div className="profile__wrapper_info">
                         <h2 className="info__title">Ти можеш

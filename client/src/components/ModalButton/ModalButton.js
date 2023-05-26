@@ -14,7 +14,7 @@ const ModalButton = () => {
     const handleDonationClick = () => {
         setModalIsOpen(true);
     };
-    //todo refactor form so it displays good in modal
+    //todo.txt refactor form so it displays good in modal
     return (
         <div id={"donation"} >
             <a className={"navbar_links footer_donation "} onClick={handleDonationClick}>Нагодуй кота</a>

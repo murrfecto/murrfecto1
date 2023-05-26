@@ -17,6 +17,7 @@ code {
 *,
 *::before,
 *::after {
+    z-index: 0;
     box-sizing: border-box;
 }
 
