@@ -16,8 +16,8 @@ const ModalButton = () => {
     };
     //todo refactor form so it displays good in modal
     return (
-        <div id={"donation"} className={"navbar_links footer_donation "}>
-            <a onClick={handleDonationClick}>Нагодуй кота</a>
+        <div id={"donation"} >
+            <a className={"navbar_links footer_donation "} onClick={handleDonationClick}>Нагодуй кота</a>
             <Modal className={'modal'} isOpen={modalIsOpen} aria-label="Donate to feed a cat"
                    onRequestClose={() => setModalIsOpen(false)}>
                 <div className={'donation__container'}>
