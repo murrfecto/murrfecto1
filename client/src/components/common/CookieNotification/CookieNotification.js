@@ -18,7 +18,7 @@ const CookieNotification = () => {
 
   return (
     <section className="cookie_section">
-      <div className="cookie_notification">
+      <div className="cookie_notification container">
         <div className="info_wrapper">
           {" "}
           <Info className="info-icon" />

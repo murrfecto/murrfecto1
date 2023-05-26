@@ -15,7 +15,7 @@ import PrivacyPolicyPdf from "../../assets/dataDocs/privacy-policy.pdf";
 const Footer = () => {
   return (
     <footer className={"footer"}>
-      <div className="footer_container">
+      <div className="footer_container container">
         <div className={"footer_info_wrapper"}>
           <div className="wrapper">
             <Link to={"/"} className={"footer_logo-link"} onClick={scrollToTop}>
