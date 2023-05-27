@@ -11,9 +11,8 @@ import OtherCatsSlider from "../../components/OtherCatsSlider/OtherCatsSlider";
 
 
 const CatProfile = () => {
-    const [loading, setLoading] = useState(true);
     const {id} = useParams();
-    const [cat, setCat] = useState(null)
+    const [cat, setCat] = useState(null);
     const [cats, setCats] = useState(null);
     const [loading, setLoading] = useState(true);
     const [photos, setPhotos] = useState([]);
@@ -21,7 +20,7 @@ const CatProfile = () => {
         try {
             const response = await axios.get(`http://localhost:3000/cats/${id}`);
             setCat(response.data);
-            setPhotos(response.data.images)
+            setPhotos(response.data.images);
             setLoading(false);
         } catch (e) {
             console.log(e.message);
@@ -30,7 +29,7 @@ const CatProfile = () => {
     };
 
 
-   const getCats = async () => {
+    const getCats = async () => {
         try {
             const response = await axios.get('http://localhost:3000/cats');
             setCats(response.data);
@@ -56,7 +55,7 @@ const CatProfile = () => {
     };
 
     const getRandomCats = () => {
-        const catsCopy = cats ? [...cats] :[];
+        const catsCopy = cats ? [...cats] : [];
 
         if (cat && catsCopy) {
             const catIndex = catsCopy.findIndex((currentCat) => currentCat._id === cat._id);
@@ -75,7 +74,7 @@ const CatProfile = () => {
         return randomCats;
     };
 
-    const randomCats = getRandomCats()
+    const randomCats = getRandomCats();
     console.log(randomCats);
 
     return (
@@ -84,32 +83,7 @@ const CatProfile = () => {
             <div className="profile">
                 <section className="profile__wrapper">
                     <div className="profile__wrapper_images">
-                        {loading ? (
-                            <div>
-                                <Skeleton
-                                    animation="wave"
-                                    variant="rectangular"
-                                    className="skeleton-photo skeleton-main-photo"
-                                />
-                                <div className={'skeleton-flex'}>
-                                    <Skeleton
-                                        animation="wave"
-                                        variant="rectangular"
-                                        className="skeleton-photo skeleton-secondary-photo"
-                                    />
-                                    <Skeleton
-                                        animation="wave"
-                                        variant="rectangular"
-                                        className="skeleton-photo skeleton-secondary-photo"
-                                    />
-                                    <Skeleton
-                                        animation="wave"
-                                        variant="rectangular"
-                                        className="skeleton-photo skeleton-secondary-photo"
-                                    />
-                                </div>
-                            </div>
-                        ) : (
+                        {
                             photos.map((photo, index) => (
                                 <img
                                     key={index}
@@ -118,13 +92,13 @@ const CatProfile = () => {
                                     onClick={() => handlePhotoClick(index)}
                                 />
                             ))
-                        )}
+                        }
                     </div>
                     <div className="profile__wrapper_info">
                         <h2 className="info__title">Ти можеш
                             допомогти <br/> {cat?.name}
                         </h2>
-                        <div className='info__wrapper'>
+                        <div className="info__wrapper">
                             <PersonalInfo
                                 type={'Стать'}
                                 title={cat?.gender}
@@ -139,23 +113,24 @@ const CatProfile = () => {
                                 icon={infoRounded}/>
                         </div>
 
-                        <div className='info__subtitle'>
-                            <h3 >Інформація</h3>
+                        <div className="info__subtitle">
+                            <h3>Інформація</h3>
                             <hr/>
                         </div>
 
-                        <p className='info__desc'>{cat?.description}</p>
-                        <button className='info__help'>допомогти</button>
+                        <p className="info__desc">{cat?.description}</p>
+                        <button className="info__help">допомогти</button>
                     </div>
                 </section>
-                <section className='profile__others'>
-                    <h2 className='profile__others_title'>Інші пухнастики</h2>
-                    <div className='profile__others_slider'>
+                <section className="profile__others">
+                    <h2 className="profile__others_title">Інші пухнастики</h2>
+                    <div className="profile__others_slider">
                         <OtherCatsSlider cat={cat}/>
                     </div>
 
                 </section>
-                <Link to={'/tails'} className='profile__all'>Переглянути усіх</Link>
+                <Link to={'/tails'} className="profile__all">Переглянути
+                    усіх</Link>
             </div>
         </div>
     );
