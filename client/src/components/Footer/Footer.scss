@@ -6,21 +6,13 @@
 }
 
 .footer_container {
-  width: 100%;
-  margin: 0 auto;
   padding: 40px 15px;
 
-  @media screen and (min-width: 390px) {
-    max-width: 390px;
-  }
-
   @media screen and (min-width: 768px) {
-    max-width: 768px;
     padding: 16px 40px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
     padding: 60px 80px;
   }
 }
@@ -50,7 +42,6 @@
 
 .footer_logo-link,
 .footer_logo-img {
-  display: inline-block;
   width: 170px;
   height: 70px;
   margin-bottom: 32px;
@@ -64,12 +55,11 @@
 
 .footer_donation {
   min-width: 359px;
-  min-height: 65px;
+  min-height: 64px;
   background-color: $color-btn;
   border-radius: 8px;
   @include position-center-a;
   @include nunito-600-size-24;
-  padding: 16px 85px;
   line-height: 1.37;
   text-transform: uppercase;
   text-decoration: none;
@@ -79,7 +69,6 @@
 
   @media screen and (min-width: 768px) {
     min-width: 270px;
-    padding: 16px 40px;
     border-radius: 12px;
   }
 
@@ -157,11 +146,11 @@
   gap: 15px;
 
   @media screen and (min-width: 768px) {
-    margin-right: 324px;
+    margin-right: 301px;
   }
 
   @media screen and (min-width: 1440px) {
-    margin-right: 119px;
+    margin-right: 96px;
     gap: 25px;
   }
 }
@@ -180,7 +169,6 @@
 }
 
 .social_link {
-  display: inline-block;
   width: 48px;
   height: 48px;
   box-shadow: transparent;

@@ -14,8 +14,8 @@ const AddCat = () => {
         age: '',
         gender: '',
     };
-
-    const initialFilesState =[]
+// use form values to send data on post
+    const initialFilesState = []
 
     const [formData, setFormData] = useState(initialState);
     const [files, setFiles] = useState(initialFilesState);
@@ -88,7 +88,7 @@ const AddCat = () => {
                     <label>Стать</label>
                     <select name="gender" value={formData.gender}
                             onChange={handleInputChange} required>
-                        <option value='' disabled >Оберіть стать</option>
+                        <option value='' disabled>Оберіть стать</option>
                         <option value="кіт">Кіт</option>
                         <option value="кішка">Кішка</option>
                     </select>

@@ -49,7 +49,7 @@ export default function VerticalTabs() {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
+// use outlet
     return (
         <div className='dashboard'>
             <Box sx={{flexGrow: 1, bgcolor: 'none', display: 'flex', height: 'auto'}}>
@@ -77,6 +77,7 @@ export default function VerticalTabs() {
                         color: "#4B3542 !important" ,
                     }}}
                 >
+
                     <Tab sx={{fontWeight: 500, display: 'flex'}} label="Всі коти" {...a11yProps(0)} />
                     <Tab sx={{fontWeight: 500, display: 'flex', width: '100%'}} label="Додати кота" {...a11yProps(1)} />
                 </Tabs>

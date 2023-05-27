@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import {Formik, Form, Field} from "formik";
 import {feedbackSchema} from "./schema";
 import axios from "axios";
 
 import "./Feedbackform.scss";
+import ModalContacts from "../ModalContacts/ModalContacts";
 
 const FeedbackForm = () => {
+
+    const [isModalOpen, setModalOpen] = useState(false);
+    
     const onSubmit = async (values, {resetForm}) => {
 
         await new Promise((resolve) => setTimeout(resolve, 500));
@@ -17,6 +21,7 @@ const FeedbackForm = () => {
             console.error('Error sending message:', error);
         }
         resetForm();
+        setModalOpen(true);
         console.log(values);
     };
 
@@ -72,7 +77,7 @@ const FeedbackForm = () => {
                                 <p className="feedback_error">{errors.email}</p>
                             )}
                         </div>
-                        <div className="input_wrapper">
+                        <div className="textarea_wrapper">
                             <label htmlFor="text" className="feedback_label">
                                 Повідомлення
                             </label>
@@ -94,6 +99,7 @@ const FeedbackForm = () => {
                         <button className="feedback_button" type="submit">
                             Надіслати
                         </button>
+                        {isModalOpen && <ModalContacts toggleModal = {setModalOpen}/>}
                     </Form>
                 )}
             </Formik>

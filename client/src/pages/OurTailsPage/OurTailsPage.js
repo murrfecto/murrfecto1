@@ -7,8 +7,8 @@ export const OurTails = () => {
   return (
     <>
     <Title text="Наші хвости"/>
-    <CatsGallery select={true}/>
+    <CatsGallery select displayIcon={false}/>
     <ScrollToTop/>
-    </>    
-    );  
+    </>
+    );
 };

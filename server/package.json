@@ -15,7 +15,9 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.337.0",
     "@sendgrid/mail": "^7.7.0",
+    "axios": "^1.4.0",
     "body-parser": "^1.20.2",
+    "cloudipsp-node-js-sdk": "^1.0.8",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",

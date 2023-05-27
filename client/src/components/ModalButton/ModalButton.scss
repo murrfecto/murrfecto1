@@ -3,6 +3,7 @@
 #donation {
   color: $full-white;
 }
+
 .modal {
   line-height: 33px;
   @include nunito-600-size-24;
@@ -10,11 +11,38 @@
   position: absolute;
   width: 800px;
   height: 523px;
-  left: calc(50% - 800px / 2 + 2px);
-  top: 177px;
-  border-radius: 12px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  .button-group {
+    width: 332px;
+    height: 42px;
+    display: flex;
+  }
+
+  .custom-button {
+    @include nunito-700-size-16;
+    border: 2px solid #4B3542;
+    width: 166px;
+    background-color: $full-white;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-btn;
+      color: $full-white;
+    }
+
+    &.selected {
+      background-color: $color-btn;
+      color: $full-white;
+    }
+  }
 
   .donation__container {
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -31,10 +59,25 @@
       padding: 40px 81px;
       background-color: $full-white;
 
+      h4 {
+        text-align: center;
+        width: 414px;
+        height: 66px;
+        white-space: break-spaces;
+      }
+
       &-button {
         white-space: nowrap;
         color: $full-white;
       }
     }
   }
+}
+
+.right {
+  border-radius: 0 8px 8px 0;
+}
+
+.left {
+  border-radius: 8px 0 0 8px;
 }

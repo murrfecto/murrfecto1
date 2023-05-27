@@ -3,7 +3,7 @@
   justify-content: center;
 }
 
-@mixin position-center-na { // not-aligned ( justified ) todo need to refactor name
+@mixin position-center-na { // not-aligned ( justified ) todo.txt need to refactor name
   display: flex;
   align-items: center;
 }
@@ -35,5 +35,6 @@
   border-radius: 8px;
   width: 197px;
   height: 42px;
-  padding: 9px 0 2px 6px;
+   padding: 6px 0 6px 8px;
 }
+

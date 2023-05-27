@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Footer.scss";
-import "../Navbar/Navbar.scss";
+import "../Header/Navbar/Navbar.scss";
 
 import logo from "../../assets/footer/logo.svg";
 import email from "../../assets/footer/envelope.svg";
@@ -15,7 +15,7 @@ import PrivacyPolicyPdf from "../../assets/dataDocs/privacy-policy.pdf";
 const Footer = () => {
   return (
     <footer className={"footer"}>
-      <div className="footer_container">
+      <div className="footer_container container">
         <div className={"footer_info_wrapper"}>
           <div className="wrapper">
             <Link to={"/"} className={"footer_logo-link"} onClick={scrollToTop}>
@@ -87,6 +87,7 @@ const Footer = () => {
               className={"footer_link"}
               href={PrivacyPolicyPdf}
               target="_blank"
+              rel="nofollow noreferrer noopener"
             >
               Політика конфіденційності
             </a>
@@ -96,7 +97,7 @@ const Footer = () => {
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
-              Правила поведінки на сайті
+              Правила користування сайтом
             </a>
           </div>
           <ul className={"social_list"}>

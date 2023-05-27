@@ -1,6 +1,8 @@
 import {MongoClient, ObjectId} from "mongodb";
 import {catsModel} from "../model/cats.model.js";
 import sgMail from '@sendgrid/mail';
+import crypto from "crypto";
+import axios from "axios";
 
 const addCat = async (req, res) => {
     console.log(req.body)
@@ -8,7 +10,7 @@ const addCat = async (req, res) => {
     const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
     const cats = client.db(process.env.DB_NAME).collection('cats');
     try {
-        const { error } = catsModel.validate(req.body);
+        const {error} = catsModel.validate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
@@ -16,9 +18,7 @@ const addCat = async (req, res) => {
         const images = req.files.map((file) => file.location);
 
         const result = await cats.insertOne({
-            ...req.body,
-            _id: new ObjectId(),
-            images: images,
+            ...req.body, _id: new ObjectId(), images: images,
         });
 
         res.send(result);
@@ -93,8 +93,7 @@ const subscribeToCats = (req, res) => {
     const recipientName = email.substring(0, email.indexOf('@'));
     sgMail.setApiKey(process.env.API_KEY);
     const headers = {
-        Authorization: `Bearer ${process.env.API_KEY}`,
-        'Content-Type2': 'application/json'
+        Authorization: `Bearer ${process.env.API_KEY}`, 'Content-Type2': 'application/json'
     };
     const templateId = process.env.TEMPLATE_ID;
 
@@ -104,8 +103,7 @@ const subscribeToCats = (req, res) => {
         subject: 'Допомога котикам!',
         templateId: templateId,
         dynamicTemplateData: {
-            name: recipientName,
-            deliveryFrequency: 'every month'
+            name: recipientName, deliveryFrequency: 'every month'
         }
     };
 
@@ -120,21 +118,16 @@ const subscribeToCats = (req, res) => {
 };
 
 const sendMessage = (req, res) => {
-    const { email, text, name } = req.body;
+    const {email, text, name} = req.body;
     sgMail.setApiKey(process.env.API_KEY);
     const headers = {
-        Authorization: `Bearer ${process.env.API_KEY}`,
-        'x-custom-content-type': 'application/json',
+        Authorization: `Bearer ${process.env.API_KEY}`, 'x-custom-content-type': 'application/json',
     };
     const msg = {
-        to: 'vanyamironyuk5@gmail.com',
-        from: email,
-        subject: `Message from ${name}`,
-        text: text,
+        to: 'murrfecto@gmail.com', from: email, subject: `Message from ${name}`, text: text,
     };
-
     sgMail
-        .send({ ...msg, headers })
+        .send({...msg, headers})
         .then(() => {
             res.send('Email sent');
         })
@@ -145,6 +138,45 @@ const sendMessage = (req, res) => {
 };
 
 
+const sendPayment = async (req, res) => {
+    const fondyPassword = 'UMlmJSsXiLLDcVLxAMwhlS69A1GbBEq2';
+    const orderBody = {
+        order_id: `orderId_${Date.now()}`,
+        merchant_id: '1525375',
+        order_desc: 'Допомога котикам',
+        amount: req.body.amount,
+        currency: 'UAH',
+    };
+    const orderedKeys = Object.keys(orderBody).sort((a, b) => {
+        if (a < b) return -1;
+        if (a > b) return 1;
+        return 0;
+    });
+    const signatureRaw = orderedKeys.map((key) => orderBody[key]).join('|');
+    const signatureString = `${fondyPassword}|${signatureRaw}`;
+    const signature = crypto.createHash('sha1').update(signatureString)
+    try {
+        const {data} = await axios.post('https://pay.fondy.eu/api/checkout/url/', {
+            request: {
+                ...orderBody,
+                signature: signature.digest('hex')
+            },
+        });
+        const checkoutUrl = data.response && data.response.checkout_url;
+        if (checkoutUrl) {
+            res.status(200).json({
+                checkoutUrl
+            })
+        } else {
+            res.status(500).send('Unable to retrieve checkout URL');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while processing the payment');
+    }
+};
+
+
 export {
-    addCat, getCat, getCats, updateCatById, deleteCatById, subscribeToCats, sendMessage
+    addCat, getCat, getCats, updateCatById, deleteCatById, subscribeToCats, sendMessage, sendPayment
 }

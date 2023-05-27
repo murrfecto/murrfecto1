@@ -1,15 +1,14 @@
-@import "../../styles/_index.scss";
+@import "../../../styles/_index.scss";
 
 .navbar {
   max-width: 1282px;
-  padding-top: 9px;
   border-top: 1px solid $color-border;
   width: 100%;
-  margin: 9px 80px;
   display: flex;
   justify-content: space-around;
   gap: 390px;
   align-items: center;
+  padding: 9px 0px;
 
   .navbar_wrapper {
     display: flex;
@@ -47,6 +46,7 @@
   }
 
   #donation {
+    border-radius: 12px;
     margin-left: 62px;
   }
 

@@ -12,7 +12,6 @@
       flex-direction: column;
     }
 
-
     &_images {
       width: 636px;
       height: 689px;
@@ -38,7 +37,8 @@
         padding: 0;
       }
 
-      img {
+    
+      img{
         object-fit: cover;
         border-radius: 12px;
       }

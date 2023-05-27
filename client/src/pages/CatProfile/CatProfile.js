@@ -10,10 +10,8 @@ import infoRounded from '../../assets/info-rounded.svg';
 import OtherCatsSlider from "../../components/OtherCatsSlider/OtherCatsSlider";
 
 
-
 const CatProfile = () => {
-
-
+    const [loading, setLoading] = useState(true);
     const {id} = useParams();
     const [cat, setCat] = useState(null)
     const [cats, setCats] = useState(null);
@@ -24,12 +22,15 @@ const CatProfile = () => {
             const response = await axios.get(`http://localhost:3000/cats/${id}`);
             setCat(response.data);
             setPhotos(response.data.images)
+            setLoading(false);
         } catch (e) {
             console.log(e.message);
+            setLoading(false);
         }
     };
 
-    const getCats = async () => {
+
+   const getCats = async () => {
         try {
             const response = await axios.get('http://localhost:3000/cats');
             setCats(response.data);
@@ -45,7 +46,6 @@ const CatProfile = () => {
         getData();
         getCats();
     }, [id]);
-    console.log(cat);
 
 
     const handlePhotoClick = (index) => {
@@ -84,14 +84,41 @@ const CatProfile = () => {
             <div className="profile">
                 <section className="profile__wrapper">
                     <div className="profile__wrapper_images">
-                        {photos.map((photo, index) => (
-                            <img
-                                key={index}
-                                src={photo}
-                                alt=""
-                                onClick={() => handlePhotoClick(index)}
-                            />
-                        ))}
+                        {loading ? (
+                            <div>
+                                <Skeleton
+                                    animation="wave"
+                                    variant="rectangular"
+                                    className="skeleton-photo skeleton-main-photo"
+                                />
+                                <div className={'skeleton-flex'}>
+                                    <Skeleton
+                                        animation="wave"
+                                        variant="rectangular"
+                                        className="skeleton-photo skeleton-secondary-photo"
+                                    />
+                                    <Skeleton
+                                        animation="wave"
+                                        variant="rectangular"
+                                        className="skeleton-photo skeleton-secondary-photo"
+                                    />
+                                    <Skeleton
+                                        animation="wave"
+                                        variant="rectangular"
+                                        className="skeleton-photo skeleton-secondary-photo"
+                                    />
+                                </div>
+                            </div>
+                        ) : (
+                            photos.map((photo, index) => (
+                                <img
+                                    key={index}
+                                    src={photo}
+                                    alt=""
+                                    onClick={() => handlePhotoClick(index)}
+                                />
+                            ))
+                        )}
                     </div>
                     <div className="profile__wrapper_info">
                         <h2 className="info__title">Ти можеш
@@ -128,7 +155,7 @@ const CatProfile = () => {
                     </div>
 
                 </section>
-                <Link  to={'/tails'} className='profile__all'>Переглянути усіх</Link>
+                <Link to={'/tails'} className='profile__all'>Переглянути усіх</Link>
             </div>
         </div>
     );
