@@ -12,7 +12,6 @@ import {Skeleton} from "@mui/material";
 
 
 const CatProfile = () => {
-
     const [loading, setLoading] = useState(true);
     const {id} = useParams();
     const [cat, setCat] = useState(null);
@@ -50,10 +49,30 @@ const CatProfile = () => {
                 <section className="profile__wrapper">
                     <div className="profile__wrapper_images">
                         {loading ? (
-                            <>
-                                <Skeleton variant="rectangular" width={630}
-                                height={472} />
-                            </>
+                            <div>
+                                <Skeleton
+                                    animation="wave"
+                                    variant="rectangular"
+                                    className="skeleton-photo skeleton-main-photo"
+                                />
+                                <div className={'skeleton-flex'}>
+                                    <Skeleton
+                                        animation="wave"
+                                        variant="rectangular"
+                                        className="skeleton-photo skeleton-secondary-photo"
+                                    />
+                                    <Skeleton
+                                        animation="wave"
+                                        variant="rectangular"
+                                        className="skeleton-photo skeleton-secondary-photo"
+                                    />
+                                    <Skeleton
+                                        animation="wave"
+                                        variant="rectangular"
+                                        className="skeleton-photo skeleton-secondary-photo"
+                                    />
+                                </div>
+                            </div>
                         ) : (
                             photos.map((photo, index) => (
                                 <img
@@ -91,7 +110,7 @@ const CatProfile = () => {
                     <h2 className='profile__others_title'>Інші пухнастики</h2>
                     <CatsGallery select={true} limit={4}/>
                 </section>
-                <Link  to={'/tails'} className='profile__all'>Переглянути усіх</Link>
+                <Link to={'/tails'} className='profile__all'>Переглянути усіх</Link>
             </div>
         </div>
     );
