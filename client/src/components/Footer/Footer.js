@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Footer.scss";
-import "../Navbar/Navbar.scss";
+import "../Header/Navbar/Navbar.scss";
 
 import logo from "../../assets/footer/logo.svg";
 import email from "../../assets/footer/envelope.svg";
@@ -87,6 +87,7 @@ const Footer = () => {
               className={"footer_link"}
               href={PrivacyPolicyPdf}
               target="_blank"
+              rel="nofollow noreferrer noopener"
             >
               Політика конфіденційності
             </a>
