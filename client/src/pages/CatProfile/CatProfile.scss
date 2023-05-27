@@ -9,7 +9,24 @@
     &_images{
       max-width: 630px;
       max-height: 689px;
+      .skeleton-photo {
+        border-radius: 12px;
+        cursor: pointer;
+      }
 
+      .skeleton-main-photo {
+        width: 630px;
+        height: 472px;
+        margin-bottom: 20px;
+      }
+      .skeleton-flex {
+        @include position-center;
+      }
+      .skeleton-secondary-photo {
+        width: 200px;
+        height: 200px;
+        margin-right: 21px;
+      }
       img{
         object-fit: cover;
         border-radius: 12px;

@@ -1,6 +1,6 @@
 import React from 'react';
 import catBg from "../../assets/main-cat-bg.jpg";
-import '../../global.css'
+import '../../global.scss'
 import './ImageContainer.scss'
 const ImageContainer = () => {
     return (

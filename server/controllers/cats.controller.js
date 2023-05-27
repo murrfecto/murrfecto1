@@ -139,12 +139,12 @@ const sendMessage = (req, res) => {
 
 
 const sendPayment = async (req, res) => {
-    const fondyPassword = 'test';
+    const fondyPassword = 'UMlmJSsXiLLDcVLxAMwhlS69A1GbBEq2';
     const orderBody = {
-        order_id: `pizzastack_first_order_${Date.now()}`,
-        merchant_id: '1396424',
-        order_desc: 'Піца техас x2, Coca-Cola 2л x1',
-        amount: 52500,
+        order_id: `orderId_${Date.now()}`,
+        merchant_id: '1525375',
+        order_desc: 'Допомога котикам',
+        amount: req.body.amount,
         currency: 'UAH',
     };
     const orderedKeys = Object.keys(orderBody).sort((a, b) => {
