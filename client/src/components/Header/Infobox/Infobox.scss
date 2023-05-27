@@ -1,0 +1,73 @@
+@import "../../../styles/_index.scss";
+
+.header_infobox {
+  @include flex-column-na;
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 80px;
+  }
+}
+
+.social_networks {
+  @include position-center-na;
+  gap: 20px;
+
+  img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.socials_contacts {
+  @include position-center-na;
+  gap: 24px;
+
+  p {
+    @include nunito-600-size-16;
+    line-height: 19px;
+    text-align: center;
+  }
+
+  &-item {
+    gap: 8px;
+    @include position-center-na;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// .socials_contacts {
+//   flex-direction: column;
+//   gap: 16px;
+
+//   p {
+//     @include inter-500-size-14;
+//     line-height: 16px;
+//     margin: 0;
+//   }
+
+//   &-phone {
+//     gap: 4px;
+//     margin-bottom: 8px;
+//   }
+
+//   &-email {
+//     gap: 4px;
+//     margin-bottom: 8px;
+//   }
+
+//   &-translation {
+//     gap: 4px;
+//     margin-bottom: 8px;
+//   }
+
+//   img {
+//     width: 20px;
+//     height: 20px;
+//   }
+// }

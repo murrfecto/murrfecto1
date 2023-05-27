@@ -1,0 +1,17 @@
+@import "../../../styles/_index.scss";
+
+.mobile_menu-wrapper {
+  @include position-center-na;
+  justify-content: space-between;
+  padding: 24px 16px;
+
+  @media screen and (min-width: 768px) {
+    padding: 24px 24px;
+  }
+}
+
+.mobile_menu-btn {
+  @include position-center-a;
+  padding: 0px;
+  border: transparent;
+}
