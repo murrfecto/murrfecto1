@@ -11,10 +11,9 @@ import OtherCatsSlider from "../../components/OtherCatsSlider/OtherCatsSlider";
 
 
 const CatProfile = () => {
+    const [loading, setLoading] = useState(true);
     const {id} = useParams();
     const [cat, setCat] = useState(null);
-    const [cats, setCats] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [photos, setPhotos] = useState([]);
     const getData = async () => {
         try {
@@ -29,21 +28,9 @@ const CatProfile = () => {
     };
 
 
-    const getCats = async () => {
-        try {
-            const response = await axios.get('http://localhost:3000/cats');
-            setCats(response.data);
-            setLoading(false);
-        } catch (e) {
-            console.log(e.message);
-            setLoading(false);
-        }
-    };
-
 
     useEffect(() => {
         getData();
-        getCats();
     }, [id]);
 
 
@@ -54,37 +41,13 @@ const CatProfile = () => {
         setPhotos(updatedPhotos);
     };
 
-    const getRandomCats = () => {
-        const catsCopy = cats ? [...cats] : [];
-
-        if (cat && catsCopy) {
-            const catIndex = catsCopy.findIndex((currentCat) => currentCat._id === cat._id);
-            if (catIndex !== -1) {
-                catsCopy.splice(catIndex, 1);
-            }
-        }
-
-        const randomCats = [];
-        while (randomCats.length < 4 && catsCopy.length > 0) {
-            const randomIndex = Math.floor(Math.random() * catsCopy.length);
-            const randomCat = catsCopy.splice(randomIndex, 1)[0];
-            randomCats.push(randomCat);
-        }
-
-        return randomCats;
-    };
-
-    const randomCats = getRandomCats();
-    console.log(randomCats);
-
     return (
         <div>
             <Title text={cat?.name}/>
             <div className="profile">
                 <section className="profile__wrapper">
                     <div className="profile__wrapper_images">
-                        {
-                            photos.map((photo, index) => (
+                        {photos.map((photo, index) => (
                                 <img
                                     key={index}
                                     src={photo}
