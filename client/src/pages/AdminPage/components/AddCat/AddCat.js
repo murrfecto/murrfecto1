@@ -120,6 +120,7 @@ const AddCat = () => {
                     <label>Наявність чіпу</label>
                     <select name="chipped" value={formData.chipped}
                             onChange={handleInputChange} required>
+                        <option disabled value="">Вкажіть наявність чіпу</option>
                         <option value="є">чипований</option>
                         <option value="немає">не чипований</option>
                     </select>

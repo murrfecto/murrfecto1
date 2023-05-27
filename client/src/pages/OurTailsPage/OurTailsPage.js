@@ -7,7 +7,7 @@ export const OurTails = () => {
   return (
     <>
     <Title text="Наші хвости"/>
-    <CatsGallery/>
+    <CatsGallery select={true}/>
     <ScrollToTop/>
     </>    
     );  
