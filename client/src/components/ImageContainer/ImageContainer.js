@@ -1,7 +1,7 @@
 import React from "react";
 import { useMediaQuery } from "@mui/material";
 
-import "../../global.css";
+import "../../global.scss";
 import "./ImageContainer.scss";
 import ModalButton from "../ModalButton/ModalButton";
 
