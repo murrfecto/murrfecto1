@@ -1,14 +1,15 @@
-import React from 'react';
-import catBg from "../../assets/main-cat-bg.jpg";
-import '../../global.css'
-import './ImageContainer.scss'
+import React from "react";
+
+import "../../global.css";
+import "./ImageContainer.scss";
 const ImageContainer = () => {
-    return (
-            <div className={'main_bg'}>
-                <img className={'main_bg-image'} src={catBg} alt="cat-backgroung"/>
-                <h1>Навіщо жити без кота, якщо можна жити з котом</h1>
-            </div>
-    );
+  return (
+    <section className="hero">
+      <div className="main_bg container">
+        <h1>Навіщо жити без кота, якщо можна жити з котом</h1>
+      </div>
+    </section>
+  );
 };
 
 export default ImageContainer;

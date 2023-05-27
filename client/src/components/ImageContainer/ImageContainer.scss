@@ -1,26 +1,20 @@
 @import "../../styles/_index.scss";
-img {
-  width: 100%;
+.hero {
+  background-color: $main-bg-color;
 }
 
 .main_bg {
-  position: relative;
-  img {
-    display: block;
-    margin: auto;
-    object-fit: scale-down;
-    width: 1282px;
-    height: 552px;
-  }
+  @include position-center;
+  padding-top: 28px;
+  width: 1282px;
+  height: 552px;
+  background-image: url("../../assets/main-cat-bg.jpg");
 }
 
 h1 {
   @include nunito-400-size-50;
-  position: absolute;
-  left: calc(50% - 1208px/2 - 1px);
-  line-height: 68px;
+  line-height: 1.36;
   text-align: center;
   color: $color-white;
   height: 68px;
-  top: 28px;
 }
