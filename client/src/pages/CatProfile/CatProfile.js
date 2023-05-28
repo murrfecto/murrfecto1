@@ -11,10 +11,9 @@ import OtherCatsSlider from "../../components/OtherCatsSlider/OtherCatsSlider";
 import {Loading} from "notiflix";
 
 const CatProfile = () => {
+    const [loading, setLoading] = useState(true);
     const {id} = useParams();
     const [cat, setCat] = useState(null);
-    const [cats, setCats] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [photos, setPhotos] = useState([]);
     const targetRef = useRef(null)
     const getData = async () => {
@@ -51,16 +50,14 @@ const CatProfile = () => {
         updatedPhotos.unshift(clickedPhoto[0]);
         setPhotos(updatedPhotos);
     };
-
-
+  
     return (
         <div ref={targetRef}>
             <Title text={cat?.name} />
             <div className="profile">
                 <section className="profile__wrapper">
                     <div className="profile__wrapper_images">
-                        {
-                            photos.map((photo, index) => (
+                        {photos.map((photo, index) => (
                                 <img
                                     key={index}
                                     src={photo}

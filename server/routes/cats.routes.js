@@ -1,14 +1,5 @@
 import express from 'express';
-import {
-    addCat,
-    getCat,
-    getCats,
-    updateCatById,
-    deleteCatById,
-    subscribeToCats,
-    sendMessage,
-    sendPayment,
-} from "../controllers/cats.controller.js";
+import {addCat, getCat, getCats, updateCatById, deleteCatById, subscribeToCats, sendMessage, handleCallBack, sendPayment,} from "../controllers/cats.controller.js";
 import * as path from "path";
 import {fileURLToPath} from 'url';
 import {dirname} from 'path';
@@ -19,14 +10,13 @@ const __dirname = dirname(__filename);
 
 const router = express.Router();
 
-router.post('/cats/subscribe', subscribeToCats)
-router.post('/cats/send-message', sendMessage)
+router.post('/cats/subscribe', subscribeToCats);
+router.post('/cats/send-message', sendMessage);
 router.get('/cats', getCats);
-router.get('/cats/:id', getCat)
+router.get('/cats/:id', getCat);
 router.post('/cats', upload.array('image'), addCat);
-router.post('/payment', sendPayment)
-// todo extract email, order id and send to db
-router.post('/payment/callback', (data) => console.log(data))
+router.post('/payment', sendPayment);
+router.post('/payment/callback', handleCallBack);
 router.delete('/cats/:id', deleteCatById);
 router.put('/cats/:id', updateCatById);
 

@@ -1,104 +1,83 @@
-import "./DonateForm.scss";
-import FormSelect from "../FormSelect/FormSelect";
-import axios from "axios";
-import {useState} from "react";
+import './DonateForm.scss';
+import FormSelect from '../FormSelect/FormSelect';
+import axios from 'axios';
+import { useState } from 'react';
 
-const DonateForm = ({title}) => {
-    const [donationAmount, setDonationAmount] = useState('');
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const orderBody = {
-            amount: donationAmount,
-        };
-        try {
-            const response = await axios.post('http://localhost:3000/payment', orderBody);
-            window.location.replace(response.data.checkoutUrl);
-        } catch (error) {
-            console.error('An error occurred while processing the payment', error);
-        }
-    };
+const DonateForm = ({ title }) => {
+	const [donationAmount, setDonationAmount] = useState('');
 
-    const handleDonationAmountChange = (e) => {
-        setDonationAmount(e.target.value);
-    };
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const orderBody = {
+			amount: donationAmount * 100,
+		};
+		try {
+			const response = await axios.post(
+				'http://localhost:3000/payment',
+				orderBody
+			);
+			window.location.replace(response.data.checkoutUrl);
+		} catch (error) {
+			console.error('An error occurred while processing the payment', error);
+		}
+	};
 
-    return (<div className={"donate-slider_wrap"}>
-        <h3 className={"donate-slider_title"}>{title}</h3>
-        <form className={"donate-form"}>
-            <div className={"donate-form_box"}>
-                <div className={"donate-form_box-count"}>
-                    <input
-                        type="radio"
-                        name="donation_number"
-                        id="twenty"
-                        value="20"
-                        onChange={handleDonationAmountChange}
-                        hidden
-                    />
-                    <label htmlFor="twenty" className={"donate-form_radio-label"}>
-                        <span className={"donate-form_number"}>20</span>
-                    </label>
-                </div>
-                <div className={"donate-form_box-count"}>
-                    <input
-                        type="radio"
-                        name="donation_number"
-                        id="fifty"
-                        value="50"
-                        onChange={handleDonationAmountChange}
-                        hidden
-                    />
-                    <label htmlFor="fifty" className={"donate-form_radio-label"}>
-                        <span className={"donate-form_number"}>50</span>
-                    </label>
-                </div>
-                <div className={"donate-form_box-count"}>
-                    <input
-                        type="radio"
-                        name="donation_number"
-                        id="hundred"
-                        value="100"
-                        onChange={handleDonationAmountChange}
-                        hidden
-                    />
-                    <label htmlFor="hundred" className={"donate-form_radio-label"}>
-                        <span className={"donate-form_number"}>100</span>
-                    </label>
-                </div>
-                <div className={"donate-form_box-count"}>
-                    <input
-                        type="radio"
-                        name="donation_number"
-                        id="two_hundred"
-                        value="200"
-                        onChange={handleDonationAmountChange}
-                        hidden
-                    />
-                    <label htmlFor="two_hundred" className={"donate-form_radio-label"}>
-                        <span className={"donate-form_number"}>200</span>
-                    </label>
-                </div>
-                <div className={"donate-form_input-count"}>
-                    <input
-                        className={"donate-form_input-free"}
-                        type="number"
-                        name="donation_free"
-                        onChange={handleDonationAmountChange}
-                        placeholder="Інша сума, UAH"
-                    />
-                </div>
-            </div>
-            <FormSelect/>
-            <div>
-                <input
-                    className={"donate-form_btn"}
-                    type="button"
-                    value="Допомогти"
-                    onClick={handleSubmit}
-                />
-            </div>
-        </form>
-    </div>);
+	const handleDonationAmountChange = (e) => {
+		setDonationAmount(e.target.value);
+	};
+
+	const handleCustomAmountClick = () => {
+		setDonationAmount('');
+	};
+
+	const donationOptions = ['20', '50', '100', '200'];
+
+	return (
+		<div className='donate-slider_wrap'>
+			<h3 className='donate-slider_title'>{title}</h3>
+			<form className='donate-form' onSubmit={handleSubmit}>
+				<div className='donate-form_box'>
+					{donationOptions.map((option) => (
+						<div className='donate-form_box-count' key={option}>
+							<input
+								type='radio'
+								name='donation_number'
+								id={option}
+								value={option}
+								onChange={handleDonationAmountChange}
+								hidden
+							/>
+							<label
+								htmlFor={option}
+								className={`donate-form_radio-label ${
+									donationAmount === option && 'donate-form_checked'
+								}`}
+							>
+								<span className='donate-form_number'>{option}</span>
+							</label>
+						</div>
+					))}
+					<div className='donate-form_input-count'>
+						<input
+							className='donate-form_input-free'
+							type='number'
+							name='donation_free'
+							value={donationAmount}
+							onChange={handleDonationAmountChange}
+							onClick={handleCustomAmountClick}
+							placeholder='Інша сума, UAH'
+							min='0'
+							step='1'
+						/>
+					</div>
+				</div>
+				<FormSelect />
+				<div>
+					<input className='donate-form_btn' type='submit' value='Допомогти' />
+				</div>
+			</form>
+		</div>
+	);
 };
 
 export default DonateForm;
