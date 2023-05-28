@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,useRef} from 'react';
 import {Link, useParams} from "react-router-dom";
 import axios from "axios";
 import Title from "../../components/Title/Title";
@@ -8,7 +8,7 @@ import paw from '../../assets/paw.svg';
 import calendar from '../../assets/calendar.svg';
 import infoRounded from '../../assets/info-rounded.svg';
 import OtherCatsSlider from "../../components/OtherCatsSlider/OtherCatsSlider";
-
+import {Loading} from "notiflix";
 
 const CatProfile = () => {
     const {id} = useParams();
@@ -16,34 +16,32 @@ const CatProfile = () => {
     const [cats, setCats] = useState(null);
     const [loading, setLoading] = useState(true);
     const [photos, setPhotos] = useState([]);
+    const targetRef = useRef(null)
     const getData = async () => {
         try {
+            Loading.standard({
+                backgroundColor:'rgba(208, 190, 196, 0.8)',
+                svgColor: '#4B3542'
+            })
             const response = await axios.get(`http://localhost:3000/cats/${id}`);
             setCat(response.data);
             setPhotos(response.data.images);
-            setLoading(false);
+            targetRef.current.scrollIntoView({
+                behavior:'smooth',
+                block:'start'
+            })
+            Loading.remove()
         } catch (e) {
             console.log(e.message);
             setLoading(false);
+            Loading.remove()
         }
     };
 
-
-    const getCats = async () => {
-        try {
-            const response = await axios.get('http://localhost:3000/cats');
-            setCats(response.data);
-            setLoading(false);
-        } catch (e) {
-            console.log(e.message);
-            setLoading(false);
-        }
-    };
 
 
     useEffect(() => {
         getData();
-        getCats();
     }, [id]);
 
 
@@ -54,32 +52,10 @@ const CatProfile = () => {
         setPhotos(updatedPhotos);
     };
 
-    const getRandomCats = () => {
-        const catsCopy = cats ? [...cats] : [];
-
-        if (cat && catsCopy) {
-            const catIndex = catsCopy.findIndex((currentCat) => currentCat._id === cat._id);
-            if (catIndex !== -1) {
-                catsCopy.splice(catIndex, 1);
-            }
-        }
-
-        const randomCats = [];
-        while (randomCats.length < 4 && catsCopy.length > 0) {
-            const randomIndex = Math.floor(Math.random() * catsCopy.length);
-            const randomCat = catsCopy.splice(randomIndex, 1)[0];
-            randomCats.push(randomCat);
-        }
-
-        return randomCats;
-    };
-
-    const randomCats = getRandomCats();
-    console.log(randomCats);
 
     return (
-        <div>
-            <Title text={cat?.name}/>
+        <div ref={targetRef}>
+            <Title text={cat?.name} />
             <div className="profile">
                 <section className="profile__wrapper">
                     <div className="profile__wrapper_images">
