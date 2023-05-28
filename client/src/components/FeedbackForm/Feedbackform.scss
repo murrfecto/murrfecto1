@@ -4,6 +4,10 @@
     width: 358px;
     min-height: 484px;
 
+    
+    @media screen and (min-width: 768px) {
+        width: 350px;
+    }
     @media screen and (min-width: 1440px) {
     width: 522px;
     min-height: 474px;
@@ -17,7 +21,7 @@
     color: $color-blue;
     text-align: center;
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 768px) {
         margin-bottom: 10px;
     }
 }
@@ -29,9 +33,12 @@
     color: $color-card-text; 
     text-align: center;
 
+@media screen and (min-width: 768px) {
+    margin-bottom: 12px;
+    @include nunito-400-size-20; 
+}
     @media screen and (min-width: 1440px) {
-        margin-bottom: 20px;
-        @include nunito-400-size-20;  
+        margin-bottom: 20px;   
     }
 }
 
@@ -43,17 +50,19 @@
 .input_wrapper {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 4px;
     margin-bottom: 12px;
 }
 .textarea_wrapper {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 4px;
     margin-bottom: 16px;
 
-    @media  screen and (min-width:1440px) {
-        gap: 4px;
+    @media  screen and (min-width: 768px) {
+        margin-bottom: 20px;   
+    }
+    @media  screen and (min-width: 1440px) {
         margin-bottom: 32px;   
     }
 }
@@ -63,7 +72,7 @@
     line-height: 1.5;
     color: $color-card-text; 
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 768px) {
         @include nunito-400-size-20;   
     }
 }
@@ -117,6 +126,10 @@
     text-transform:uppercase;
     cursor: pointer;
 
+    @media screen and (min-width: 768px) {
+        width: 350px;
+        padding: 10px 103px;
+    }
     @media screen and (min-width: 1440px) {
         width: 365px;
         padding: 10px 106px;

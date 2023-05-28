@@ -16,25 +16,22 @@
     position: absolute;
     width: 390px;
     min-height: 836px;
-    height: 100vh;
-    z-index: 500;
     background-color: $color-btn;
     background-image: url('../../assets/kitten_modal_mobile.png');
     background-repeat: no-repeat;
     background-position: bottom 0px center;
+
    @media screen and (min-width: 768px) {
+    width: 630px;  
+    height: 514px;
+    margin-top: 150px;
+    border-radius: 18px;
     background-image: url('../../assets/kitten_modal_contacts.png');
    }
    @media screen and (min-width: 1440px) {
-    position: absolute;
-    width: 630px;
-    height: 514px;
     margin-top: 170px;
-    border-radius: 18px;
    }    
 }
-
-
 
 .modal_btn_close {
     position: absolute;
@@ -44,6 +41,7 @@
     right: 24px;
     width: 24px;
     height: 24px;
+    @include position-center-a;
     cursor:pointer;
 }
 .modal_icon {
@@ -58,10 +56,12 @@
     @include nunito-600-size-32;
     line-height: 1.4;
     color: $color-white;
-    @media screen and (min-width: 768px) {}
+    @media screen and (min-width: 768px) {
+        margin-top: 90px;
+    @include nunito-700-size-40; 
+    }
     @media screen and (min-width: 1440px) {
-    margin-top: 90px;
-    @include nunito-700-size-40;  
+     
 }
 }
 
@@ -72,9 +72,9 @@
     line-height: 1.5;
     color: $color-white;
     @media screen and (min-width: 768px) {
-        
+        margin-top: 9px; 
     }
     @media screen and (min-width: 1440px) {
-        margin-top: 9px; 
+        
     }
 }
