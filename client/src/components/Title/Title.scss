@@ -6,6 +6,12 @@ max-width: 1440px;
 height: 240px;
 margin: 0 auto;
 background-color: $color-card;
+  @media (max-width: 768px) {
+    height: 148px;
+  }
+  @media (max-width: 400px) {
+    height: 80px;
+  }
 }
 
 .page_title {
@@ -13,4 +19,8 @@ background-color: $color-card;
 @include nunito-700-size-50;
 line-height: 1.36;
 color: $color-blue;
+  @media (max-width: 400px) {
+   @include nunito-600-size-32;
+  }
+
 }

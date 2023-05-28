@@ -14,8 +14,9 @@ const Main = () => {
       <AboutUs />
       <SupportUs />
       <OurCats />
-      <SubscribeForm />
       <Donate />
+        <SubscribeForm />
+
       <ScrollToTop />
     </>
   );
