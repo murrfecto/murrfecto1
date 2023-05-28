@@ -10,7 +10,8 @@ gap: 80px;
 @media screen and (min-width: 1440px) {
     width: 1440px;
     padding: 80px 188px 90px; 
-    @include flex-only;
+    display: flex;
+    flex-direction: row;
     gap: 128px;
 }
 }
