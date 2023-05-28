@@ -1,92 +1,133 @@
-import {MongoClient, ObjectId} from "mongodb";
+import {ObjectId} from "mongodb";
 import {catsModel} from "../model/cats.model.js";
 import sgMail from '@sendgrid/mail';
 import crypto from "crypto";
 import axios from "axios";
+import {connectToDatabase} from "../helpers/connectToDb.js";
+
 
 const addCat = async (req, res) => {
-    console.log(req.body)
-    console.log(req.files)
-    const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
-    const cats = client.db(process.env.DB_NAME).collection('cats');
+    const {client, collection} = await connectToDatabase('cats');
     try {
         const {error} = catsModel.validate(req.body);
+
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
 
         const images = req.files.map((file) => file.location);
-
-        const result = await cats.insertOne({
-            ...req.body, _id: new ObjectId(), images: images,
+        const result = await collection.insertOne({
+            ...req.body,
+            _id: new ObjectId(),
+            images: images,
         });
-
         res.send(result);
     } catch (err) {
         console.error(err);
         res.status(500).send('Error connecting to the database');
     } finally {
-        await client.close();
+        if (client) {
+            await client.close();
+        }
     }
 };
 
 const getCats = async (req, res) => {
+    const {client, collection} = await connectToDatabase('cats');
     try {
-        const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
-        const cats = client.db(process.env.DB_NAME).collection('cats');
-        const result = await cats.find({}).toArray();
+        const result = await collection.find({}).toArray();
         res.send(result);
-        await client.close();
     } catch (err) {
         console.error(err);
-        res.status(500).send('Error connecting to database');
+        res.status(500).send('Error connecting to the database');
+    } finally {
+        if (client) {
+            await client.close();
+        }
     }
 };
 
 const getCat = async (req, res) => {
+    const {client, collection} = await connectToDatabase('cats');
     try {
-        const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
-        const cats = client.db(process.env.DB_NAME).collection('cats');
-        const result = await cats.findOne({_id: new ObjectId(req.params.id)});
+        const result = await collection.findOne({_id: new ObjectId(req.params.id)});
         res.send(result);
-        await client.close();
     } catch (err) {
         console.error(err);
-        res.status(500).send('Error connecting to database');
+        res.status(500).send('Error connecting to the database');
+    } finally {
+        if (client) {
+            await client.close();
+        }
     }
 };
 
+
 const deleteCatById = async (req, res) => {
-    const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
-    const db = client.db(process.env.DB_NAME);
     const collectionName = 'cats';
     const id = req.params.id;
-
+    const {client, collection} = await connectToDatabase(collectionName);
     try {
-        const result = await db.collection(collectionName).deleteOne({_id: new ObjectId(id)});
+        const result = await collection.deleteOne({_id: new ObjectId(id)});
         res.send(result);
     } catch (err) {
         console.error(err);
         res.status(500).send('Error deleting document');
+    } finally {
+        if (client) {
+            await client.close();
+        }
     }
-    await client.close();
 };
 
 const updateCatById = async (req, res) => {
-    const client = await MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true});
-    const db = client.db(process.env.DB_NAME);
     const collectionName = 'cats';
+    const {client, collection} = await connectToDatabase(collectionName);
     const id = req.params.id;
     const newCat = req.body;
+
     try {
-        const result = await db.collection(collectionName).updateOne({_id: new ObjectId(id)}, {$set: newCat});
+        const result = await collection.updateOne({_id: new ObjectId(id)}, {$set: newCat});
         res.send(result);
     } catch (err) {
         console.error(err);
         res.status(500).send('Error updating document');
+    } finally {
+        if (client) {
+            await client.close();
+        }
     }
-    await client.close();
 };
+
+const handleCallBack = async (req, res) => {
+    const collectionName = 'donations';
+    const {client, collection} = await connectToDatabase(collectionName);
+    const senderEmail = req.body.sender_email;
+    const currency = req.body.currency;
+    const orderId = req.body.order_id;
+    const rawAmount = parseFloat(req.body.amount) / 100;
+    const amount = new Intl.NumberFormat('en', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    }).format(rawAmount).replace('.', ',')
+
+    const donationStatus = req.body.order_status;
+
+    if (donationStatus === 'approved') {
+        try {
+            const result = await collection.insertOne({senderEmail, orderId, amount, currency});
+            res.send(result);
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Error connecting to the database');
+        } finally {
+            if (client) {
+                await client.close();
+            }
+        }
+    }
+};
+
 
 const subscribeToCats = (req, res) => {
     const {email} = req.body;
@@ -140,8 +181,16 @@ const sendMessage = (req, res) => {
 
 const sendPayment = async (req, res) => {
     const fondyPassword = 'UMlmJSsXiLLDcVLxAMwhlS69A1GbBEq2';
+    const orderId = `order-${new Date().toLocaleString('en-GB', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    }).replace(/\//g, '.').replace(', ', ':')}`;
+
     const orderBody = {
-        order_id: `orderId_${Date.now()}`,
+        order_id: orderId,
         merchant_id: '1525375',
         order_desc: 'Допомога котикам',
         amount: req.body.amount,
@@ -178,5 +227,5 @@ const sendPayment = async (req, res) => {
 
 
 export {
-    addCat, getCat, getCats, updateCatById, deleteCatById, subscribeToCats, sendMessage, sendPayment
+    addCat, getCat, getCats, updateCatById, deleteCatById, subscribeToCats, sendMessage, sendPayment, handleCallBack
 }

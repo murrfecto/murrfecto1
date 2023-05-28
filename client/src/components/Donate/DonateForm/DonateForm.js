@@ -9,7 +9,7 @@ const DonateForm = ({ title }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const orderBody = {
-			amount: donationAmount,
+			amount: donationAmount * 100,
 		};
 		try {
 			const response = await axios.post(
