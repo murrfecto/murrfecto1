@@ -51,8 +51,8 @@ const MobileMenu = () => {
       </div>
 
       {menu && (
-        <div className="mobile_navbar">
-          <nav className={"mobile_nav container"} onClick={toggleModal}>
+        <div className="mobile_navbar container">
+          <nav className={"mobile_nav "} onClick={toggleModal}>
             <ul className={"mobile_nav-list"}>
               <li>
                 {" "}
@@ -65,9 +65,8 @@ const MobileMenu = () => {
                 <Link to={"/contacts"}>Контакти</Link>
               </li>
             </ul>
-
-            <Infobox />
           </nav>
+          <Infobox />
         </div>
       )}
     </>

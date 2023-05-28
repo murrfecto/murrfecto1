@@ -8,10 +8,29 @@
   @media screen and (min-width: 768px) {
     padding: 24px 24px;
   }
+
+  &.container {
+    border-bottom: 1px solid $color-border;
+    @media screen and (min-width: 768px) {
+      border-bottom: none;
+    }
+  }
 }
 
 .mobile_menu-btn {
   @include position-center-a;
   padding: 0px;
   border: transparent;
+}
+
+.mobile_navbar {
+  min-height: 410px;
+  @include flex-column-na;
+  gap: 40px;
+  padding: 59px 0px 60px 110px;
+}
+
+.mobile_nav-list {
+  @include flex-column-na;
+  gap: 24px;
 }

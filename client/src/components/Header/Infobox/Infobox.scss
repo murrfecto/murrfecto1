@@ -2,6 +2,7 @@
 
 .header_infobox {
   @include flex-column-na;
+  gap: 24px;
 
   @media screen and (min-width: 1440px) {
     flex-direction: row;
@@ -21,8 +22,12 @@
 }
 
 .socials_contacts {
-  @include position-center-na;
+  @include flex-column-na;
   gap: 24px;
+
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+  }
 
   p {
     @include nunito-600-size-16;
