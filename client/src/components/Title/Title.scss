@@ -1,26 +1,31 @@
 @import "../../styles/_index.scss";
 
 .title_container {
+    height: 80px;
+    width:100%;
 @include position-center-a;
-max-width: 1440px;
-height: 240px;
 margin: 0 auto;
 background-color: $color-card;
-  @media (max-width: 768px) {
+
+@media screen and (min-width: 768px) {
     height: 148px;
+    width: 720px;
   }
-  @media (max-width: 400px) {
-    height: 80px;
+
+@media screen and (min-width: 1440px) {
+  width: 1440px;
+  height: 240px;
+
   }
 }
 
 .page_title {
 @include position-center-a;
-@include nunito-700-size-50;
-line-height: 1.36;
+@include nunito-600-size-32;
+line-height: 1.4;
 color: $color-blue;
-  @media (max-width: 400px) {
-   @include nunito-600-size-32;
-  }
 
+@media screen and (min-width: 768px) {
+    @include nunito-700-size-50;
+  }
 }

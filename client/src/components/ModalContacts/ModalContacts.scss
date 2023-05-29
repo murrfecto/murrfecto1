@@ -4,8 +4,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   background: rgba(208, 190, 196, 0.5);
@@ -14,14 +14,24 @@
 
 .modal_container {
     position: absolute;
-    width: 630px;
-    height: 514px;
-    margin-top: 0;
-    border-radius: 18px;
+    width: 390px;
+    min-height: 836px;
+    z-index: 10;
     background-color: $color-btn;
-    background-image: url('../../assets/kitten_modal_contacts.png');
+    background-image: url('../../assets/kitten_modal_mobile.png');
     background-repeat: no-repeat;
     background-position: bottom 0px center;
+
+   @media screen and (min-width: 768px) {
+    width: 630px;  
+    min-height: 514px;
+    margin-top: 150px;
+    border-radius: 18px;
+    background-image: url('../../assets/kitten_modal_contacts.png');
+   }
+   @media screen and (min-width: 1440px) {
+    margin-top: 170px;
+   }    
 }
 
 .modal_btn_close {
@@ -32,6 +42,7 @@
     right: 24px;
     width: 24px;
     height: 24px;
+    @include position-center-a;
     cursor:pointer;
 }
 .modal_icon {
@@ -41,17 +52,30 @@
 
 
 .modal_title {
-    margin-top: 90px;
+    margin-top: 96px;
     text-align: center;
-    @include nunito-700-size-40;
+    @include nunito-600-size-32;
     line-height: 1.4;
     color: $color-white;
+    @media screen and (min-width: 768px) {
+        margin-top: 90px;
+    @include nunito-700-size-40; 
+    }
+    @media screen and (min-width: 1440px) {
+     
+}
 }
 
 .modal_text {
-    margin-top: 9px;
+    margin-top:32px;
     text-align: center;
     @include nunito-400-size-20;
     line-height: 1.5;
     color: $color-white;
+    @media screen and (min-width: 768px) {
+        margin-top: 9px; 
+    }
+    @media screen and (min-width: 1440px) {
+        
+    }
 }

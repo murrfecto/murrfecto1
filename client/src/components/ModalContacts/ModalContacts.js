@@ -1,9 +1,11 @@
 import React from "react";
+import { createPortal } from "react-dom";
 import closeBtn from "../../assets/modal-close.svg";
 import "./ModalContacts.scss";
 
 const ModalContacts = ({ toggleModal }) => {
-  return (
+  const modalRoot = document.getElementById("modal");
+  return createPortal (
     <div className="modal_backdrop">
       <div className="modal_container">
         <button type ="button" className="modal_btn_close" onClick={() => toggleModal()}>
@@ -14,7 +16,8 @@ const ModalContacts = ({ toggleModal }) => {
           Ваша допомога дуже важлива для наших хвостиків.
         </p>
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 };
 

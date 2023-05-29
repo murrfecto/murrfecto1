@@ -22,12 +22,11 @@ const FeedbackForm = () => {
         }
         resetForm();
         setModalOpen(true);
-        console.log(values);
     };
 
     return (
         <div className="feedback_wrapper">
-            <h3 className="feedback_title">Зворотній зв’язок</h3>
+            <h3 className="feedback_title">Зворотний зв’язок</h3>
             <p className="feedback_text">
                 Якщо у Вас є запитання або пропозиції, напишіть нам
             </p>

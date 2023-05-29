@@ -1,83 +1,140 @@
 @import "../../styles/_index.scss";
 
 .contacts_container {
+  width: 390px;
+  margin: 0 auto;
+  padding: 32px 16px 80px;
+  @include flex-column-a;
+  gap: 80px;
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 40px 24px 80px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  @media screen and (min-width: 1440px) {
     width: 1440px;
-    margin: 0 auto;
     padding: 80px 188px 90px;
-    @include flex-only;
     gap: 128px;
+  }
 }
 
 .contacts_wrapper {
-    width: 414px;
+  @include flex-column-a;
+  gap: 16px;
+  width: 358px;
+
+  @media screen and (min-width: 768px) {
+    width: 350px;
     @include flex-column-na;
+    gap: 24px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 414px;
     gap: 20px;
+  }
 }
 
 .contacts_info {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    min-height: 168px;
-    border: 0.5px solid $color-btn;
-    border-radius: 8px;
-    padding-top: 24px;
-    padding-left: 40px;
+  @include flex-column-na;
+  gap: 20px;
+  width: 100%;
+  min-height: 168px;
+  border: 0.5px solid $color-btn;
+  border-radius: 8px;
+  padding-top: 24px;
+  padding-left: 28px;
+  padding-bottom: 23px;
+  &_link {
+    @include position-center-na;
+    justify-content: flex-start;
+    gap: 8px;
+    @include nunito-400-size-18;
+    line-height: 1.5;
+    color: $color-blue;
+  }
+  &_icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-left: 12px;
+    padding-bottom: 18px;
     &_link {
-        @include position-center-na;
-        justify-content: flex-start;
-        gap: 8px;
-        @include nunito-400-size-20;
-        line-height: 1.5;
-        color: $color-blue;   
+      @include nunito-400-size-20;
     }
-    &_icon {
-        width: 24px;
-        height: 24px;
-    }
+  }
+  @media screen and (min-width: 1440px) {
+    padding-left: 40px;
+    padding-bottom: 20px;
+  }
 }
 
 .contacts_social {
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
-    &_icon {
-        width: 32px;
-        height: 32px;
-    }
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  &_icon {
+    width: 32px;
+    height: 32px;
+  }
 }
 
 .contacts_np {
-    width: 100%;
-    min-height: 149px;
-    border: 0.5px solid $color-btn;
-    border-radius: 8px;  
+  width: 100%;
+  min-height: 149px;
+  border: 0.5px solid $color-btn;
+  border-radius: 8px;
+  padding-top: 23px;
+  padding-left: 28px;
+  padding-bottom: 24px;
+  &_title {
+    margin-bottom: 16px;
+    @include nunito-600-size-18;
+    line-height: 1.5;
+    color: $color-blue;
+  }
+  &_text {
+    @include nunito-400-size-18;
+    line-height: 1.5;
+    color: $color-card-text;
+  }
+
+  @media screen and (min-width: 768px) {
     padding-top: 24px;
-    padding-left: 40px;
+    padding-left: 12px;
     &_title {
-        margin-bottom: 12px;
-        @include nunito-600-size-20;
-        line-height: 1.5;
-        color: $color-blue;
+      margin-bottom: 12px;
+      @include nunito-600-size-20;
     }
     &_text {
-        @include nunito-400-size-20;
-        line-height: 1.5;
-        color: $color-card-text;
+      @include nunito-400-size-20;
     }
+  }
+  @media screen and (min-width: 1440px) {
+    padding-left: 40px;
+  }
 }
 
 .contacts_registration {
-    width: 100%;
-    min-height: 117px;
-    border: 0.5px solid $color-btn;
-    border-radius: 8px;
-    padding-top: 24px;
-    padding-left: 28px;
+  width: 100%;
+  min-height: 117px;
+  border: 0.5px solid $color-btn;
+  border-radius: 8px;
+  padding-top: 24px;
+  padding-left: 28px;
+  &_title {
+    @include nunito-600-size-18;
+    line-height: 1.5;
+    color: $color-blue;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 12px;
     &_title {
-        @include nunito-600-size-20;
-        line-height: 1.5;
-        color: $color-blue;   
+      @include nunito-600-size-20;
     }
+  }
 }
