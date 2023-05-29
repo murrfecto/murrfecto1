@@ -13,13 +13,13 @@ const FeedbackForm = () => {
     const onSubmit = async (values, {resetForm}) => {
 
         await new Promise((resolve) => setTimeout(resolve, 500));
-        // try {
-        //     await axios.post('http://localhost:3000/cats/send-message', values);
-        //     resetForm();
-        //     console.log('Message sent successfully');
-        // } catch (error) {
-        //     console.error('Error sending message:', error);
-        // }
+        try {
+            await axios.post('http://localhost:3000/cats/send-message', values);
+            resetForm();
+            console.log('Message sent successfully');
+        } catch (error) {
+            console.error('Error sending message:', error);
+        }
         resetForm();
         setModalOpen(true);
     };
