@@ -25,8 +25,8 @@ const MobileMenu = () => {
   };
 
   return (
-    <>
-      <div className="mobile_menu-wrapper container">
+    <div className="mobile_menu container">
+      <div className="mobile_menu-wrapper">
         <Link to="/">
           <img src={logo} alt="murfecto logo" width={width} height={height} />
         </Link>
@@ -51,7 +51,7 @@ const MobileMenu = () => {
       </div>
 
       {menu && (
-        <div className="mobile_navbar container">
+        <div className="mobile_navbar">
           <nav className={"mobile_nav "} onClick={toggleModal}>
             <ul className={"mobile_nav-list"}>
               <li>
@@ -69,7 +69,7 @@ const MobileMenu = () => {
           <Infobox />
         </div>
       )}
-    </>
+    </div>
   );
 };
 
