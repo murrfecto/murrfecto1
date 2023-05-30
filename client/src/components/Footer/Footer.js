@@ -129,7 +129,7 @@ const Footer = () => {
           </ul>
         </div>
         <p className="footer_copyrights">
-          Розробка BazaTraineeUkraine 2023 &#169; Всі права захищені.{" "}
+          Розробка BazaTraineeUkraine 2023 &#169; <br/> Всі права захищені.{" "}
         </p>
       </div>
     </footer>

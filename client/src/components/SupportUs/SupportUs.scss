@@ -4,8 +4,12 @@
   h2 {
     @include nunito-700-size-40;
     @include position-center;
-    line-height: 55px;
     color: $color-blue;
+    @media screen and (max-width: 720px){
+      @include nunito-600-size-32;
+      line-height: 44px;
+      text-align: center;
+    }
   }
   &-container {
     @include position-center;
@@ -13,5 +17,9 @@
     padding-top: 60px;
     padding-left: 80px;
     padding-right: 80px;
+    @media screen and (max-width: 768px) {
+      padding-bottom: 0;
+    @include flex-column-a;
+    }
   }
 }

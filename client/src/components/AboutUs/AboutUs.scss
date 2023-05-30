@@ -4,11 +4,17 @@
   @include position-center;
   padding: 120px 80px;
   gap: 106px;
+  @media screen and (max-width: 720px){
+    padding: 80px 16px 83px 17px;
+  }
 }
 
 .about_collage {
   width: 652px;
   height: 656px;
+  @media screen and (max-width: 720px){
+    display: none;
+  }
 }
 
 .about_info {
@@ -27,6 +33,7 @@
   }
 
   &-icon {
+
     width: 32px;
     height: 32px;
   }
@@ -41,6 +48,10 @@
     display: flex;
     justify-content: center;
     padding-bottom: 40px;
-    color: $color-blue;
+    color: $color-card-text;
+    @media screen and (max-width: 720px){
+      padding-bottom: 0;
+      font-size: 18px;
+    }
   }
 }

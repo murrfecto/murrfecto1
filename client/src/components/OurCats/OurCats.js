@@ -1,18 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import "./OurCats.scss";
-import CatsGallery from "../CatsGallery/CatsGallery";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import OtherCatsSlider from "../OtherCatsSlider/OtherCatsSlider";
 
 const OurCats = () => {
-  return (
-    <article id="our_cats">
-      <h2>Наші хвости</h2>
-      <CatsGallery limit={4} displayIcon={false} select/>
-      <Link to="/tails" className={"cats_cards-link"}>
-        Переглянути усіх
-      </Link>
-    </article>
-  );
+    return (
+        <article id="our_cats">
+            <h2>Наші хвости</h2>
+            <div className={'cats_cards-other'}>
+                <OtherCatsSlider/>
+            </div>
+            <Link to="/tails" className={"cats_cards-link"}>
+                Переглянути усіх
+            </Link>
+        </article>
+    );
 };
 
 export default OurCats;
