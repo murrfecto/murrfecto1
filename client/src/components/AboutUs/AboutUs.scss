@@ -4,6 +4,12 @@
   @include position-center;
   padding: 120px 80px;
   gap: 106px;
+
+  @media screen and (max-width: 1250px){
+    flex-direction: column-reverse ;
+    align-items: center;
+  }
+
   @media screen and (max-width: 720px){
     padding: 80px 16px 83px 17px;
   }
@@ -12,7 +18,7 @@
 .about_collage {
   width: 652px;
   height: 656px;
-  @media screen and (max-width: 720px){
+  @media screen and (max-width: 780px){
     display: none;
   }
 }
