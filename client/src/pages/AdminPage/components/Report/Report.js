@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './Report.scss';
 import { Alert } from '@mui/material';
+import Spinner from '../../../../helpers/Spinner/Spinner';
 
 const _ENDPOINT = 'http://localhost:3000/report';
 const reportUrl = 'https://murrfecto.s3.eu-central-1.amazonaws.com/report.pdf';
-
 const Report = () => {
 	const [file, setFile] = useState(null);
 	const [formStatus, setFormStatus] = useState(null);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const openReportHandler = () => {
 		window.open(reportUrl, '_blank');
@@ -16,7 +17,7 @@ const Report = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
+		setIsLoading(true);
 		try {
 			const data = new FormData();
 			data.append('filename', 'report.pdf');
@@ -32,6 +33,8 @@ const Report = () => {
 				description: 'Під час завантаження звіту сталася помилка.',
 			});
 			console.error(err);
+		} finally {
+			setIsLoading(false);
 		}
 	};
 
@@ -85,6 +88,7 @@ const Report = () => {
 								'Оберіть файл звіту'
 							)}
 						</label>
+
 						<input
 							type='file'
 							id='fileInput'
@@ -96,12 +100,18 @@ const Report = () => {
 						/>
 					</div>
 					{file && <button type='submit'>Завантажити або оновити звіт</button>}
-					<button type='button' onClick={deleteReportHandler}>
-						Видалити звіт
-					</button>
-					<button type='button' onClick={openReportHandler}>
-						Відкрити звіт
-					</button>
+					{isLoading ? (
+						<Spinner />
+					) : (
+						<>
+							<button type='button' onClick={deleteReportHandler}>
+								Видалити звіт
+							</button>
+							<button type='button' onClick={openReportHandler}>
+								Відкрити звіт
+							</button>
+						</>
+					)}
 				</div>
 			</form>
 		</div>
