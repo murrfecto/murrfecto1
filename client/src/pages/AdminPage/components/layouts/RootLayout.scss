@@ -1,0 +1,12 @@
+.rootLayout {
+  display: flex;
+  gap: 5px;
+  &__children{
+    max-width: 96rem;
+    flex: 1;
+    margin: auto;
+    padding-top: 4px;
+    position: relative;
+    z-index: 1;
+  }
+}
