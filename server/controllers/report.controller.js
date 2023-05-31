@@ -1,32 +1,8 @@
+import { DeleteObjectCommand } from '@aws-sdk/client-s3';
 import { ObjectId } from 'mongodb';
 import { connectToDatabase } from '../helpers/connectToDb.js';
 import { fileUploadModel } from '../model/report.model.js';
-
-const addReport3 = async (req, res) => {
-	const { client, collection } = await connectToDatabase('reports');
-	try {
-		const { error } = fileUploadModel.validate(req.body);
-
-		if (error) {
-			return res.status(400).send(error.details[0].message);
-		}
-
-		const images = req.files.map((file) => file.location);
-		const result = await collection.insertOne({
-			...req.body,
-			_id: new ObjectId(),
-			images: images,
-		});
-		res.send(result);
-	} catch (err) {
-		console.error(err);
-		res.status(500).send('Error connecting to the database');
-	} finally {
-		if (client) {
-			await client.close();
-		}
-	}
-};
+import { s3 } from '../routes/multer.config.js';
 
 const addReport = async (req, res) => {
 	const { client, collection } = await connectToDatabase('reports');
@@ -40,7 +16,7 @@ const addReport = async (req, res) => {
 			originalname,
 			location,
 		});
-
+		console.log(req.body);
 		console.log(value);
 		if (error) {
 			return res.status(400).send(error.details[0].message);
@@ -60,30 +36,6 @@ const addReport = async (req, res) => {
 			await client.close();
 		}
 	}
-	//
-
-	/*
-	try {
-		if (error) {
-			return res.status(400).send(error.details[0].message);
-		}
-
-		const images = req.files.map((file) => file.location);
-		const result = await collection.insertOne({
-			...req.body,
-			_id: new ObjectId(),
-			file: req.files,
-		});
-		console.log(req.params);
-		res.send(result);
-	} catch (err) {
-		console.error(err);
-		res.status(500).send('Error connecting to the database');
-	} finally {
-		if (client) {
-			await client.close();
-		}
-	}*/
 };
 
 const getCat = async (req, res) => {
@@ -118,43 +70,23 @@ const getReports = async (req, res) => {
 	}
 };
 
-const updateCatById = async (req, res) => {
-	const collectionName = 'cats';
-	const { client, collection } = await connectToDatabase(collectionName);
-	const id = req.params.id;
-	const newCat = req.body;
+const deleteReport = async (req, res) => {
+	const deleteParams = {
+		Bucket: 'murrfecto',
+		Key: req.headers['filename'], //req.body.filename,
+	};
 
-	try {
-		const result = await collection.updateOne(
-			{ _id: new ObjectId(id) },
-			{ $set: newCat }
-		);
-		res.send(result);
-	} catch (err) {
-		console.error(err);
-		res.status(500).send('Error updating document');
-	} finally {
-		if (client) {
-			await client.close();
-		}
-	}
+	const deleteCommand = new DeleteObjectCommand(deleteParams);
+
+	s3.send(deleteCommand)
+		.then(() => {
+			console.log('File deleted from AWS S3');
+			res.sendStatus(204);
+		})
+		.catch((error) => {
+			console.error('Error deleting file from AWS S3:', error);
+			res.status(500).json({ error: 'Failed to delete the file.' });
+		});
 };
 
-const deleteCatById = async (req, res) => {
-	const collectionName = 'cats';
-	const id = req.params.id;
-	const { client, collection } = await connectToDatabase(collectionName);
-	try {
-		const result = await collection.deleteOne({ _id: new ObjectId(id) });
-		res.send(result);
-	} catch (err) {
-		console.error(err);
-		res.status(500).send('Error deleting document');
-	} finally {
-		if (client) {
-			await client.close();
-		}
-	}
-};
-
-export { addReport, getReports };
+export { addReport, getReports, deleteReport };

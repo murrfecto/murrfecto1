@@ -3,6 +3,7 @@ import { S3Client } from '@aws-sdk/client-s3';
 import multerS3 from 'multer-s3';
 import { v4 } from 'uuid';
 import * as dotenv from 'dotenv';
+
 dotenv.config();
 
 const s3 = new S3Client({
@@ -20,10 +21,9 @@ const upload = multer({
 		metadata: function (req, file, cb) {
 			cb(null, { fieldName: file.fieldname });
 		},
-		key: function (req, file, cb) {
-			cb(null, v4());
-		},
+		key: (req, file, cb) =>
+			req.body.filename ? cb(null, req.body.filename) : cb(null, v4()),
 	}),
 });
 
-export { upload };
+export { upload, s3 };
