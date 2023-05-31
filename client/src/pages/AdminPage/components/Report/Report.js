@@ -48,6 +48,7 @@ const Report = () => {
 		const confirmed = window.confirm('Ви дійсно хочете видалити звіт?');
 
 		if (confirmed) {
+			setIsLoading(true);
 			try {
 				const config = { headers: { filename: 'report.pdf' } };
 				await axios.delete(_ENDPOINT, config);
@@ -59,6 +60,8 @@ const Report = () => {
 					description: 'Під час видалення звіту сталася помилка.',
 				});
 				console.error(err);
+			} finally {
+				setIsLoading(false);
 			}
 		}
 	};
