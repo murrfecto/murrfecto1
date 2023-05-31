@@ -15,6 +15,11 @@
     &_images {
       width: 636px;
       height: 689px;
+
+      img {
+        -webkit-user-drag: none;
+      }
+
       @media (max-width: 1000px) {
         margin: 0  auto;
 
