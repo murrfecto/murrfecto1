@@ -4,25 +4,26 @@ import './Report.scss';
 import { Alert } from '@mui/material';
 
 const _ENDPOINT = 'http://localhost:3000/report';
+const reportUrl = 'https://murrfecto.s3.eu-central-1.amazonaws.com/report.pdf';
+
 const Report = () => {
 	const [file, setFile] = useState(null);
 	const [formStatus, setFormStatus] = useState(null);
-
-	const reportUrl =
-		'https://murrfecto.s3.eu-central-1.amazonaws.com/report.pdf';
 
 	const openReportHandler = () => {
 		window.open(reportUrl, '_blank');
 	};
 
 	const handleSubmit = async (e) => {
-		const data = new FormData();
-		data.append('filename', 'report.pdf');
-		data.append('report', file, 'report');
 		e.preventDefault();
-		console.log(data);
+
 		try {
+			const data = new FormData();
+			data.append('filename', 'report.pdf');
+			data.append('report', file);
+
 			await axios.post(_ENDPOINT, data);
+
 			setFormStatus({ status: 'success', description: 'Звіт додано!' });
 			setFile(null);
 		} catch (err) {
@@ -36,7 +37,6 @@ const Report = () => {
 
 	const handleFileUpload = (e) => {
 		setFormStatus(null);
-		console.log(e);
 		const selectedFile = e.target.files[0];
 		setFile(selectedFile);
 	};
@@ -46,12 +46,9 @@ const Report = () => {
 
 		if (confirmed) {
 			try {
-				const config = {
-					headers: {
-						filename: 'report.pdf',
-					},
-				};
+				const config = { headers: { filename: 'report.pdf' } };
 				await axios.delete(_ENDPOINT, config);
+
 				setFormStatus({ status: 'success', description: 'Звіт видалено!' });
 			} catch (err) {
 				setFormStatus({
@@ -79,9 +76,9 @@ const Report = () => {
 					<label>Звіт</label>
 					<div>
 						<label className='input__file' htmlFor='fileInput'>
-							{file !== null ? (
+							{file ? (
 								<div className='input__file_selected'>
-									<span className='selected-file-label'>Вибраний звіт:</span>
+									<span className='selected-file-label'>Обраний звіт:</span>
 									<span className='selected-file-name'>{file.name}</span>
 								</div>
 							) : (
@@ -98,7 +95,6 @@ const Report = () => {
 							className='input__file_none'
 						/>
 					</div>
-
 					{file && <button type='submit'>Завантажити або оновити звіт</button>}
 					<button type='button' onClick={deleteReportHandler}>
 						Видалити звіт
