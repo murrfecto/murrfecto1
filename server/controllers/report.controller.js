@@ -16,8 +16,7 @@ const addReport = async (req, res) => {
 			originalname,
 			location,
 		});
-		console.log(req.body);
-		console.log(value);
+
 		if (error) {
 			return res.status(400).send(error.details[0].message);
 		}
@@ -27,24 +26,7 @@ const addReport = async (req, res) => {
 			}
 			res.send('File uploaded and saved successfully.');
 		});*/
-		res.send(result);
-	} catch (err) {
-		console.error(err);
-		res.status(500).send('Error connecting to the database');
-	} finally {
-		if (client) {
-			await client.close();
-		}
-	}
-};
-
-const getCat = async (req, res) => {
-	const { client, collection } = await connectToDatabase('reports');
-	try {
-		const result = await collection.findOne({
-			_id: new ObjectId(req.params.id),
-		});
-		res.send(result);
+		res.status(200).send(result);
 	} catch (err) {
 		console.error(err);
 		res.status(500).send('Error connecting to the database');

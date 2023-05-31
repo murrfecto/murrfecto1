@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './Report.scss';
 import { Alert } from '@mui/material';
 
 const _ENDPOINT = 'http://localhost:3000/report';
 const Report = () => {
-	// use form values to send data on post
-
 	const [file, setFile] = useState(null);
-	const [formStatus, setFormStatus] = useState('');
+	const [formStatus, setFormStatus] = useState(null);
 
 	const reportUrl =
 		'https://murrfecto.s3.eu-central-1.amazonaws.com/report.pdf';
+
+	const openReportHandler = () => {
+		window.open(reportUrl, '_blank');
+	};
 
 	const handleSubmit = async (e) => {
 		const data = new FormData();
@@ -33,6 +35,7 @@ const Report = () => {
 	};
 
 	const handleFileUpload = (e) => {
+		setFormStatus(null);
 		console.log(e);
 		const selectedFile = e.target.files[0];
 		setFile(selectedFile);
@@ -49,9 +52,12 @@ const Report = () => {
 					},
 				};
 				await axios.delete(_ENDPOINT, config);
-				setFormStatus('success');
+				setFormStatus({ status: 'success', description: 'Звіт видалено!' });
 			} catch (err) {
-				setFormStatus('error');
+				setFormStatus({
+					status: 'error',
+					description: 'Під час видалення звіту сталася помилка.',
+				});
 				console.error(err);
 			}
 		}
@@ -59,15 +65,12 @@ const Report = () => {
 
 	return (
 		<div>
-			<a href={reportUrl}>Завантажити звіт</a>
-			{formStatus === 'success' && (
-				<Alert className={'alert-success'} severity='success'>
-					Звіт додано!
-				</Alert>
-			)}
-			{formStatus === 'error' && (
-				<Alert className={'alert-error'} severity='error'>
-					Під час завантаження звіту сталася помилка.
+			{formStatus && (
+				<Alert
+					className={`alert-${formStatus.status}`}
+					severity={formStatus.status}
+				>
+					{formStatus.description}
 				</Alert>
 			)}
 			<form onSubmit={handleSubmit} className='formAdding'>
@@ -96,9 +99,12 @@ const Report = () => {
 						/>
 					</div>
 
-					<button type='submit'>Завантажити або оновити звіт</button>
+					{file && <button type='submit'>Завантажити або оновити звіт</button>}
 					<button type='button' onClick={deleteReportHandler}>
 						Видалити звіт
+					</button>
+					<button type='button' onClick={openReportHandler}>
+						Відкрити звіт
 					</button>
 				</div>
 			</form>
