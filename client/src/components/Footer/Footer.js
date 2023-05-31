@@ -93,8 +93,9 @@ const Footer = () => {
                         </a>
                         <a
                             className={"footer_link"}
-                            href={PrivacyPolicyPdf}
+                            href={PrivacyPolicyPdf + "#toolbar=0"}
                             target="_blank"
+                            aria-readonly
                             rel="nofollow noreferrer noopener"
                         >
                             Політика конфіденційності
@@ -129,7 +130,7 @@ const Footer = () => {
                     </ul>
                 </div>
                 <p className="footer_copyrights">
-                    Розробка BazaTraineeUkraine 2023 &#169; <br/> Всі права захищені.{" "}
+                    Розробка BazaTraineeUkraine 2023 &#169; Всі права захищені.{" "}
                 </p>
             </div>
         </footer>
