@@ -128,6 +128,10 @@
   font-style: normal;
   line-height: 1.38;
   text-decoration: underline;
+  &:hover {
+    color: $color-card;
+    border-bottom-color: $color-card;
+  }
 }
 
 .info_link {

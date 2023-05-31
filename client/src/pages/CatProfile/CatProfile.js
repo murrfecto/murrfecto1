@@ -40,9 +40,8 @@ const CatProfile = () => {
 
 
     useEffect(() => {
-        getData();
+        getData()
     }, [id]);
-
 
     const handlePhotoClick = (index) => {
         const updatedPhotos = [...photos];
@@ -50,7 +49,7 @@ const CatProfile = () => {
         updatedPhotos.unshift(clickedPhoto[0]);
         setPhotos(updatedPhotos);
     };
-  
+
     return (
         <div ref={targetRef}>
             <Title text={cat?.name} />

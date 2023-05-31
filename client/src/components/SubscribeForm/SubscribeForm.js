@@ -51,6 +51,8 @@ const SubscribeForm = () => {
             <form id={'data-form'} method={'POST'} onSubmit={sendEmailHandler} className={'subscribe_form-form'}>
                 <label htmlFor="subscribe" className={'subscribe_form-label'}>
                     <input
+                        disabled={error && null}
+                        maxLength={40}
                         name={'subscribe'}
                         placeholder={'Ваш email'}
                         className={'subscribe_form-input'}

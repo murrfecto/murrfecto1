@@ -8,6 +8,9 @@
   border-radius: 20px;
   width: 305px;
   height: 424px;
+  @media screen and (max-width: 720px) {
+    max-width: 305px;
+  }
 
   &-wrapper {
     position: relative;
