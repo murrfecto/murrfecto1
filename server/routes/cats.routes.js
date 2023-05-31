@@ -14,11 +14,7 @@ import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { upload } from './multer.config.js';
-import {
-	addReport,
-	getReports,
-	deleteReport,
-} from '../controllers/report.controller.js';
+import { addReport, deleteReport } from '../controllers/report.controller.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -32,12 +28,11 @@ router.post('/cats/send-message', sendMessage);
 router.get('/cats', getCats);
 router.get('/cats/:id', getCat);
 router.post('/cats', upload.array('image'), addCat);
-router.post('/payment', sendPayment);
-router.post('/payment/callback', handleCallBack);
 router.delete('/cats/:id', deleteCatById);
 router.put('/cats/:id', updateCatById);
+router.post('/payment', sendPayment);
+router.post('/payment/callback', handleCallBack);
 router.post('/report', upload.single('report'), addReport);
-router.get('/report', getReports);
 router.delete('/report', deleteReport);
 
 router.get('/*', (req, res) => {
