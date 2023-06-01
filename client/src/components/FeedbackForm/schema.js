@@ -3,7 +3,7 @@ import * as yup from "yup";
 const textRules = /[а-яієїґ\']+/ig;
 
 export const feedbackSchema = yup.object().shape({
-    name: yup.string().matches(textRules, {message: "Українською, будь ласка"}).max(30, "Не більше 30 знаків").required("Поле обовʼязкове"),
-    email: yup.string().email("Введіть, будь ласка, дійсну електронну пошту").required("Поле обовʼязкове"),
-    text: yup.string().matches(textRules, {message: "Українською, будь ласка"}).max(150).required("Поле обовʼязкове"),
+    name: yup.string().matches(textRules, {message: "Введіть українською мовою"}).max(30, "Не більше 30 знаків").required("Введіть ваше імʼя"),
+    email: yup.string().email("Введіть дійсний email").required("Введіть email"),
+    text: yup.string().matches(textRules, {message: "Введіть українською мовою"}).max(250).required("Поле обовʼязкове для заповнення"),
 })

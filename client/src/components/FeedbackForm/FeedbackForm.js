@@ -53,6 +53,7 @@ const FeedbackForm = () => {
                                 type="text"
                                 name="name"
                                 id="name"
+                                placeholder="Ваше імʼя"
                             />
                             {errors.name && touched.name && (
                                 <p className="feedback_error">{errors.name}</p>
@@ -71,6 +72,7 @@ const FeedbackForm = () => {
                                 type="email"
                                 name="email"
                                 id="email"
+                                placeholder="Ваш email"
                             />
                             {errors.email && touched.email && (
                                 <p className="feedback_error">{errors.email}</p>
@@ -83,7 +85,7 @@ const FeedbackForm = () => {
                             <Field
                                 className={
                                     errors.text && touched.text
-                                        ? "input_error"
+                                        ? "textarea_error"
                                         : "feedback_textarea"
                                 }
                                 type="text"
