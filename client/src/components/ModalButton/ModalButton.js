@@ -32,7 +32,6 @@ const ModalButton = () => {
           },
           content: {
             zIndex: 999,
-            borderRadius: "12px",
             outline: "none",
           },
         }}
