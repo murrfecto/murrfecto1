@@ -44,7 +44,6 @@
   }
 
   .donation__container {
-    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -62,6 +61,7 @@
       background-color: $full-white;
 
       h4 {
+        margin-bottom: 24px;
         text-align: center;
         width: 414px;
         height: 66px;
