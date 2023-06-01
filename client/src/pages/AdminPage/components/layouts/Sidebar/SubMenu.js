@@ -1,37 +1,40 @@
-import React, {useState} from 'react';
-import {motion} from "framer-motion";
-import {IoIosArrowDown} from "react-icons/io";
-import {NavLink, useLocation} from "react-router-dom";
-import './Submenu.scss'
-const SubMenu = ({data}) => {
-    const {name, menus} = data;
-    const {pathname} = useLocation();
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { IoIosArrowDown } from 'react-icons/io';
+import { NavLink, useLocation } from 'react-router-dom';
+import './Submenu.scss';
+
+const SubMenu = ({ data }) => {
+    const { name, menus,linkName } = data;
+    const { pathname } = useLocation();
     const [subMenuOpen, setSubMenuOpen] = useState(false);
+    console.log(pathname);
+    console.log(data.name);
     return (
-        <div className='submenus'>
-            <li className={`submenus__link ${pathname.includes(data.name) && ''}`}
-                onClick={() => setSubMenuOpen(!subMenuOpen)}>
-                <data.icon size={23} className='submenus__link_icon'/>
+        <div className="submenus">
+            <li
+                className={`submenus__link ${pathname.includes(data.linkName) && 'activeLink'}`}
+                onClick={() => setSubMenuOpen(!subMenuOpen)}
+            >
                 <p className="submenus__link_name">{name}</p>
-                <IoIosArrowDown className={`${subMenuOpen && 'submenus__link_arrow-active'} submenus__link_arrow `}/>
+
+                <IoIosArrowDown
+                    className={`${subMenuOpen && 'submenus__link_arrow-active'} submenus__link_arrow`}
+                />
+
             </li>
+            <hr/>
             <motion.ul
-                animate={
-                    subMenuOpen
-                        ? {
-                            height: "fit-content",
-                        }
-                        : {
-                            height: 0,
-                        }
-                }
+                animate={subMenuOpen ? { height: 'fit-content' } : { height: 0 }}
                 className="submenus__item"
-                a>
+            >
                 <ul>
                     {menus.map((menu, index) => (
                         <li key={index}>
-                            <NavLink className="submenus__link navLink"
-                                     to={`/admin/${menu.link}`}>
+                            <NavLink
+                                className={`submenus__link navLink `}
+                                to={`/admin/${linkName}/${menu.link}`}
+                            >
                                 {menu.title}
                             </NavLink>
                         </li>

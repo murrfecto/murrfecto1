@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useMediaQuery} from "@mui/material";
-import {MdMenu} from "react-icons/md";
 import {motion} from "framer-motion";
 import './Sidebar.scss'
-import {IoIosArrowBack} from "react-icons/io";
-import {FaClipboardList} from "react-icons/fa";
-import {GiCat} from "react-icons/gi";
 import SubMenu from "./SubMenu";
+import {RxExit} from "react-icons/rx";
 
 const Sidebar = () => {
     let isTab = useMediaQuery("(max-width:768px)");
@@ -50,15 +47,14 @@ const Sidebar = () => {
     const subMenuList = [
         {
             name: "Наші хвости",
-            icon: GiCat,
+            linkName:'cats',
             menus: [
                 {title: "Всі коти", link: "ViewAllCats"},
-                {title: "додати котаc", link: "addCat"},
+                {title: "додати кота", link: "addCat"},
             ],
         },
         {
             name: "Звіти",
-            icon: FaClipboardList,
             menus: [
                 {title: "Звіти", link: "ViewAllReports"},
                 {title: "Додати звіт", link: "addReport"},
@@ -76,13 +72,9 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar">
-            <MdMenu size={30} onClick={() => setIsOpen(true)}
-                    className="sidebar__icon"/>
 
             <div>
-                <div onClick={() => setIsOpen(false)}
-                     className={`sidebar__overlay ${isOpen ? 'block' : 'hidden'}`}>
-                </div>
+
                 <motion.div
                     variants={Sidebar_animation}
                     animate={isOpen ? "open" : "closed"}
@@ -92,7 +84,6 @@ const Sidebar = () => {
                         <ul className="sidebar__menu_list">
                             {(isOpen || isTab) && (
                                 <div className="submenu">
-                                    <small className="submenu__label">Murrfecto</small>
                                     {subMenuList?.map((menu) => (
                                         <div key={menu.name}
                                              className="submenu__container">
@@ -101,31 +92,13 @@ const Sidebar = () => {
                                     ))}
                                 </div>
                             )}
+                            <button className='logoutBtn'>Вийти <RxExit size={20}/></button>
                         </ul>
+
                     </div>
-                    <motion.div
-                        animate={
-                            isOpen
-                                ? {
-                                    x: 0,
-                                    y: 0,
-                                    rotate: 0,
-                                }
-                                : {
-                                    x: -10,
-                                    y: -200,
-                                    rotate: 180,
-                                }
-                        }
-                        transition={{
-                            duration: 0,
-                        }}
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="control__btn">
-                        <IoIosArrowBack size={25}/>
-                    </motion.div>
 
                 </motion.div>
+
             </div>
         </div>
     );

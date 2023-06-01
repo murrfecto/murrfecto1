@@ -1,3 +1,5 @@
+@import "../../../../../styles/_index.scss";
+
 .submenus {
     &__link {
         padding: 0.625rem;
@@ -5,13 +7,11 @@
         border-radius: 0.375rem;
         gap: 1.5rem;
         align-items: center;
-        cursor: default;
+        cursor: pointer;
         font-weight: 500;
         transition-duration: 300ms;
 
-        @media screen and (min-width: 768px) {
-            cursor: pointer;
-        }
+
         &_icon{
             min-width: max-content;
         }
@@ -20,6 +20,7 @@
             flex: 1;
         }
         &_arrow{
+            transform: rotate(270deg);
             transition-duration: 200ms;
         }
         &_arrow-active{
@@ -34,9 +35,21 @@
         overflow: hidden;
         height: 0;
         .navLink{
-            background-color: transparent !important;
+            background-color: transparent ;
             text-transform: capitalize;
+            &:hover{
+                background: #FCFCFF;
+                border-radius: 8px;
+            }
+        }
+        .active {
+            background: #FCFCFF;
+            border-radius: 8px;
         }
     }
 
+}
+
+.activeLink{
+    color: $active-link-color;
 }

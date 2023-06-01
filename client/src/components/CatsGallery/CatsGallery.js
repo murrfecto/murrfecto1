@@ -37,7 +37,7 @@ const CatsGallery = ({limit, displayIcon, select}) => {
 
     const confirmDelete = (id, name) => {
         Notiflix.Confirm.show(
-            'Removal',
+            '',
             `Are you sure you want to delete ${name}?`,
             'Так',
             'Ні',

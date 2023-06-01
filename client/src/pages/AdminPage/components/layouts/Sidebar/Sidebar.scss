@@ -10,10 +10,7 @@
   }
 
   &__overlay {
-
-
     position: fixed;
-
     top: 0;
     right: 0;
     bottom: 0;
@@ -31,60 +28,51 @@
       display: none;
     }
 
-    @media (min-width: 768px) {
-      display: none;
-    }
   }
 
   &__wrapper {
-    background-color: #ffffff;
+    background-color: $sidebar-color;
     color: #808080;
-    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.25);
     z-index: 999;
     width: 16rem;
     max-width: 16rem;
     height: 100vh;
     overflow: hidden;
-    position: fixed;
-    @media (min-width: 768px) {
-      position: relative;
-    }
-    .control__btn {
-      position: absolute;
-      width: fit-content; /* w-fit */
-      height: fit-content; /* h-fit */
-      z-index: 50; /* z-50 */
-      right: 2rem; /* right-2 */
-      bottom: 5rem; /* bottom-5 */
-      cursor: pointer; /* cursor-pointer */
-      @media (min-width: 768px) {
-        display: block; /* md:block */
-        visibility: hidden; /* hidden */
-      }
+    position: relative;
+    .logoutBtn{
+      background: $color-btn;
+      color:$color-white;
+      @include nunito-600-size-16;
+      cursor: pointer;
+      border-radius: 8px;
+      width: 105px;
+      height: 40px;
+      margin: 40px 0 0 10px;
+      @include flex-only;
+      align-items: center;
+      justify-content: space-around;
+
     }
   }
 
   &__menu {
     @include flex-column-na;
-    height: 100%;
     &_list {
       white-space: pre;
-      padding-left: 2.5rem; /* px-2.5 */
-      font-size: 0.9rem; /* text-[0.9rem] */
-      padding-top: 1.25rem; /* py-5 */
+
+      @include nunito-600-size-16;
+      padding: 74px 19px 0 24px;
       display: flex;
       flex-direction: column;
       gap: 0.25rem; /* gap-1 */
       font-weight: 500; /* font-medium */
       overflow-x: hidden;
       height: 70%; /* h-[70%] */
-      @media (min-width: 768px) {
-        height: 68%; /* md:h-[68%] */
-      }
+
       .submenu{
         border-top-width: 1px;
         border-top-color: #d2d6dc;
-        padding-top: 1.25rem;
+
         &__label{
           padding-left: 0.75rem;
           display: inline-block;
