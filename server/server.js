@@ -1,15 +1,17 @@
-import * as dotenv from 'dotenv'
+import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
 import cors from 'cors';
-import {MongoClient} from 'mongodb';
-import {jsonParser, urlencodedParser} from './helpers/bodyParserMiddleware.js';
-import CatsRoutes from "./routes/cats.routes.js";
+import { MongoClient } from 'mongodb';
+import {
+	jsonParser,
+	urlencodedParser,
+} from './helpers/bodyParserMiddleware.js';
+import CatsRoutes from './routes/cats.routes.js';
 
 //dotenv
 
-import path from "path";
-
+import path from 'path';
 
 // Establishing server
 export const app = express();
@@ -19,23 +21,22 @@ app.use(jsonParser);
 app.use(urlencodedParser);
 
 // CORS
-app.use(cors({origin: '*'}));
+app.use(cors({ origin: '*' }));
 
 // images
-app.use('/images', express.static(path.join(process.cwd(), 'images/')))
+app.use('/images', express.static(path.join(process.cwd(), 'images/')));
 // Routes
-app.use(CatsRoutes)
-
+app.use(CatsRoutes);
 
 const PORT = process.env.PORT || 8000;
 // Connecting MongoDB and running server
-MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true})
-    .then(() => {
-        console.log('Connected to database');
-        app.listen(PORT, () => {
-            console.log('Server listening on port 3000');
-        });
-    })
-    .catch((err) => {
-        console.error(err);
-    });
+MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
+	.then(() => {
+		console.log('Connected to database');
+		app.listen(PORT, () => {
+			console.log('Server listening on port 3000');
+		});
+	})
+	.catch((err) => {
+		console.error(err);
+	});
