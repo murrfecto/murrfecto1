@@ -9,7 +9,7 @@ import ModalContacts from "../ModalContacts/ModalContacts";
 const FeedbackForm = () => {
 
     const [isModalOpen, setModalOpen] = useState(false);
-    
+
     const onSubmit = async (values, {resetForm}) => {
 
         await new Promise((resolve) => setTimeout(resolve, 500));
@@ -41,7 +41,7 @@ const FeedbackForm = () => {
                 onSubmit={onSubmit}
             >
                 {({errors, touched}) => (
-                    <Form className="feedback_form" noValidate>
+                    <Form id={'data-formik'} className="feedback_form" noValidate>
                         <div className="input_wrapper">
                             <label htmlFor="name" className="feedback_label">
                                 Імʼя

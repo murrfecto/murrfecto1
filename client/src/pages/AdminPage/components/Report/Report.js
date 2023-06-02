@@ -107,10 +107,10 @@ const Report = () => {
 						<Spinner />
 					) : (
 						<>
-							<button type='button' onClick={deleteReportHandler}>
+							<button id={'data-report'} type='button' onClick={deleteReportHandler}>
 								Видалити звіт
 							</button>
-							<button type='button' onClick={openReportHandler}>
+							<button id={'data-report'} type='button' onClick={openReportHandler}>
 								Відкрити звіт
 							</button>
 						</>

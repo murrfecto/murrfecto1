@@ -47,6 +47,7 @@ const ModalButton = () => {
           <h4>Зібрані кошти підуть на харчування та медичну допомогу</h4>
           <div className="button-group">
             <button
+                id={'data-modal'}
               className={`custom-button left ${
                 selectedOption === "onetime" ? "selected" : ""
               }`}
@@ -55,6 +56,7 @@ const ModalButton = () => {
               Разово
             </button>
             <button
+                id={'data-modal'}
               className={`custom-button right ${
                 selectedOption === "monthly" ? "selected" : ""
               }`}
