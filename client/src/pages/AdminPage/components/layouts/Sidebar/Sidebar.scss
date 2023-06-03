@@ -1,0 +1,90 @@
+@import "../../../../../styles/index";
+
+.sidebar {
+  position: relative;
+
+  &__icon {
+    margin: 0.5rem;
+    position: absolute;
+    z-index: 999;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    max-height: 100vh;
+
+    z-index: 998;
+
+    &.block {
+      display: block;
+    }
+
+    &.hidden {
+      display: none;
+    }
+
+  }
+
+  &__wrapper {
+    background-color: $sidebar-color;
+    color: #808080;
+    z-index: 999;
+    width: 16rem;
+    max-width: 16rem;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    .logoutBtn{
+      background: $color-btn;
+      color:$color-white;
+      @include nunito-600-size-16;
+      cursor: pointer;
+      border-radius: 8px;
+      width: 105px;
+      height: 40px;
+      margin: 40px 0 0 10px;
+      @include flex-only;
+      align-items: center;
+      justify-content: space-around;
+
+    }
+  }
+
+  &__menu {
+    @include flex-column-na;
+    &_list {
+      white-space: pre;
+
+      @include nunito-600-size-16;
+      padding: 74px 19px 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem; /* gap-1 */
+      font-weight: 500; /* font-medium */
+      overflow-x: hidden;
+      height: 70%; /* h-[70%] */
+
+      .submenu{
+        border-top-width: 1px;
+        border-top-color: #d2d6dc;
+
+        &__label{
+          padding-left: 0.75rem;
+          display: inline-block;
+          margin-bottom: 0.5rem;
+        }
+        &__container{
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+      }
+    }
+  }
+}
+

@@ -1,8 +1,14 @@
 @import "../../../../styles/_index.scss";
 
 .viewAll {
-  height: 100%;
+  min-height: 100vh;
+  &__title{
+    text-align: center;
+    @include nunito-600-size-32;
+    color: $color-blue;
+    line-height: 44px;
 
+  }
   &__icons {
     margin-right: 10px;
     gap: 20px;

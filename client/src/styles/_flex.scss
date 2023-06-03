@@ -37,4 +37,18 @@
   height: 42px;
    padding: 6px 0 6px 8px;
 }
+@mixin  admin-input-style{
+  width: 412px;
+  min-height: 40px;
+  border: 0.5px solid #AEAEAE;
+  border-radius: 8px;
+  @include flex-only;
+  align-items: center;
+  padding: 0 7px;
+}
+
+@mixin admin-input-placeholder{
+  color: $color-border;
+  @include nunito-400-size-16;
+}
 

@@ -1,0 +1,55 @@
+@import "../../../../../styles/_index.scss";
+
+.submenus {
+    &__link {
+        padding: 0.625rem;
+        display: flex;
+        border-radius: 0.375rem;
+        gap: 1.5rem;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 500;
+        transition-duration: 300ms;
+
+
+        &_icon{
+            min-width: max-content;
+        }
+        &_name{
+            text-transform: capitalize;
+            flex: 1;
+        }
+        &_arrow{
+            transform: rotate(270deg);
+            transition-duration: 200ms;
+        }
+        &_arrow-active{
+            transform: rotate(180deg);
+        }
+    }
+    &__item{
+        flex-direction: column;
+        padding-left: 14px;
+        font-size: 0.8rem;
+        font-weight: normal;
+        overflow: hidden;
+        height: 0;
+        .navLink{
+            background-color: transparent ;
+            text-transform: capitalize;
+            &:hover{
+                background: #FCFCFF;
+                border-radius: 8px;
+            }
+        }
+        .active {
+            background: #FCFCFF;
+            border-radius: 8px;
+        }
+    }
+
+}
+
+.activeLink{
+    color: $active-link-color;
+}
