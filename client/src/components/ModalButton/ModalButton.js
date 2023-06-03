@@ -10,7 +10,6 @@ const ModalButton = () => {
   const handleDonationClick = () => {
     setModalIsOpen(true);
   };
-  //todo.txt refactor form so it displays good in modal
   return (
     <div id={"donation"}>
       <a

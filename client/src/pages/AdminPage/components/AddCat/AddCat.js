@@ -69,11 +69,11 @@ const AddCat = () => {
                 <h2 className="formAdding__title">Додайте кота!</h2>
                 <div className="formAdding__wrapper">
                     <label>Ім'я</label>
-                    <input type="text" name="name" value={formData.name}
+                    <input id={'data-name'} type="text" name="name" value={formData.name}
                            onChange={handleInputChange} required/>
 
                     <label>Вік кота:</label>
-                    <select name="age" value={formData.age}
+                    <select id={'data-select'} name="age" value={formData.age}
                             onChange={handleInputChange}>
                         <option disabled value="">Вкажіть вік</option>
                         <option value="до року">До року</option>
@@ -86,7 +86,7 @@ const AddCat = () => {
                         ))}
                     </select>
                     <label>Стать</label>
-                    <select name="gender" value={formData.gender}
+                    <select id={'data-select'} name="gender" value={formData.gender}
                             onChange={handleInputChange} required>
                         <option value='' disabled>Оберіть стать</option>
                         <option value="кіт">Кіт</option>
@@ -118,7 +118,7 @@ const AddCat = () => {
                         />
                     </div>
                     <label>Наявність чіпу</label>
-                    <select name="chipped" value={formData.chipped}
+                    <select id={'data-select'} name="chipped" value={formData.chipped}
                             onChange={handleInputChange} required>
                         <option disabled value="">Вкажіть наявність чіпу</option>
                         <option value="є">чипований</option>
@@ -126,7 +126,7 @@ const AddCat = () => {
                     </select>
 
                     <label>Опис</label>
-                    <input type="text" name="description"
+                    <input id={'data-input'} type="text" name="description"
                            value={formData.description}
                            onChange={handleInputChange}
                            required/>
