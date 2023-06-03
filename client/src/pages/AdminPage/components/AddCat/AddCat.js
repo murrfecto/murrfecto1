@@ -89,6 +89,7 @@ const AddCat = () => {
                                    htmlFor="fileInput">{files.length > 0 ? (
                                 <div>
                                     <h4>Обрані фото:</h4>
+
                                     <ul>
                                         {files.map((file, index) => (
                                             <li key={index}>{file.name}</li>
@@ -97,7 +98,6 @@ const AddCat = () => {
                                 </div>
                             ) : (<><span>Оберіть фото</span> <BiUpload size={22} color="black"/></>)
                             }
-
                             </label>
                             <input
                                 type="file"
@@ -166,13 +166,11 @@ const AddCat = () => {
                         </div>
 
                     </div>
-
                 </div>
                 <div className="btn-group">
                     <button className="submit" type="submit">Добавити</button>
                     <button onClick={()=>setFormData(initialState)} className="cancel">Скасувати</button>
                 </div>
-
             </form>
         </div>
     );

@@ -23,7 +23,7 @@ const ScrollToTop = () => {
   };
 
   return showScrollBtn ? (
-    <button className={"scrollBtn"} onClick={scrollToTop}>
+    <button id={'data-scroll'} className={"scrollBtn"} onClick={scrollToTop}>
       &#8679;
     </button>
   ) : null;

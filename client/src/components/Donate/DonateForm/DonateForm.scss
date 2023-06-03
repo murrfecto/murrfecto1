@@ -1,136 +1,192 @@
-@import '../../../styles/_index.scss';
+@import "../../../styles/_index.scss";
 
 .donate-slider {
-	&_wrap {
-		@include flex-column-na;
-		align-items: center;
-		justify-content: space-between;
-		height: 100%;
-	}
+  &_wrap {
+    @include flex-column-na;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
 
-	&_title {
-		@include nunito-600-size-24;
-		line-height: 33px;
-		color: $color-blue;
-		margin-bottom: 24px;
-		text-align: center;
-	}
+  &_title {
+    max-width: 414px;
+    @include nunito-700-size-20;
+    line-height: 27px;
+    color: $color-blue;
+    text-align: center;
+  }
 }
 
 .donate-form {
-	padding: 0 20px;
-	&_box {
-		@include flex-only;
-		flex-wrap: wrap;
-		gap: 16px;
-		margin-bottom: 22px;
+  width: 373px;
+  padding: 0 20px;
+  &_box {
+    @include flex-only;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
 
-		&-count {
-			width: 100px;
-			height: 42px;
-		}
-	}
+    &-count {
+      width: 100px;
+      height: 42px;
+    }
+  }
 
-	&_checked {
-		border: 1px solid $color-border;
-		background-color: $color-card-bg;
-		& span {
-			color: $color-input-form;
-		}
-	}
+  &_checked {
+    border: 1px solid $color-border;
+    background-color: $color-card-bg;
+    & span {
+      color: $color-input-form;
+    }
+  }
 
-	&_number {
-		@include nunito-400-size-20;
-		line-height: 30px;
-		color: $color-btn;
-	}
+  &_number {
+    @include nunito-400-size-20;
+    line-height: 30px;
+    color: $color-btn;
+  }
 
-	&_radio-label {
-		display: block;
-		padding: 6px;
-		text-align: center;
-		cursor: pointer;
-		transition: all 0.5s;
-		&:hover {
-			box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-			background: $color-input-bg;
-		}
-		&:active {
-			background: $color-card;
-			box-shadow: none;
-		}
-	}
+  &_radio-label {
+    display: block;
+    padding: 6px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
+    &:hover {
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+      background: $color-input-bg;
+    }
+    &:active {
+      background: $color-card;
+      box-shadow: none;
+    }
+  }
 
-	&_radio-label,
-	&_input-free {
-		width: 100%;
-		height: 100%;
-		border: 1px solid $color-btn;
-		border-radius: 8px;
-	}
+  &_radio-label,
+  &_input-free {
+    @include position-center-a;
+    width: 100%;
+    height: 100%;
+    border: 1px solid $color-btn;
+    border-radius: 8px;
+  }
 
-	&_input-free {
-		@include nunito-400-size-20;
-		line-height: 30px;
-		color: $color-blue;
-		padding: 6px 12px;
-		background-color: $color-card-bg;
-		outline: none;
-		transition: all 0.5s;
-		&::placeholder {
-			@include nunito-400-size-20;
-			line-height: 30px;
-			color: $color-border;
-		}
+  &_input-free {
+    @include nunito-400-size-20;
+    line-height: 30px;
+    color: $color-blue;
+    padding: 6px 12px;
+    background-color: $color-card-bg;
+    outline: none;
+    transition: all 0.5s;
+    &::placeholder {
+      @include nunito-400-size-18;
+      line-height: 27px;
+      color: $color-border;
+    }
 
-		&:hover {
-			background-color: $main-bg-color;
-			box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-		}
+    &:hover {
+      background-color: $main-bg-color;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    }
 
-		&:focus {
-			background-color: $main-bg-color;
-			border: 1px solid $color-btn;
-			box-shadow: none;
-		}
+    &:focus {
+      background-color: $main-bg-color;
+      border: 1px solid $color-btn;
+      box-shadow: none;
+    }
 
-		&::-webkit-outer-spin-button,
-		&::-webkit-inner-spin-button {
-			-webkit-appearance: none;
-			appearance: none;
-		}
-	}
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  }
 
-	&_input-count {
-		width: 216px;
-		height: 42px;
-	}
+  &_input-count {
+    width: 216px;
+    height: 42px;
+  }
 
-	&_btn {
-		width: 100%;
-		@include nunito-600-size-24;
-		line-height: 35px;
-		text-align: center;
-		padding: 15px;
-		text-transform: uppercase;
-		color: $color-white;
-		background-color: $color-btn;
-		border-radius: 8px;
-		border: none;
-		cursor: pointer;
-		transition: all 0.5s;
+  &_btn {
+    width: 100%;
+    @include nunito-600-size-24;
+    line-height: 35px;
+    text-align: center;
+    padding: 15px;
+    text-transform: uppercase;
+    color: $color-white;
+    background-color: $color-btn;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
 
-		&:hover {
-			color: $color-btn;
-			background-color: $color-card;
-		}
+    &:hover {
+      color: $color-btn;
+      background-color: $color-card;
+    }
 
-		&:active {
-			box-shadow: none;
-		}
+    &:active {
+      box-shadow: none;
+    }
 
-		&:focus {
-			box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-		}
-	}
+    &:focus {
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+.button-group {
+  width: 332px;
+  height: 42px;
+  display: flex;
+  margin: 0 auto 16px auto;
+}
+
+.custom-button {
+  @include nunito-700-size-16;
+  border: 2px solid #4b3542;
+  width: 166px;
+  background-color: $full-white;
+  color: $color-btn;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $color-btn;
+    color: $full-white;
+  }
+
+  &.selected {
+    background-color: $color-btn;
+    color: $full-white;
+  }
+}
+
+.right {
+  border-radius: 0 8px 8px 0;
+}
+
+.left {
+  border-radius: 8px 0 0 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .donate-slider {
+    &_title {
+      @include nunito-600-size-24;
+      line-height: 33px;
+    }
+  }
+
+  .donate-form {
+    &_input-free {
+      &::placeholder {
+        @include nunito-400-size-20;
+        line-height: 30px;
+      }
+    }
+  }
 }

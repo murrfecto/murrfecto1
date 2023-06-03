@@ -1,0 +1,86 @@
+@import '../../../../styles/_index.scss';
+
+.alert-success,
+.alert-error {
+	@include position-center-a;
+	width: 300px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.formAdding {
+	margin: 0 auto;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+	gap: 30px;
+	@include flex-column-a;
+
+	&__wrapper {
+		@include flex-column-a;
+
+		label {
+			@include nunito-400-size-14;
+		}
+
+		input,
+		select {
+			width: 300px;
+			height: 30px;
+			border-radius: 10px;
+			outline: none;
+
+			background: none;
+		}
+
+		.input__file {
+			@include flex-only;
+			justify-content: center;
+			padding-top: 3px;
+			width: 300px;
+			min-height: 30px;
+			border-radius: 10px;
+			outline: none;
+			background: none;
+			border: 1px solid;
+			cursor: pointer;
+			text-align: center;
+			transition: 0.2s all;
+			&_none {
+				display: none;
+			}
+
+			&_selected {
+				width: 100%;
+				ul {
+					width: 100%;
+					@include flex-only;
+					justify-content: center;
+					li {
+						margin-left: 4px;
+					}
+				}
+			}
+
+			&:hover {
+				background: $color-btn-hover;
+				color: $color-placeholder;
+			}
+		}
+
+		button {
+			margin-top: 10px;
+			background: $color-btn;
+			color: $full-white;
+			width: 300px;
+			height: 30px;
+			border-radius: 10px;
+			transition: all 0.3s;
+			cursor: pointer;
+
+			&:hover {
+				background: $color-btn-hover;
+			}
+		}
+	}
+}

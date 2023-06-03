@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import "./FormSelect.scss";
 import Select from "react-select";
 
-const FormSelect = () => {
+const FormSelect = ({ selectedCat, setSelectedCat }) => {
   const [cats, setCats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedCat, setSelectedCat] = useState(null);
 
   useEffect(() => {
     try {
@@ -35,6 +34,7 @@ const FormSelect = () => {
       fontFamily: "Nunito Sans, serif",
       color: "#4F5A69",
       marginBottom: "20px",
+      height: "50px",
       cursor: "pointer",
       backgroundColor: "#FCFCFF",
       boxShadow: "none",
@@ -47,7 +47,7 @@ const FormSelect = () => {
 
     valueContainer: (baseStyles) => ({
       ...baseStyles,
-      padding: "10px 12px",
+      padding: "0 12px",
     }),
 
     placeholder: (baseStyles) => ({
