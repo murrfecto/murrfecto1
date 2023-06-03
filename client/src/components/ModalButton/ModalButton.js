@@ -6,15 +6,10 @@ import DonateForm from "../Donate/DonateForm/DonateForm";
 
 const ModalButton = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
 
-  const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-  };
   const handleDonationClick = () => {
     setModalIsOpen(true);
   };
-  //todo.txt refactor form so it displays good in modal
   return (
     <div id={"donation"}>
       <a
@@ -44,28 +39,11 @@ const ModalButton = () => {
           <img src={cats} alt={"donation__container_cats"} />
         </div>
         <div className={"donation__container_inner"}>
-          <h4>Зібрані кошти підуть на харчування та медичну допомогу</h4>
-          <div className="button-group">
-            <button
-                id={'data-modal'}
-              className={`custom-button left ${
-                selectedOption === "onetime" ? "selected" : ""
-              }`}
-              onClick={() => handleOptionSelect("onetime")}
-            >
-              Разово
-            </button>
-            <button
-                id={'data-modal'}
-              className={`custom-button right ${
-                selectedOption === "monthly" ? "selected" : ""
-              }`}
-              onClick={() => handleOptionSelect("monthly")}
-            >
-              Щомісячно
-            </button>
-          </div>
-          <DonateForm />
+          <DonateForm
+            optionIdPrefix="modal"
+            title="Зібрані кошти підуть на харчування та медичну допомогу"
+            hasDonateTypeButtons
+          />
         </div>
       </Modal>
     </div>
