@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import "./FormSelect.scss";
 import Select from "react-select";
 
-const FormSelect = () => {
+const FormSelect = ({ selectedCat, setSelectedCat }) => {
   const [cats, setCats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedCat, setSelectedCat] = useState(null);
 
   useEffect(() => {
     try {

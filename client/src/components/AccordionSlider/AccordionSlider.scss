@@ -7,7 +7,7 @@
   margin: 0 auto;
 
   &_left {
-    width: 445px;
+    max-width: 445px;
     padding: 36px;
     background-color: $color-white;
     border-radius: 20px 0 0 20px;

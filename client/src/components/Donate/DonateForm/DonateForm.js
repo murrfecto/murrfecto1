@@ -3,14 +3,20 @@ import FormSelect from "../FormSelect/FormSelect";
 import axios from "axios";
 import { useState } from "react";
 
-const DonateForm = ({ title }) => {
+const DonateForm = ({
+  title,
+  optionIdPrefix = "",
+  hasDonateTypeButtons = false,
+}) => {
   const [donationAmount, setDonationAmount] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedCat, setSelectedCat] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const orderBody = {
       amount: donationAmount * 100,
+      catLabel: selectedCat ? selectedCat.label : "",
     };
     try {
       const response = await axios.post(
@@ -24,7 +30,6 @@ const DonateForm = ({ title }) => {
   };
 
   const handleDonationAmountChange = (e) => {
-    console.log(e.target.value);
     setDonationAmount(e.target.value);
   };
 
@@ -42,37 +47,41 @@ const DonateForm = ({ title }) => {
     <div className="donate-slider_wrap">
       <h3 className="donate-slider_title">{title}</h3>
       <form className="donate-form" onSubmit={handleSubmit}>
-        <div className="button-group">
-          <button
-            className={`custom-button left ${
-              selectedOption === "onetime" ? "selected" : ""
-            }`}
-            onClick={() => handleOptionSelect("onetime")}
-          >
-            Разово
-          </button>
-          <button
-            className={`custom-button right ${
-              selectedOption === "monthly" ? "selected" : ""
-            }`}
-            onClick={() => handleOptionSelect("monthly")}
-          >
-            Щомісячно
-          </button>
-        </div>
+        {hasDonateTypeButtons && (
+          <div className="button-group">
+            <button
+              className={`custom-button left ${
+                selectedOption === "onetime" ? "selected" : ""
+              }`}
+              onClick={() => handleOptionSelect("onetime")}
+              type="button"
+            >
+              Разово
+            </button>
+            <button
+              className={`custom-button right ${
+                selectedOption === "monthly" ? "selected" : ""
+              }`}
+              onClick={() => handleOptionSelect("monthly")}
+              type="button"
+            >
+              Щомісячно
+            </button>
+          </div>
+        )}
         <div className="donate-form_box">
           {donationOptions.map((option) => (
             <div className="donate-form_box-count" key={option}>
               <input
                 type="radio"
                 name="donation_number"
-                id={option}
+                id={`${optionIdPrefix}${option}`}
                 value={option}
                 onChange={handleDonationAmountChange}
                 hidden
               />
               <label
-                htmlFor={option}
+                htmlFor={`${optionIdPrefix}${option}`}
                 className={`donate-form_radio-label ${
                   donationAmount === option && "donate-form_checked"
                 }`}
@@ -82,7 +91,6 @@ const DonateForm = ({ title }) => {
             </div>
           ))}
           <div className="donate-form_input-count">
-            {donationAmount}
             <input
               className="donate-form_input-free"
               type="number"
@@ -96,7 +104,7 @@ const DonateForm = ({ title }) => {
             />
           </div>
         </div>
-        <FormSelect />
+        <FormSelect selectedCat={selectedCat} setSelectedCat={setSelectedCat} />
         <div>
           <input className="donate-form_btn" type="submit" value="Допомогти" />
         </div>
