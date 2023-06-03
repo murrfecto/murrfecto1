@@ -5,44 +5,7 @@ import './Sidebar.scss'
 import SubMenu from "./SubMenu";
 import {RxExit} from "react-icons/rx";
 
-const Sidebar = () => {
-    let isTab = useMediaQuery("(max-width:768px)");
-
-    const [isOpen, setIsOpen] = useState(isTab ? false : true);
-
-    const Sidebar_animation = isTab
-        ? {
-            open: {
-                x: 0,
-                width: "16rem",
-                transition: {
-                    damping: 40,
-                },
-            },
-            closed: {
-                x: -250,
-                width: 0,
-                transition: {
-                    damping: 40,
-                },
-            },
-        }
-        : {
-            //
-            open: {
-                width: "16rem",
-                transition: {
-                    damping: 40,
-                    delay: 0.15,
-                },
-            },
-            closed: {
-                width: "4rem",
-                transition: {
-                    damping: 40,
-                },
-            },
-        };
+const Sidebar = ({setIsAdmin}) => {
 
     const subMenuList = [
         {
@@ -54,21 +17,15 @@ const Sidebar = () => {
             ],
         },
         {
-            name: "Звіти",
+            name: "Звітність",
+            linkName: 'reports',
             menus: [
-                {title: "Звіти", link: "ViewAllReports"},
-                {title: "Додати звіт", link: "addReport"},
+                {title: "Звіти", link: "viewReports"},
+
             ],
         },
     ];
 
-    useEffect(() => {
-        if (isTab) {
-            setIsOpen(false);
-        } else {
-            setIsOpen(true);
-        }
-    }, [isTab]);
 
     return (
         <div className="sidebar">
@@ -76,13 +33,10 @@ const Sidebar = () => {
             <div>
 
                 <motion.div
-                    variants={Sidebar_animation}
-                    animate={isOpen ? "open" : "closed"}
                     className="sidebar__wrapper"
                 >
                     <div className='sidebar__menu'>
                         <ul className="sidebar__menu_list">
-                            {(isOpen || isTab) && (
                                 <div className="submenu">
                                     {subMenuList?.map((menu) => (
                                         <div key={menu.name}
@@ -91,8 +45,7 @@ const Sidebar = () => {
                                         </div>
                                     ))}
                                 </div>
-                            )}
-                            <button className='logoutBtn'>Вийти <RxExit size={20}/></button>
+                            <button className='logoutBtn' >Вийти <RxExit size={20}/></button>
                         </ul>
 
                     </div>

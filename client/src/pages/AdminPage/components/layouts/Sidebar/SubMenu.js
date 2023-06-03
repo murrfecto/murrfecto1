@@ -8,8 +8,6 @@ const SubMenu = ({ data }) => {
     const { name, menus,linkName } = data;
     const { pathname } = useLocation();
     const [subMenuOpen, setSubMenuOpen] = useState(false);
-    console.log(pathname);
-    console.log(data.name);
     return (
         <div className="submenus">
             <li

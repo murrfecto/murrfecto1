@@ -40,7 +40,7 @@ const AdminPage = () => {
 
     return (
         <>
-            <Dashboard/>
+            <Dashboard setIsAdmin={setIsAdmin} />
         </>
     );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 import './RootLayout.scss'
 import Sidebar from "./Sidebar";
-const RootLayout = ({children}) => {
+const RootLayout = ({children,setIsAdmin}) => {
     return (
         <div className='rootLayout'>
-            <Sidebar/>
+            <Sidebar setIsAdmin={setIsAdmin}/>
             <main className='rootLayout__children'>{children}</main>
         </div>
     );

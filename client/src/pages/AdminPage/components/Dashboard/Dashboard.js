@@ -4,22 +4,23 @@ import {Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import AddCat from "../AddCat/AddCat";
 import ViewAllCats from "../ViewAllCats/ViewAllCats";
 import './Dashboard.scss'
-const Dashboard = () => {
+import Reports from "../Reports/Reports";
+const Dashboard = ({setIsAdmin}) => {
 
     const navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
         if (location.pathname === "/admin") {
-            navigate('/admin/cats/viewAllCats'); // Перенаправлення на
-            // "/admin/addCat"
+            navigate('/admin/cats/viewAllCats');
         }
     }, [navigate, location]);
     return (
         <div className='dashboard'>
-            <RootLayout>
+            <RootLayout setIsAdmin={setIsAdmin}>
                 <Routes>
                     <Route path="/cats/addCat" element={<AddCat />} />
                     <Route path="/cats/viewAllCats" element={<ViewAllCats />} />
+                    <Route path="/reports/viewReports" element={<Reports/>} />
                    />
                 </Routes>
             </RootLayout>

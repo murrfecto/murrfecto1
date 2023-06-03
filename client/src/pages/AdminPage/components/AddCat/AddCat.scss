@@ -8,77 +8,136 @@
 }
 
 .formAdding {
-  margin: 0 auto;
+  margin: 20px auto 0;
+  padding-bottom: 35px;
   flex-wrap: wrap;
   width: 100%;
   justify-content: center;
   gap: 30px;
   @include flex-column-a;
+  background: #FCFCFF;
+  border-radius: 20px;
+  &__title {
+    text-align: center;
+    @include nunito-600-size-32;
+    line-height: 44px;
+    color: $color-card-text;
+  }
 
   &__wrapper {
-    @include flex-column-a;
+    @include flex-only;
+    margin-top: 35px;
 
     label {
-      @include nunito-400-size-14
+      @include nunito-600-size-16;
+      color: $color-card-text;
+      margin-bottom: 5px;
     }
 
-    input, select {
-      width: 300px;
-      height: 30px;
-      border-radius: 10px;
-      outline: none;
+    &_leftSection {
+      margin-right: 11px;
 
-      background: none;
-    }
+      .name {
+        @include flex-column-na;
 
-    .input__file {
-      @include flex-only;
-      justify-content: center;
-      padding-top: 3px;
-      width: 300px;
-      min-height: 30px;
-      border-radius: 10px;
-      outline: none;
-      background: none;
-      border: 1px solid;
-      cursor: pointer;
-      text-align: center;
-      transition: 0.2s all;
-      &_none {
-        display: none;
-      }
+        input {
+          @include admin-input-style;
 
-      &_selected {
-        width: 100%;
-        ul {
-          width: 100%;
-          @include flex-only;
-          justify-content: center;
-          li{
-            margin-left: 4px;}
+          &::placeholder {
+            @include admin-input-placeholder;
+          }
         }
       }
 
-      &:hover {
-        background: $color-btn-hover;
-        color: $color-placeholder;
+      .photo {
+        @include flex-column-na;
+
+        &__selected {
+          @include admin-input-style;
+          @include admin-input-placeholder;
+          justify-content: space-between;
+          background: #ffffff;
+        }
+
+        input {
+          display: none;
+        }
       }
     }
 
+    &_rightSection {
+      margin-left: 11px;
+
+      .ageAndGender {
+        @include flex-only;
+
+        .age {
+          margin-right: 20px;
+        }
+
+        .age, .gender {
+          @include flex-column-na;
+
+          select {
+            @include admin-input-placeholder;
+            @include admin-input-style;
+            width: 197px;
+            height: 40px;
+
+          }
+        }
+      }
+
+      .chipped {
+        @include flex-column-na;
+
+        select {
+          @include admin-input-style;
+          @include admin-input-placeholder;
+
+        }
+
+      }
+
+      .info {
+        @include flex-column-na;
+
+        textarea {
+          @include admin-input-style;
+          resize: none;
+          min-height: 212px;
+          @include nunito-600-size-16;
+
+          &::placeholder {
+            @include admin-input-placeholder;
+          }
+
+        }
+      }
+    }
+  }
+  .btn-group{
+    gap: 20px;
+    @include flex-only;
     button {
       margin-top: 10px;
       background: $color-btn;
       color: $full-white;
-      width: 300px;
-      height: 30px;
+      width: 196px;
+      height: 40px;
       border-radius: 10px;
       transition: all 0.3s;
       cursor: pointer;
-
+      @include nunito-400-size-16;
       &:hover {
         background: $color-btn-hover;
       }
     }
+    .cancel{
+      background: $full-white;
+      color: $color-card-text;
+    }
   }
+
 }
 

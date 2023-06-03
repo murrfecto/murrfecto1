@@ -7,7 +7,7 @@ import CatsGallery from "../../../../components/CatsGallery/CatsGallery";
 const ViewAllCats = () => {
     const [cats, setCats] = useState(null);
     const [loading, setLoading] = useState(true);
-    console.log(cats)
+
     const getData = async () => {
         try {
             const response = await axios.get('http://localhost:3000/cats');
