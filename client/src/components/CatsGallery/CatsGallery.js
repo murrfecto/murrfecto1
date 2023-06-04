@@ -6,12 +6,14 @@ import Notiflix from "notiflix";
 import {FaEdit, FaTrash} from "react-icons/fa";
 import Spinner from "../../helpers/Spinner/Spinner";
 import {motion} from "framer-motion";
-
+import {useNavigate} from "react-router-dom";
 const CatsGallery = ({limit, displayIcon, select}) => {
     const [cats, setCats] = useState(null);
     const [loading, setLoading] = useState(true);
     const [shouldDisplayTrashIcon, setShouldDisplayTrashIcon] = useState(displayIcon)
-    const [shouldBeSelected, setShouldBeSelected] = useState(select)
+    const [_, setShouldBeSelected] = useState(select)
+    const navigate = useNavigate();
+
     const getData = async () => {
         try {
             const response = await axios.get('http://localhost:3000/cats');
@@ -33,6 +35,10 @@ const CatsGallery = ({limit, displayIcon, select}) => {
             console.log(id);
             console.error(error);
         }
+    };
+
+    const handleEdit = (id) => {
+        navigate(`/admin/cats/editCat/${id}`);
     };
 
     const confirmDelete = (id, name) => {
@@ -117,7 +123,7 @@ const CatsGallery = ({limit, displayIcon, select}) => {
                                         <FaEdit
                                             className={'viewAll__edit'}
                                             size={25}
-                                            onClick={() => console.log(cat._id)}
+                                            onClick={() => handleEdit(cat._id)}
                                         />
                                         <FaTrash
                                             className="viewAll__trash"

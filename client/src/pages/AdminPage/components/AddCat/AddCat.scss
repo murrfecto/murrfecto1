@@ -17,6 +17,7 @@
   @include flex-column-a;
   background: #FCFCFF;
   border-radius: 20px;
+
   &__title {
     text-align: center;
     @include nunito-600-size-32;
@@ -41,6 +42,7 @@
         @include flex-column-na;
 
         input {
+          @include nunito-600-size-16;
           @include admin-input-style;
 
           &::placeholder {
@@ -116,9 +118,11 @@
       }
     }
   }
-  .btn-group{
+
+  .btn-group {
     gap: 20px;
     @include flex-only;
+
     button {
       margin-top: 10px;
       background: $color-btn;
@@ -129,11 +133,13 @@
       transition: all 0.3s;
       cursor: pointer;
       @include nunito-400-size-16;
+
       &:hover {
         background: $color-btn-hover;
       }
     }
-    .cancel{
+
+    .cancel {
       background: $full-white;
       color: $color-card-text;
     }

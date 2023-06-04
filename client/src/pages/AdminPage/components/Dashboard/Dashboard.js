@@ -6,6 +6,7 @@ import AddCat from "../AddCat/AddCat";
 import ViewAllCats from "../ViewAllCats/ViewAllCats";
 import './Dashboard.scss'
 import Reports from "../Reports/Reports";
+import EditCat from "../EditCat/EditCat";
 const Dashboard = ({setIsAdmin}) => {
 
     const navigate = useNavigate();
@@ -20,8 +21,9 @@ const Dashboard = ({setIsAdmin}) => {
             <RootLayout setIsAdmin={setIsAdmin}>
                 <Routes>
                     <Route path="/cats/addCat" element={<AddCat />} />
-                    <Route path="/cats/viewAllCats" element={<ViewAllCats />} />
+                    <Route path="/cats/viewAllCats/" element={<ViewAllCats />} />
                     <Route path="/reports/viewReports" element={<Reports/>} />
+                    <Route path="/cats/editCat/:id/" element={<EditCat />} />
                    />
                 </Routes>
             </RootLayout>

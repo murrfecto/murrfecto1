@@ -29,7 +29,7 @@ const SubscribeForm = () => {
     };
 
     const validateEmail = (email) => {
-        const re = /^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}$/i;
+        const re = /^[\w-]+(?:\.[\w-]+)*@(?!.*\.ru)(?:[\w-]+\.)+[a-zA-Z]{2,7}$/i;
         return re.test(email);
     };
 

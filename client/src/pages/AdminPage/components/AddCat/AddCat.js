@@ -3,12 +3,9 @@ import axios from 'axios';
 import './AddCat.scss';
 import {Alert} from "@mui/material";
 import {BiUpload} from "react-icons/bi";
-import Select from 'react-select';
-import Notiflix from "notiflix";
 
 const _ENDPOINT = "http://localhost:3000/cats";
 const AddCat = () => {
-
     const initialState = {
         name: '',
         image: '',
@@ -17,19 +14,17 @@ const AddCat = () => {
         age: '',
         gender: '',
     };
-// use form values to send data on post
-    const initialFilesState = [];
 
+    const initialFilesState = [];
     const [formData, setFormData] = useState(initialState);
     const [files, setFiles] = useState(initialFilesState);
     const [formStatus, setFormStatus] = useState('');
     console.log(formData);
 
     const handleSubmit = async (e) => {
-
         const data = new FormData();
         files.forEach((file, index) => {
-            data.append('image', file, `image${index}`); // Use unique filenames for each file
+            data.append('image', file, `image${index}`);
         });
         data.append('name', formData.name);
         data.append('description', formData.description);
@@ -51,14 +46,10 @@ const AddCat = () => {
     const handleInputChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value});
     };
-
-
     const handleFileUpload = (e) => {
         const selectedFiles = Array.from(e.target.files);
         setFiles(selectedFiles);
     };
-
-
 
 
     return (
@@ -124,12 +115,10 @@ const AddCat = () => {
                                     <option value="до року">До року</option>
                                     <option value="1 рік">1 рік</option>
                                     {Array.from({length: 3}, (_, i) => i + 2).map((num) => (
-                                        <option value={`${num} роки}`}
-                                                key={num}>{num} роки</option>
+                                        <option value={`${num} роки`} key={num}>{num} роки</option>
                                     ))}
                                     {Array.from({length: 13}, (_, i) => i + 5).map((num) => (
-                                        <option value={`${num} років`}
-                                                key={num}>{num} років</option>
+                                        <option value={`${num} років`} key={num}>{num} років</option>
                                     ))}
                                 </select>
                             </div>
@@ -169,7 +158,7 @@ const AddCat = () => {
                 </div>
                 <div className="btn-group">
                     <button className="submit" type="submit">Добавити</button>
-                    <button onClick={()=>setFormData(initialState)} className="cancel">Скасувати</button>
+                    <button onClick={() => setFormData(initialState)} className="cancel">Скасувати</button>
                 </div>
             </form>
         </div>

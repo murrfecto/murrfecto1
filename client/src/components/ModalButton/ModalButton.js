@@ -34,6 +34,7 @@ const ModalButton = () => {
         isOpen={modalIsOpen}
         aria-label="Donate to feed a cat"
         onRequestClose={() => setModalIsOpen(false)}
+        shouldCloseOnOverlayClick={true}
       >
         <div className={"donation__container"}>
           <img src={cats} alt={"donation__container_cats"} />

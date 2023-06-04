@@ -5,7 +5,7 @@ import Spinner from "../../../../helpers/Spinner/Spinner";
 import CatsGallery from "../../../../components/CatsGallery/CatsGallery";
 
 const ViewAllCats = () => {
-    const [cats, setCats] = useState(null);
+    const [_, setCats] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const getData = async () => {
