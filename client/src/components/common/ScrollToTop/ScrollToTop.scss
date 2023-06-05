@@ -10,7 +10,6 @@
   line-height: 33px;
   font-size: 33px;
   background-color: $color-btn;
-  color: $full-white;
   border: transparent;
   border-radius: 50%;
   box-shadow: 0 3.43693px 3.43693px $box-shadow;
@@ -22,4 +21,13 @@
     background-color: $box-shadow;
     transform: scale(1.1);
   }
+}
+
+.shift_icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: $full-white;
+  fill: $full-white;
 }
