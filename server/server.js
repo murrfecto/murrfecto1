@@ -8,6 +8,9 @@ import {
 	urlencodedParser,
 } from './helpers/bodyParserMiddleware.js';
 import CatsRoutes from './routes/cats.routes.js';
+import login from './routes/login.routes.js'
+import cookieParser from 'cookie-parser'
+
 
 //dotenv
 
@@ -22,11 +25,13 @@ app.use(urlencodedParser);
 
 // CORS
 app.use(cors({ origin: '*' }));
-
+app.use(cookieParser())
+app.use(express.urlencoded({extended:false}))
 // images
 app.use('/images', express.static(path.join(process.cwd(), 'images/')));
 // Routes
 app.use(CatsRoutes);
+app.use(login)
 
 const PORT = process.env.PORT || 8000;
 // Connecting MongoDB and running server

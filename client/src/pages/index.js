@@ -1,2 +1,2 @@
 export {default as Home} from './Main/Main'
-export {default as Admin} from './AdminPage/AdminPage'
+export {default as Admin} from './Login/Login'
