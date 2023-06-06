@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {motion} from "framer-motion";
-import './Sidebar.scss'
+import './Sidebar.scss';
 import SubMenu from "./SubMenu";
 import {RxExit} from "react-icons/rx";
+import {UserContext} from "../../../../../context/userContext";
 
-const Sidebar = ({setIsAdmin}) => {
-
+const Sidebar = () => {
+    const {setUser} = useContext(UserContext);
+    const logoutUser = () => {
+        setUser(null);
+    };
     const subMenuList = [
         {
             name: "Наші хвости",
@@ -32,7 +36,7 @@ const Sidebar = ({setIsAdmin}) => {
             <div>
                 <motion.div
                     className="sidebar__wrapper">
-                    <div className='sidebar__menu'>
+                    <div className="sidebar__menu">
                         <ul className="sidebar__menu_list">
                             <div className="submenu">
                                 {subMenuList?.map((menu) => (
@@ -42,7 +46,7 @@ const Sidebar = ({setIsAdmin}) => {
                                     </div>
                                 ))}
                             </div>
-                            <button className='logoutBtn'>
+                            <button className="logoutBtn" onClick={logoutUser}>
                                 Вийти<RxExit size={20}/>
                             </button>
                         </ul>

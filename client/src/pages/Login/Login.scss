@@ -1,0 +1,87 @@
+@import "../../styles/_index.scss";
+
+.login {
+  @include position-center;
+
+  &_container {
+    @include flex-column-na;
+    padding: 20px 0 20px 20px;
+    margin: 100px 0;
+    gap: 30px;
+    width: 325px;
+    height: 303px;
+    background: #FCFCFF;
+    border-radius: 20px;
+
+    &__title {
+      text-align: left;
+      @include nunito-600-size-32;
+      color: $color-blue;
+    }
+
+    &__form {
+      @include flex-column-na;
+
+      label {
+        @include nunito-400-size-14;
+        color: $color-blue;
+        margin-bottom: 4px;
+      }
+
+      .password-container {
+        position: relative;
+
+        .eye-icon {
+          position: absolute;
+          top: 77%;
+          right: 30px;
+          transform: translateY(-50%);
+          cursor: pointer;
+        }
+
+        .eye-icon:hover {
+          color: blue;
+        }
+      }
+
+      .password, .email {
+        margin-top: 5px;
+        padding: 10px;
+        border: 0.5px solid $color-border;
+        border-radius: 8px;
+        outline: none;
+        width: 285px;
+        height: 40px;
+
+        &::placeholder {
+          @include nunito-400-size-14;
+          color: $color-border;
+        }
+      }
+
+      .restore {
+        color: $color-card-text;
+        margin-top: 32px;
+        text-decoration: underline;
+      }
+
+      .btnSubmit {
+        padding: 10px;
+        margin-top: 32px;
+        border: none;
+        width: 285px;
+        height: 40px;
+        border-radius: 8px;
+        font-weight: 500;
+        background-color: $color-btn;
+        color: white;
+        cursor: pointer;
+        transition: color 300ms linear;
+
+        &:hover {
+          background-color: $color-btn-hover;
+        }
+      }
+    }
+  }
+}
