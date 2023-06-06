@@ -11,7 +11,7 @@ const Infobox = () => {
       <ul className={"social_networks "}>
         <li>
           <a
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/murrfecto_murr/"
             target="_blank"
             rel="nofollow noreferrer noopener"
           >
@@ -31,12 +31,16 @@ const Infobox = () => {
 
       <ul className={"socials_contacts"}>
         <li className={"socials_contacts-item"}>
+          <a className={"socials_contacts-link"} href="mailto:info@murrfecto.site">
           <img src={email} alt="email-icon" />
           <p>info@murrfecto.site</p>
+          </a>
         </li>
         <li className={"socials_contacts-item"}>
+          <a className={"socials_contacts-link"} href="tel:+380636286630">
           <img src={phone} alt="phone-icon" />
           <p>+38 063 628 6630</p>
+          </a>
         </li>
       </ul>
     </div>

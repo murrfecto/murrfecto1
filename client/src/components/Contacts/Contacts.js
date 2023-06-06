@@ -33,7 +33,7 @@ const Contacts = () => {
           </a>
           <div className="contacts_social">
             <a
-              href="https://www.instagramm.com/"
+              href="https://www.instagram.com/murrfecto_murr/"
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
