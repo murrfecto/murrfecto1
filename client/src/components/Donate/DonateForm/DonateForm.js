@@ -20,7 +20,7 @@ const DonateForm = ({
         };
         try {
             const response = await axios.post(
-                "http://localhost:3000/payment",
+                "http://localhost:3000/api/v1/payment",
                 orderBody
             );
             window.location.replace(response.data.checkoutUrl);

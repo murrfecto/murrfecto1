@@ -14,7 +14,7 @@ const FeedbackForm = () => {
 
         await new Promise((resolve) => setTimeout(resolve, 500));
         try {
-            await axios.post('http://localhost:3000/cats/send-message', values);
+            await axios.post('http://localhost:3000/api/v1/cats/send-message', values);
             resetForm();
             console.log('Message sent successfully');
         } catch (error) {

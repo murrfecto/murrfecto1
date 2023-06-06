@@ -17,7 +17,7 @@ const CatsGallery = ({limit, displayIcon, select}) => {
 
     const getData = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/cats');
+            const response = await axios.get('http://localhost:3000/api/v1/cats');
             setCats(response.data);
             setLoading(false);
         } catch (e) {
@@ -28,7 +28,7 @@ const CatsGallery = ({limit, displayIcon, select}) => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:3000/cats/${id}`);
+            const response = await axios.delete(`http://localhost:3000/api/v1/cats/${id}`);
             console.log(response.data);
             setCats(cats.filter((item) => item._id !== id));
             await getData();

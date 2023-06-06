@@ -30,8 +30,8 @@ app.use(express.urlencoded({extended:false}))
 // images
 app.use('/images', express.static(path.join(process.cwd(), 'images/')));
 // Routes
-app.use(CatsRoutes);
-app.use(login)
+app.use('/api/v1', CatsRoutes);
+app.use('/api/v1', login)
 
 const PORT = process.env.PORT || 8000;
 // Connecting MongoDB and running server

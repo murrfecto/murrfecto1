@@ -2,6 +2,7 @@ import React from 'react';
 import './Reports.scss'
 import {BiTrash, BiUpload} from "react-icons/bi";
 import {AiOutlineEye} from "react-icons/ai";
+
 const Reports = () => {
     return (
         <div className="reports">
@@ -16,15 +17,12 @@ const Reports = () => {
                     <input
                         type="file"
                         id="fileInput"
-                        required
-                        className="input__file_none"
+                        required className="input__file_none"
                     />
                     <button>Додати</button>
                 </div>
-                <div className='icons-group'> <AiOutlineEye size={30}/> <BiTrash size={30}/></div>
-
+                <div className='icons-group'><AiOutlineEye size={30}/> <BiTrash size={30}/></div>
             </form>
-
             <hr/>
         </div>
     );

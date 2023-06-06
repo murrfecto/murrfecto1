@@ -9,7 +9,7 @@ const FormSelect = ({ selectedCat, setSelectedCat }) => {
   useEffect(() => {
     try {
       const fetchData = async () => {
-        const data = await fetch("http://localhost:3000/cats");
+        const data = await fetch("http://localhost:3000/api/v1/cats");
         const json = await data.json();
         const catOptions = json.map((elem) => {
           return {

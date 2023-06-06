@@ -15,7 +15,7 @@ const SubscribeForm = () => {
             return;
         }
         try {
-            await axios.post('http://localhost:3000/cats/subscribe', {
+            await axios.post('http://localhost:3000/api/v1/cats/subscribe', {
                 email,
             });
             setIsSent(true);

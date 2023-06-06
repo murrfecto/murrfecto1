@@ -15,7 +15,7 @@ const OtherCatsSlider = ({cat}) => {
     const getCats = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:3000/cats');
+            const response = await axios.get('http://localhost:3000/api/v1/cats');
             setCats(response.data);
             setLoading(false);
         } catch (e) {

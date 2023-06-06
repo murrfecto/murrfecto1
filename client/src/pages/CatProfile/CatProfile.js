@@ -22,7 +22,7 @@ const CatProfile = () => {
                 backgroundColor:'rgba(208, 190, 196, 0.8)',
                 svgColor: '#4B3542'
             })
-            const response = await axios.get(`http://localhost:3000/cats/${id}`);
+            const response = await axios.get(`http://localhost:3000/api/v1/cats/${id}`);
             setCat(response.data);
             setPhotos(response.data.images);
             targetRef.current.scrollIntoView({

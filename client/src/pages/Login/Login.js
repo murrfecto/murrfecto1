@@ -17,7 +17,7 @@ const IsAdminForm = () => {
         e.preventDefault()
         const {email,password}=loginData
         try {
-            const response = await axios.post('http://localhost:3000/login',{
+            const response = await axios.post('http://localhost:3000/api/v1/login',{
                 email,
                 password
             })

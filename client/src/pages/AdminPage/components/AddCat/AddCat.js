@@ -4,7 +4,7 @@ import './AddCat.scss';
 import {Alert} from "@mui/material";
 import {BiUpload} from "react-icons/bi";
 
-const _ENDPOINT = "http://localhost:3000/cats";
+const _ENDPOINT = "http://localhost:3000/api/v1/cats";
 const AddCat = () => {
     const initialState = {
         name: '',
