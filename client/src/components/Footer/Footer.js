@@ -105,7 +105,7 @@ const Footer = () => {
                         <li className={"social_item"}>
                             <a
                                 className={"social_link"}
-                                href="https://www.instagramm.com/"
+                                href="https://www.instagram.com/murrfecto_murr/"
                                 target="_blank"
                                 rel="nofollow noreferrer noopener"
                             >

@@ -16,7 +16,9 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^8.0.1",
+    "cookie-parser": "^1.4.6",
     "formik": "^2.2.9",
+    "framer-motion": "^10.12.16",
     "notiflix": "^3.2.6",
     "react-icons": "^4.8.0",
     "react-modal": "^3.16.1",
