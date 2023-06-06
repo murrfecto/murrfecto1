@@ -3,10 +3,11 @@ import "./CatsGallery.scss";
 import CatItem from "../CatItem/CatItem";
 import axios from "axios";
 import Notiflix from "notiflix";
-import {FaEdit, FaTrash} from "react-icons/fa";
 import Spinner from "../../helpers/Spinner/Spinner";
 import {motion} from "framer-motion";
 import {useNavigate} from "react-router-dom";
+import editIcon from "../../assets/admin/edit-icon.svg"
+import deleteIcon from "../../assets/admin/delete-icon.svg"
 const CatsGallery = ({limit, displayIcon, select}) => {
     const [cats, setCats] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -120,14 +121,14 @@ const CatsGallery = ({limit, displayIcon, select}) => {
                             trash={
                                 shouldDisplayTrashIcon ? (
                                     <div className={'viewAll__icons'}>
-                                        <FaEdit
+                                        <img
+                                            src={editIcon}
                                             className={'viewAll__edit'}
-                                            size={25}
                                             onClick={() => handleEdit(cat._id)}
                                         />
-                                        <FaTrash
+                                        <img
+                                            src={deleteIcon}
                                             className="viewAll__trash"
-                                            size={25}
                                             onClick={() => confirmDelete(cat._id, cat.name)}
                                         />
                                     </div>

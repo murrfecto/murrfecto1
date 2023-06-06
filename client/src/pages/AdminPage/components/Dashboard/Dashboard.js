@@ -10,14 +10,12 @@ import EditCat from "../EditCat/EditCat";
 
 
 const Dashboard = () => {
-
-
     const navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {
-        if (location.pathname === "/admin") {
-            navigate('/admin/cats/viewAllCats');
-        }
+        // if (location.pathname === "/admin") {
+        //     navigate('/admin/cats/viewAllCats');
+        // }
     }, [navigate, location]);
     return (
 

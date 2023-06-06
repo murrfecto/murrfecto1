@@ -11,12 +11,11 @@
   }
   &__icons {
     margin-right: 10px;
-    gap: 20px;
+    gap: 40px;
     @include flex-column-a;
   }
 
   &__trash {
     z-index: 1;
-    padding-right: 10px;
   }
 }
