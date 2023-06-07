@@ -159,8 +159,8 @@ const EditCat = () => {
                                     <label>Стать</label>
                                     <select name="gender" value={formData.gender}
                                             onChange={handleInputChange} required>
-                                        <option selected value="" disabled>Оберіть
-                                            стать
+                                        <option selected value="" disabled>
+                                            Оберіть стать
                                         </option>
                                         <option value="кіт">Кіт</option>
                                         <option value="кішка">Кішка</option>
@@ -175,7 +175,9 @@ const EditCat = () => {
                                         чіпу
                                     </option>
                                     <option value="чипований">чипований</option>
-                                    <option value="не чипований">не чипований</option>
+                                    <option value="чипована">чипована</option>
+                                    <option value="нечипований">нечипований</option>
+                                    <option value="нечипована">нечипована</option>
                                 </select>
                             </div>
                             <div className="info">

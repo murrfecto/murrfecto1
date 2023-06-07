@@ -4,9 +4,17 @@ import './Sidebar.scss';
 import SubMenu from "./SubMenu";
 import {RxExit} from "react-icons/rx";
 import {UserContext} from "../../../../../context/userContext";
+import {useDispatch} from "react-redux";
+import {authActions} from "../../../../../store";
+import Cookies from 'js-cookie';
+import {useNavigate} from "react-router-dom";
 
 const Sidebar = () => {
     const {setUser} = useContext(UserContext);
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const logoutUser = () => {
         setUser(null);
     };
@@ -17,7 +25,6 @@ const Sidebar = () => {
             menus: [
                 {title: "Всі коти", link: "ViewAllCats"},
                 {title: "Додати кота", link: "addCat"},
-                {title: "Редагувати кота", link: "editCat"},
             ],
         },
         {
@@ -29,6 +36,12 @@ const Sidebar = () => {
             ],
         },
     ];
+
+    const logout = () => {
+        Cookies.remove('token');
+        dispatch(authActions.logout());
+        navigate('/admin');
+    };
 
 
     return (
@@ -46,7 +59,7 @@ const Sidebar = () => {
                                     </div>
                                 ))}
                             </div>
-                            <button className="logoutBtn" onClick={logoutUser}>
+                            <button className="logoutBtn" onClick={logout}>
                                 Вийти<RxExit size={20}/>
                             </button>
                         </ul>

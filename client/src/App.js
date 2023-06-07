@@ -4,12 +4,12 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import {Admin, Home} from "./pages";
 import Page404 from "./pages/Page404/Page404";
-import {OurTails} from "./pages/OurTailsPage/OurTailsPage";
 import AboutShelterPage from "./pages/AboutShelterPage/AboutShelterPage";
 import {ContactsPage} from "./pages/ContactsPage/ContactsPage";
 import CatProfile from "./pages/CatProfile/CatProfile";
 import CookieNotification from "../src/components/common/CookieNotification/CookieNotification";
-import {UserContextProvider} from "./context/userContext";
+import {OurTails} from "./pages/OurTailsPage/OurTailsPage";
+
 
 function App() {
     const isCookiesDismissed = localStorage.getItem(
@@ -18,7 +18,6 @@ function App() {
 
     return (
         <div className="App">
-            <UserContextProvider>
             <BrowserRouter>
                 <Header/>
                 <Routes>
@@ -33,7 +32,6 @@ function App() {
                 <Footer/>
                 {!isCookiesDismissed && <CookieNotification/>}
             </BrowserRouter>
-            </UserContextProvider>
         </div>
     );
 }
