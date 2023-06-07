@@ -117,6 +117,7 @@ const FormSelect = ({ selectedCat, setSelectedCat }) => {
         value={selectedCat}
         onChange={(option) => setSelectedCat(option)}
         getOptionValue={(option) => option.label}
+        menuPortalTarget={document.body}
       />
     </div>
   );
