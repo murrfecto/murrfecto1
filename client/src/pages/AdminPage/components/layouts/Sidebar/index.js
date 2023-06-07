@@ -10,14 +10,9 @@ import Cookies from 'js-cookie';
 import {useNavigate} from "react-router-dom";
 
 const Sidebar = () => {
-    const {setUser} = useContext(UserContext);
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const logoutUser = () => {
-        setUser(null);
-    };
     const subMenuList = [
         {
             name: "Наші хвости",
