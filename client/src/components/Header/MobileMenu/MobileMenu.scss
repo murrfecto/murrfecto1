@@ -10,7 +10,7 @@
   @include position-center-na;
   justify-content: space-between;
   padding: 24px 16px;
-  border-bottom: 1px solid $color-border;
+  // border-bottom: 1px solid $color-border;
 
   @media screen and (min-width: 768px) {
     padding: 24px 24px;
@@ -25,7 +25,7 @@
 
 .mobile_navbar {
   position: absolute;
-  top: 88.5px;
+  top: 88px;
   right: -100%;
   min-height: 410px;
   width: 390px;
@@ -37,6 +37,7 @@
   &.active {
     right: 0;
     opacity: 1;
+    border-top: 1px solid $color-border;
   }
 
   @include flex-column-na;
@@ -44,7 +45,7 @@
   padding: 59px 0px 60px 110px;
 
   @media screen and (min-width: 768px) {
-    top: 112.5px;
+    top: 112px;
   }
 }
 

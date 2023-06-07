@@ -9,7 +9,7 @@ import Infobox from "../Infobox/Infobox";
 import ModalButton from "../../ModalButton/ModalButton";
 
 const MobileMenu = () => {
-  const isTablet = useMediaQuery("(min-width: 768px),(max-width:1439.9px)");
+  const isTablet = useMediaQuery("(min-width: 768px) and (max-width:1439.9px)");
   const [menu, setMenu] = useState(false);
 
   let width = 87;
