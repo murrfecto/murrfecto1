@@ -36,7 +36,7 @@ const CookieNotification = () => {
           </p>
         </div>
 
-        <button className=" accept-btn" onClick={handleDismiss}>
+        <button id={'data-cookie'} className=" accept-btn" onClick={handleDismiss}>
           Ok
         </button>
         <button className="close-btn" onClick={handleDismiss}>

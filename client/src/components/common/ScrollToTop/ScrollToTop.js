@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./ScrollToTop.scss";
+import { ReactComponent as Icon } from "../../../assets/header/shift.svg";
 
 const ScrollToTop = () => {
   const [showScrollBtn, setShowScrollBtn] = useState(false);
@@ -23,8 +24,8 @@ const ScrollToTop = () => {
   };
 
   return showScrollBtn ? (
-    <button className={"scrollBtn"} onClick={scrollToTop}>
-      &#8679;
+    <button id={"data-scroll"} className={"scrollBtn"} onClick={scrollToTop}>
+      <Icon className="shift_icon" />
     </button>
   ) : null;
 };

@@ -8,7 +8,7 @@ const ModalContacts = ({ toggleModal }) => {
   return createPortal (
     <div className="modal_backdrop">
       <div className="modal_container">
-        <button type ="button" className="modal_btn_close" onClick={() => toggleModal()}>
+        <button  id={'data-contacts'} type ="button" className="modal_btn_close" onClick={() => toggleModal()}>
           <img className='modal_icon' src={closeBtn} alt="закриваюча кнопка" width={24} height={24} />
         </button>
         <h3 className="modal_title">Дякуємо!</h3>

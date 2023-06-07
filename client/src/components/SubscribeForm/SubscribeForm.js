@@ -15,7 +15,7 @@ const SubscribeForm = () => {
             return;
         }
         try {
-            await axios.post('http://localhost:3000/cats/subscribe', {
+            await axios.post('http://localhost:3000/api/v1/cats/subscribe', {
                 email,
             });
             setIsSent(true);
@@ -29,7 +29,7 @@ const SubscribeForm = () => {
     };
 
     const validateEmail = (email) => {
-        const re = /^[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}$/i;
+        const re = /^[\w-]+(?:\.[\w-]+)*@(?!.*\.ru)(?:[\w-]+\.)+[a-zA-Z]{2,7}$/i;
         return re.test(email);
     };
 

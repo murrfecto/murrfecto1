@@ -4,7 +4,7 @@ import './Report.scss';
 import { Alert } from '@mui/material';
 import Spinner from '../../../../helpers/Spinner/Spinner';
 
-const _ENDPOINT = 'http://localhost:3000/report';
+const _ENDPOINT = 'http://localhost:3000/api/v1/report';
 const reportUrl = 'https://murrfecto.s3.eu-central-1.amazonaws.com/report.pdf';
 const Report = () => {
 	const [file, setFile] = useState(null);
@@ -107,10 +107,10 @@ const Report = () => {
 						<Spinner />
 					) : (
 						<>
-							<button type='button' onClick={deleteReportHandler}>
+							<button id={'data-report'} type='button' onClick={deleteReportHandler}>
 								Видалити звіт
 							</button>
-							<button type='button' onClick={openReportHandler}>
+							<button id={'data-report'} type='button' onClick={openReportHandler}>
 								Відкрити звіт
 							</button>
 						</>

@@ -10,11 +10,9 @@ const addCat = async (req, res) => {
     const {client, collection} = await connectToDatabase('cats');
     try {
         const {error} = catsModel.validate(req.body);
-
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
-
         const images = req.files.map((file) => file.location);
         const result = await collection.insertOne({
             ...req.body,
@@ -31,6 +29,8 @@ const addCat = async (req, res) => {
         }
     }
 };
+
+
 
 const getCats = async (req, res) => {
     const {client, collection} = await connectToDatabase('cats');
@@ -81,23 +81,36 @@ const deleteCatById = async (req, res) => {
 };
 
 const updateCatById = async (req, res) => {
-    const collectionName = 'cats';
-    const {client, collection} = await connectToDatabase(collectionName);
-    const id = req.params.id;
-    const newCat = req.body;
-
+    const { client, collection } = await connectToDatabase('cats');
     try {
-        const result = await collection.updateOne({_id: new ObjectId(id)}, {$set: newCat});
+        const { error } = catsModel.validate(req.body);
+        if (error) {
+            return res.status(400).send(error.details[0].message);
+        }
+        const id = req.params.id;
+
+        const images = req.files ? req.files.map((file) => file.location) : [];
+
+        const result = await collection.updateOne(
+            { _id: new ObjectId(id) },
+            {
+                $set: {
+                    ...req.body,
+                    images: images,
+                },
+            }
+        );
         res.send(result);
     } catch (err) {
         console.error(err);
-        res.status(500).send('Error updating document');
+        res.status(500).send('Error connecting to the database');
     } finally {
         if (client) {
             await client.close();
         }
     }
 };
+
 
 const handleCallBack = async (req, res) => {
     const collectionName = 'donations';
@@ -186,7 +199,7 @@ const sendPayment = async (req, res) => {
         month: '2-digit',
         year: 'numeric',
         hour: '2-digit',
-        minute: '2-digit'
+        minute: '2-digit',
     }).replace(/\//g, '.').replace(', ', ':')}`;
 
     const orderBody = {

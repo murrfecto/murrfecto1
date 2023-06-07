@@ -32,7 +32,7 @@ const MobileMenu = () => {
         </Link>
         {isTablet && <ModalButton title={"Нагодуй кота"} />}
         {!menu ? (
-          <button
+          <button id={'data-mobile'}
             className="mobile_menu-btn"
             type="button"
             onClick={() => toggleModal()}
@@ -40,7 +40,7 @@ const MobileMenu = () => {
             <BurgerIcon width={32} height={32} />
           </button>
         ) : (
-          <button
+          <button id={'data-mobile'}
             className="mobile_menu-btn"
             type="button"
             onClick={toggleModal}
