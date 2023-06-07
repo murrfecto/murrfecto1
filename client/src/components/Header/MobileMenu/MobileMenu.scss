@@ -26,10 +26,18 @@
 .mobile_navbar {
   position: absolute;
   top: 88.5px;
-  right: 0;
+  right: -100%;
   min-height: 410px;
   width: 390px;
   background-color: $main-bg-color;
+  overflow: hidden;
+  opacity: 0;
+  transition: right 1000ms linear, opacity 1000ms linear;
+
+  &.active {
+    right: 0;
+    opacity: 1;
+  }
 
   @include flex-column-na;
   gap: 40px;

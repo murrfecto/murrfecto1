@@ -9,7 +9,7 @@ import Infobox from "../Infobox/Infobox";
 import ModalButton from "../../ModalButton/ModalButton";
 
 const MobileMenu = () => {
-  const isTablet = useMediaQuery("(min-width: 768px),(max-width:1439.9)");
+  const isTablet = useMediaQuery("(min-width: 768px),(max-width:1439.9px)");
   const [menu, setMenu] = useState(false);
 
   let width = 87;
@@ -32,7 +32,8 @@ const MobileMenu = () => {
         </Link>
         {isTablet && <ModalButton title={"Нагодуй кота"} />}
         {!menu ? (
-          <button id={'data-mobile'}
+          <button
+            id={"data-mobile"}
             className="mobile_menu-btn"
             type="button"
             onClick={() => toggleModal()}
@@ -40,7 +41,8 @@ const MobileMenu = () => {
             <BurgerIcon width={32} height={32} />
           </button>
         ) : (
-          <button id={'data-mobile'}
+          <button
+            id={"data-mobile"}
             className="mobile_menu-btn"
             type="button"
             onClick={toggleModal}
@@ -51,7 +53,7 @@ const MobileMenu = () => {
       </div>
 
       {menu && (
-        <div className="mobile_navbar">
+        <div className={`mobile_navbar ${menu ? "active" : ""}`}>
           <nav className={"mobile_nav "} onClick={toggleModal}>
             <ul className={"mobile_nav-list"}>
               <li>
