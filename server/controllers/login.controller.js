@@ -7,7 +7,6 @@ const loginUser = async (req, res) => {
     const {email, password} = req.body;
     try {
 
-
         //check if user exists
         const admin = await collection.findOne({email: email});
         if (admin) {
@@ -17,6 +16,8 @@ const loginUser = async (req, res) => {
                     email: admin.email,
                     id: admin._id
                 }, process.env.JWT_SECRET, {});
+                res.cookie('token',token,{httpOnly:true})
+                console.log( res.cookie('token',token,{httpOnly:true}));
                 res.status(200).json({token});
             } else {
                 res.status(401).send('invalid password');
@@ -36,6 +37,11 @@ const loginUser = async (req, res) => {
     }
 };
 
+const logoutUser = (req, res) => {
+    res.clearCookie('token');
+    res.status(200).send('Logged out successfully');
+};
+
 const getProfile = (req, res) => {
     const {token} = req.cookies;
     if(token){
@@ -48,4 +54,4 @@ const getProfile = (req, res) => {
     }
 };
 
-export {loginUser, getProfile};
+export {loginUser, getProfile,logoutUser};

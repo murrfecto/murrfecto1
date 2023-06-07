@@ -9,8 +9,7 @@ import AboutShelterPage from "./pages/AboutShelterPage/AboutShelterPage";
 import {ContactsPage} from "./pages/ContactsPage/ContactsPage";
 import CatProfile from "./pages/CatProfile/CatProfile";
 import CookieNotification from "../src/components/common/CookieNotification/CookieNotification";
-import {UserContextProvider} from "./context/userContext";
-import Dashboard from "./pages/AdminPage/components/Dashboard/Dashboard";
+
 
 function App() {
     const isCookiesDismissed = localStorage.getItem(
@@ -19,8 +18,6 @@ function App() {
 
     return (
         <div className="App">
-            <UserContextProvider>
-
 
             <BrowserRouter>
                 <Header/>
@@ -36,7 +33,6 @@ function App() {
                 <Footer/>
                 {!isCookiesDismissed && <CookieNotification/>}
             </BrowserRouter>
-            </UserContextProvider>
         </div>
     );
 }
