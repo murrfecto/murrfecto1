@@ -10,7 +10,6 @@
   @include position-center-na;
   justify-content: space-between;
   padding: 24px 16px;
-  // border-bottom: 1px solid $color-border;
 
   @media screen and (min-width: 768px) {
     padding: 24px 24px;
@@ -18,9 +17,13 @@
 }
 
 .mobile_menu-btn {
+  width: 42px;
+  height: 42px;
+  background-color: transparent;
   @include position-center-a;
   padding: 0px;
   border: transparent;
+  border-radius: 8px;
   cursor: pointer;
 
   transition: background-color 250ms linear;
@@ -61,4 +64,16 @@
 .mobile_nav-list {
   @include flex-column-na;
   gap: 24px;
+
+  a {
+    @include nunito-700-size-18;
+    line-height: 1.39;
+    color: $color-blue;
+    transition: color 300ms linear, text-decoration 300ms linear;
+
+    &:hover {
+      color: $color-btn;
+      text-decoration: underline;
+    }
+  }
 }
