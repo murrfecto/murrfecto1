@@ -36,7 +36,7 @@ const MobileMenu = () => {
             id={"data-mobile"}
             className="mobile_menu-btn"
             type="button"
-            onClick={() => toggleModal()}
+            onClick={toggleModal}
           >
             <BurgerIcon width={32} height={32} />
           </button>
@@ -52,25 +52,23 @@ const MobileMenu = () => {
         )}
       </div>
 
-      {menu && (
-        <div className={`mobile_navbar ${menu ? "active" : ""}`}>
-          <nav className={"mobile_nav "} onClick={toggleModal}>
-            <ul className={"mobile_nav-list"}>
-              <li>
-                {" "}
-                <Link to={"/about"}>Про притулок</Link>
-              </li>
-              <li>
-                <Link to={"/tails"}>Наші хвости</Link>
-              </li>
-              <li>
-                <Link to={"/contacts"}>Контакти</Link>
-              </li>
-            </ul>
-          </nav>
-          <Infobox />
-        </div>
-      )}
+      <div className={`mobile_navbar ${menu ? "active" : ""}`}>
+        <nav className={"mobile_nav "} onClick={toggleModal}>
+          <ul className={"mobile_nav-list"}>
+            <li>
+              {" "}
+              <Link to={"/about"}>Про притулок</Link>
+            </li>
+            <li>
+              <Link to={"/tails"}>Наші хвости</Link>
+            </li>
+            <li>
+              <Link to={"/contacts"}>Контакти</Link>
+            </li>
+          </ul>
+        </nav>
+        <Infobox />
+      </div>
     </div>
   );
 };
