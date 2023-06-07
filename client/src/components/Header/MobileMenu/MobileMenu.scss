@@ -10,7 +10,6 @@
   @include position-center-na;
   justify-content: space-between;
   padding: 24px 16px;
-  border-bottom: 1px solid $color-border;
 
   @media screen and (min-width: 768px) {
     padding: 24px 24px;
@@ -18,29 +17,63 @@
 }
 
 .mobile_menu-btn {
+  width: 42px;
+  height: 42px;
+  background-color: transparent;
   @include position-center-a;
   padding: 0px;
   border: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: background-color 250ms linear;
+
+  &:hover {
+    background-color: $color-card;
+  }
 }
 
 .mobile_navbar {
   position: absolute;
-  top: 88.5px;
-  right: 0;
+  top: 88px;
+  right: -100%;
+  opacity: 0;
+  pointer-events: none;
   min-height: 410px;
   width: 390px;
   background-color: $main-bg-color;
+  overflow: hidden;
+  transition: right 400ms linear;
+
+  &.active {
+    right: 0;
+    opacity: 1;
+    pointer-events: all;
+    border-top: 1px solid $color-border;
+  }
 
   @include flex-column-na;
   gap: 40px;
   padding: 59px 0px 60px 110px;
 
   @media screen and (min-width: 768px) {
-    top: 112.5px;
+    top: 112px;
   }
 }
 
 .mobile_nav-list {
   @include flex-column-na;
   gap: 24px;
+
+  a {
+    @include nunito-700-size-18;
+    line-height: 1.39;
+    color: $color-blue;
+    transition: color 300ms linear, text-decoration 300ms linear;
+
+    &:hover {
+      color: $color-btn;
+      text-decoration: underline;
+    }
+  }
 }

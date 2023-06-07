@@ -168,13 +168,10 @@
   }
 }
 
-.social_item {
-  height: 48px;
-}
-
 .social_link {
   width: 48px;
   height: 48px;
+  border-radius: 8px;
   box-shadow: transparent;
   transition: box-shadow 300ms linear, scale 300ms linear;
 
