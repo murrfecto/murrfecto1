@@ -1,0 +1,27 @@
+@import '../../../styles/index';
+
+.szh-accordion {
+  @include flex-column-na;
+  gap: 16px;
+  max-width: 358px;
+  padding: 0 16px;
+  margin: 0 auto;
+
+  &__item {
+    &-btn {
+      @include nunito-600-size-20;
+      line-height: 30px;
+      width: 100%;
+      padding: 17px 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: $color-btn;
+      color: $color-white;
+      cursor: pointer;
+    }
+
+    &-content {
+      background-color: $color-white;
+    }
+  }
+}
