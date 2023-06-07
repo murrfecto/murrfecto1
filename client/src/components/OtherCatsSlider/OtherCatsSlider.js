@@ -1,17 +1,17 @@
-import React, {useEffect, useMemo, useState} from 'react';
-import {Pagination} from "swiper";
-import {Swiper, SwiperSlide} from "swiper/react";
+import React, { useEffect, useMemo, useState } from 'react';
+import { Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import axios from "axios";
 import CartItem from '../CatItem/CatItem';
-import './OtherCatsSlider.scss'
+import './OtherCatsSlider.scss';
 import "swiper/css";
 import Spinner from "../../helpers/Spinner/Spinner";
 
-const OtherCatsSlider = ({cat}) => {
-
+const OtherCatsSlider = ({ cat }) => {
     const [cats, setCats] = useState(null);
     const [loading, setLoading] = useState(true);
     const [activeSlide, setActiveSlide] = useState(0);
+
     const getCats = async () => {
         try {
             setLoading(true);
@@ -24,34 +24,19 @@ const OtherCatsSlider = ({cat}) => {
         }
     };
 
-    const getRandomCats = () => {
-        const catsCopy = cats ? [...cats] : [];
-        if (cat && catsCopy) {
-            const catIndex = catsCopy.findIndex((currentCat) => currentCat._id === cat._id);
-            if (catIndex !== -1) {
-                catsCopy.splice(catIndex, 1);
-            }
+    const filteredCats = useMemo(() => {
+        if (cats && cat) {
+            return cats.filter((currentCat) => currentCat._id !== cat._id);
         }
-
-        const randomCats = [];
-        while (randomCats.length < 4 && catsCopy.length > 0) {
-            const randomIndex = Math.floor(Math.random() * catsCopy.length);
-            const randomCat = catsCopy.splice(randomIndex, 1)[0];
-            randomCats.push(randomCat);
-        }
-
-        return randomCats;
-    };
-
-    const randomCats = useMemo(() => getRandomCats(), [cats, cat]);
+        return cats;
+    }, [cats, cat]);
+    console.log(cats);
 
 
+    console.log(filteredCats);
     useEffect(() => {
-        if (randomCats) {
-            getCats()
-        }
+        getCats();
     }, []);
-
 
     return (
         <Swiper
@@ -86,25 +71,29 @@ const OtherCatsSlider = ({cat}) => {
             modules={[Pagination]}
             className="mySwiper"
         >
-            {!loading ? randomCats.map((item, index) => {
-                const {name, chipped, _id, gender, age} = item;
-                return (
-                    <SwiperSlide key={index}>
-                        <div className='slider__content'>
-                            <CartItem id={_id}
-                                      alt={name}
-                                      name={name}
-                                      src={item.images[0]}
-                                      age={age}
-                                      gender={gender}
-                                      select={true}
-                                      chippedInfo={chipped}
-
-                            />
-                        </div>
-                    </SwiperSlide>
-                );
-            }) : <Spinner/>}
+            {!loading ? (
+                filteredCats?.map((item, index) => {
+                    const { name, chipped, _id, gender, age } = item;
+                    return (
+                        <SwiperSlide key={index}>
+                            <div className='slider__content'>
+                                <CartItem
+                                    id={_id}
+                                    alt={name}
+                                    name={name}
+                                    src={item.images[0]}
+                                    age={age}
+                                    gender={gender}
+                                    select={true}
+                                    chippedInfo={chipped}
+                                />
+                            </div>
+                        </SwiperSlide>
+                    );
+                })
+            ) : (
+                <Spinner />
+            )}
         </Swiper>
     );
 };

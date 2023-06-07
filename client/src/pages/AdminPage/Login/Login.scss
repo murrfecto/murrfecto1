@@ -1,5 +1,10 @@
 @import "../../../styles/index";
 
+.spinner-icon {
+  animation: spin 1s linear infinite;
+  font-size: 20px;
+  margin-right: 8px;
+}
 .login {
   @include position-center;
 

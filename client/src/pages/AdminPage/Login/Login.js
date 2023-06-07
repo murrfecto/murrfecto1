@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {authActions} from "../../../store";
+import {BiLoaderAlt} from "react-icons/bi";
 
 const IsAdminForm = () => {
     const navigate = useNavigate();
@@ -15,11 +16,13 @@ const IsAdminForm = () => {
         email: '',
         password: '',
     });
+    const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
 
     const sendRequest = async () => {
         const {email, password} = loginData;
         try {
+            setLoading(true)
             const response = await axios.post('http://localhost:3000/api/v1/login', {
                 email,
                 password
@@ -29,9 +32,11 @@ const IsAdminForm = () => {
                 Cookies.set('token', token, {expires: 7});
                 dispatch(authActions.login());
                 navigate('/admin/cats/viewAllCats');
+                setLoading(false)
             }
         } catch (err) {
             console.log(err);
+            setLoading(false)
             // Перевірка на помилку авторизації
             if (err.response && err.response.status === 401) {
                 // Виведення повідомлення про невірний пароль
@@ -41,9 +46,17 @@ const IsAdminForm = () => {
         }
     };
 
+    console.log(loading);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         sendRequest()
+    };
+
+    const LoaderButton = () => {
+        return (
+                <BiLoaderAlt className="spinner-icon" />
+        );
     };
 
     return (
@@ -91,7 +104,7 @@ const IsAdminForm = () => {
                                 />
                             )}
                         </div>
-                        <button className="btnSubmit">Підтвердити</button>
+                        <button className="btnSubmit">{loading ? <LoaderButton/> : 'Підтвердити' }</button>
                     </form>
                 </div>
             </div>
