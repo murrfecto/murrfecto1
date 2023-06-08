@@ -7,6 +7,10 @@
   @include flex-column-a;
   gap: 80px;
   background-color: $main-bg-color;
+  @media (max-width: 375px) {
+    width: 315px;
+
+  }
 
   @media screen and (min-width: 768px) {
     width: 768px;
@@ -26,6 +30,10 @@
   @include flex-column-a;
   gap: 16px;
   width: 358px;
+  @media (max-width: 375px) {
+    width: 320px;
+
+  }
 
   @media screen and (min-width: 768px) {
     width: 350px;
