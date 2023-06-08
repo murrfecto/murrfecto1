@@ -102,6 +102,8 @@ const FormSelect = ({ selectedCat, setSelectedCat }) => {
       fontFamily: "Nunito Sans, serif",
       color: "#AEAEAE",
     }),
+
+    menuPortal: (baseStyles) => ({ ...baseStyles, zIndex: 9999 }),
   };
 
   return (
