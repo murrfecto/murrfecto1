@@ -12,7 +12,7 @@ const ImageContainer = () => {
     <section className="hero">
       <div className="main_bg container">
         <h1>Навіщо жити без кота, якщо можна жити з котом</h1>
-        {isMobile && <ModalButton />}
+        {isMobile && <ModalButton title={'Нагодуй кота'} />}
       </div>
     </section>
   );
