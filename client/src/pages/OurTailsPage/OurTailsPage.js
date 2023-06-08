@@ -6,6 +6,7 @@ import ScrollToTop from "../../components/common/ScrollToTop/ScrollToTop";
 export const OurTails = () => {
   return (
     <>
+      <title>Наші коти</title>
     <Title text="Наші хвости"/>
     <CatsGallery select displayIcon={false}/>
     <ScrollToTop/>

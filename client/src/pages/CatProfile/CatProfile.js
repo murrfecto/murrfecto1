@@ -11,6 +11,7 @@ import calendar from '../../assets/calendar.svg';
 import infoRounded from '../../assets/info-rounded.svg';
 import OtherCatsSlider from "../../components/OtherCatsSlider/OtherCatsSlider";
 import { Loading } from "notiflix";
+import ModalButton from "../../components/ModalButton/ModalButton";
 
 const CatProfile = () => {
     const [loading, setLoading] = useState(true);
@@ -74,6 +75,7 @@ const CatProfile = () => {
 
     return (
         <div ref={targetRef}>
+            <title>{cat?.name}</title>
             <Title text={cat?.name} />
             <div className="profile">
                 <section className="profile__wrapper">
@@ -114,7 +116,9 @@ const CatProfile = () => {
                             <hr />
                         </div>
                         <p className="info__desc">{cat?.description}</p>
-                        <button className="info__help">допомогти</button>
+                        <div className={"info__help"}>
+                            <ModalButton title={"Допомогти"}/>
+                        </div>
                     </div>
                 </section>
                 <section className="profile__others">

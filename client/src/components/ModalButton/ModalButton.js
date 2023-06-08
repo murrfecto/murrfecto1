@@ -4,7 +4,7 @@ import "./ModalButton.scss";
 import cats from "../../assets/modal/donate_cats.png";
 import DonateForm from "../Donate/DonateForm/DonateForm";
 
-const ModalButton = () => {
+const ModalButton = ({title}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleDonationClick = () => {
@@ -16,7 +16,7 @@ const ModalButton = () => {
         className={"navbar_links footer_donation "}
         onClick={handleDonationClick}
       >
-        Нагодуй кота
+          {title}
       </a>
       <Modal
         style={{
