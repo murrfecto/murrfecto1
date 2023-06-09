@@ -54,7 +54,8 @@
 }
 
 .footer_donation {
-  width: 359px;
+  width: 270px;
+  max-width: 359px;
   min-height: 64px;
   background-color: $color-btn;
   border-radius: 8px;
@@ -68,13 +69,15 @@
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
-    min-width: 270px;
+    width: 100%;
     border-radius: 12px;
   }
   @media (max-width: 375px) {
-    min-width: 100%;
+    width: 358px;
   }
-
+  @media screen and (min-width: 1440px) {
+    width: 270px;
+  }
   &:hover {
     background-color: $color-card;
     color: $color-btn;
