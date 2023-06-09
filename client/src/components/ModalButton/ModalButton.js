@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import "./ModalButton.scss";
 import cats from "../../assets/modal/donate_cats.png";
 import DonateForm from "../Donate/DonateForm/DonateForm";
+import {TfiClose} from "react-icons/tfi";
 
 const ModalButton = ({title}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -40,6 +41,7 @@ const ModalButton = ({title}) => {
           <img src={cats} alt={"donation__container_cats"} />
         </div>
         <div className={"donation__container_inner"}>
+            <TfiClose className={"donation__container_inner-close"} color='#4B3542' onClick={()=>setModalIsOpen(false)}/>
           <DonateForm
             optionIdPrefix="modal"
             title="Зібрані кошти підуть на харчування та медичну допомогу"

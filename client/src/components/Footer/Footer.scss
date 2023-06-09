@@ -71,6 +71,9 @@
     min-width: 270px;
     border-radius: 12px;
   }
+  @media (max-width: 375px) {
+    min-width: 100%;
+  }
 
   &:hover {
     background-color: $color-card;
