@@ -20,9 +20,9 @@
 
   @media (max-width: 375px) {
     width: 25px;
-    height: 60px;
-
+    border-radius: 8px;
   }
+
   &:hover {
     background-color: $box-shadow;
     transform: scale(1.1);
