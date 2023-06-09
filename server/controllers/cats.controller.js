@@ -31,7 +31,6 @@ const addCat = async (req, res) => {
 };
 
 
-
 const getCats = async (req, res) => {
     const {client, collection} = await connectToDatabase('cats');
     try {
@@ -81,9 +80,9 @@ const deleteCatById = async (req, res) => {
 };
 
 const updateCatById = async (req, res) => {
-    const { client, collection } = await connectToDatabase('cats');
+    const {client, collection} = await connectToDatabase('cats');
     try {
-        const { error } = catsModel.validate(req.body);
+        const {error} = catsModel.validate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
@@ -92,7 +91,7 @@ const updateCatById = async (req, res) => {
         const images = req.files ? req.files.map((file) => file.location) : [];
 
         const result = await collection.updateOne(
-            { _id: new ObjectId(id) },
+            {_id: new ObjectId(id)},
             {
                 $set: {
                     ...req.body,
@@ -128,6 +127,24 @@ const handleCallBack = async (req, res) => {
 
     if (donationStatus === 'approved') {
         try {
+            const recipientName = senderEmail.substring(0, senderEmail.indexOf('@'));
+            sgMail.setApiKey(process.env.API_KEY);
+            const headers = {
+                Authorization: `Bearer ${process.env.API_KEY}`, 'Content-Type2': 'application/json'
+            };
+            const templateId = process.env.TEMPLATE_ID_AFTER_PAYMENT;
+
+            const msg = {
+                to: senderEmail,
+                from: 'murrfecto@gmail.com',
+                subject: 'Допомога котикам!',
+                templateId: templateId,
+                dynamicTemplateData: {
+                    name: recipientName, deliveryFrequency: 'once'
+                }
+            };
+
+            await sgMail.send({...msg, headers});
             const result = await collection.insertOne({senderEmail, orderId, amount, currency});
             res.send(result);
         } catch (err) {
@@ -138,6 +155,35 @@ const handleCallBack = async (req, res) => {
                 await client.close();
             }
         }
+    }
+};
+
+const sendReminderEmail = async (recipientEmail, orderId) => {
+    try {
+        const recipientName = recipientEmail.substring(0, recipientEmail.indexOf('@'));
+        sgMail.setApiKey(process.env.API_KEY);
+        const headers = {
+            Authorization: `Bearer ${process.env.API_KEY}`,
+            'Content-Type': 'application/json'
+        };
+        const templateId = process.env.TEMPLATE_ID_REMINDER;
+
+        const msg = {
+            to: recipientEmail,
+            from: 'murrfecto@gmail.com',
+            subject: 'Payment Reminder',
+            templateId: templateId,
+            dynamicTemplateData: {
+                name: recipientName,
+                reminderDate: new Date().toLocaleDateString('en-US'),
+                orderId: orderId
+            }
+        };
+
+        await sgMail.send({...msg, headers});
+    } catch (error) {
+        console.error(error);
+        throw new Error('Error sending reminder email');
     }
 };
 
@@ -240,5 +286,14 @@ const sendPayment = async (req, res) => {
 
 
 export {
-    addCat, getCat, getCats, updateCatById, deleteCatById, subscribeToCats, sendMessage, sendPayment, handleCallBack
+    addCat,
+    getCat,
+    getCats,
+    updateCatById,
+    deleteCatById,
+    subscribeToCats,
+    sendMessage,
+    sendPayment,
+    handleCallBack,
+    sendReminderEmail
 }
