@@ -29,6 +29,7 @@
     }
 
     &_inner {
+      position: relative;
       max-width: 100%;
       color: $color-blue;
       padding: 40px 0;
@@ -37,6 +38,13 @@
       &-button {
         white-space: nowrap;
         color: $full-white;
+      }
+      &-close{
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+
       }
     }
   }
