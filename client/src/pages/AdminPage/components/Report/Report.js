@@ -4,7 +4,7 @@ import './Report.scss';
 import { Alert } from '@mui/material';
 import Spinner from '../../../../helpers/Spinner/Spinner';
 
-const _ENDPOINT = 'http://localhost:3000/api/v1/report';
+const _ENDPOINT = 'https://murrfecto1.vercel.app/api/v1/report';
 const reportUrl = 'https://murrfecto.s3.eu-central-1.amazonaws.com/report.pdf';
 const Report = () => {
 	const [file, setFile] = useState(null);
