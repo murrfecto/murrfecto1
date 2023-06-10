@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import "./FormSelect.scss";
 import Select from "react-select";
 
-const FormSelect = ({ selectedCat, setSelectedCat }) => {
+const FormSelect = ({
+  selectedCat,
+  setSelectedCat,
+  menuPortalTarget = null,
+}) => {
   const [cats, setCats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -105,6 +109,8 @@ const FormSelect = ({ selectedCat, setSelectedCat }) => {
       fontFamily: "Nunito Sans, serif",
       color: "#AEAEAE",
     }),
+
+    menuPortal: (baseStyles) => ({ ...baseStyles, zIndex: 9999 }),
   };
 
   return (
@@ -120,7 +126,8 @@ const FormSelect = ({ selectedCat, setSelectedCat }) => {
         value={selectedCat}
         onChange={(option) => setSelectedCat(option)}
         getOptionValue={(option) => option.label}
-        menuPortalTarget={document.body}
+        menuPortalTarget={menuPortalTarget}
+        menuPlacement="auto"
       />
     </div>
   );

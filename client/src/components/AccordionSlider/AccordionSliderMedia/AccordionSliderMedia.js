@@ -10,6 +10,7 @@ const items = [
       <DonateForm
         title="Нагодуйте котів вже сьогодні - ваша допомога важлива"
         optionIdPrefix="media-onetime"
+        menuPortalTarget={document.body}
       />
     ),
   },
@@ -19,6 +20,7 @@ const items = [
       <DonateForm
         title="Ваша  підтримка змінить життя одного кота!"
         optionIdPrefix="media-monthly"
+        menuPortalTarget={document.body}
       />
     ),
   },
