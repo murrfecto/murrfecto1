@@ -18,12 +18,14 @@ const IsAdminForm = () => {
     });
     const [loading, setLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [emailError, setEmailError] = useState(false);
+    const [passwordError, setPasswordError] = useState(false);
 
     const sendRequest = async () => {
         const {email, password} = loginData;
         try {
             setLoading(true)
-            const response = await axios.post('http://localhost:3000/api/v1/login', {
+            const response = await axios.post('https://murrfecto1.vercel.app/api/v1/login', {
                 email,
                 password
             });
@@ -38,10 +40,13 @@ const IsAdminForm = () => {
             console.log(err);
             setLoading(false)
             // Перевірка на помилку авторизації
-            if (err.response && err.response.status === 401) {
-                // Виведення повідомлення про невірний пароль
-                // або невірний емейл
-                console.log('Invalid credentials');
+            if (err.response && err.response.status === 404 ||401) {
+                if (err.response && err.response.status === 404 ||401) {
+                    // Виведення повідомлення про невірний пароль
+                    // або невірний емейл
+                    setEmailError(true);
+                    setPasswordError(true);
+                }
             }
         }
     };
@@ -50,6 +55,8 @@ const IsAdminForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setEmailError(false);
+        setPasswordError(false);
         sendRequest()
     };
 
@@ -66,10 +73,12 @@ const IsAdminForm = () => {
                     <div className="login_container__title">Вхід</div>
                     <form className="login_container__form"
                           onSubmit={handleSubmit}>
+                        <p className='error'>{passwordError && emailError && 'Електронна пошта або пароль введені неправильно.'}</p>
                         <label htmlFor="">Пароль</label>
+
                         <div className="password-container">
                             <input
-                                className="email"
+                                className={emailError ? 'email__error' : 'email'}
                                 type="email"
                                 placeholder="Введіть email"
                                 value={loginData.email}
@@ -80,7 +89,7 @@ const IsAdminForm = () => {
 
                             />
                             <input
-                                className="password"
+                                className={passwordError ? 'password__error' : 'password'}
                                 type={showPassword ? 'text' : 'password'}
                                 id="admin-password"
                                 value={loginData.password}
@@ -121,7 +130,7 @@ const AdminPage = () => {
             const token = Cookies.get('token');
             if (token) {
                 try {
-                    const response = await axios.get('http://localhost:3000/profile', {
+                    const response = await axios.get('https://murrfecto1.vercel.app/api/v1/profile', {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }

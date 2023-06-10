@@ -13,7 +13,7 @@ const FormSelect = ({
   useEffect(() => {
     try {
       const fetchData = async () => {
-        const data = await fetch("http://localhost:3000/api/v1/cats");
+        const data = await fetch("https://murrfecto1.vercel.app/api/v1/cats");
         const json = await data.json();
         const catOptions = json.map((elem) => {
           return {
@@ -44,6 +44,7 @@ const FormSelect = ({
       boxShadow: "none",
       borderRadius: "8px",
       borderColor: state.isFocused ? "#4B3542" : "#AEAEAE",
+
       "&:hover": {
         backgroundColor: "#F2F2F2",
       },
@@ -70,12 +71,14 @@ const FormSelect = ({
     menu: (baseStyles) => ({
       ...baseStyles,
       marginTop: "0",
+      zIndex: "9999",
       borderColor: "#AEAEAE",
       borderRadius: "9px",
     }),
 
     menuList: () => ({
       overflow: "hidden",
+      zIndex: "9999",
       borderRadius: "9px",
       backgroundColor: "#FCFCFF",
     }),

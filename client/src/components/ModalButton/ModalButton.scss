@@ -13,6 +13,15 @@
   min-height: 523px;
   top: 0;
 
+  @media (max-width: 767px) {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    justify-content: center;
+   scrollbar-width: none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
   .donation__container {
     display: flex;
     flex-direction: column;
@@ -29,6 +38,7 @@
     }
 
     &_inner {
+      position: relative;
       max-width: 100%;
       color: $color-blue;
       padding: 40px 0;
@@ -37,6 +47,13 @@
       &-button {
         white-space: nowrap;
         color: $full-white;
+      }
+      &-close{
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+
       }
     }
   }

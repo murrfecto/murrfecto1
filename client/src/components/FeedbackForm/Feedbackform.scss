@@ -3,7 +3,10 @@
 .feedback_wrapper {
     width: 358px;
     min-height: 484px;
+    @media (max-width: 375px) {
+        width: 325px;
 
+    }
     
     @media screen and (min-width: 768px) {
         width: 350px;
@@ -148,6 +151,10 @@
     line-height: 1.4;
     text-transform:uppercase;
     cursor: pointer;
+    @media (max-width: 375px) {
+        width: 325px;
+
+    }
 
     @media screen and (min-width: 768px) {
         width: 350px;

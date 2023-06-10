@@ -15,7 +15,7 @@ const SubscribeForm = () => {
             return;
         }
         try {
-            await axios.post('http://localhost:3000/api/v1/cats/subscribe', {
+            await axios.post('https://murrfecto1.vercel.app/api/v1/cats/subscribe', {
                 email,
             });
             setIsSent(true);

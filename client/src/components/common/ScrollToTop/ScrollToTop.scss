@@ -18,6 +18,10 @@
 
   transition: background-color 300ms linear, transform 300ms linear;
 
+  @media (max-width: 375px) {
+    border-radius: 8px;
+  }
+
   &:hover {
     background-color: $box-shadow;
     transform: scale(1.1);
@@ -25,6 +29,7 @@
 }
 
 .shift_icon {
+  position: absolute;
   display: inline-block;
   width: 1em;
   height: 1em;
