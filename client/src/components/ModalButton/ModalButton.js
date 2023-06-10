@@ -33,7 +33,9 @@ const ModalButton = () => {
         className={"modal"}
         isOpen={modalIsOpen}
         aria-label="Donate to feed a cat"
-        onRequestClose={() => setModalIsOpen(false)}
+        onRequestClose={() => {
+          setModalIsOpen(false);
+        }}
         shouldCloseOnOverlayClick={true}
       >
         <div className={"donation__container"}>
