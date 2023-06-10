@@ -40,6 +40,7 @@ const FormSelect = ({ selectedCat, setSelectedCat }) => {
       boxShadow: "none",
       borderRadius: "8px",
       borderColor: state.isFocused ? "#4B3542" : "#AEAEAE",
+
       "&:hover": {
         backgroundColor: "#F2F2F2",
       },
@@ -66,12 +67,14 @@ const FormSelect = ({ selectedCat, setSelectedCat }) => {
     menu: (baseStyles) => ({
       ...baseStyles,
       marginTop: "0",
+      zIndex: "9999",
       borderColor: "#AEAEAE",
       borderRadius: "9px",
     }),
 
     menuList: () => ({
       overflow: "hidden",
+      zIndex: "9999",
       borderRadius: "9px",
       backgroundColor: "#FCFCFF",
     }),

@@ -13,6 +13,15 @@
   min-height: 523px;
   top: 0;
 
+  @media (max-width: 767px) {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    justify-content: center;
+   scrollbar-width: none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
   .donation__container {
     display: flex;
     flex-direction: column;
