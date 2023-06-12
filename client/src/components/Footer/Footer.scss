@@ -65,14 +65,15 @@
   text-transform: uppercase;
   text-decoration: none;
   transition: background-color 300ms linear, color 300ms linear;
-
   cursor: pointer;
-
+&-catProfile{
+  max-width: 359px;
+}
   @media screen and (min-width: 768px) {
     border-radius: 12px;
   }
   @media (max-width: 375px) {
-    min-width: 358px;
+    min-width: 333px;
     width: 358px;
   }
   @media screen and (min-width: 1440px) {

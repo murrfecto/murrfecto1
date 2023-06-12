@@ -9,6 +9,7 @@ import {ContactsPage} from "./pages/ContactsPage/ContactsPage";
 import CatProfile from "./pages/CatProfile/CatProfile";
 import CookieNotification from "../src/components/common/CookieNotification/CookieNotification";
 import {OurTails} from "./pages/OurTailsPage/OurTailsPage";
+import Report from "./pages/Report/Report";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                     <Route path="/" element={<Home/>}/>
                     <Route path="/admin/*" element={<Admin/>}/>
                     <Route path="/tails" element={<OurTails/>}/>
+                    <Route path="/report" element={<Report/>}/>
                     <Route path="/about" element={<AboutShelterPage/>}/>
                     <Route path="/contacts" element={<ContactsPage/>}/>
                     <Route path="/cat/:id" element={<CatProfile/>}/>
