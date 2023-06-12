@@ -4,6 +4,7 @@ import axios from 'axios';
 import './PDFViewer.scss';
 import {Loading} from "notiflix";
 import {useMediaQuery} from "@mui/material";
+import Spinner from "../../helpers/Spinner/Spinner";
 
 // Встановіть URL робітника pdfjs
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
@@ -12,7 +13,7 @@ const PDFViewer = () => {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const [pdfUrl, setPdfUrl] = useState(null);
-
+    const [loading, setLoading] = useState(false);
     const isSmallScreen = useMediaQuery('(max-width: 700px)');
     const isExtraSmallScreen = useMediaQuery('(max-width: 600px)');
     const isTinyScreen = useMediaQuery('(max-width: 420px)');
@@ -22,10 +23,7 @@ const PDFViewer = () => {
     useEffect(() => {
         const fetchPDF = async () => {
             try {
-                Loading.standard({
-                    backgroundColor: "rgba(208, 190, 196, 0.8)",
-                    svgColor: "#4B3542",
-                });
+               setLoading(true)
                 const proxyUrl = 'https://api.allorigins.win/raw?url=';
                 const targetUrl = 'https://murrfecto.s3.eu-central-1.amazonaws.com/report.pdf';
                 const response = await axios.get(proxyUrl + targetUrl, {
@@ -33,10 +31,10 @@ const PDFViewer = () => {
                 });
                 const url = URL.createObjectURL(response.data);
                 setPdfUrl(url);
-                Loading.remove();
+                setLoading(false)
             } catch (error) {
                 console.log('Помилка завантаження PDF:', error);
-                Loading.remove();
+                setLoading(false)
             }
         };
 
@@ -65,25 +63,29 @@ const PDFViewer = () => {
     return (
         <div className="PDFViewer">
             <div className="PDFViewer__container">
-                <div className="PDFViewer__container_navigation">
-                    <div className="PDFViewer__container_navigation-pages">
-                        <p> Сторінка {pageNumber} з {numPages} </p></div>
-                    <div
-                        className="PDFViewer__container_navigation-buttons">
-                        {pageNumber > 1 &&
-                        <button onClick={changePageBack}>Попередня
-                            сторінка</button>}
-                        {pageNumber < numPages &&
-                            <button onClick={changePageNext}> наступна
-                                сторінка </button>} </div>
-                </div>
+                {loading ? <Spinner/> : ( <>
+                    <div className="PDFViewer__container_navigation">
+                        <div className="PDFViewer__container_navigation-pages">
+                            <p> Сторінка {pageNumber} з {numPages} </p></div>
+                        <div
+                            className="PDFViewer__container_navigation-buttons">
+                            {pageNumber > 1 &&
+                                <button onClick={changePageBack}>Попередня
+                                    сторінка</button>}
+                            {pageNumber < numPages &&
+                                <button onClick={changePageNext}> наступна
+                                    сторінка </button>} </div>
+                    </div>
 
-                <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
-                    <Page height={pageHeight} pageNumber={pageNumber}
-                          renderTextLayer={false}
-                          renderAnnotationLayer={false}/>
+                    <Document file={pdfUrl} onLoadSuccess={onDocumentLoadSuccess}>
+                        <Page height={pageHeight} pageNumber={pageNumber}
+                              renderTextLayer={false}
+                              renderAnnotationLayer={false}/>
 
-                </Document>
+                    </Document>
+                </>)}
+
+
             </div>
         </div>
     );

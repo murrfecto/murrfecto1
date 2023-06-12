@@ -3,7 +3,9 @@ import axios from 'axios';
 import './Report.scss';
 import { Alert } from '@mui/material';
 import Spinner from '../../../../helpers/Spinner/Spinner';
-
+import {BiTrash, BiUpload} from "react-icons/bi";
+import {AiOutlineEye} from "react-icons/ai";
+import {Link} from "react-router-dom";
 const _ENDPOINT = 'https://murrfecto1.vercel.app/api/v1/report';
 const reportUrl = 'https://murrfecto.s3.eu-central-1.amazonaws.com/report.pdf';
 const Report = () => {
@@ -76,22 +78,23 @@ const Report = () => {
 					{formStatus.description}
 				</Alert>
 			)}
-			<form onSubmit={handleSubmit} className='formAdding'>
-				<h2 className='formAdding__title'>Додайте звіт</h2>
-				<div className='formAdding__wrapper'>
-					<label>Звіт</label>
-					<div>
-						<label className='input__file' htmlFor='fileInput'>
-							{file ? (
-								<div className='input__file_selected'>
-									<span className='selected-file-label'>Обраний звіт:</span>
-									<span className='selected-file-name'>{file.name}</span>
-								</div>
-							) : (
-								'Оберіть файл звіту'
-							)}
+			<form onSubmit={handleSubmit} className='reports'>
+				<h2 className='reports__title'>Додайте звіт</h2>
+				<hr/>
+				<div className='reports__form'>
+					<div className='reports__wrapper'>
+						<label className="reports__selected"
+							   htmlFor="fileInput">
+							<span>
+								{file ? (
+									<div className='input__file_selected'>
+										<span className='selected-file-label'>Обраний звіт:</span>
+										<span className='selected-file-name'>{file.name}</span>
+									</div>
+								):'Оберіть документ' }
+								</span> <BiUpload size={22} color='#4B3542
+'/>
 						</label>
-
 						<input
 							type='file'
 							id='fileInput'
@@ -99,23 +102,24 @@ const Report = () => {
 							accept='.pdf'
 							onChange={handleFileUpload}
 							required
-							className='input__file_none'
 						/>
+						<button>Додати</button>
+						<label className='input__file' htmlFor='fileInput'>
+
+						</label>
 					</div>
-					{file && <button type='submit'>Завантажити або оновити звіт</button>}
-					{isLoading ? (
-						<Spinner />
-					) : (
 						<>
-							<button id={'data-report'} type='button' onClick={deleteReportHandler}>
-								Видалити звіт
-							</button>
-							<button id={'data-report'} type='button' onClick={openReportHandler}>
-								Відкрити звіт
-							</button>
+							<div className='icons-group'>
+								<Link to='/report'>
+									<AiOutlineEye color='#4B3542' size={30} id={'data-report'}>
+									</AiOutlineEye>
+								</Link>
+
+								<BiTrash size={30} id={'data-report'} onClick={deleteReportHandler} color='#4B3542'/>
+							</div>
 						</>
-					)}
 				</div>
+				<hr/>
 			</form>
 		</div>
 	);
