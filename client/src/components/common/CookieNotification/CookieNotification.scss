@@ -24,7 +24,7 @@
   @include position-center-na;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 15px 52px 15px 15px;
+  padding: 10px 52px 10px 15px;
 
   @media screen and (min-width: 768px) {
     flex-wrap: nowrap;
