@@ -28,8 +28,10 @@ const CookieNotification = () => {
             натисніть ОК. Більше інформації в{" "}
             <a
               className={"footer_link cookie_privat-policy"}
-              href={PrivacyPolicyPdf}
+              href={PrivacyPolicyPdf + "#toolbar=0"}
               target="_blank"
+              aria-readonly
+              rel="nofollow noreferrer noopener"
             >
               Політика конфіденційності
             </a>

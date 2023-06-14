@@ -24,7 +24,7 @@
   @include position-center-na;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 15px 52px 15px 15px;
+  padding: 10px 52px 10px 15px;
 
   @media screen and (min-width: 768px) {
     flex-wrap: nowrap;
@@ -80,7 +80,7 @@
   border: transparent;
   border-radius: 8px;
   @include position-center-a;
-  @include nunito-600-size-24;
+  @include nunito-700-size-16;
   line-height: 1.37;
   text-decoration: none;
   transition: background-color 300ms linear, color 300ms linear;
