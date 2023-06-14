@@ -9,14 +9,17 @@
   position: relative;
   width: 305px;
   height: 424px;
-  transition: transform 1500ms;
+  transition: transform 1000ms;
   transform-style: preserve-3d;
-  &:hover {
-    transform: rotateY(180deg);
-  }
 
   @media screen and (max-width: 720px) {
     max-width: 305px;
+  }
+
+  @media screen and (min-width: 768px) {
+    &:hover {
+      transform: rotateY(180deg);
+    }
   }
 
   &-front,
@@ -31,13 +34,22 @@
 
   &-back {
     transform: rotateY(180deg);
+
+    .cat_card-wrapper {
+      padding: 0;
+    }
+  }
+
+  &-rotate {
+    transform: rotateY(180deg);
   }
 
   &-link {
+    display: block;
     @include nunito-700-size-16;
     line-height: 22px;
     padding: 17px 10px;
-    margin-top: 26px;
+    margin: 26px auto 0 auto;
     width: 256px;
     color: $color-btn;
     border: 3px solid $color-btn;

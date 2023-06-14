@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CatItem.scss";
 import paw from "../../assets/paw.svg";
 import info from "../../assets/info-rounded.svg";
@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const CatItem = ({
   src,
+  srcBack,
   alt,
   name,
   description,
@@ -17,11 +18,23 @@ const CatItem = ({
   gender,
   age,
 }) => {
+  const [isCardRotate, setIsCardRotate] = useState(false);
+
+  const handleClick = () => {
+    if (window.innerWidth <= 768) {
+      setIsCardRotate(!isCardRotate);
+    }
+  };
+
   return (
-    <li className="cat_card" key={id}>
+    <li
+      className={`cat_card ${isCardRotate ? "cat_card-rotate" : ""}`}
+      key={id}
+      onClick={handleClick}
+    >
       <div className="cat_card-front">
         {select ? (
-          <Link to={`/cat/${id}`}>
+          <div>
             {src === undefined ? (
               <Skeleton
                 variant="rect"
@@ -50,7 +63,7 @@ const CatItem = ({
               </div>
               <div className="cat_card-trash">{trash}</div>
             </div>
-          </Link>
+          </div>
         ) : (
           <div>
             {src === undefined ? (
@@ -86,8 +99,8 @@ const CatItem = ({
       </div>
       <div className="cat_card-back">
         {select ? (
-          <Link to={`/cat/${id}`}>
-            {src === undefined ? (
+          <div>
+            {srcBack === undefined ? (
               <Skeleton
                 variant="rect"
                 style={{ borderRadius: "20px" }}
@@ -96,7 +109,9 @@ const CatItem = ({
               />
             ) : (
               <>
-                {src && <img className="cat_card-icon" src={src} alt={alt} />}
+                {srcBack && (
+                  <img className="cat_card-icon" src={srcBack} alt={alt} />
+                )}
               </>
             )}
             <div className="cat_card-wrapper">
@@ -104,10 +119,10 @@ const CatItem = ({
                 Докладніше
               </Link>
             </div>
-          </Link>
+          </div>
         ) : (
           <div>
-            {src === undefined ? (
+            {srcBack === undefined ? (
               <Skeleton
                 variant="rect"
                 style={{ borderRadius: "20px" }}
@@ -116,7 +131,9 @@ const CatItem = ({
               />
             ) : (
               <>
-                {src && <img className="cat_card-icon" src={src} alt={alt} />}
+                {srcBack && (
+                  <img className="cat_card-icon" src={srcBack} alt={alt} />
+                )}
               </>
             )}
             <div className="cat_card-wrapper">
