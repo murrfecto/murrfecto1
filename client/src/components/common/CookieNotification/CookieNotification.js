@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./CookieNotification.scss";
 import { ReactComponent as Info } from "../../../assets/footer/info.svg";
-
-import PrivacyPolicyPdf from "../../../assets/dataDocs/privacy-policy.pdf";
 
 const CookieNotification = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -26,15 +25,12 @@ const CookieNotification = () => {
             Цей сайт використовує файли cookies для правильної роботи і
             покращення сервісу. Якщо ви погоджуєтесь з їхнім використанням,
             натисніть ОК. Більше інформації в{" "}
-            <a
+            <Link
               className={"footer_link cookie_privat-policy"}
-              href={PrivacyPolicyPdf + "#toolbar=0"}
-              target="_blank"
-              aria-readonly
-              rel="nofollow noreferrer noopener"
+              to={"/privacy-policy"}
             >
               Політика конфіденційності
-            </a>
+            </Link>
           </p>
         </div>
 
