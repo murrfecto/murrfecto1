@@ -31,11 +31,13 @@
   padding: 10px 10px;
 
   @media screen and (min-width: 390px) {
-    padding: 10px 15px 10px 15px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   @media screen and (min-width: 768px) {
     flex-wrap: nowrap;
+    padding-right: 52px;
     gap: 32px;
   }
 }
