@@ -1,7 +1,7 @@
 @import "../../../styles/index";
 
 .cookie_section {
-  left: calc((100vw - 360px) / 2);
+  left: 0;
   position: fixed;
   bottom: 20%;
   z-index: 5;
@@ -23,44 +23,43 @@
 }
 
 .cookie_notification {
-  position: relative;
-  min-height: 10%;
-  @include position-center-na;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 10px 10px;
+  // position: relative;
+  // min-height: 10%;
+  // @include position-center-na;
+  // justify-content: space-between;
+  // flex-wrap: wrap;
+  // padding: 33px 16px 28px 16px;
 
-  @media screen and (min-width: 390px) {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  @media screen and (min-width: 768px) {
-    flex-wrap: nowrap;
-    padding-right: 52px;
-    gap: 32px;
-  }
+  // @media screen and (min-width: 768px) {
+  //   flex-wrap: nowrap;
+  //   padding-right: 52px;
+  //   gap: 32px;
+  // }
+  @include flex-column-na;
+  padding: 33px 16px 28px 16px;
 }
 
-.info_wrapper {
-  @include position-center-a;
-  margin-bottom: 16px;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 0px;
-  }
-}
+// .info_wrapper {
+//   @include flex-column-na;
+//   margin-bottom: 28px;
+//   @media screen and (min-width: 768px) {
+//     margin-bottom: 0px;
+//   }
+// }
 
 .info-icon {
   width: 30px;
   height: 30px;
-  margin-right: 16px;
+  margin-bottom: 21px;
   @media screen and (min-width: 768px) {
+    margin-bottom: 0px;
     margin-right: 37px;
   }
 }
 
 .cookie_notification-text {
-  max-width: 272px;
+  max-width: 358px;
+  margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
     max-width: 400px;
@@ -75,14 +74,14 @@
   font-family: "Nunito Sans";
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 1.33;
+  font-size: 16px;
+  line-height: 1.375;
 
   color: $color-footer-bg;
 }
 
 .accept-btn {
-  min-width: 100%;
+  width: 196px;
   min-height: 56px;
   padding: 0;
   color: $full-white;
@@ -97,12 +96,7 @@
 
   cursor: pointer;
 
-  @media screen and (min-width: 390px) {
-    min-width: 359px;
-  }
-
   @media screen and (min-width: 768px) {
-    min-width: 196px;
     border-radius: 12px;
   }
 

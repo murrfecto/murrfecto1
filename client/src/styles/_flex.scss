@@ -1,54 +1,59 @@
-@mixin position-center { // without alignment
+@mixin position-center {
+  // without alignment
   display: flex;
   justify-content: center;
 }
 
-@mixin position-center-na { // not-aligned ( justified ) todo.txt need to refactor name
+@mixin position-center-na {
+  // not-aligned ( justified ) todo.txt need to refactor name
   display: flex;
   align-items: center;
 }
 
-@mixin position-center-a { //aligned
+@mixin position-center-a {
+  //aligned
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@mixin flex-only { // only flex
+@mixin flex-only {
+  // only flex
   display: flex;
 }
 
-@mixin flex-column-a { // flex-column aligned
+@mixin flex-column-a {
+  // flex-column aligned
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-@mixin flex-column-na { // flex-column not-aligned
+@mixin flex-column-na {
+  // flex-column not-aligned
   display: flex;
   flex-direction: column;
 }
 
 @mixin profile-info-style {
-  color:$color-card-text;
-  border: 1px solid #4B3542;
+  color: $color-card-text;
+  border: 1px solid #4b3542;
   border-radius: 8px;
   width: 197px;
   height: 42px;
-   padding: 6px 0 6px 8px;
+  padding: 6px 0 6px 8px;
 }
-@mixin  admin-input-style{
+@mixin admin-input-style {
   width: 412px;
   min-height: 40px;
-  border: 0.5px solid #AEAEAE;
+  border: 0.5px solid #aeaeae;
   border-radius: 8px;
   @include flex-only;
   align-items: center;
   padding: 0 7px;
 }
 
-@mixin admin-input-placeholder{
+@mixin admin-input-placeholder {
   color: $color-border;
   @include nunito-400-size-16;
 }
-
