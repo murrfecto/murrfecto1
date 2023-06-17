@@ -23,29 +23,14 @@
 }
 
 .cookie_notification {
-  // position: relative;
-  // min-height: 10%;
-  // @include position-center-na;
-  // justify-content: space-between;
-  // flex-wrap: wrap;
-  // padding: 33px 16px 28px 16px;
-
-  // @media screen and (min-width: 768px) {
-  //   flex-wrap: nowrap;
-  //   padding-right: 52px;
-  //   gap: 32px;
-  // }
   @include flex-column-na;
   padding: 33px 16px 28px 16px;
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 52px 10px 15px;
+  }
 }
-
-// .info_wrapper {
-//   @include flex-column-na;
-//   margin-bottom: 28px;
-//   @media screen and (min-width: 768px) {
-//     margin-bottom: 0px;
-//   }
-// }
 
 .info-icon {
   width: 30px;
@@ -63,6 +48,8 @@
 
   @media screen and (min-width: 768px) {
     max-width: 400px;
+    margin-bottom: 0px;
+    margin-right: 32px;
   }
   @media screen and (min-width: 1440px) {
     max-width: 587px;
@@ -78,11 +65,15 @@
   line-height: 1.375;
 
   color: $color-footer-bg;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
 }
 
 .accept-btn {
   width: 196px;
-  min-height: 56px;
+  height: 56px;
   padding: 0;
   color: $full-white;
   background-color: $color-btn;
@@ -108,8 +99,8 @@
 
 .close-btn {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 28px;
+  right: 10px;
   @include position-center-a;
   width: 24px;
   height: 24px;
@@ -117,4 +108,8 @@
   background-color: inherit;
   font-size: 30px;
   line-height: 1;
+
+  @media screen and (min-width: 768px) {
+    top: 10px;
+  }
 }
