@@ -12,7 +12,6 @@ const FeedbackForm = () => {
 
     const onSubmit = async (values, {resetForm}) => {
 
-        await new Promise((resolve) => setTimeout(resolve, 500));
         try {
             await axios.post('https://murrfecto1.vercel.app/api/v1/cats/send-message', values);
             resetForm();
