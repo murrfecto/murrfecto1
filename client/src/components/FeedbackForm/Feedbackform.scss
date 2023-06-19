@@ -164,7 +164,12 @@
         width: 365px;
         padding: 10px 106px;
     }
-&:hover, &:focus {
+&:hover{
+        color: $color-btn;
+        background-color: $color-card;
+        border: none;
+    }
+&:focus {
 color: $color-btn;
 background-color: $color-card;
 border: none;
