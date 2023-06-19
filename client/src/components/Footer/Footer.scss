@@ -105,7 +105,12 @@
 }
 
 .footer_address {
-  @include flex-column-a;
+  display: flex;
+  @include flex-column-na;
+  align-items: flex-start;
+  @media screen and (max-width: 768px) {
+    @include flex-column-a;
+  }
   @media screen and (min-width: 1440px) {
     margin-right: 69px;
   }

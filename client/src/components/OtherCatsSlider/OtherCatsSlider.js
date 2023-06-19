@@ -15,7 +15,7 @@ const OtherCatsSlider = ({ cat }) => {
     const getCats = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('https://murrfecto1.vercel.app/api/v1/cats');
+            const response = await axios.get('http://localhost:3000/api/v1/cats');
             setCats(response.data);
             setLoading(false);
         } catch (e) {

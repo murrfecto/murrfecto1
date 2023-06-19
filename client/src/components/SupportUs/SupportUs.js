@@ -3,7 +3,7 @@ import './SupportUs.scss'
 import SupportCard from "../SupportCard/SupportCard";
 import oneTimeFood from '../../assets/one-time-food.svg'
 import plates from '../../assets/plates.svg'
-import treatsAndMeds from '../../assets/meds-treats-etc.svg'
+import treatsAndMeds from '../../assets/toys.png'
 
 const SupportUs = () => {
     return (
