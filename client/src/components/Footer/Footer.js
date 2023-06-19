@@ -28,7 +28,7 @@ const Footer = () => {
               />
             </Link>
 
-            <ModalButton title={"Нагодуй кота"} />
+            <ModalButton title={"Нагодуй кота"} style={'footer_donation'} />
           </div>
 
           <nav className={"footer_nav"}>

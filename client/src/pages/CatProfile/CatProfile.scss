@@ -44,7 +44,8 @@
 
 
       img{
-        object-fit: cover;
+        max-width: 100%;
+        height: auto;
         border-radius: 12px;
       }
 
@@ -56,7 +57,7 @@
           height: 540px;
         }
         @media (max-width: 740px) {
-          width: 343px;
+          width: 359px;
           height: 290px;
         }
         @media (max-width: 375px) {
@@ -88,26 +89,16 @@
 
       }
 
-      img:nth-child(2) {
-        margin-right: 24px;
+      img:nth-child(3) {
+        margin: 0 15px 0 15px;
         @media (max-width: 1000px) {
-          margin-right: 20px;
+          margin: 0 15px 0 15px;
         }
         @media (max-width: 740px) {
-          margin-right: 10px;
-        }
-      }
-
-      img:nth-last-child(1) {
-        margin-left: 24px;
-        @media (max-width: 1000px) {
-          margin-left: 20px;
-        }
-        @media (max-width: 740px) {
-          margin-left: 9px;
+          margin: 0 10px 0 10px;
         }
         @media (max-width: 375px) {
-          margin-left: 0px;
+          margin: 0 10px 0 10px;
         }
       }
     }
