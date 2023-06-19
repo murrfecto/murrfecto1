@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 const textRules = /^[А-ЩЬЮЯЇІЄҐа-щьюяїієґ'ʼ\s]+$/ig;
 const messageTextRules = /^[А-ЩЬЮЯЇІЄҐа-щьюяїієґ0-9'ʼ.,?!-\s]+$/ig;
-const emailRules = /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@(?!.*.ru$)[A-Za-z0-9.-]+$/gm;
+const emailRules = /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@(?!.*\.ru$)[a-z]+\.[A-Za-z0-9.-]+$/gm;
 
 
 export const feedbackSchema = yup.object().shape({
