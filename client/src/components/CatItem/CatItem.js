@@ -1,9 +1,12 @@
 import React, {useState} from "react";
 import "./CatItem.scss";
+import './FlipTransition.scss'
 import paw from "../../assets/paw.svg";
 import info from "../../assets/info-rounded.svg";
 import {Skeleton} from "@mui/material";
 import {Link} from "react-router-dom";
+import {CSSTransition} from "react-transition-group";
+
 
 const CatItem = ({
                      src,
@@ -18,7 +21,9 @@ const CatItem = ({
                      gender,
                      age,
                  }) => {
-    const [isCardRotate, setIsCardRotate] = useState(false);
+
+    const [isCardRotate, setIsCardRotate] = useState(true);
+
 
     const handleClick = () => {
         if (window.innerWidth <= 768) {
@@ -26,125 +31,153 @@ const CatItem = ({
         }
     };
 
+    const handleMouseEnter = () => {
+        setIsCardRotate(false);
+    };
+
+    const handleMouseLeave = () => {
+        setIsCardRotate(true);
+    };
+
     return (
-        <li
-            className={`cat_card ${isCardRotate ? "cat_card-rotate" : ""}`}
-            key={id}
-            onClick={handleClick}
-        >
-            <div className="cat_card-front">
-                {select ? (
-                    <div>
-                        {src === undefined ? (
-                            <Skeleton
-                                variant="rect"
-                                style={{borderRadius: "20px"}}
-                                width={305}
-                                height={295}
-                            />
-                        ) : (
-                            <>
-                                {src && <img className="cat_card-icon" src={src} alt={alt}/>}
-                            </>
-                        )}
-                        <div className="cat_card-wrapper">
-                            <div className="cat_card-name">
-                                <p>{name}</p>
-                            </div>
-                            <div className="cat_card-description">
-                                <img src={paw} alt="paw"/>
-                                <p>
-                                    {gender}, {age}
-                                </p>
-                            </div>
-                            <div className="cat_card-chipped">
-                                <img src={info} alt="info"/>
-                                <p>{chippedInfo}</p>
-                            </div>
-                            <div className="cat_card-trash">{trash}</div>
-                        </div>
-                    </div>
-                ) : (
-                    <div>
-                        {src === undefined ? (
-                            <Skeleton
-                                variant="rect"
-                                style={{borderRadius: "20px"}}
-                                width={305}
-                                height={295}
-                            />
-                        ) : (
-                            <>
-                                {src && <img className="cat_card-icon" src={src} alt={alt}/>}
-                            </>
-                        )}
-                        <div className="cat_card-wrapper">
-                            <div className="cat_card-name">
-                                <p>{name}</p>
-                            </div>
-                            <div className="cat_card-description">
-                                <img src={paw} alt="paw"/>
-                                <p>
-                                    {gender}, {age}
-                                </p>
-                            </div>
-                            <div className="cat_card-chipped">
-                                <img src={info} alt="info"/>
-                                <p>{chippedInfo}</p>
-                            </div>
-                            <div className="cat_card-trash">{trash}</div>
-                        </div>
-                    </div>
-                )}
-            </div>
-            <div className="cat_card-back">
-                {select ? (
-                    <div>
-                        {srcBack === undefined ? (
-                            <Skeleton
-                                variant="rect"
-                                style={{borderRadius: "20px"}}
-                                width={305}
-                                height={295}
-                            />
-                        ) : (
-                            <>
-                                {srcBack && (
-                                    <img className="cat_card-icon" src={srcBack} alt={alt}/>
+        <div className="flippable-card-container"
+             onMouseEnter={handleMouseEnter}
+             onMouseLeave={handleMouseLeave}>
+            <CSSTransition
+                in={isCardRotate}
+                timeout={200}
+                classNames="flip"
+            >
+                <li
+                    className={`cat_card`}
+                    key={id}
+                    onClick={handleClick}
+
+                >
+                    <div className="cat_card-front">
+                        {select ? (
+                            <div>
+                                {src === undefined ? (
+                                    <Skeleton
+                                        variant="rect"
+                                        style={{borderRadius: "20px"}}
+                                        width={305}
+                                        height={295}
+                                    />
+                                ) : (
+                                    <>
+                                        {src && <img className="cat_card-icon"
+                                                     src={src} alt={alt}/>}
+                                    </>
                                 )}
-                            </>
-                        )}
-                        <div className="cat_card-wrapper">
-                            <Link className="cat_card-link" to={`/cat/${id}`}>
-                                Докладніше
-                            </Link>
-                        </div>
-                    </div>
-                ) : (
-                    <div>
-                        {srcBack === undefined ? (
-                            <Skeleton
-                                variant="rect"
-                                style={{borderRadius: "20px"}}
-                                width={305}
-                                height={295}
-                            />
+                                <div className="cat_card-wrapper">
+                                    <div className="cat_card-name">
+                                        <p>{name}</p>
+                                    </div>
+                                    <div className="cat_card-description">
+                                        <img src={paw} alt="paw"/>
+                                        <p>
+                                            {gender}, {age}
+                                        </p>
+                                    </div>
+                                    <div className="cat_card-chipped">
+                                        <img src={info} alt="info"/>
+                                        <p>{chippedInfo}</p>
+                                    </div>
+                                    <div
+                                        className="cat_card-trash">{trash}</div>
+                                </div>
+                            </div>
                         ) : (
-                            <>
-                                {srcBack && (
-                                    <img className="cat_card-icon" src={srcBack} alt={alt}/>
+                            <div>
+                                {src === undefined ? (
+                                    <Skeleton
+                                        variant="rect"
+                                        style={{borderRadius: "20px"}}
+                                        width={305}
+                                        height={295}
+                                    />
+                                ) : (
+                                    <>
+                                        {src && <img className="cat_card-icon"
+                                                     src={src} alt={alt}/>}
+                                    </>
                                 )}
-                            </>
+                                <div className="cat_card-wrapper">
+                                    <div className="cat_card-name">
+                                        <p>{name}</p>
+                                    </div>
+                                    <div className="cat_card-description">
+                                        <img src={paw} alt="paw"/>
+                                        <p>
+                                            {gender}, {age}
+                                        </p>
+                                    </div>
+                                    <div className="cat_card-chipped">
+                                        <img src={info} alt="info"/>
+                                        <p>{chippedInfo}</p>
+                                    </div>
+                                    <div
+                                        className="cat_card-trash">{trash}</div>
+                                </div>
+                            </div>
                         )}
-                        <div className="cat_card-wrapper">
-                            <Link className="cat_card-link" to={`/cat/${id}`}>
-                                Докладніше
-                            </Link>
-                        </div>
                     </div>
-                )}
-            </div>
-        </li>
+                    <div className="cat_card-back">
+                        {select ? (
+                            <div>
+                                {srcBack  === undefined ? (
+                                    <Skeleton
+                                        variant="rect"
+                                        style={{borderRadius: "20px"}}
+                                        width={305}
+                                        height={295}
+                                    />
+                                ) : (
+                                    <>
+                                        {srcBack && (
+                                            <img className="cat_card-icon"
+                                                 src={srcBack} alt={alt}/>
+                                        )}
+                                    </>
+                                )}
+                                <div className="cat_card-wrapper">
+                                    <Link className="cat_card-link"
+                                          to={`/cat/${id}`}>
+                                        Докладніше
+                                    </Link>
+                                </div>
+                            </div>
+                        ) : (
+                            <div>
+                                {srcBack === undefined ? (
+                                    <Skeleton
+                                        variant="rect"
+                                        style={{borderRadius: "20px"}}
+                                        width={305}
+                                        height={295}
+                                    />
+                                ) : (
+                                    <>
+                                        {srcBack && (
+                                            <img className="cat_card-icon"
+                                                 src={srcBack} alt={alt}/>
+                                        )}
+                                    </>
+                                )}
+                                <div className="cat_card-wrapper">
+                                    <Link className="cat_card-link"
+                                          to={`/cat/${id}`}>
+                                        Докладніше
+                                    </Link>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </li>
+            </CSSTransition>
+
+        </div>
     );
 };
 

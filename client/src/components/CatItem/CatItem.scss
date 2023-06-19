@@ -1,4 +1,10 @@
 @import "../../styles/_index.scss";
+.flippable-card-container {
+  width: 305px;
+  height: 424px;
+  perspective: 1000px;
+}
+
 
 .cat_card {
   cursor: url("../../assets/paw.svg") 2 2, pointer;
@@ -9,19 +15,15 @@
   position: relative;
   width: 305px;
   height: 424px;
-  transition: transform 1000ms;
   transform-style: preserve-3d;
 
   @media screen and (max-width: 720px) {
     max-width: 305px;
   }
 
-  @media screen and (min-width: 768px) {
-    &:hover {
-      transform: rotateY(180deg);
-    }
+  &-front{
+    transform: rotateX(0deg);
   }
-
   &-front,
   &-back {
     position: absolute;
@@ -29,7 +31,11 @@
     height: 100%;
     left: 0;
     top: 0;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+
   }
 
   &-back {
