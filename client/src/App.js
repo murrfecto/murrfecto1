@@ -10,6 +10,7 @@ import CatProfile from "./pages/CatProfile/CatProfile";
 import CookieNotification from "../src/components/common/CookieNotification/CookieNotification";
 import {OurTails} from "./pages/OurTailsPage/OurTailsPage";
 import Report from "./pages/Report/Report";
+import ModalContacts from "./components/ModalContacts/ModalContacts";
 
 
 function App() {
