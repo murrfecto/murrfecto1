@@ -117,6 +117,7 @@ const handleCallBack = async (req, res) => {
     const senderEmail = req.body.sender_email;
     const currency = req.body.currency;
     const orderId = req.body.order_id;
+    const catName = req.body.selectedCat;
     const rawAmount = parseFloat(req.body.amount) / 100;
     const amount = new Intl.NumberFormat('en', {
         minimumFractionDigits: 2,
@@ -140,7 +141,8 @@ const handleCallBack = async (req, res) => {
                 subject: 'Допомога котикам!',
                 templateId: templateId,
                 dynamicTemplateData: {
-                    name: recipientName, deliveryFrequency: 'once'
+                    name: recipientName, deliveryFrequency: 'once',
+                    catName: catName,
                 }
             };
 
@@ -164,7 +166,7 @@ const sendReminderEmail = async (recipientEmail, orderId) => {
         sgMail.setApiKey(process.env.API_KEY);
         const headers = {
             Authorization: `Bearer ${process.env.API_KEY}`,
-            'Content-Type': 'application/json'
+            'x-custom-content-type': 'application/json'
         };
         const templateId = process.env.TEMPLATE_ID_REMINDER;
 
@@ -180,12 +182,15 @@ const sendReminderEmail = async (recipientEmail, orderId) => {
             }
         };
 
-        await sgMail.send({...msg, headers});
+        const result = await sgMail.send({ ...msg, headers });
+        console.log('Reminder email sent successfully', result);
     } catch (error) {
-        console.error(error);
+        console.error('SendGrid response', error.response.body.errors);
+        console.error('Error sending reminder email', error);
         throw new Error('Error sending reminder email');
     }
 };
+
 
 
 const subscribeToCats = (req, res) => {

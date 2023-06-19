@@ -7,6 +7,7 @@ import {Skeleton} from "@mui/material";
 import {Link} from "react-router-dom";
 import {CSSTransition} from "react-transition-group";
 
+
 const CatItem = ({
                      src,
                      srcBack,
@@ -20,7 +21,9 @@ const CatItem = ({
                      gender,
                      age,
                  }) => {
+
     const [isCardRotate, setIsCardRotate] = useState(true);
+
 
     const handleClick = () => {
         if (window.innerWidth <= 768) {
@@ -175,7 +178,6 @@ const CatItem = ({
             </CSSTransition>
 
         </div>
-
     );
 };
 

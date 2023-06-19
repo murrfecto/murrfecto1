@@ -18,7 +18,7 @@ const Navbar = () => {
           <Link to={"/tails"}>Наші хвости</Link>
           <Link to={"/contacts"}>Контакти</Link>
         </div>
-        <ModalButton title={"Нагодуй кота"} />
+        <ModalButton title={"Нагодуй кота"} style={'footer_donation'} />
       </div>
     </nav>
   );

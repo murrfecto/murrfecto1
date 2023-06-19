@@ -12,6 +12,7 @@ import {OurTails} from "./pages/OurTailsPage/OurTailsPage";
 import Report from "./pages/Report/Report";
 
 
+
 function App() {
     const isCookiesDismissed = localStorage.getItem(
         "cookieNotificationDismissed"

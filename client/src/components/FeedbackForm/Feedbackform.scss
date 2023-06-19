@@ -115,6 +115,7 @@
 .feedback_textarea {
     width: 100%;
     min-height: 105px;
+    resize: none;
     border: 0.5px solid $color-border;
     background-color: transparent;
     border-radius: 8px;
@@ -164,7 +165,12 @@
         width: 365px;
         padding: 10px 106px;
     }
-&:hover, &:focus {
+&:hover{
+        color: $color-btn;
+        background-color: $color-card;
+        border: none;
+    }
+&:focus {
 color: $color-btn;
 background-color: $color-card;
 border: none;
