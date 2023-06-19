@@ -5,7 +5,7 @@ import cats from "../../assets/modal/donate_cats.png";
 import DonateForm from "../Donate/DonateForm/DonateForm";
 import {TfiClose} from "react-icons/tfi";
 
-const ModalButton = ({title}) => {
+const ModalButton = ({title,style}) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleDonationClick = () => {
@@ -14,7 +14,7 @@ const ModalButton = ({title}) => {
   return (
     <div id={"donation"}>
       <a
-        className={"navbar_links footer_donation "}
+        className={`navbar_links ${style}`}
         onClick={handleDonationClick}
       >
           {title}

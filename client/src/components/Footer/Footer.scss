@@ -66,9 +66,12 @@
   text-decoration: none;
   transition: background-color 300ms linear, color 300ms linear;
   cursor: pointer;
-&-catProfile{
-  max-width: 359px;
-}
+
+  &-catProfile {
+    width: auto;
+
+  }
+
   @media screen and (min-width: 768px) {
     border-radius: 12px;
   }
@@ -80,6 +83,7 @@
     min-width: 270px;
     width: 100%;
   }
+
   &:hover {
     background-color: $color-card;
     color: $color-btn;
@@ -136,6 +140,7 @@
   font-style: normal;
   line-height: 1.38;
   text-decoration: underline;
+
   &:hover {
     color: $color-card;
     border-bottom-color: $color-card;
