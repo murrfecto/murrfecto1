@@ -30,7 +30,7 @@ const MobileMenu = () => {
         <Link to="/">
           <img src={logo} alt="murfecto logo" width={width} height={height} />
         </Link>
-        {isTablet && <ModalButton title={"Нагодуй кота"} />}
+        {isTablet && <ModalButton title={"Нагодуй кота"}  style={'footer_donation'}/>}
         {!menu ? (
           <button
             id={"data-mobile"}

@@ -82,6 +82,7 @@ const OtherCatsSlider = ({ cat }) => {
                                     alt={name}
                                     name={name}
                                     src={item.images[0]}
+                                    srcBack={item.images[1] || item.images[0]}
                                     age={age}
                                     gender={gender}
                                     select={true}

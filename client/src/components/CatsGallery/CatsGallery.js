@@ -111,6 +111,7 @@ const CatsGallery = ({limit, displayIcon, select}) => {
                     >
                         <CatItem
                             src={cat?.images && cat.images.length > 0 ? cat.images[0] : null}
+                            srcBack={cat?.images && cat.images.length > 0 ? cat.images[1] || cat.images[0] : null}
                             alt={cat.name}
                             name={cat.name}
                             age={cat.age}
