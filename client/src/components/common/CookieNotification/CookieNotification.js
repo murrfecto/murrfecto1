@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./CookieNotification.scss";
 import { ReactComponent as Info } from "../../../assets/footer/info.svg";
 

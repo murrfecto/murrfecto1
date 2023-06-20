@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import axios from "axios";
 import "./PDFViewer.scss";
-import { Loading } from "notiflix";
 import { useMediaQuery } from "@mui/material";
 import Spinner from "../../helpers/Spinner/Spinner";
 
