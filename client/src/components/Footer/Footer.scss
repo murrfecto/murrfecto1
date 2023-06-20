@@ -68,8 +68,22 @@
   cursor: pointer;
 
   &-catProfile {
-    width: auto;
-
+    max-width: 359px;
+    width: 270px;
+    min-height: 64px;
+    background-color: $color-btn;
+    border-radius: 8px;
+    @include position-center-a;
+    @include nunito-600-size-24;
+    line-height: 1.37;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 300ms linear, color 300ms linear;
+    cursor: pointer;
+    @media (max-width: 375px) {
+      min-width: 330px;
+      width: 330px;
+    }
   }
 
   @media screen and (min-width: 768px) {

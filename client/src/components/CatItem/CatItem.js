@@ -45,7 +45,7 @@ const CatItem = ({
              onMouseLeave={handleMouseLeave}>
             <CSSTransition
                 in={isCardRotate}
-                timeout={200}
+                timeout={500}
                 classNames="flip"
             >
                 <li
@@ -125,7 +125,7 @@ const CatItem = ({
                     </div>
                     <div className="cat_card-back">
                         {select ? (
-                            <div>
+                            <div className="cat_card-back__wrapper">
                                 {srcBack  === undefined ? (
                                     <Skeleton
                                         variant="rect"
@@ -141,12 +141,10 @@ const CatItem = ({
                                         )}
                                     </>
                                 )}
-                                <div className="cat_card-wrapper">
-                                    <Link className="cat_card-link"
-                                          to={`/cat/${id}`}>
+
+                                <Link to={`/cat/${id}`} className="cat_card-link">
                                         Докладніше
-                                    </Link>
-                                </div>
+                                </Link>
                             </div>
                         ) : (
                             <div>
@@ -165,12 +163,9 @@ const CatItem = ({
                                         )}
                                     </>
                                 )}
-                                <div className="cat_card-wrapper">
-                                    <Link className="cat_card-link"
-                                          to={`/cat/${id}`}>
+                                <Link to={`/cat/${id}`} className="cat_card-link">
                                         Докладніше
-                                    </Link>
-                                </div>
+                                </Link>
                             </div>
                         )}
                     </div>

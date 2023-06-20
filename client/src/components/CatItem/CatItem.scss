@@ -40,9 +40,8 @@
 
   &-back {
     transform: rotateY(180deg);
-
-    .cat_card-wrapper {
-      padding: 0;
+    &__wrapper{
+      @include flex-column-a;
     }
   }
 
@@ -57,12 +56,13 @@
     padding: 17px 10px;
     margin: 26px auto 0 auto;
     width: 256px;
+    height: 56px;
     color: $color-btn;
     border: 3px solid $color-btn;
     border-radius: 8px;
     text-align: center;
     transition: all 0.5s;
-
+    z-index: 999;
     &:hover,
     &:active {
       background-color: $color-card;

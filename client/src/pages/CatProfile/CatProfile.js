@@ -115,7 +115,7 @@ const CatProfile = () => {
             </div>
             <p className="info__desc">{cat?.description}</p>
             <div className={"info__help"}>
-              <ModalButton title={"Допомогти"} style={'footer_donation footer_donation-catProfile'} />
+              <ModalButton title={"Допомогти"} style={'footer_donation-catProfile'} />
             </div>
           </div>
         </section>
