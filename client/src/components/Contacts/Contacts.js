@@ -11,7 +11,7 @@ const Contacts = () => {
     <div className="contacts_container">
       <div className="contacts_wrapper">
         <div className="contacts_info">
-          <a className="contacts_info_link" href="mailto:info@murrfecto.site">
+          <div className="contacts_info_wrapper">
             <img
               className="contacts_info_icon"
               src={email}
@@ -20,8 +20,8 @@ const Contacts = () => {
               height={24}
             />
             info@murrfecto.site
-          </a>
-          <a className="contacts_info_link" href="tel:+380636286630">
+          </div>
+          <div className="contacts_info_wrapper">
             <img
               className="contacts_info_icon"
               src={phone}
@@ -30,7 +30,7 @@ const Contacts = () => {
               height={24}
             />
             +38 063 628 6630
-          </a>
+          </div>
           <div className="contacts_social">
             <a
               href="https://www.instagram.com/murrfecto_murr/"
