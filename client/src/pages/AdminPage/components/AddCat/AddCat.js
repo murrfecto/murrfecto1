@@ -52,6 +52,7 @@ const AddCat = () => {
     };
 
 
+
     return (
         <div>
             {formStatus === 'success' && (

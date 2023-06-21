@@ -4,7 +4,7 @@ import './FlipTransition.scss'
 import paw from "../../assets/paw.svg";
 import info from "../../assets/info-rounded.svg";
 import {Skeleton} from "@mui/material";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {CSSTransition} from "react-transition-group";
 
 
@@ -23,8 +23,11 @@ const CatItem = ({
                  }) => {
 
     const [isCardRotate, setIsCardRotate] = useState(true);
+    const navigate = useNavigate()
 
-
+    const handleNavigateToCat = ()=>{
+        navigate(`/cat/${id}/`)
+    }
     const handleClick = () => {
         if (window.innerWidth <= 768) {
             setIsCardRotate(!isCardRotate);
@@ -141,10 +144,9 @@ const CatItem = ({
                                         )}
                                     </>
                                 )}
-
-                                <Link to={`/cat/${id}`} className="cat_card-link">
-                                        Докладніше
-                                </Link>
+                                    <button className="cat_card-link" onClick={handleNavigateToCat} >
+                                         Докладніше
+                                    </button>
                             </div>
                         ) : (
                             <div>
@@ -163,9 +165,10 @@ const CatItem = ({
                                         )}
                                     </>
                                 )}
-                                <Link to={`/cat/${id}`} className="cat_card-link">
+                                    <button style={{ width: '100%' }} className="cat_card-link"  onClick={handleNavigateToCat}>
                                         Докладніше
-                                </Link>
+                                    </button>
+
                             </div>
                         )}
                     </div>

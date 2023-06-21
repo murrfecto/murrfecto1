@@ -1,4 +1,5 @@
 @import "../../styles/_index.scss";
+
 .flippable-card-container {
   width: 305px;
   height: 424px;
@@ -21,9 +22,10 @@
     max-width: 305px;
   }
 
-  &-front{
+  &-front {
     transform: rotateX(0deg);
   }
+
   &-front,
   &-back {
     position: absolute;
@@ -40,20 +42,22 @@
 
   &-back {
     transform: rotateY(180deg);
-    &__wrapper{
+
+    &__wrapper {
       @include flex-column-a;
+
+      .cat_card-link {
+        z-index: 999;
+      }
     }
   }
 
-  &-rotate {
-    transform: rotateY(180deg);
-  }
 
   &-link {
-    display: block;
+    display: inline-block;
     @include nunito-700-size-16;
     line-height: 22px;
-    padding: 17px 10px;
+    cursor: pointer;
     margin: 26px auto 0 auto;
     width: 256px;
     height: 56px;
@@ -62,7 +66,9 @@
     border-radius: 8px;
     text-align: center;
     transition: all 0.5s;
-    z-index: 999;
+    background: none;
+    pointer-events: auto;
+    touch-action: manipulation;
     &:hover,
     &:active {
       background-color: $color-card;
@@ -74,7 +80,6 @@
   }
 
   &-wrapper {
-    position: relative;
     padding-left: 16px;
   }
 
