@@ -117,7 +117,7 @@ const handleCallBack = async (req, res) => {
     const senderEmail = req.body.sender_email;
     const currency = req.body.currency;
     const orderId = req.body.order_id;
-    const catName = req.body.selectedCat;
+    const catName = req.body.catLabel;
     const rawAmount = parseFloat(req.body.amount) / 100;
     const amount = new Intl.NumberFormat('en', {
         minimumFractionDigits: 2,
@@ -128,7 +128,6 @@ const handleCallBack = async (req, res) => {
 
     if (donationStatus === 'approved') {
         try {
-            const recipientName = senderEmail.substring(0, senderEmail.indexOf('@'));
             sgMail.setApiKey(process.env.API_KEY);
             const headers = {
                 Authorization: `Bearer ${process.env.API_KEY}`, 'Content-Type2': 'application/json'
@@ -141,7 +140,7 @@ const handleCallBack = async (req, res) => {
                 subject: 'Допомога котикам!',
                 templateId: templateId,
                 dynamicTemplateData: {
-                    name: recipientName, deliveryFrequency: 'once',
+                    deliveryFrequency: 'once',
                     catName: catName,
                 }
             };

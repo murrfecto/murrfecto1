@@ -30,10 +30,7 @@ const OtherCatsSlider = ({ cat }) => {
         }
         return cats;
     }, [cats, cat]);
-    console.log(cats);
 
-
-    console.log(filteredCats);
     useEffect(() => {
         getCats();
     }, []);
