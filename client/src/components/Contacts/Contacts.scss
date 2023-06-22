@@ -56,7 +56,7 @@
   padding-top: 24px;
   padding-left: 28px;
   padding-bottom: 23px;
-  &_link {
+  &_wrapper {
     @include position-center-na;
     justify-content: flex-start;
     gap: 8px;
