@@ -65,7 +65,7 @@
     text-align: center;
     transition: all 0.5s;
     background: none;
-    pointer-events: auto;
+    pointer-events: none;
     touch-action: manipulation;
     &:hover,
     &:active {
