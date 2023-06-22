@@ -5,7 +5,6 @@
   perspective: 1000px;
 }
 
-
 .cat_card {
   cursor: url("../../assets/paw.svg") 2 2, pointer;
   color: $color-blue;
@@ -21,7 +20,7 @@
     max-width: 305px;
   }
 
-  &-front{
+  &-front {
     transform: rotateX(0deg);
   }
   &-front,
@@ -35,12 +34,11 @@
     backface-visibility: hidden;
     display: flex;
     justify-content: center;
-
   }
 
   &-back {
     transform: rotateY(180deg);
-    &__wrapper{
+    &__wrapper {
       @include flex-column-a;
     }
   }
@@ -50,7 +48,7 @@
   }
 
   &-link {
-    display: block;
+    @include position-center-a;
     @include nunito-700-size-16;
     line-height: 22px;
     padding: 17px 10px;
