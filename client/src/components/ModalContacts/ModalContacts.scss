@@ -15,7 +15,7 @@
 .modal_container {
     position: absolute;
     width: 390px;
-    min-height: 836px;
+    height: 836px;
     z-index: 10;
     background-color: $color-btn;
     background-image: url('../../assets/kitten_modal_mobile.png');
@@ -24,7 +24,7 @@
 
    @media screen and (min-width: 768px) {
     width: 630px;  
-    min-height: 514px;
+    height: 514px;
     margin-top: 150px;
     border-radius: 18px;
     background-image: url('../../assets/kitten_modal_contacts.png');
