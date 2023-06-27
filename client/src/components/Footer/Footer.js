@@ -28,7 +28,7 @@ const Footer = () => {
               />
             </Link>
 
-            <ModalButton title={"Нагодуй кота"} style={'footer_donation'} />
+            <ModalButton title={"Нагодуй кота"} style={"footer_donation"} />
           </div>
 
           <nav className={"footer_nav"}>
@@ -44,40 +44,34 @@ const Footer = () => {
             <h2 className="contacts_title">Контакти</h2>
             <ul className="contacts_list">
               <li>
-                <a className="info_link contacts_link" href="tel:+380636286630">
+                <p className="info_link contacts_link">
                   <img
                     className={"contacts_icon"}
                     src={phone}
                     alt="phone icon"
                   />
                   <span>+38 063 628 6630</span>
-                </a>
+                </p>
               </li>
               <li>
-                <a
-                  className={"info_link  contacts_link"}
-                  href="tel:+380675681788"
-                >
+                <p className={"info_link  contacts_link"}>
                   <img
                     className={"contacts_icon"}
                     src={phone}
                     alt="phone icon"
                   />
                   <span>+38 067 568 1788</span>
-                </a>
+                </p>
               </li>
               <li>
-                <a
-                  className={"info_link contacts_link"}
-                  href="mailto:info@example.com"
-                >
+                <p className={"info_link contacts_link"}>
                   <img
                     className={"contacts_icon"}
                     src={email}
                     alt="email icon"
                   />
                   info@murrfecto.site
-                </a>
+                </p>
               </li>
             </ul>
           </address>
