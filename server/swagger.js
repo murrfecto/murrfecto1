@@ -5,7 +5,7 @@ const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger
 
 const options = {
     swaggerDefinition: {
-        openapi: '3.1.0',
+        openapi: '3.0.0',
         info: {
             title: 'Murrfecto API',
             version: '1.0.0',
@@ -13,12 +13,12 @@ const options = {
         },
         servers: [
             {
-                url: 'https://murrfecto1.vercel.app', // Replace with your API base URL
+                url: 'https://murrfecto1.vercel.app',
                 description: 'Development server',
             },
         ],
     },
-    apis: ["./routes/*.js"],
+    apis: ["./routes/cats.routes.js", "./routes/login.routes.js"],
 };
 
 const specs = swaggerJsdoc(options);
