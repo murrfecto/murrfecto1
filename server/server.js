@@ -23,7 +23,6 @@ import {swaggerSetup} from "./swagger.js";
 
 // Establishing server
 export const app = express();
-
 // insert body-parser
 app.use(jsonParser);
 app.use(urlencodedParser);
