@@ -21,9 +21,8 @@ const options = {
     apis: ["./routes/*.js"],
 };
 
-
-export const swaggerSetup = (app) => {
-    app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(specs, {customCssUrl: CSS_URL }));
-};
 const specs = swaggerJsdoc(options);
 
+export const swaggerSetup = (app) => {
+    app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(specs, { customCssUrl: CSS_URL }));
+};
