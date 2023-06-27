@@ -18,11 +18,11 @@ const options = {
             },
         ],
     },
-    apis: ["./routes/cats.routes.js", "./routes/login.routes.js"],
+    apis: ["./routes/*.js"], // Include the imported routers
 };
 
 const specs = swaggerJsdoc(options);
 
 export const swaggerSetup = (app) => {
-    app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(specs, { customCssUrl: CSS_URL }));
+    app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(specs, {customCssUrl: CSS_URL}));
 };
