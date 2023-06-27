@@ -12,12 +12,14 @@ import CatsRoutes from './routes/cats.routes.js';
 import login from './routes/login.routes.js'
 import cookieParser from 'cookie-parser'
 
+
 import cron from 'node-cron'
 import moment from 'moment';
 //dotenv
 import path from 'path';
 import {connectToDatabase} from "./helpers/connectToDb.js";
 import {sendReminderEmail} from "./controllers/cats.controller.js";
+import {swaggerSetup} from "./swagger.js";
 
 // Establishing server
 export const app = express();
@@ -33,11 +35,16 @@ app.use(express.urlencoded({extended: false}))
 // images
 app.use('/images', express.static(path.join(process.cwd(), 'images/')));
 // Routes
+swaggerSetup(app);
+
 app.use('/api/v1', CatsRoutes);
 app.use('/api/v1', login)
 
+
+
 const PORT = process.env.PORT || 8000;
 // Connecting MongoDB and running server
+
 MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     .then(() => {
         console.log('Connected to database');
