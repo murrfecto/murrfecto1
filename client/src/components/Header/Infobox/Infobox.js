@@ -31,16 +31,16 @@ const Infobox = () => {
 
       <ul className={"socials_contacts"}>
         <li className={"socials_contacts-item"}>
-          <a className={"socials_contacts-link"} href="mailto:info@murrfecto.site">
-          <img src={email} alt="email-icon" />
-          <p>info@murrfecto.site</p>
-          </a>
+          <p className={"socials_contacts-link"}>
+            <img src={email} alt="email-icon" />
+            <p>info@murrfecto.site</p>
+          </p>
         </li>
         <li className={"socials_contacts-item"}>
-          <a className={"socials_contacts-link"} href="tel:+380636286630">
-          <img src={phone} alt="phone-icon" />
-          <p>+38 063 628 6630</p>
-          </a>
+          <p className={"socials_contacts-link"}>
+            <img src={phone} alt="phone-icon" />
+            <p>+38 063 628 6630</p>
+          </p>
         </li>
       </ul>
     </div>
