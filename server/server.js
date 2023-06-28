@@ -8,8 +8,8 @@ import {
     jsonParser,
     urlencodedParser,
 } from './helpers/bodyParserMiddleware.js';
-import CatsRoutes from './routes/cats.routes.js';
-import login from './routes/login.routes.js'
+import CatsRoutes from './routes/catsRoutes.js';
+import login from './routes/loginRoutes.js'
 import cookieParser from 'cookie-parser'
 
 
