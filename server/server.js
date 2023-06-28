@@ -19,7 +19,6 @@ import moment from 'moment';
 import path from 'path';
 import {connectToDatabase} from "./helpers/connectToDb.js";
 import {sendReminderEmail} from "./controllers/cats.controller.js";
-import {swaggerSetup} from "./swagger.js";
 
 // Establishing server
 export const app = express();
@@ -34,8 +33,33 @@ app.use(express.urlencoded({extended: false}))
 // images
 app.use('/images', express.static(path.join(process.cwd(), 'images/')));
 // Routes
-swaggerSetup(app);
 
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+
+const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+
+const options = {
+    swaggerDefinition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Murrfecto API',
+            version: '1.0.0',
+            description: 'Documentation for Murrfecto API endpoints',
+        },
+        servers: [
+            {
+                url: 'https://murrfecto1.vercel.app',
+                description: 'Development server',
+            },
+        ],
+    },
+    apis: ["./routes/cats.routes.js", "./routes/login.routes.js"],
+};
+
+const specs = swaggerJsdoc(options);
+
+app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(specs, {customCssUrl: CSS_URL}));
 app.use('/api/v1', CatsRoutes);
 app.use('/api/v1', login)
 
