@@ -11,32 +11,30 @@ import {
 import CatsRoutes from './routes/catsRoutes.js';
 import login from './routes/loginRoutes.js'
 import cookieParser from 'cookie-parser'
-
-
+import {setupSwagger} from "./swagger.js";
 import cron from 'node-cron'
 import moment from 'moment';
-//dotenv
 import path from 'path';
 import {connectToDatabase} from "./helpers/connectToDb.js";
 import {sendReminderEmail} from "./controllers/cats.controller.js";
 
-// Establishing server
 export const app = express();
 // insert body-parser
 app.use(jsonParser);
 app.use(urlencodedParser);
+
+//Swagger
 setupSwagger(app)
 
 // CORS
 app.use(cors({origin: '*'}));
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
+
 // images
 app.use('/images', express.static(path.join(process.cwd(), 'images/')));
+
 // Routes
-import {setupSwagger} from "./swagger.js";
-
-
 app.use('/api/v1', CatsRoutes);
 app.use('/api/v1', login)
 
