@@ -25,6 +25,7 @@ export const app = express();
 // insert body-parser
 app.use(jsonParser);
 app.use(urlencodedParser);
+setupSwagger(app)
 
 // CORS
 app.use(cors({origin: '*'}));
@@ -35,7 +36,6 @@ app.use('/images', express.static(path.join(process.cwd(), 'images/')));
 // Routes
 import {setupSwagger} from "./swagger.js";
 
-setupSwagger(app)
 
 app.use('/api/v1', CatsRoutes);
 app.use('/api/v1', login)
@@ -43,7 +43,7 @@ app.use('/api/v1', login)
 const PORT = process.env.PORT || 3000;
 // Connecting MongoDB and running server
 
-MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
+MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true})
     .then(() => {
         console.log('Connected to database');
         app.listen(PORT, () => {
@@ -54,11 +54,11 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
         // Create a cron job that runs every minute
         cron.schedule('0 9 1 * *', async () => {
             try {
-                const { client, collection } = await connectToDatabase('donations');
+                const {client, collection} = await connectToDatabase('donations');
                 const result = await collection.find().toArray();
                 // get array of docs form MongoDb
                 for (const doc of result) {
-                    const { orderId, senderEmail } = doc;
+                    const {orderId, senderEmail} = doc;
 
                     if (!orderId) {
                         console.error('orderId is undefined or null for a document', doc);
