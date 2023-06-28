@@ -18,7 +18,7 @@ const options = {
             },
         ],
     },
-    apis: ["./routes/*.js"], // Include the imported routers
+    apis: ["./routes/cats.routes.js", "./routes/login.routes.js"],
 };
 
 const specs = swaggerJsdoc(options);
