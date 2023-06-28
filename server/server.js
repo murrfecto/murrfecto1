@@ -17,13 +17,10 @@ import moment from 'moment';
 import path from 'path';
 import {connectToDatabase} from "./helpers/connectToDb.js";
 import {sendReminderEmail} from "./controllers/cats.controller.js";
-
 export const app = express();
 // insert body-parser
 app.use(jsonParser);
 app.use(urlencodedParser);
-
-//Swagger
 setupSwagger(app)
 
 // CORS
