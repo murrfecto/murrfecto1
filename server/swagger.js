@@ -29,7 +29,7 @@ const options = {
             },
         ],
     },
-    apis: ['./routes/*.js'],
+    apis: ['./routes/*.routes.js'],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
@@ -38,4 +38,8 @@ export const setupSwagger = (app) => {
     // Swagger Page
     app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {customCssUrl: CSS_URL}));
     // Documentation in JSON format
+    app.get('/api/v1/docs/api.json', (req, res) => {
+        res.setHeader('Content-Type', 'application/json');
+        res.send(swaggerSpec);
+    });
 }
