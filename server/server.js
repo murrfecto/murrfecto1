@@ -33,39 +33,14 @@ app.use(express.urlencoded({extended: false}))
 // images
 app.use('/images', express.static(path.join(process.cwd(), 'images/')));
 // Routes
+import {setupSwagger} from "./swagger.js";
 
-import swaggerJsdoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
+setupSwagger(app)
 
-const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
-
-const options = {
-    swaggerDefinition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'Murrfecto API',
-            version: '1.0.0',
-            description: 'Documentation for Murrfecto API endpoints',
-        },
-        servers: [
-            {
-                url: 'https://murrfecto1.vercel.app',
-                description: 'Development server',
-            },
-        ],
-    },
-    apis: ["./routes/cats.routes.js", "./routes/login.routes.js"],
-};
-
-const specs = swaggerJsdoc(options);
-
-app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(specs, {customCssUrl: CSS_URL}));
 app.use('/api/v1', CatsRoutes);
 app.use('/api/v1', login)
 
-
-
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 // Connecting MongoDB and running server
 
 MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
@@ -111,3 +86,4 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     .catch((err) => {
         console.error(err);
     });
+
