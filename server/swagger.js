@@ -1,5 +1,9 @@
 import swaggerUi from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
+import {fileURLToPath} from "url";
+import {dirname} from "path";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 // Swagger UI styled
@@ -19,16 +23,16 @@ const options = {
         security: [{ bearerAuth: [] }],
         servers: [
             {
-                url: 'http://localhost:3000',
+                url: 'http://localhost:3000/api/v1/',
                 description: 'Local server',
             },
             {
-                url: 'https://murrfecto1.vercel.app',
+                url: 'https://murrfecto1.vercel.app/api/v1/',
                 description: 'Development server',
             },
         ],
     },
-    apis: ['./routes/*.js'],
+    apis: [`${__dirname}/routes/*.js`]
 };
 
 const swaggerSpec = swaggerJsdoc(options);

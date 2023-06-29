@@ -23,211 +23,250 @@ const router = express.Router();
 router.use(express.json());
 router.use(express.urlencoded({extended: true}));
 
+
+router.post("/cats/subscribe", subscribeToCats);
+router.post("/cats/send-message", sendMessage);
+router.get("/cats", getCats);
+router.get("/cats/:id", getCat);
+router.post("/cats", upload.array("image"), addCat);
+router.delete("/cats/:id", deleteCatById);
+router.put("/cats/:id", upload.array("image"), updateCatById);
+router.post("/payment", sendPayment);
+router.post("/payment/callback", handleCallBack);
+router.post("/report", upload.single("report"), addReport);
+router.delete("/report", deleteReport);
+
+router.get('/*', (req, res) => {
+    res.sendFile(
+        path.join(__dirname, '..', '..', 'client', 'public', 'index.html')
+    );
+});
 /**
  * @swagger
- * /api/v1/cats/subscribe:
+ * /cats/subscribe:
  *   post:
  *     summary: Subscribe to cats
- *     description: Endpoint to subscribe to cats.
- *     responses:
- *       '200':
- *         description: Subscription successful.
- */
-router.post("/cats/subscribe", subscribeToCats);
-
-/**
- * @swagger
- * /api/v1/cats/send-message:
- *   post:
- *     summary: Send a message
- *     description: Endpoint to send a message.
- *     responses:
- *       '200':
- *         description: Message sent successfully.
- */
-router.post("/cats/send-message", sendMessage);
-
-/**
- * @swagger
- * /api/v1/cats:
- *   get:
- *     summary: Retrieve a list of cats
- *     description: Returns a list of cats
+ *     requestBody:
+ *       description: Email address to subscribe
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
  *     responses:
  *       200:
- *         description: A list of cats
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Cat'
- *             example:
- *               - _id: "646c70d61df6179c6de41d3c"
- *                 name: "Костик"
- *                 description: "кіт, 6 років"
- *                 chipped: "чипований"
- *                 age: "6 років"
- *                 gender: "кіт"
- *                 images:
- *                   - "https://murrfecto.s3.eu-central-1.amazonaws.com/34243feb-c1a5-43a8-8760-626986d6596f"
+ *         description: Email sent successfully
+ *       500:
+ *         description: Error sending email
  */
-router.get("/cats", getCats);
 
 /**
  * @swagger
- * /api/v1/cats/{id}:
+ * /cats/send-message:
+ *   post:
+ *     summary: Send a message
+ *     requestBody:
+ *       description: Message details
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               text:
+ *                 type: string
+ *               name:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Email sent successfully
+ *       500:
+ *         description: Error sending email
+ */
+
+/**
+ * @swagger
+ * /cats:
+ *   get:
+ *     summary: Get all cats
+ *     responses:
+ *       200:
+ *         description: Returns an array of cats
+ *       500:
+ *         description: Error connecting to the database
+ */
+
+/**
+ * @swagger
+ * /cats/{id}:
  *   get:
  *     summary: Get a cat by ID
- *     description: Endpoint to get a cat by ID.
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the cat.
  *         schema:
  *           type: string
  *     responses:
- *       '200':
- *         description: Cat successfully retrieved.
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Cat'
- *             example:
- *               _id: "646c70d61df6179c6de41d3c"
- *               name: "Костик"
- *               description: "кіт, 6 років"
- *               chipped: "чипований"
- *               age: "6 років"
- *               gender: "кіт"
- *               images:
- *                 - "https://murrfecto.s3.eu-central-1.amazonaws.com/34243feb-c1a5-43a8-8760-626986d6596f"
+ *       200:
+ *         description: Returns the cat with the specified ID
+ *        500:
+ *         description: Error connecting to the database
  */
-
-router.get("/cats/:id", getCat);
 
 /**
  * @swagger
- * /api/v1/cats:
+ * /cats:
  *   post:
- *     summary: Add a new cat
- *     description: Endpoint to add a new cat.
+ *     summary: Add a cat
  *     requestBody:
+ *       description: Cat details
+ *       required: true
  *       content:
  *         multipart/form-data:
  *           schema:
  *             type: object
  *             properties:
  *               image:
- *                 type: array
- *                 items:
- *                   type: string
- *                 description: Cat images.
+ *                 type: string
+ *                 format: binary
  *               name:
  *                 type: string
- *                 description: Cat name.
- *               breed:
- *                 type: string
- *                 description: Cat breed.
  *               age:
  *                 type: number
- *                 description: Cat age.
+ *               breed:
+ *                 type: string
  *     responses:
- *       '201':
- *         description: Cat successfully added.
+ *       200:
+ *         description: Cat added successfully
+ *       400:
+ *         description: Invalid request body
+ *       500:
+ *         description: Error connecting to the database
  */
-router.post("/cats", upload.array("image"), addCat);
 
 /**
  * @swagger
- * /api/v1/cats/{id}:
+ * /cats/{id}:
  *   delete:
  *     summary: Delete a cat by ID
- *     description: Endpoint to delete a cat by ID.
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the cat.
  *         schema:
  *           type: string
  *     responses:
- *       '200':
- *         description: Cat successfully deleted.
+ *       200:
+ *         description: Cat deleted successfully
+ *       500:
+ *         description: Error deleting document
  */
-router.delete("/cats/:id", deleteCatById);
 
 /**
  * @swagger
- * /api/v1/cats/{id}:
+ * /cats/{id}:
  *   put:
  *     summary: Update a cat by ID
- *     description: Endpoint to update a cat by ID.
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
- *         description: ID of the cat.
  *         schema:
  *           type: string
  *     requestBody:
+ *       description: Updated cat details
+ *       required: true
  *       content:
  *         multipart/form-data:
  *           schema:
  *             type: object
  *             properties:
  *               image:
- *                 type: array
- *                 items:
- *                   type: string
- *                 description: Cat images.
+ *                 type: string
+ *                 format: binary
  *               name:
  *                 type: string
- *                 description: Cat name.
- *               breed:
- *                 type: string
- *                 description: Cat breed.
  *               age:
  *                 type: number
- *                 description: Cat age.
+ *               breed:
+ *                 type: string
  *     responses:
- *       '200':
- *         description: Cat successfully updated.
+ *       200:
+ *         description: Cat updated successfully
+ *       400:
+ *         description: Invalid request body
+ *       500:
+ *         description: Error connecting to the database
  */
-router.put("/cats/:id", upload.array("image"), updateCatById);
 
 /**
  * @swagger
- * /api/v1/payment:
+ * /payment:
  *   post:
- *     summary: Send a payment
- *     description: Endpoint to send a payment.
+ *     summary: Send a payment request
+ *     requestBody:
+ *       description: Payment details
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               amount:
+ *                 type: number
  *     responses:
- *       '200':
- *         description: Payment sent successfully.
+ *       200:
+ *         description: Returns the checkout URL
+ *       500:
+ *         description: An error occurred while processing the payment
  */
-router.post("/payment", sendPayment);
 
 /**
  * @swagger
- * /api/v1/payment/callback:
+ * /payment/callback:
  *   post:
  *     summary: Handle payment callback
- *     description: Endpoint to handle payment callback.
+ *     requestBody:
+ *       description: Payment callback details
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               sender_email:
+ *                 type: string
+ *               currency:
+ *                 type: string
+ *               order_id:
+ *                 type: string
+ *               catLabel:
+ *                 type: string
+ *               amount:
+ *                 type: string
+ *               order_status:
+ *                 type: string
  *     responses:
- *       '200':
- *         description: Payment callback handled successfully.
+ *       200:
+ *         description: Email sent and payment details saved successfully
+ *       500:
+ *         description: Error connecting to the database
  */
-router.post("/payment/callback", handleCallBack);
 
 /**
  * @swagger
- * /api/v1/report:
+ * /report:
  *   post:
  *     summary: Add a report
- *     description: Endpoint to add a report.
  *     requestBody:
+ *       description: Report file
+ *       required: true
  *       content:
  *         multipart/form-data:
  *           schema:
@@ -236,29 +275,184 @@ router.post("/payment/callback", handleCallBack);
  *               report:
  *                 type: string
  *                 format: binary
- *                 description: Report file.
  *     responses:
- *       '201':
- *         description: Report successfully added.
+ *       200:
+ *         description: Report added successfully
+ *       500:
+ *         description: Error connecting to the database
  */
-router.post("/report", upload.single("report"), addReport);
 
 /**
  * @swagger
- * /api/v1/report:
+ * /report:
  *   delete:
  *     summary: Delete a report
- *     description: Endpoint to delete a report.
  *     responses:
- *       '200':
- *         description: Report successfully deleted.
+ *       200:
+ *         description: Report deleted successfully
  */
-router.delete("/report", deleteReport);
 
-router.get('/*', (req, res) => {
-    res.sendFile(
-        path.join(__dirname, '..', '..', 'client', 'public', 'index.html')
-    );
-});
+/**
+ * @swagger
+ * /cats:
+ *   post:
+ *     summary: Add a cat
+ *     requestBody:
+ *       description: Cat details
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *               name:
+ *                 type: string
+ *               age:
+ *                 type: number
+ *               breed:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Cat added successfully
+ *       400:
+ *         description: Invalid request body
+ *       500:
+ *         description: Error connecting to the database
+ */
 
+/**
+ * @swagger
+ * /cats/{id}:
+ *   delete:
+ *     summary: Delete a cat by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Cat deleted successfully
+ *       500:
+ *         description: Error deleting document
+ */
+
+/**
+ * @swagger
+ * /cats/{id}:
+ *   put:
+ *     summary: Update a cat by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       description: Updated cat details
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               image:
+ *                 type: string
+ *                 format: binary
+ *               name:
+ *                 type: string
+ *               age:
+ *                 type: number
+ *               breed:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Cat updated successfully
+ *       400:
+ *         description: Invalid request body
+ *       500:
+ *         description: Error connecting to the database
+ */
+
+/**
+ * @swagger
+ * /cats/subscribe:
+ *   post:
+ *     summary: Subscribe to receive updates about cats
+ *     requestBody:
+ *       description: Subscriber's email address
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Email sent
+ *       500:
+ *         description: Error sending email
+ */
+
+/**
+ * @swagger
+ * /cats/send-message:
+ *   post:
+ *     summary: Send a message about cats
+ *     requestBody:
+ *       description: Message details
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               text:
+ *                 type: string
+ *               name:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Email sent
+ *       500:
+ *         description: Error sending email
+ */
+
+/**
+ * @swagger
+ * /cats:
+ *   get:
+ *     summary: Get all cats
+ *     responses:
+ *       200:
+ *         description: Returns an array of cats
+ *       500:
+ *         description: Error connecting to the database
+ */
+
+/**
+ * @swagger
+ * /cats/{id}:
+ *   get:
+ *     summary: Get a cat by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Returns the cat with the specified ID
+ *       500:
+ *         description: Error connecting to the database
+ */
 export default router;

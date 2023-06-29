@@ -4,10 +4,7 @@ dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import {MongoClient} from 'mongodb';
-import {
-    jsonParser,
-    urlencodedParser,
-} from './helpers/bodyParserMiddleware.js';
+import {jsonParser, urlencodedParser} from './helpers/bodyParserMiddleware.js';
 import CatsRoutes from './routes/catsRoutes.js';
 import login from './routes/loginRoutes.js'
 import cookieParser from 'cookie-parser'
@@ -17,10 +14,12 @@ import moment from 'moment';
 import path from 'path';
 import {connectToDatabase} from "./helpers/connectToDb.js";
 import {sendReminderEmail} from "./controllers/cats.controller.js";
+
 export const app = express();
 // insert body-parser
 app.use(jsonParser);
 app.use(urlencodedParser);
+
 setupSwagger(app)
 
 // CORS
@@ -46,7 +45,7 @@ MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true})
         });
     })
     .then(async () => {
-        // Create a cron job that runs every minute
+        // Create a cron job that runs every month
         cron.schedule('0 9 1 * *', async () => {
             try {
                 const {client, collection} = await connectToDatabase('donations');
