@@ -9,11 +9,12 @@ import {connectToDatabase} from "../helpers/connectToDb.js";
 const addCat = async (req, res) => {
     const {client, collection} = await connectToDatabase('cats');
     try {
+        console.log(req.files)
         const {error} = catsModel.validate(req.body);
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
-        const images = req.files.map((file) => file.location);
+        const images = req.files.map((file) => `http://localhost:3000/images/${file.filename}`);
         const result = await collection.insertOne({
             ...req.body,
             _id: new ObjectId(),

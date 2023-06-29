@@ -56,13 +56,14 @@ const AddCat = () => {
     return (
         <div>
             {formStatus === 'success' && (
-                <Alert className={'alert-success'} severity="success">Картка
-                    створена!</Alert>
+                <Alert className={'alert-success'} severity="success">
+                    Картка створена!
+                </Alert>
             )}
             {formStatus === 'error' && (
-                <Alert className={'alert-failure'} severity="error">Помилка
-                    створення картки. Будь ласка, виберіть .png,
-                    .jpeg, .jpg формату картинки .</Alert>
+                <Alert className={'alert-failure'} severity="error">
+                    Помилка створення картки.
+                </Alert>
             )}
             <h2 className="formAdding__title">Додайте кота!</h2>
             <form onSubmit={handleSubmit} className="formAdding">
@@ -81,7 +82,6 @@ const AddCat = () => {
                                    htmlFor="fileInput">{files.length > 0 ? (
                                 <div>
                                     <h4>Обрані фото:</h4>
-
                                     <ul>
                                         {files.map((file, index) => (
                                             <li key={index}>{file.name}</li>

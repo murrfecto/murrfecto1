@@ -113,7 +113,7 @@ router.get('/*', (req, res) => {
  *         schema:
  *           type: string
  *     responses:
- *       200:
+ *        200:
  *         description: Returns the cat with the specified ID
  *        500:
  *         description: Error connecting to the database
