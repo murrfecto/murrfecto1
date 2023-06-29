@@ -22,27 +22,29 @@ const AddCat = () => {
     console.log(formData);
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
+
         const data = new FormData();
         files.forEach((file, index) => {
-            data.append('image', file, `image${index}`);
+            data.append("image", file, `image${index}`);
         });
-        data.append('name', formData.name);
-        data.append('description', formData.description);
-        data.append('chipped', formData.chipped);
-        data.append('age', formData.age);
-        data.append('gender', formData.gender);
-        e.preventDefault();
-        axios.post(_ENDPOINT, data)
-            .then(() => {
-                setFormStatus('success');
+        data.append("name", formData.name);
+        data.append("description", formData.description);
+        data.append("chipped", formData.chipped);
+        data.append("age", formData.age);
+        data.append("gender", formData.gender);
+
+        try {
+            const response = await axios.post(_ENDPOINT, data);
+                setFormStatus("success");
                 setFormData(initialState);
                 setFiles(initialFilesState);
-            })
-            .catch(err => {
-                setFormStatus('error');
-                console.error(err);
-            });
+        } catch (err) {
+            console.error(err);
+            setFormStatus("error");
+        }
     };
+
     const handleInputChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value});
     };
@@ -96,7 +98,6 @@ const AddCat = () => {
                                 id="fileInput"
                                 multiple
                                 name="image"
-                                accept=".png, .jpeg, .jpg"
                                 onChange={handleFileUpload}
                                 required
                                 className="input__file_none"

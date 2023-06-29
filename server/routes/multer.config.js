@@ -24,9 +24,9 @@ const fileFilter = function (req, file, cb) {
         file.mimetype === 'image/png' ||
         file.mimetype === 'image/jpeg' ||
         file.mimetype === 'image/jpg' ||
-        file.mimetype === 'image/svg' ||
+        file.mimetype === 'image/svg+xml' ||
         file.mimetype === 'image/webp'
-    ) {
+    )  {
         // Accept the file
         cb(null, true);
     } else {
@@ -35,8 +35,6 @@ const fileFilter = function (req, file, cb) {
     }
 };
 
-const upload = multer({storage, fileFilter, limits: {
-        fileSize: 5 * 1024 * 1024, // 5MB (example limit)
-    },});
+const upload = multer({storage, fileFilter});
 
 export {upload};
