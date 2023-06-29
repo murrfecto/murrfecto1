@@ -1,28 +1,39 @@
-import swaggerJsdoc from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
+import swaggerUi from "swagger-ui-express";
+import swaggerJsdoc from "swagger-jsdoc";
 
 const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
-
+// Swagger UI styled
 const options = {
-    swaggerDefinition: {
+    definition: {
         openapi: '3.0.0',
         info: {
             title: 'Murrfecto API',
             version: '1.0.0',
             description: 'Documentation for Murrfecto API endpoints',
         },
+        components: {
+            securitySchemes: {
+                bearerAuth: { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+            },
+        },
+        security: [{ bearerAuth: [] }],
         servers: [
+            {
+                url: 'http://localhost:3000',
+                description: 'Local server',
+            },
             {
                 url: 'https://murrfecto1.vercel.app',
                 description: 'Development server',
             },
         ],
     },
-    apis: ["./routes/*.js"], // Include the imported routers
+    apis: ['./routes/*.js'],
 };
 
-const specs = swaggerJsdoc(options);
+const swaggerSpec = swaggerJsdoc(options);
 
-export const swaggerSetup = (app) => {
-    app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(specs, {customCssUrl: CSS_URL}));
-};
+export const setupSwagger = (app) => {
+    // Swagger Page
+    app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {customCssUrl: CSS_URL}));
+}

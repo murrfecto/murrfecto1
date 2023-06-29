@@ -8,43 +8,37 @@ import {
     jsonParser,
     urlencodedParser,
 } from './helpers/bodyParserMiddleware.js';
-import CatsRoutes from './routes/cats.routes.js';
-import login from './routes/login.routes.js'
+import CatsRoutes from './routes/catsRoutes.js';
+import login from './routes/loginRoutes.js'
 import cookieParser from 'cookie-parser'
-
-
+import {setupSwagger} from "./swagger.js";
 import cron from 'node-cron'
 import moment from 'moment';
-//dotenv
 import path from 'path';
 import {connectToDatabase} from "./helpers/connectToDb.js";
 import {sendReminderEmail} from "./controllers/cats.controller.js";
-import {swaggerSetup} from "./swagger.js";
-
-// Establishing server
 export const app = express();
 // insert body-parser
 app.use(jsonParser);
 app.use(urlencodedParser);
+setupSwagger(app)
 
 // CORS
 app.use(cors({origin: '*'}));
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
+
 // images
 app.use('/images', express.static(path.join(process.cwd(), 'images/')));
-// Routes
-swaggerSetup(app);
 
+// Routes
 app.use('/api/v1', CatsRoutes);
 app.use('/api/v1', login)
 
-
-
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 // Connecting MongoDB and running server
 
-MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
+MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true})
     .then(() => {
         console.log('Connected to database');
         app.listen(PORT, () => {
@@ -55,11 +49,11 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
         // Create a cron job that runs every minute
         cron.schedule('0 9 1 * *', async () => {
             try {
-                const { client, collection } = await connectToDatabase('donations');
+                const {client, collection} = await connectToDatabase('donations');
                 const result = await collection.find().toArray();
                 // get array of docs form MongoDb
                 for (const doc of result) {
-                    const { orderId, senderEmail } = doc;
+                    const {orderId, senderEmail} = doc;
 
                     if (!orderId) {
                         console.error('orderId is undefined or null for a document', doc);
@@ -87,3 +81,4 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     .catch((err) => {
         console.error(err);
     });
+

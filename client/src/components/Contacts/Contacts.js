@@ -19,7 +19,7 @@ const Contacts = () => {
               width={24}
               height={24}
             />
-            info@murrfecto.site
+            <p>info@murrfecto.site</p>
           </div>
           <div className="contacts_info_wrapper">
             <img
@@ -29,7 +29,7 @@ const Contacts = () => {
               width={24}
               height={24}
             />
-            +38 063 628 6630
+            <p>+38 063 628 6630</p>
           </div>
           <div className="contacts_social">
             <a
