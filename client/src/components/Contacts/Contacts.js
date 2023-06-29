@@ -33,6 +33,7 @@ const Contacts = () => {
           </div>
           <div className="contacts_social">
             <a
+              className="contacts_social_link"
               href="https://www.instagram.com/murrfecto_murr/"
               target="_blank"
               rel="nofollow noreferrer noopener"
@@ -64,7 +65,7 @@ const Contacts = () => {
           <p className="contacts_np_title">Наше відділення НП для посилок</p>
           <p className="contacts_np_text">
             №225 м.Київ пр.С.Бандери
-            <br /> +38 063 6286630
+            <br /> +38 063 628 6630
           </p>
         </div>
         <div className="contacts_registration">

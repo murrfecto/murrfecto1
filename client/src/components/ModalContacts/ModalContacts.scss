@@ -15,7 +15,7 @@
 .modal_container {
     position: absolute;
     width: 390px;
-    height: 836px;
+    height: 100%;
     z-index: 10;
     background-color: $color-btn;
     background-image: url('../../assets/kitten_modal_mobile.png');
@@ -38,12 +38,16 @@
     position: absolute;
     background-color: transparent;
     border: none;
-    top: 24px;
-    right: 24px;
+    top: 16px;
+    right: 16px;
     width: 24px;
     height: 24px;
     @include position-center-a;
     cursor:pointer;
+    @media screen and (min-width: 768px) {
+        top: 24px;
+        right: 24px;
+    }
 }
 .modal_icon {
     width: 24px;
@@ -61,9 +65,6 @@
         margin-top: 90px;
     @include nunito-700-size-40; 
     }
-    @media screen and (min-width: 1440px) {
-     
-}
 }
 
 .modal_text {
@@ -74,8 +75,5 @@
     color: $color-white;
     @media screen and (min-width: 768px) {
         margin-top: 9px; 
-    }
-    @media screen and (min-width: 1440px) {
-        
     }
 }

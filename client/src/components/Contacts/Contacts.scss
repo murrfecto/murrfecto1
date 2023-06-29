@@ -86,9 +86,20 @@
   display: flex;
   justify-content: flex-start;
   gap: 20px;
+  &_link {
+      &:hover {
+        background-color: teal;
+        
+      }
   &_icon {
     width: 32px;
     height: 32px;
+    &:hover {
+        background-color: red;
+        filter: brightness(0) saturate(100%) invert(20%) sepia(9%) saturate(1465%) hue-rotate(272deg) brightness(96%) contrast(89%);
+        cursor: pointer;
+      }
+  }
   }
 }
 
