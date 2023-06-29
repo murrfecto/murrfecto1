@@ -119,36 +119,6 @@ router.get('/*', (req, res) => {
  *         description: Error connecting to the database
  */
 
-/**
- * @swagger
- * /cats:
- *   post:
- *     summary: Add a cat
- *     requestBody:
- *       description: Cat details
- *       required: true
- *       content:
- *         multipart/form-data:
- *           schema:
- *             type: object
- *             properties:
- *               image:
- *                 type: string
- *                 format: binary
- *               name:
- *                 type: string
- *               age:
- *                 type: number
- *               breed:
- *                 type: string
- *     responses:
- *       200:
- *         description: Cat added successfully
- *       400:
- *         description: Invalid request body
- *       500:
- *         description: Error connecting to the database
- */
 
 /**
  * @swagger
@@ -194,7 +164,11 @@ router.get('/*', (req, res) => {
  *                 type: string
  *               age:
  *                 type: number
- *               breed:
+ *               gender:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               chipped:
  *                 type: string
  *     responses:
  *       200:
@@ -220,6 +194,12 @@ router.get('/*', (req, res) => {
  *             properties:
  *               amount:
  *                 type: number
+ *               merchant_id:
+ *                 type: string
+ *               order_description:
+ *                 type: string
+ *               currency:
+ *                 type: string
  *     responses:
  *       200:
  *         description: Returns the checkout URL
@@ -312,7 +292,11 @@ router.get('/*', (req, res) => {
  *                 type: string
  *               age:
  *                 type: number
- *               breed:
+ *               gender:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               chipped:
  *                 type: string
  *     responses:
  *       200:
@@ -367,7 +351,11 @@ router.get('/*', (req, res) => {
  *                 type: string
  *               age:
  *                 type: number
- *               breed:
+ *               chipped:
+ *                 type: string
+ *               gender:
+ *                 type: string
+ *               description:
  *                 type: string
  *     responses:
  *       200:
