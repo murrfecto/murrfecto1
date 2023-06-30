@@ -1,40 +1,78 @@
 @import "../../styles/_index.scss";
 
 .main_wrapper {
-  @include position-center-a;
-  max-width: 1440px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 80px 297px;
-  font-weight: 600;
+  @include position-center-na;
+  justify-content: space-between;
+  max-width: 846px;
+  margin: 0 auto;
+  padding: 80px 0;
   background-color: $main-bg-color;
   gap: 68px;
+
+  @media screen and (max-width: 1280px) {
+    gap: 26px;
+  }
+
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+    padding: 56px 0 80px 0;
+  }
 }
 
 .not-found_title {
+  font-family: "Nunito Sans", sans-serif;
   font-size: 234px;
-  line-height: 1.36;
+  line-height: 319px;
+  font-weight: 600;
   text-align: center;
   text-transform: uppercase;
-
   color: $color-subscribe-btn;
+
+  @media screen and (max-width: 1280px) {
+    font-size: 200px;
+    line-height: 273px;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 180px;
+    line-height: 246px;
+  }
 }
 
-.not-found_text {
-  margin-top: 46px;
-  margin-bottom: 46px;
-  @include nunito-600-size-24;
-  line-height: 1.37;
-  color: $color-blue;
+.not-found {
+  max-width: 414px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0 14px;
+  }
+
+  &_text {
+    margin: 46px 0;
+    @include nunito-600-size-24;
+    line-height: 1.37;
+    color: $color-blue;
+    text-align: center;
+
+    @media screen and (max-width: 768px) {
+      margin: 59px 0 50px 0;
+    }
+  }
+
+  &_img {
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
 }
 
 .to-main_link {
   @include position-center-a;
   @include inter-600-size-24;
-  min-width: 365px;
+  max-width: 365px;
+  margin: 0 auto;
   background-color: $color-subscribe-btn;
-  border-radius: 12px;
-  padding: 9.5px 115px;
+  border-radius: 8px;
+  padding: 9.5px 15px;
   line-height: 1.47;
   color: $color-white;
   text-decoration: none;
