@@ -13,13 +13,9 @@ const ModalButton = ({ title, style }) => {
   };
   return (
     <div id={"donation"}>
-      <button
-        type="button"
-        className={`navbar_links ${style}`}
-        onClick={handleDonationClick}
-      >
+      <a className={`navbar_links ${style}`} onClick={handleDonationClick}>
         {title}
-      </button>
+      </a>
       <Modal
         style={{
           overlay: {
