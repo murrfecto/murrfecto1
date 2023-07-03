@@ -1,6 +1,4 @@
 import * as dotenv from 'dotenv';
-
-dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import {MongoClient} from 'mongodb';
@@ -11,11 +9,21 @@ import cookieParser from 'cookie-parser'
 import {setupSwagger} from "./swagger.js";
 import cron from 'node-cron'
 import moment from 'moment';
-import path from 'path';
+import path, {dirname} from 'path';
 import {connectToDatabase} from "./helpers/connectToDb.js";
 import {sendReminderEmail} from "./controllers/cats.controller.js";
+import {fileURLToPath} from "url";
 
+dotenv.config();
+
+// TO LOAD DOCKER
+// docker build . --no-cache
+// PORT=3000 docker-compose up --build
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 export const app = express();
+
 // insert body-parser
 app.use(jsonParser);
 app.use(urlencodedParser);
@@ -29,6 +37,7 @@ app.use(express.urlencoded({extended: false}))
 
 // images
 app.use('/images', express.static(path.join(process.cwd(), 'images/')));
+app.use(express.static('build'));
 
 // Routes
 app.use('/api/v1', CatsRoutes);
@@ -36,7 +45,11 @@ app.use('/api/v1', login)
 
 const PORT = process.env.PORT || 3000;
 // Connecting MongoDB and running server
-
+app.get('*', (req, res) => {
+    res.sendFile(
+        path.join(__dirname, 'build', 'index.html')
+    );
+});
 MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true})
     .then(() => {
         console.log('Connected to database');
@@ -80,4 +93,3 @@ MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true})
     .catch((err) => {
         console.error(err);
     });
-
