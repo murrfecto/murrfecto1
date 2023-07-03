@@ -9,8 +9,7 @@
   background-color: $main-bg-color;
   @media (max-width: 375px) {
     width: 315px;
-
-  }
+}
 
   @media screen and (min-width: 768px) {
     width: 768px;
@@ -19,9 +18,14 @@
     flex-direction: row;
     gap: 20px;
   }
+  @media screen and (min-width: 1280px) {
+    padding: 100px 60px;
+    width: 1280px;
+  }
+
   @media screen and (min-width: 1440px) {
     width: 1440px;
-    padding: 80px 188px 90px;
+    padding: 80px 188px 100px;
     gap: 128px;
   }
 }
@@ -40,6 +44,13 @@
     @include flex-column-na;
     gap: 24px;
   }
+
+@media screen and (min-width: 1280px) {
+  width: calc((100% - 60px*2)/2);
+  @include flex-column-na;
+  gap: 24px;
+}
+
   @media screen and (min-width: 1440px) {
     width: 414px;
     gap: 20px;
