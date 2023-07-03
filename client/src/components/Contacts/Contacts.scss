@@ -9,8 +9,7 @@
   background-color: $main-bg-color;
   @media (max-width: 375px) {
     width: 315px;
-
-  }
+}
 
   @media screen and (min-width: 768px) {
     width: 768px;
@@ -19,9 +18,14 @@
     flex-direction: row;
     gap: 20px;
   }
+  @media screen and (min-width: 1280px) {
+    padding: 100px 60px;
+    width: 1280px;
+  }
+
   @media screen and (min-width: 1440px) {
     width: 1440px;
-    padding: 80px 188px 90px;
+    padding: 80px 188px 100px;
     gap: 128px;
   }
 }
@@ -32,17 +36,18 @@
   width: 358px;
   @media (max-width: 375px) {
     width: 320px;
-
   }
-
   @media screen and (min-width: 768px) {
-    width: 350px;
+    width: calc((100% - 20px)/2);
     @include flex-column-na;
     gap: 24px;
   }
+@media screen and (min-width: 1280px) {
+  width: calc((100% - 20px)/2);
+   gap: 20px;
+}
   @media screen and (min-width: 1440px) {
     width: 414px;
-    gap: 20px;
   }
 }
 
@@ -50,7 +55,6 @@
   @include flex-column-na;
   gap: 20px;
   width: 100%;
-  min-height: 168px;
   border: 0.5px solid $color-btn;
   border-radius: 8px;
   padding-top: 24px;
@@ -71,11 +75,15 @@
 
   @media screen and (min-width: 768px) {
     padding-left: 12px;
-    padding-bottom: 18px;
-    &_link {
-      @include nunito-400-size-20;
-    }
+    padding-bottom: 24px;
+    &_wrapper {
+        @include nunito-400-size-20;
+      }
   }
+    @media screen and (min-width: 1280px) {
+      padding-left: 40px;
+      padding-bottom: 18px;
+    }
   @media screen and (min-width: 1440px) {
     padding-left: 40px;
     padding-bottom: 20px;
@@ -86,22 +94,16 @@
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  &_link {
-      &:hover {
-        background-color: teal;
-        
-      }
+  
   &_icon {
     width: 32px;
     height: 32px;
     &:hover {
-        background-color: red;
-        filter: brightness(0) saturate(100%) invert(20%) sepia(9%) saturate(1465%) hue-rotate(272deg) brightness(96%) contrast(89%);
         cursor: pointer;
       }
   }
   }
-}
+
 
 .contacts_np {
   width: 100%;
@@ -134,6 +136,10 @@
       @include nunito-400-size-20;
     }
   }
+    @media screen and (min-width: 1280px) {
+      padding-left: 40px;
+      padding-bottom: 24px;
+    }
   @media screen and (min-width: 1440px) {
     padding-left: 40px;
   }
@@ -157,7 +163,7 @@
       @include nunito-600-size-20;
     }
   }
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1280px) {
     padding-left: 40px;
   }
 }

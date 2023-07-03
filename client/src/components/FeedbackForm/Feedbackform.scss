@@ -2,18 +2,21 @@
 
 .feedback_wrapper {
     width: 358px;
-    min-height: 484px;
     @media (max-width: 375px) {
         width: 325px;
 
     }
-    
     @media screen and (min-width: 768px) {
-        width: 350px;
+        width: calc((100% - 20px)/2);
+    }
+    @media screen and (min-width: 1280px) {
+    width: calc((100% - 20px)/2);
+    padding: 0 24px;
     }
     @media screen and (min-width: 1440px) {
     width: 522px;
     min-height: 474px;
+    padding: 0;
 }
 }
 
@@ -65,18 +68,18 @@
     @media  screen and (min-width: 768px) {
         margin-bottom: 20px;   
     }
-    @media  screen and (min-width: 1440px) {
+    @media  screen and (min-width: 1280px) {
         margin-bottom: 32px;   
     }
 }
 
 .feedback_label {
     @include nunito-400-size-18;
-    line-height: 1.2;
-    color: #000; 
+    line-height: 1.5;
+    color: $color-card-text; 
 
     @media screen and (min-width: 768px) {
-        @include nunito-400-size-20;   
+        @include nunito-400-size-20; 
     }
 }
 
@@ -143,7 +146,6 @@
 .feedback_button {
     width: 357px;
     height: 54px;
-    padding: 10px 110px;
     margin: 0 auto;
     border-radius: 8px;
     background-color: $color-btn;
@@ -155,16 +157,15 @@
     cursor: pointer;
     @media (max-width: 375px) {
         width: 325px;
-
     }
-
     @media screen and (min-width: 768px) {
         width: 350px;
-        padding: 10px 103px;
+    }
+    @media screen and (min-width: 1280px) {
+        width: 360px;
     }
     @media screen and (min-width: 1440px) {
         width: 365px;
-        padding: 10px 106px;
     }
 &:hover{
         color: $color-btn;

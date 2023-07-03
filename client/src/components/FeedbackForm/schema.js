@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const textRules = /^[А-ЩЬЮЯЇІЄҐа-щьюяїієґ'ʼ\s\-]+$/gm;
-const messageTextRules = /^[А-ЩЬЮЯЇІЄҐа-щьюяїієґ0-9'ʼ()".,?!_\-\s]+$/gm;
+const messageTextRules = /^[А-ЩЬЮЯЇІЄҐа-щьюяїієґ0-9'ʼ()".,?!_%\+\-\s]+$/gm;
 const emailRules = /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@(?!.*\.ru$)[a-z]+\.[A-Za-z0-9.-]+$/gm;
 
 
