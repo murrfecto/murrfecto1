@@ -1,27 +1,69 @@
-.flip-exit {
+// front flip
+.front-flip-exit {
   transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
 }
 
-.flip-exit-active {
+.front-flip-exit-active {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
   transition: transform 300ms;
-  transition-timing-function: cubic-bezier(.57,.21,.69,1.25);
+  transition-timing-function: cubic-bezier(0.57, 0.21, 0.69, 1.25);
 }
 
-.flip-exit-done {
+.front-flip-exit-done {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 
-.flip-enter {
+.front-flip-enter {
   transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 
-.flip-enter-active {
+.front-flip-enter-active {
   transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
   transition: transform 300ms;
-  transition-timing-function: cubic-bezier(.57,.21,.69,1.25);
+  transition-timing-function: cubic-bezier(0.57, 0.21, 0.69, 1.25);
 }
 
-.flip-enter-done {
+.front-flip-enter-done {
   transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+}
+
+// back side
+.back-flip-exit {
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+}
+
+.back-flip-exit-active {
+  transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+  transition: transform 300ms;
+  transition-timing-function: cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.back-flip-exit-done {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+.back-flip-enter {
+  transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+}
+
+.back-flip-enter-active {
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transition: transform 300ms;
+  transition-timing-function: cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.back-flip-enter-done {
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
 }
