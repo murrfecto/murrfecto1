@@ -10,7 +10,7 @@ const ImageContainer = () => {
 
   return (
     <section className="hero">
-      <div className="main_bg container">
+      <div className="main_bg">
         <h1>Навіщо жити без кота, якщо можна жити з котом</h1>
         {isMobile && <ModalButton title={'Нагодуй кота'} style={'footer_donation'} />}
       </div>
