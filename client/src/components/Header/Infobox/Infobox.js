@@ -7,7 +7,7 @@ import phone from "../../../assets/header/phone.svg";
 
 const Infobox = () => {
   return (
-    <div className="header_infobox container">
+    <div className="header_infobox">
       <ul className={"social_networks "}>
         <li>
           <a

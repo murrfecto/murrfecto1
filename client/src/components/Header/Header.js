@@ -5,19 +5,22 @@ import Infobox from "./Infobox/Infobox";
 import Navbar from "./Navbar/Navbar";
 
 const Header = () => {
-  const isMobileTablet = useMediaQuery("(max-width: 1439.9px)");
+
+    const isSmallScreen = useMediaQuery("(max-width: 925px)");
 
   return (
-    <>
-      {isMobileTablet ? (
-        <MobileMenu />
-      ) : (
-        <div className="header">
-          <Infobox />
-          <Navbar />
-        </div>
-      )}
-    </>
+      <>
+          {isSmallScreen ?(
+              <MobileMenu/>
+          ):(
+              <div className="header">
+                  <Infobox />
+                  <hr/>
+                  <Navbar />
+              </div>
+          )}
+      </>
+
   );
 };
 
