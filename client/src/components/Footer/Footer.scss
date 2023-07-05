@@ -68,7 +68,7 @@
   text-transform: uppercase;
   text-decoration: none;
   transition: background-color 300ms linear, color 300ms linear,
-    box-shadow 300ms linear;
+  box-shadow 300ms linear;
   cursor: pointer;
   outline: none;
 
@@ -90,9 +90,7 @@
     }
   }
 
-  @media (max-width: 375px) {
-    min-width: 333px;
-  }
+
   @media screen and (min-width: 1440px) {
     min-width: 270px;
     width: 100%;

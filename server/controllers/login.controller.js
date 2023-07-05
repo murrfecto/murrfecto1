@@ -10,7 +10,6 @@ const loginUser = async (req, res) => {
         const admin = await collection.findOne({email: email});
         if (admin) {
             const isPasswordMatch = await bcrypt.compare(password, admin.password);
-            console.log(isPasswordMatch)
             if (isPasswordMatch) {
                 const token = jwt.sign({
                     email: admin.email,

@@ -281,7 +281,7 @@ const sendPayment = async (req, res) => {
                 checkoutUrl
             })
         } else {
-            res.status(500).send('Unable to retrieve checkout URL');
+            res.status(500).send('Unable to retrieve checkout URL from SendGrid');
         }
     } catch (error) {
         console.error(error);

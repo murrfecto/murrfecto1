@@ -12,8 +12,6 @@
       @include flex-only;
       gap: 24px;
       @include nunito-700-size-18;
-      color: $color-blue;
-
       a{
         position: relative;
         &:before{

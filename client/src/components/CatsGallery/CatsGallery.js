@@ -28,7 +28,7 @@ const CatsGallery = ({limit, displayIcon, select}) => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(`http://localhost:3000/api/v1/cats/${id}`);
+            const response = await axios.delete(`https://murrfecto1.vercel.app/api/v1/cats/${id}`);
             console.log(response.data);
             setCats(cats.filter((item) => item._id !== id));
             await getData();
