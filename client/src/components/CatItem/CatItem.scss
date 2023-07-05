@@ -52,7 +52,6 @@
     }
   }
 
-
   &-link {
     display: inline-block;
 
@@ -66,7 +65,7 @@
     border: 3px solid $color-btn;
     border-radius: 8px;
     text-align: center;
-    transition: all 0.5s;
+    transition: all 0.3s;
     background: none;
     pointer-events: auto;
     touch-action: manipulation;
