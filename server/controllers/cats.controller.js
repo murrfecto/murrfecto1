@@ -14,7 +14,7 @@ const addCat = async (req, res) => {
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
-        const images = req.files.map((file) => `http://localhost:3000/images/${file.filename}`);
+        const images = req.files.map((file) => `https://murrfecto1.vercel.app/images/${file.filename}`);
         const result = await collection.insertOne({
             ...req.body,
             _id: new ObjectId(),
@@ -225,14 +225,14 @@ const subscribeToCats = (req, res) => {
 const sendMessage = (req, res) => {
     const {email, text, name} = req.body;
     sgMail.setApiKey(process.env.API_KEY);
-    const headers = {
-        Authorization: `Bearer ${process.env.API_KEY}`, 'x-custom-content-type': 'application/json',
-    };
+    // const headers = {
+    //     Authorization: `Bearer ${process.env.API_KEY}`, 'x-custom-content-type': 'application/json',
+    // };
     const msg = {
         to: 'murrfecto@gmail.com', from: email, subject: `Message from ${name}`, text: text,
     };
     sgMail
-        .send({...msg, headers})
+        .send(msg)
         .then(() => {
             res.send('Email sent');
         })

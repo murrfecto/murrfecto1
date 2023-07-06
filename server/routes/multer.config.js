@@ -13,18 +13,17 @@ const storage = multer.diskStorage({
         let extension = extArray[extArray.length - 1];
         let fileName = file.fieldname + '-' + Date.now() + '.' + extension;
         req.fileUrls = req.fileUrls || [];
-        req.fileUrls.push('http://localhost:3000/images/' + fileName);
+        req.fileUrls.push('https://murrfecto1.vercel.app/images/' + fileName);
         cb(null, fileName);
     },
 });
 
 const fileFilter = function (req, file, cb) {
-    // Check if the file type is either PNG, JPEG, or JPG
     if (
         file.mimetype === 'image/png' ||
         file.mimetype === 'image/jpeg' ||
         file.mimetype === 'image/jpg' ||
-        file.mimetype === 'image/svg+xml' ||
+        file.mimetype === 'image/svg' ||
         file.mimetype === 'image/webp'
     )  {
         // Accept the file
