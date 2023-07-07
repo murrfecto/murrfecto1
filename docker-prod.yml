@@ -4,6 +4,7 @@ services:
       - ./server/.env
     build:
       context: ./
+    container_name: murrfecto
     networks:
       - mongodb-net
       - localnet
