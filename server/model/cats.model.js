@@ -1,12 +1,12 @@
 import Joi from "joi";
 
 const catsModel = Joi.object({
-    image: Joi.any(),
-    name: Joi.string(),
-    description: Joi.string(),
-    chipped: Joi.string(),
-    age: Joi.string(),
-    gender: Joi.string()
+    image: Joi.any().required(),
+    name: Joi.string().required(),
+    description: Joi.string().required(),
+    chipped: Joi.string().required(),
+    age: Joi.string().required(),
+    gender: Joi.string().required()
 });
 
 export {catsModel};

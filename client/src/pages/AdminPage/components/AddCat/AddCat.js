@@ -110,7 +110,7 @@ const AddCat = () => {
                             <div className="age">
                                 <label>Вік кота:</label>
                                 <select name="age" value={formData.age}
-                                        onChange={handleInputChange}>
+                                        onChange={handleInputChange} required>
                                     <option className="age__placeholder"
                                             disabled value="">Вкажіть вік кота
                                     </option>
