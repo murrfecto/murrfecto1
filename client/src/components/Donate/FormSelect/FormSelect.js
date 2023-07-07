@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./FormSelect.scss";
 import Select from "react-select";
-import axios from "axios";
 
 const FormSelect = ({
   selectedCat,
@@ -10,6 +9,7 @@ const FormSelect = ({
 }) => {
   const [cats, setCats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     try {
       const fetchData = async () => {
