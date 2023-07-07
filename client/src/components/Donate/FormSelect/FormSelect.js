@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./FormSelect.scss";
 import Select from "react-select";
-import {useHttp} from "../../../hooks/request";
+import axios from "axios";
 
 const FormSelect = ({
   selectedCat,
@@ -10,12 +10,11 @@ const FormSelect = ({
 }) => {
   const [cats, setCats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const {request} = useHttp();
   useEffect(() => {
     try {
       const fetchData = async () => {
-        const data = await request("https://murrfecto.foradmin.fun/api/v1/cats");
-        const json = await data;
+        const data = await fetch("https://murrfecto.foradmin.fun/api/v1/cats");
+        const json = await data.json();
         const catOptions = json.map((elem) => {
           return {
             value: elem.id,
