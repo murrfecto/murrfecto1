@@ -130,7 +130,7 @@ const AdminPage = () => {
             const token = Cookies.get('token');
             if (token) {
                 try {
-                    const response = await axios.get('https://murrfecto1.vercel.app/api/v1/profile', {
+                    const response = await axios.get('https://murrfecto.foradmin.fun/api/v1/profile', {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
