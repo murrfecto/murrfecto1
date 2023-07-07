@@ -4,9 +4,6 @@ services:
       - ./server/.env
     build:
       context: ./
-    networks:
-      - mongodb-net
-      - localnet
     volumes:
       - static-murrfecto:/server/images
     ports:
@@ -16,9 +13,6 @@ networks:
   localnet:
     external: true
     name: localnet
-  mongodb-net:
-    external: true
-    name: mongodb-net
 
 volumes:
   static-murrfecto:
