@@ -6,7 +6,7 @@ import Spinner from '../../../../helpers/Spinner/Spinner';
 import {BiTrash, BiUpload} from "react-icons/bi";
 import {AiOutlineEye} from "react-icons/ai";
 import {Link} from "react-router-dom";
-const _ENDPOINT = 'https://murrfecto1.vercel.app/api/v1/report';
+const _ENDPOINT = 'https://murrfecto.foradmin.fun/api/v1/report';
 const reportUrl = 'https://murrfecto.s3.eu-central-1.amazonaws.com/report.pdf';
 const Report = () => {
 	const [file, setFile] = useState(null);

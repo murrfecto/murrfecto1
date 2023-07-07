@@ -25,7 +25,7 @@ const IsAdminForm = () => {
         const {email, password} = loginData;
         try {
             setLoading(true)
-            const response = await axios.post('https://murrfecto1.vercel.app/api/v1/login', {
+            const response = await axios.post('https://murrfecto.foradmin.fun/api/v1/login', {
                 email,
                 password
             });

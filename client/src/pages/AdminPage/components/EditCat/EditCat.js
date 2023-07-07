@@ -5,7 +5,7 @@ import {Alert} from "@mui/material";
 import {BiUpload} from "react-icons/bi";
 import Spinner from "../../../../helpers/Spinner/Spinner";
 
-const _ENDPOINT = "https://murrfecto1.vercel.app/api/v1/cats";
+const _ENDPOINT = "https://murrfecto.foradmin.fun/api/v1/cats";
 
 const EditCat = () => {
     const navigate = useNavigate()

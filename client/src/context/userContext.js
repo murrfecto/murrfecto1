@@ -7,7 +7,7 @@ export function UserContextProvider({children}) {
     const [user, setUser] = useState(null);
     useEffect(() => {
         if (!user) {
-            axios.get('https://murrfecto1.vercel.app/api/v1/profile').then(({data}) => {
+            axios.get('https://murrfecto.foradmin.fun/api/v1/profile').then(({data}) => {
                 setUser(data);
             });
         }

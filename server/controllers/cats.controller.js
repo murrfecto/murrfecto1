@@ -14,7 +14,7 @@ const addCat = async (req, res) => {
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
-        const images = req.files.map((file) => `https://murrfecto1.vercel.app/images/${file.filename}`);
+        const images = req.files.map((file) => `https://murrfecto.foradmin.fun/images/${file.filename}`);
         const result = await collection.insertOne({
             ...req.body,
             _id: new ObjectId(),

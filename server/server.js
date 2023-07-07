@@ -50,6 +50,8 @@ app.get('*', (req, res) => {
         path.join(__dirname, 'build', 'index.html')
     );
 });
+
+
 MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true})
     .then(() => {
         console.log('Connected to database');

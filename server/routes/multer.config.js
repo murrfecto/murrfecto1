@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
         let extension = extArray[extArray.length - 1];
         let fileName = file.fieldname + '-' + Date.now() + '.' + extension;
         req.fileUrls = req.fileUrls || [];
-        req.fileUrls.push('https://murrfecto1.vercel.app/images/' + fileName);
+        req.fileUrls.push('http://localhost:3000/images/' + fileName);
         cb(null, fileName);
     },
 });
