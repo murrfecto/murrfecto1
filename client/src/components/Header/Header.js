@@ -15,7 +15,7 @@ const Header = () => {
           ):(
               <div className="header">
                   <Infobox />
-                  <hr/>
+
                   <Navbar />
               </div>
           )}
