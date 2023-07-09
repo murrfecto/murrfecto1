@@ -1,6 +1,7 @@
 @import "../../../styles/index";
 
 .navbar{
+  margin-top: 10px;
   @include flex-only;
   width: 100%;
   justify-content: space-between;
