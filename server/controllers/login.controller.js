@@ -38,19 +38,27 @@ const loginUser = async (req, res) => {
 
 
 const logoutUser = (req, res) => {
-    res.clearCookie('token');
-    res.status(200).send('Logged out successfully');
+    const { token } = req.cookies;
+    if (token) {
+        res.clearCookie('token');
+        res.status(200).send('Logged out successfully');
+    } else {
+        res.status(401).json({ error: 'Unauthorized request' });
+    }
 };
 
 const getProfile = (req, res) => {
     const {token} = req.cookies;
     if(token){
         jwt.verify(token,process.env.JWT_SECRET,{},(err,admin)=>{
-            if (err)throw err;
-            res.json(admin)
+            if (err){
+                res.status(401).json({ error: 'Unauthorized request' });
+            }else{
+                res.json(admin)
+            }
         })
     } else {
-        res.json(null)
+        res.status(401).json({ error: 'Unauthorized request' });
     }
 };
 
