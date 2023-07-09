@@ -40,7 +40,7 @@ const AddCat = () => {
                 setFormData(initialState);
                 setFiles(initialFilesState);
         } catch (err) {
-            console.error(err);
+            console.error(err.message);
             setFormStatus("error");
         }
     };
