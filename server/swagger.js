@@ -27,7 +27,7 @@ const options = {
                 description: 'Local server',
             },
             {
-                url: 'https://murrfecto1.vercel.app/api/v1/',
+                url: 'https://murrfecto.foradmin.fun/api/v1/',
                 description: 'Development server',
             },
         ],

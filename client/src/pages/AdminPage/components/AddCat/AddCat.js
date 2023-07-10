@@ -8,7 +8,7 @@ const _ENDPOINT = "https://murrfecto.foradmin.fun/api/v1/cats";
 const AddCat = () => {
     const initialState = {
         name: '',
-        image: '',
+        images: '',
         description: '',
         chipped: '',
         age: '',
@@ -99,7 +99,6 @@ const AddCat = () => {
                                 multiple
                                 name="image"
                                 onChange={handleFileUpload}
-                                required
                                 className="input__file_none"
                             />
                         </div>
