@@ -9,7 +9,7 @@ services:
       - mongodb-net
       - localnet
     volumes:
-      - static-murrfecto:/server/images
+      - static-murrfecto:./images
     ports:
       - "3000:3000"
 
