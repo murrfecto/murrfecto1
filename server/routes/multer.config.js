@@ -24,7 +24,8 @@ const fileFilter = function (req, file, cb) {
         file.mimetype === 'image/jpeg' ||
         file.mimetype === 'image/jpg' ||
         file.mimetype === 'image/svg' ||
-        file.mimetype === 'image/webp'
+        file.mimetype === 'image/webp' ||
+        file.mimetype === 'application/pdf'
     )  {
         // Accept the file
         cb(null, true);
