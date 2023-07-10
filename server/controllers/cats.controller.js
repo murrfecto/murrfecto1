@@ -4,6 +4,8 @@ import sgMail from '@sendgrid/mail';
 import crypto from "crypto";
 import axios from "axios";
 import {connectToDatabase} from "../helpers/connectToDb.js";
+import path from "path";
+import * as fs from "fs";
 
 
 const addCat = async (req, res) => {
@@ -14,7 +16,7 @@ const addCat = async (req, res) => {
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
-        const images = req.files.map((file) => `https://murrfecto.foradmin.fun/api/v1/images/${file.filename}`);
+        const images = req.files.map((file) => `${process.env.BASE_URL}/images/${file.filename}`);
         const result = await collection.insertOne({
             ...req.body,
             _id: new ObjectId(),
@@ -68,7 +70,16 @@ const deleteCatById = async (req, res) => {
     const id = req.params.id;
     const {client, collection} = await connectToDatabase(collectionName);
     try {
-        const result = await collection.deleteOne({_id: new ObjectId(id)});
+        // Find the document to be deleted
+        const cat = await collection.findOne({ _id: new ObjectId(id) });
+
+        // Delete the corresponding image file
+        const imageFileName = cat.imageFileName;
+        const imagePath = path.join(__dirname, 'images', imageFileName); // Adjust the path to your image directory
+        fs.unlinkSync(imagePath); // Delete the file
+
+        // Delete the document from the collection
+        const result = await collection.deleteOne({ _id: new ObjectId(id) });
         res.send(result);
     } catch (err) {
         console.error(err);
