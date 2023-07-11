@@ -28,6 +28,9 @@
     padding-bottom: 28px;
     @include flex-only;
     align-items: center;
+    @media screen and (max-width: 390px) {
+      width: 90%;
+    }
   }
 
   &-label {
@@ -72,6 +75,9 @@
       border-radius: 8px;
       width: 357px;
     }
+    @media screen and (max-width: 390px) {
+      width: 100%;
+    }
   }
 
   &-alert {
@@ -90,11 +96,7 @@
     color: $color-btn;
     transition: background-color 300ms linear, color 300ms linear;
 
-    @media screen and (max-width: 720px) {
-      margin-top: 16px;
-      @include nunito-700-size-16;
-      width: 357px;
-    }
+
 
     &:hover {
       border: 3px solid $color-btn;
@@ -127,5 +129,14 @@
     width: 240px;
     height: 60px;
     border-radius: 8px;
+    @media screen and (max-width: 720px) {
+      margin-top: 16px;
+      @include nunito-700-size-16;
+      width: 357px;
+    }
+    @media screen and (max-width: 390px) {
+      width: 100%;
+    }
   }
+
 }

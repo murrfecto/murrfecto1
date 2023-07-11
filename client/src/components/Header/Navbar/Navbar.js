@@ -1,8 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link, useMatch} from "react-router-dom";
 import "./Navbar.scss";
 import logo from "../../../assets/header/logo.svg";
 import ModalButton from "../../ModalButton/ModalButton";
+
+
+function CustomLinks({to,children}) {
+    let match=useMatch(to)
+    return (
+        <Link to={to} className={match ? 'active_link':''}>
+            {children}
+        </Link>
+    )
+
+}
 
 const Navbar = () => {
   return (
@@ -13,10 +24,10 @@ const Navbar = () => {
         </Link>
       </div>
       <div className={"navbar_wrapper"}>
-        <div className={"navbar_links links"}>
-          <Link to={"/about"}>Про притулок</Link>
-          <Link to={"/tails"}>Наші хвости</Link>
-          <Link to={"/contacts"}>Контакти</Link>
+        <div className={"navbar_links"}>
+          <CustomLinks to={"/about"}>Про притулок</CustomLinks>
+          <CustomLinks to={"/tails"}>Наші хвости</CustomLinks>
+          <CustomLinks to={"/contacts"}>Контакти</CustomLinks>
         </div>
         <ModalButton title={"Нагодуй кота"} style={'footer_donation'} />
       </div>

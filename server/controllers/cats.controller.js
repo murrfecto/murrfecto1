@@ -4,6 +4,8 @@ import sgMail from '@sendgrid/mail';
 import crypto from "crypto";
 import axios from "axios";
 import {connectToDatabase} from "../helpers/connectToDb.js";
+import path from "path";
+import * as fs from "fs";
 
 
 const addCat = async (req, res) => {
@@ -14,7 +16,7 @@ const addCat = async (req, res) => {
         if (error) {
             return res.status(400).send(error.details[0].message);
         }
-        const images = req.files.map((file) => `http://localhost:3000/images/${file.filename}`);
+        const images = req.files.map((file) => `${process.env.BASE_URL}/images/${file.filename}`);
         const result = await collection.insertOne({
             ...req.body,
             _id: new ObjectId(),
@@ -22,7 +24,7 @@ const addCat = async (req, res) => {
         });
         res.send(result);
     } catch (err) {
-        console.error(err);
+        console.error(err.message);
         res.status(500).send('Error connecting to the database');
     } finally {
         if (client) {
@@ -68,7 +70,16 @@ const deleteCatById = async (req, res) => {
     const id = req.params.id;
     const {client, collection} = await connectToDatabase(collectionName);
     try {
-        const result = await collection.deleteOne({_id: new ObjectId(id)});
+        // Find the document to be deleted
+        const cat = await collection.findOne({ _id: new ObjectId(id) });
+
+        // Delete the corresponding image file
+        const imageFileName = cat.imageFileName;
+        const imagePath = path.join(__dirname, 'images', imageFileName); // Adjust the path to your image directory
+        fs.unlinkSync(imagePath); // Delete the file
+
+        // Delete the document from the collection
+        const result = await collection.deleteOne({ _id: new ObjectId(id) });
         res.send(result);
     } catch (err) {
         console.error(err);
@@ -225,14 +236,14 @@ const subscribeToCats = (req, res) => {
 const sendMessage = (req, res) => {
     const {email, text, name} = req.body;
     sgMail.setApiKey(process.env.API_KEY);
-    const headers = {
-        Authorization: `Bearer ${process.env.API_KEY}`, 'x-custom-content-type': 'application/json',
-    };
+    // const headers = {
+    //     Authorization: `Bearer ${process.env.API_KEY}`, 'x-custom-content-type': 'application/json',
+    // };
     const msg = {
         to: 'murrfecto@gmail.com', from: email, subject: `Message from ${name}`, text: text,
     };
     sgMail
-        .send({...msg, headers})
+        .send(msg)
         .then(() => {
             res.send('Email sent');
         })
@@ -281,7 +292,7 @@ const sendPayment = async (req, res) => {
                 checkoutUrl
             })
         } else {
-            res.status(500).send('Unable to retrieve checkout URL');
+            res.status(500).send('Unable to retrieve checkout URL from SendGrid');
         }
     } catch (error) {
         console.error(error);

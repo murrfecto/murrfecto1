@@ -1,77 +1,49 @@
-@import "../../../styles/_index.scss";
+@import "../../../styles/index";
 
-.navbar {
-  max-width: 1282px;
-  border-top: 1px solid $color-border;
+.navbar{
+  margin-top: 10px;
+  @include flex-only;
   width: 100%;
-  display: flex;
-  justify-content: space-around;
-  gap: 390px;
-  align-items: center;
-  padding: 9px 0px;
-
-  .navbar_wrapper {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-  }
-
-  .navbar_icon {
-    width: 197px;
-    height: 82px;
-  }
-
-  .navbar_links {
-    a {
-      white-space: nowrap;
-      text-decoration: none;
-    }
-  }
-
-  .links {
-    @include nunito-700-size-18;
+  justify-content: space-between;
+  &_wrapper{
     @include flex-only;
-    gap: 24px;
-
-    a {
-      color: $color-blue;
-      border-bottom: 1px solid transparent;
-      transition: border 0.3s ease;
-
-      &:hover {
-        color: $color-btn;
-        border-bottom: 1px solid $color-btn;
+    align-items: center;
+    gap: 48px;
+    .navbar_links{
+      @include flex-only;
+      gap: 24px;
+      @include nunito-700-size-18;
+      a{
+        position: relative;
+        &:before{
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -5px;
+          width: 0;
+          height: 1.5px;
+          transition: width 0.35s;
+          background-color: $color-blue;
+        }
+        &:hover{
+          &:before{
+            width: 100%;
+          }
+        }
+      }
+      .active_link{
+        &:before{
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -5px;
+          width: 100%;
+          height: 1.5px;
+          transition: width 0.35s;
+          background-color: $color-blue;
+        }
       }
     }
   }
 
-  #donation {
-    border-radius: 8px;
-    margin-left: 62px;
-  }
-
-  .donation {
-    background-color: $color-btn;
-    border-radius: 12px;
-    @include position-center-a;
-    gap: 8px;
-    transition: background-color 300ms linear;
-
-    a {
-      @include nunito-400-size-24;
-      padding: 16px 40px;
-      line-height: 33px;
-      text-transform: uppercase;
-      color: $full-white;
-      transition: color 300ms linear;
-
-      &:hover {
-        color: $color-btn;
-      }
-    }
-
-    &:hover {
-      background-color: $color-card;
-    }
-  }
 }

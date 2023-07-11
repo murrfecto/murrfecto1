@@ -15,21 +15,21 @@ import PrivacyPolicyPdf from "../../assets/dataDocs/privacy-policy.pdf";
 const Footer = () => {
   return (
     <footer className={"footer"}>
-      <div className="footer_container container">
-        <div className={"footer_info_wrapper"}>
-          <div className="wrapper">
-            <Link to={"/"} className={"footer_logo-link"} onClick={scrollToTop}>
-              <img
+      <div className="footer_container">
+        <div className="wrapper">
+          <Link to={"/"} className={"footer_logo-link"} onClick={scrollToTop}>
+            <img
                 className={"footer_logo-img"}
                 src={logo}
                 alt="murrfecto logo"
                 width={170}
                 height={70}
-              />
-            </Link>
+            />
+          </Link>
 
-            <ModalButton title={"Нагодуй кота"} style={"footer_donation"} />
-          </div>
+          <ModalButton title={"Нагодуй кота"} style={"footer_donation"} />
+        </div>
+        <div className={"footer_info_wrapper"}>
 
           <nav className={"footer_nav"}>
             <Link className={"footer_link"} to={"/about"} onClick={scrollToTop}>
@@ -76,28 +76,29 @@ const Footer = () => {
             </ul>
           </address>
 
-          <div className={"footer_documents-wrapper"}>
-            <a
+        </div>
+        <div className={"footer_documents-wrapper"}>
+          <a
               className={"footer_link"}
               href="#"
               target="_blank"
               rel="nofollow noreferrer noopener"
-            >
-              Правила користування сайтом
-            </a>
-            <a
+          >
+            Правила користування сайтом
+          </a>
+          <a
               className={"footer_link"}
               href={PrivacyPolicyPdf + "#toolbar=0"}
               target="_blank"
               aria-readonly
               rel="nofollow noreferrer noopener"
-            >
-              Політика конфіденційності
-            </a>
-          </div>
-          <ul className={"social_list"}>
-            <li className={"social_item"}>
-              <a
+          >
+            Політика конфіденційності
+          </a>
+        </div>
+        <ul className={"social_list"}>
+          <li className={"social_item"}>
+            <a
                 className={"social_link"}
                 href="https://www.instagram.com/murrfecto_murr/"
                 target="_blank"
@@ -112,16 +113,20 @@ const Footer = () => {
                 href="https://www.facebook.com/profile.php?id=100092408450281"
                 target="_blank"
                 rel="nofollow noreferrer noopener"
-              >
-                <Facebook className={"social_icon"}/>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <p className="footer_copyrights">
-          Розробка Baza Trainee Ukraine 2023 Всі права захищені.
-        </p>
+            >
+              <img
+                  src={facebook}
+                  alt="facebook icon"
+                  width={48}
+                  height={48}
+              />
+            </a>
+          </li>
+        </ul>
       </div>
+      <p className="footer_copyrights">
+        Розробка Baza Trainee Ukraine 2023 Всі права захищені.
+      </p>
     </footer>
   );
 };

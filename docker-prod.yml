@@ -1,0 +1,25 @@
+services:
+  murrfecto-back:
+    env_file:
+      - ./server/.env
+    build:
+      context: ./
+    container_name: murrfecto
+    networks:
+      - mongodb-net
+      - localnet
+    volumes:
+      - static-murrfecto:/app/images
+    ports:
+      - "3000:3000"
+
+networks:
+  localnet:
+    external: true
+    name: localnet
+  mongodb-net:
+    external: true
+    name: mongodb-net
+
+volumes:
+  static-murrfecto:

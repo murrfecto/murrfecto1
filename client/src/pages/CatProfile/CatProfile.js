@@ -28,7 +28,7 @@ const CatProfile = () => {
         svgColor: "#4B3542",
       });
       const response = await axios.get(
-        `https://murrfecto1.vercel.app/api/v1/cats/${id}`
+        `https://murrfecto.foradmin.fun/api/v1/cats/${id}`
       );
       setCat(response.data);
       const firstFourPhotos = chunk(response.data.images, 4)[0];

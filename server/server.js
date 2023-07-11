@@ -36,7 +36,7 @@ app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
 
 // images
-app.use('/images', express.static(path.join(process.cwd(), 'images/')));
+app.use('/api/v1/images', express.static(path.join(process.cwd(), 'images/')));
 app.use(express.static('build'));
 
 // Routes
@@ -50,6 +50,8 @@ app.get('*', (req, res) => {
         path.join(__dirname, 'build', 'index.html')
     );
 });
+
+
 MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true})
     .then(() => {
         console.log('Connected to database');

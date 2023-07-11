@@ -16,6 +16,9 @@
   width: 305px;
   height: 424px;
   transform-style: preserve-3d;
+  @media screen and (max-width: 1280px) {
+    max-width: 275px;
+  }
 
   @media screen and (max-width: 720px) {
     max-width: 305px;
@@ -49,7 +52,6 @@
     }
   }
 
-
   &-link {
     display: inline-block;
 
@@ -63,7 +65,7 @@
     border: 3px solid $color-btn;
     border-radius: 8px;
     text-align: center;
-    transition: all 0.5s;
+    transition: all 0.3s;
     background: none;
     pointer-events: auto;
     touch-action: manipulation;

@@ -4,11 +4,11 @@ import './AddCat.scss';
 import {Alert} from "@mui/material";
 import {BiUpload} from "react-icons/bi";
 
-const _ENDPOINT = "http://localhost:3000/api/v1/cats";
+const _ENDPOINT = "https://murrfecto.foradmin.fun/api/v1/cats";
 const AddCat = () => {
     const initialState = {
         name: '',
-        image: '',
+        images: '',
         description: '',
         chipped: '',
         age: '',
@@ -40,7 +40,7 @@ const AddCat = () => {
                 setFormData(initialState);
                 setFiles(initialFilesState);
         } catch (err) {
-            console.error(err);
+            console.error(err.message);
             setFormStatus("error");
         }
     };
@@ -99,7 +99,6 @@ const AddCat = () => {
                                 multiple
                                 name="image"
                                 onChange={handleFileUpload}
-                                required
                                 className="input__file_none"
                             />
                         </div>
@@ -110,7 +109,7 @@ const AddCat = () => {
                             <div className="age">
                                 <label>Вік кота:</label>
                                 <select name="age" value={formData.age}
-                                        onChange={handleInputChange}>
+                                        onChange={handleInputChange} required>
                                     <option className="age__placeholder"
                                             disabled value="">Вкажіть вік кота
                                     </option>
