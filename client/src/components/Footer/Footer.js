@@ -114,11 +114,7 @@ const Footer = () => {
                 target="_blank"
                 rel="nofollow noreferrer noopener"
             >
-              <img
-                  src={facebook}
-                  alt="facebook icon"
-                  width={48}
-                  height={48}
+              <Facebook className={"social_icon"}
               />
             </a>
           </li>

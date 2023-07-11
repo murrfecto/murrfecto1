@@ -10,7 +10,12 @@
   .social_networks{
     @include flex-only;
     gap: 20px;
-
+    &_icon:hover .main {
+      fill: $color-card;
+    }  
+    &_icon:hover .secondary {
+      fill: $color-btn;
+    }
   }
   .socials_contacts{
     @include flex-only;
