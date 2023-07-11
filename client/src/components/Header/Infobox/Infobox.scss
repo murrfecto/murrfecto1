@@ -14,24 +14,12 @@
 .social_networks {
   @include position-center-na;
   gap: 20px;
-
-  a {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    scale: 1;
-    transition: box-shadow 300ms linear, scale 300ms linear;
-
-    &:hover {
-      scale: 1.1;
-      box-shadow: 0 3.43693px 3.43693px #766e78;
-    }
-  }
-
-  img {
-    width: 32px;
-    height: 32px;
-  }
+  &_icon:hover .main {
+    fill: $color-card;
+  }  
+  &_icon:hover .secondary {
+    fill: $color-btn;
+  } 
 }
 
 .socials_contacts {
