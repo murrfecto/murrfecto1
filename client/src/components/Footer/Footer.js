@@ -5,8 +5,8 @@ import "../Header/Navbar/Navbar.scss";
 import logo from "../../assets/footer/logo.svg";
 import email from "../../assets/footer/envelope.svg";
 import phone from "../../assets/footer/phone.svg";
-import facebook from "../../assets/footer/facebook.svg";
-import insta from "../../assets/footer/insta.svg";
+import {ReactComponent as Facebook} from "../../assets/footer/facebook.svg";
+import {ReactComponent as Insta} from "../../assets/footer/insta.svg";
 import { scrollToTop } from "../../helpers/scrollToTop";
 import ModalButton from "../ModalButton/ModalButton";
 
@@ -103,7 +103,7 @@ const Footer = () => {
                 target="_blank"
                 rel="nofollow noreferrer noopener"
               >
-                <img src={insta} alt="instagramm" width={48} height={48} />
+                <Insta className={"social_icon"}/>
               </a>
             </li>
             <li className={"social_item"}>
@@ -113,12 +113,7 @@ const Footer = () => {
                 target="_blank"
                 rel="nofollow noreferrer noopener"
               >
-                <img
-                  src={facebook}
-                  alt="facebook icon"
-                  width={48}
-                  height={48}
-                />
+                <Facebook className={"social_icon"}/>
               </a>
             </li>
           </ul>

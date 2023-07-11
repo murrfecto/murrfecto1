@@ -214,19 +214,9 @@
     @include flex-column-a;
   }
 }
-
-.social_link {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
-  box-shadow: transparent;
-  transition: box-shadow 300ms linear, scale 300ms linear;
-
-  &:hover {
-    box-shadow: 0 3.43693px 3.43693px #766e78;
-    scale: 1.1;
-  }
-}
+.social_icon:hover .main {
+  fill: $color-icon-hover;
+}  
 
 .footer_copyrights {
   @include nunito-400-size-14;
