@@ -1,7 +1,7 @@
 import React from "react";
 import "./Infobox.scss";
-import insta from "../../../assets/header/insta.svg";
-import facebook from "../../../assets/header/facebook.svg";
+import {ReactComponent as Insta} from "../../../assets/header/insta.svg";
+import {ReactComponent as Facebook} from "../../../assets/header/facebook.svg";
 import email from "../../../assets/header/email.svg";
 import phone from "../../../assets/header/phone.svg";
 
@@ -15,7 +15,7 @@ const Infobox = () => {
             target="_blank"
             rel="nofollow noreferrer noopener"
           >
-            <img src={insta} alt="insta-icon" />
+            <Insta className="social_networks_icon"/>
           </a>
         </li>
         <li>
@@ -24,7 +24,7 @@ const Infobox = () => {
             target="_blank"
             rel="nofollow noreferrer noopener"
           >
-            <img src={facebook} alt="facebook-icon" />
+            <Facebook className="social_networks_icon"/>
           </a>
         </li>
       </ul>

@@ -2,8 +2,8 @@ import React from "react";
 import "./Contacts.scss";
 import email from "../../assets/header/email.svg";
 import phone from "../../assets/header/phone.svg";
-import insta from "../../assets/header/insta.svg";
-import facebook from "../../assets/header/facebook.svg";
+import {ReactComponent as Insta}  from "../../assets/header/insta.svg";
+import {ReactComponent as Facebook} from "../../assets/header/facebook.svg";
 import FeedbackForm from "../FeedbackForm/FeedbackForm";
 
 const Contacts = () => {
@@ -38,12 +38,8 @@ const Contacts = () => {
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
-              <img
+              <Insta
                 className="contacts_social_icon"
-                src={insta}
-                alt="instagram icon"
-                width={32}
-                height={32}
               />
             </a>
             <a
@@ -51,12 +47,8 @@ const Contacts = () => {
               target="_blank"
               rel="nofollow noreferrer noopener"
             >
-              <img
+              <Facebook
                 className="contacts_social_icon"
-                src={facebook}
-                alt="facebook icon"
-                width={32}
-                height={32}
               />
             </a>
           </div>
