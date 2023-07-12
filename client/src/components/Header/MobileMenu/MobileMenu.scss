@@ -3,7 +3,7 @@
 .mobile_menu {
   position: relative;
   margin: 0 auto;
-  z-index: 5;
+  z-index: 2;
 }
 
 .mobile_menu-wrapper {
@@ -17,6 +17,7 @@
 }
 
 .mobile_menu-btn {
+  z-index: 0;
   width: 42px;
   height: 42px;
   background-color: transparent;

@@ -1,6 +1,8 @@
 @import "../../styles/_index.scss";
 
 .modal_backdrop {
+  overflow-y: hidden;
+  z-index: 3;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,71 +11,72 @@
   display: flex;
   justify-content: center;
   background: rgba(208, 190, 196, 0.5);
-  ;
 }
 
 .modal_container {
-    position: absolute;
-    width: 390px;
-    height: 100%;
-    z-index: 10;
-    background-color: $color-btn;
-    background-image: url('../../assets/kitten_modal_mobile.png');
-    background-repeat: no-repeat;
-    background-position: bottom 0px center;
+  position: absolute;
+  width: 390px;
+  height: 100%;
+  z-index: 10;
+  background-color: $color-btn;
+  background-image: url('../../assets/kitten_modal_mobile.png');
+  background-repeat: no-repeat;
+  background-position: bottom 0 center;
 
-   @media screen and (min-width: 768px) {
-    width: 630px;  
+  @media screen and (min-width: 768px) {
+    width: 630px;
     height: 514px;
     margin-top: 150px;
     border-radius: 18px;
     background-image: url('../../assets/kitten_modal_contacts.png');
-   }
-   @media screen and (min-width: 1440px) {
+  }
+  @media screen and (min-width: 1440px) {
     margin-top: 170px;
-   }    
+  }
 }
 
 .modal_btn_close {
-    position: absolute;
-    background-color: transparent;
-    border: none;
-    top: 16px;
-    right: 16px;
-    width: 24px;
-    height: 24px;
-    @include position-center-a;
-    cursor:pointer;
-    @media screen and (min-width: 768px) {
-        top: 24px;
-        right: 24px;
-    }
+  z-index: 11;
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  @include position-center-a;
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    top: 24px;
+    right: 24px;
+  }
 }
+
 .modal_icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 
 .modal_title {
-    margin-top: 96px;
-    text-align: center;
-    @include nunito-600-size-32;
-    line-height: 1.4;
-    color: $color-white;
-    @media screen and (min-width: 768px) {
-        margin-top: 90px;
-    @include nunito-700-size-40; 
-    }
+  margin-top: 96px;
+  text-align: center;
+  @include nunito-600-size-32;
+  line-height: 1.4;
+  color: $color-white;
+  @media screen and (min-width: 768px) {
+    margin-top: 90px;
+    @include nunito-700-size-40;
+  }
 }
 
 .modal_text {
-    margin-top:32px;
-    text-align: center;
-    @include nunito-400-size-20;
-    line-height: 1.5;
-    color: $color-white;
-    @media screen and (min-width: 768px) {
-        margin-top: 9px; 
-    }
+  margin-top: 32px;
+  text-align: center;
+  @include nunito-400-size-20;
+  line-height: 1.5;
+  color: $color-white;
+  @media screen and (min-width: 768px) {
+    margin-top: 9px;
+  }
 }

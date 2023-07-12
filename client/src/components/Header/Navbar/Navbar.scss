@@ -1,21 +1,26 @@
 @import "../../../styles/index";
 
-.navbar{
+.navbar {
   margin-top: 10px;
   @include flex-only;
   width: 100%;
   justify-content: space-between;
-  &_wrapper{
+
+
+  &_wrapper {
     @include flex-only;
     align-items: center;
     gap: 48px;
-    .navbar_links{
+
+    .navbar_links {
       @include flex-only;
       gap: 24px;
       @include nunito-700-size-18;
-      a{
+
+      a {
         position: relative;
-        &:before{
+
+        &:before {
           content: '';
           position: absolute;
           left: 0;
@@ -25,14 +30,16 @@
           transition: width 0.35s;
           background-color: $color-blue;
         }
-        &:hover{
-          &:before{
+
+        &:hover {
+          &:before {
             width: 100%;
           }
         }
       }
-      .active_link{
-        &:before{
+
+      .active_link {
+        &:before {
           content: '';
           position: absolute;
           left: 0;
@@ -45,5 +52,4 @@
       }
     }
   }
-
 }
