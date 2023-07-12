@@ -1,12 +1,14 @@
 @import "../../../styles/_index.scss";
 
 .mobile_menu {
+  height: 80px;
   position: relative;
   margin: 0 auto;
   z-index: 2;
 }
 
 .mobile_menu-wrapper {
+  height: 80px;
   @include position-center-na;
   justify-content: space-between;
   padding: 24px 16px;
@@ -22,7 +24,7 @@
   height: 42px;
   background-color: transparent;
   @include position-center-a;
-  padding: 0px;
+  padding: 0;
   border: transparent;
   border-radius: 8px;
   cursor: pointer;
@@ -55,7 +57,7 @@
 
   @include flex-column-na;
   gap: 40px;
-  padding: 59px 0px 60px 110px;
+  padding: 59px 0 60px 110px;
 
   @media screen and (min-width: 768px) {
     top: 112px;
