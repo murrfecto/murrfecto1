@@ -14,8 +14,8 @@ const loginUser = async (req, res) => {
                 const token = jwt.sign({
                     email: admin.email,
                     id: admin._id
-                }, process.env.JWT_SECRET, {});
-                res.cookie('token',token,{httpOnly:true})
+                }, process.env.JWT_SECRET, {expiresIn: '7d'});
+                res.cookie('token',token,{httpOnly:true, sameSite: 'none', secure: true})
                 console.log( res.cookie('token',token,{httpOnly:true}));
                 res.status(200).json({token});
             } else {
@@ -48,18 +48,18 @@ const logoutUser = (req, res) => {
 };
 
 const getProfile = (req, res) => {
-    const {token} = req.cookies;
-    if(token){
-        jwt.verify(token,process.env.JWT_SECRET,{},(err,admin)=>{
-            if (err){
-                res.status(401).json({ error: 'Unauthorized request' });
-            }else{
-                res.json(admin)
-            }
-        })
-    } else {
-        res.status(401).json({ error: 'Unauthorized request' });
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({ error: 'Необхідна авторизація' });
     }
+
+    jwt.verify(token, process.env.JWT_SECRET, (err, admin) => {
+        if (err) {
+            return res.status(401).json({ error: 'Недійсний токен або невірний підпис' });
+        }
+
+        res.json(admin);
+    });
 };
 
 

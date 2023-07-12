@@ -4,7 +4,7 @@ import './AddCat.scss';
 import {Alert} from "@mui/material";
 import {BiUpload} from "react-icons/bi";
 
-const _ENDPOINT = "https://murrfecto.foradmin.fun/api/v1/cats";
+export const _ENDPOINT = "https://murrfecto.foradmin.fun/api/v1";
 const AddCat = () => {
     const initialState = {
         name: '',
@@ -35,7 +35,7 @@ const AddCat = () => {
         data.append("gender", formData.gender);
 
         try {
-            const response = await axios.post(_ENDPOINT, data);
+            const response = await axios.post(`${_ENDPOINT}/cats`, data);
                 setFormStatus("success");
                 setFormData(initialState);
                 setFiles(initialFilesState);

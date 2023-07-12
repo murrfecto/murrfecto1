@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 import './Sidebar.scss';
 import SubMenu from "./SubMenu";
 import {RxExit} from "react-icons/rx";
-import {UserContext} from "../../../../../context/userContext";
+
 import {useDispatch} from "react-redux";
 import {authActions} from "../../../../../store";
 import Cookies from 'js-cookie';

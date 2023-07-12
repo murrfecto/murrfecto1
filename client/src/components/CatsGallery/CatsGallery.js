@@ -6,32 +6,36 @@ import Notiflix from "notiflix";
 import Spinner from "../../helpers/Spinner/Spinner";
 import {motion} from "framer-motion";
 import {useNavigate} from "react-router-dom";
+import {_ENDPOINT} from "../../pages/AdminPage/components/AddCat/AddCat";
 import editIcon from "../../assets/admin/edit-icon.svg"
 import deleteIcon from "../../assets/admin/delete-icon.svg"
+import useCustomAxios from "../../hooks/useCustomAxios";
+
 const CatsGallery = ({limit, displayIcon, select}) => {
     const [cats, setCats] = useState(null);
-    const [loading, setLoading] = useState(true);
     const [shouldDisplayTrashIcon, setShouldDisplayTrashIcon] = useState(displayIcon)
     const [_, setShouldBeSelected] = useState(select)
     const navigate = useNavigate();
+    const { data, error, loading, get } = useCustomAxios();
 
-    const getData = async () => {
-        try {
-            const response = await axios.get('https://murrfecto.foradmin.fun/api/v1/cats');
-            setCats(response.data);
-            setLoading(false);
-        } catch (e) {
-            console.log(e.message);
-            setLoading(false);
-        }
-    };
+    useEffect(() => {
+        get(`${_ENDPOINT}/cats`)
+    }, []);
+
+    useEffect(() => {
+
+       if (data){
+           setCats(data)
+       }
+    }, [data]);
+
+
 
     const handleDelete = async (id) => {
         try {
-            const response = await axios.delete(`https://murrfecto.foradmin.fun/api/v1/cats/${id}`);
+            const response = await axios.delete(`${_ENDPOINT}/cats/${id}`);
             console.log(response.data);
             setCats(cats.filter((item) => item._id !== id));
-            await getData();
         } catch (error) {
             console.log(id);
             console.error(error);
@@ -71,7 +75,7 @@ const CatsGallery = ({limit, displayIcon, select}) => {
     useEffect(() => {
         setShouldDisplayTrashIcon(displayIcon)
         setShouldBeSelected(select)
-        getData();
+
     }, []);
 
     if (loading) {
