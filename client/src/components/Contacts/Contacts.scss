@@ -3,7 +3,7 @@
 .contacts_container {
   width: 390px;
   margin: 0 auto;
-  padding: 32px 16px 80px;
+  padding: 32px 0 80px;
   @include flex-column-a;
   gap: 80px;
   background-color: $main-bg-color;
@@ -13,19 +13,20 @@
 
   @media screen and (min-width: 768px) {
     width: 768px;
-    padding: 40px 24px 80px;
+    padding: 40px 0 80px;
     display: flex;
     flex-direction: row;
     gap: 20px;
   }
   @media screen and (min-width: 1280px) {
-    padding: 100px 60px;
+    padding: 100px 0;
     width: 1280px;
+    justify-content: center;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1440px;
-    padding: 80px 188px 100px;
+    width: 1280px;
+    justify-content: center;
     gap: 128px;
   }
 }

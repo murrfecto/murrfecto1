@@ -1,6 +1,7 @@
 @import "../../styles/_index.scss";
 
 .cats_cards {
+  max-width: 1280px;
   flex-wrap: wrap;
   @include position-center-a;
   gap: 20px;

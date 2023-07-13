@@ -5,7 +5,10 @@
   @include flex-column-a;
   margin: 0 auto;
   padding-top: 120px;
-
+  @media screen and (max-width: 500px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   &-header {
     padding-bottom: 24px;
     @include nunito-700-size-40;

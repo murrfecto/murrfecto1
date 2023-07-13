@@ -7,7 +7,8 @@
   &__wrapper {
     margin-top: 89px;
     @include flex-only;
-    @media (max-width: 1240px) {
+    justify-content: space-between;
+    @media (max-width: 1245px) {
       margin: 30px auto auto;
       flex-direction: column;
       align-items: center;
@@ -23,6 +24,10 @@
         width: 100%;
         object-fit: cover;
         -webkit-user-drag: none;
+      }
+
+      @media (max-width: 1245px) {
+        width: 580px;
       }
 
       @media (max-width: 1000px) {
@@ -52,7 +57,7 @@
       }
 
       img:first-child {
-        width: 630px;
+        width: 580px;
         height: 472px;
         @media (max-width: 1000px) {
           width: 706px;
@@ -72,8 +77,8 @@
 
       img:not(:first-child) {
         margin-top: 15px;
-        width: 193px;
-        height: 197px;
+        width: 183px;
+        height: 169px;
         @media (max-width: 1000px) {
           width: 221px;
           height: 228px;
@@ -85,8 +90,13 @@
 
         @media (max-width: 375px) {
           margin-top: 5px;
-          width: 111px;
+          width: 107px;
           height: 111px;
+        }
+        @media (max-width: 369px) {
+          margin-top: 5px;
+          width: 90px;
+          height: 90px;
         }
 
       }
@@ -94,19 +104,19 @@
       img:nth-child(3) {
         margin: 0 15px 0 15px;
         @media (max-width: 1000px) {
-          margin: 0 15px 0 15px;
+          margin: 0 19px 0 19px;
         }
         @media (max-width: 740px) {
           margin: 0 10px 0 10px;
         }
         @media (max-width: 375px) {
-          margin: 0 10px 0 10px;
+          margin:0 5px;
         }
       }
     }
 
     &_info {
-      margin-left: 125px;
+      margin-left: 25px;
       align-items: flex-start;
       @media (max-width: 1000px) {
         margin: 0;

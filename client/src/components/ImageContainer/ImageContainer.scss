@@ -1,6 +1,8 @@
 @import "../../styles/_index.scss";
 .hero {
   background-color: $main-bg-color;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
 .main_bg {

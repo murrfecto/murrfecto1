@@ -81,21 +81,22 @@ const CatProfile = () => {
       <title>{cat?.name}</title>
       <Title text={cat?.name} />
       <div className="profile">
-        <section className="profile__wrapper">
+        <div className='container'>
+          <section className="profile__wrapper">
           <motion.div
-            className="profile__wrapper_images"
-            variants={container}
-            initial="hidden"
-            animate="visible"
+              className="profile__wrapper_images"
+              variants={container}
+              initial="hidden"
+              animate="visible"
           >
             {photos.map((photo, index) => (
-              <motion.img
-                key={index}
-                variants={item}
-                src={photo}
-                alt=""
-                onClick={() => handlePhotoClick(index)}
-              />
+                <motion.img
+                    key={index}
+                    variants={item}
+                    src={photo}
+                    alt=""
+                    onClick={() => handlePhotoClick(index)}
+                />
             ))}
           </motion.div>
           <div className="profile__wrapper_info">
@@ -104,9 +105,9 @@ const CatProfile = () => {
               <PersonalInfo type={"Стать"} title={cat?.gender} icon={paw} />
               <PersonalInfo type={"Вік"} title={cat?.age} icon={calendar} />
               <PersonalInfo
-                type={"Наявність чіпа"}
-                title={cat?.chipped}
-                icon={infoRounded}
+                  type={"Наявність чіпа"}
+                  title={cat?.chipped}
+                  icon={infoRounded}
               />
             </div>
             <div className="info__subtitle">
@@ -118,7 +119,8 @@ const CatProfile = () => {
               <ModalButton title={"Допомогти"} style={'footer_donation-catProfile'} />
             </div>
           </div>
-        </section>
+        </section></div>
+
         <section className="profile__others">
           <h2 className="profile__others_title">Інші пухнастики</h2>
           <div className="profile__others_slider">

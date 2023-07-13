@@ -5,13 +5,15 @@
   color: $color-card-bg;
   padding: 40px 70px;
   @media screen and (max-width: 1250px) {
-    padding: 40px 50px;
+    padding: 40px 15px;
   }
 }
 
 .footer_container {
   justify-content: space-between;
   display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
   @media screen and (max-width: 1250px) {
     flex-wrap: wrap;
   }
@@ -133,6 +135,9 @@
     margin: 0 69px 0 24px;
     gap: 25px;
   }
+  @media screen and (max-width: 917px) {
+    align-items: start;
+  }
   @media screen and (max-width: 860px) {
     height: 100%;
     justify-content: flex-start;
@@ -198,13 +203,13 @@
   @include flex-column-na;
   gap: 15px;
   min-width: 270px;
-  @media screen and (max-width: 1000px) {
-    margin-top: 40px;
+  @media screen and (max-width: 917px) {
+    margin-top: 10px;
   }
   @media screen and (max-width: 855px) {
     flex-direction: column;
     align-items: center;
-
+    margin-top: 40px;
   }
 }
 
@@ -215,15 +220,21 @@
     margin-top: 40px;
     flex-direction: row;
   }
+  @media screen and (max-width: 917px) {
+    margin-top: 10px;
+
+  }
 }
 .social_icon:hover .main {
   fill: $color-icon-hover;
 }  
 
 .footer_copyrights {
+  @include flex-only;
   @include nunito-400-size-14;
-  margin-top: 60px;
   line-height: 1.47;
+  margin: 60px  auto 0 10px;
+  max-width: 1208px;
 
   @media screen and (min-width: 768px) {
     margin-top: 40px;
