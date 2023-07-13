@@ -94,13 +94,11 @@
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  
-  &_icon {
-    width: 32px;
-    height: 32px;
-    &:hover {
-        cursor: pointer;
-      }
+  &_icon:hover .main {
+    fill: $color-card;
+  }  
+  &_icon:hover .secondary {
+    fill: $color-btn;
   }
   }
 

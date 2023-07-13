@@ -17,9 +17,11 @@
     &_images {
       width: 636px;
       height: 689px;
-      object-fit: cover;
 
       img {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
         -webkit-user-drag: none;
       }
 

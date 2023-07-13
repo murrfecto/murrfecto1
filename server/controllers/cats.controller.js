@@ -70,25 +70,13 @@ const deleteCatById = async (req, res) => {
     const id = req.params.id;
     const {client, collection} = await connectToDatabase(collectionName);
     try {
-        // Find the document to be deleted
-        const cat = await collection.findOne({ _id: new ObjectId(id) });
-
-        // Delete the corresponding image file
-        const imageFileName = cat.imageFileName;
-        const imagePath = path.join(__dirname, 'images', imageFileName); // Adjust the path to your image directory
-        fs.unlinkSync(imagePath); // Delete the file
-
-        // Delete the document from the collection
-        const result = await collection.deleteOne({ _id: new ObjectId(id) });
+        const result = await collection.deleteOne({_id: new ObjectId(id)});
         res.send(result);
     } catch (err) {
         console.error(err);
         res.status(500).send('Error deleting document');
-    } finally {
-        if (client) {
-            await client.close();
-        }
     }
+    await client.close();
 };
 
 const updateCatById = async (req, res) => {
@@ -193,7 +181,7 @@ const sendReminderEmail = async (recipientEmail, orderId) => {
             }
         };
 
-        const result = await sgMail.send({ ...msg, headers });
+        const result = await sgMail.send({...msg, headers});
         console.log('Reminder email sent successfully', result);
     } catch (error) {
         console.error('SendGrid response', error.response.body.errors);
@@ -201,7 +189,6 @@ const sendReminderEmail = async (recipientEmail, orderId) => {
         throw new Error('Error sending reminder email');
     }
 };
-
 
 
 const subscribeToCats = (req, res) => {

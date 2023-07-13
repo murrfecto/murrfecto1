@@ -36,15 +36,15 @@
     margin-bottom: 16px;
     @include nunito-400-size-18;
     line-height: 1.5;
-    color: $color-card-text; 
+    color: $color-card-text;
     text-align: center;
 
 @media screen and (min-width: 768px) {
     margin-bottom: 12px;
-    @include nunito-400-size-20; 
+    @include nunito-400-size-20;
 }
     @media screen and (min-width: 1440px) {
-        margin-bottom: 20px;   
+        margin-bottom: 20px;
     }
 }
 
@@ -66,20 +66,20 @@
     margin-bottom: 16px;
 
     @media  screen and (min-width: 768px) {
-        margin-bottom: 20px;   
+        margin-bottom: 20px;
     }
     @media  screen and (min-width: 1280px) {
-        margin-bottom: 32px;   
+        margin-bottom: 32px;
     }
 }
 
 .feedback_label {
     @include nunito-400-size-18;
     line-height: 1.5;
-    color: $color-card-text; 
+    color: $color-card-text;
 
     @media screen and (min-width: 768px) {
-        @include nunito-400-size-20; 
+        @include nunito-400-size-20;
     }
 }
 
@@ -100,7 +100,7 @@
         background-color: $color-input-hover;
     }
     &:focus {
-        border: 1px solid $color-btn; 
+        border: 1px solid $color-btn;
         background-color: $color-input-hover;
     }
 
@@ -110,7 +110,7 @@
     border-color: $color-error;
     color: $color-error;
     &:focus {
-        border: 1px solid $color-error; 
+        border: 1px solid $color-error;
         background-color: $color-input-hover;
     }
 }
@@ -133,14 +133,14 @@
     border-color: $color-error;
     color: $color-error;
     &:focus {
-        border: 1px solid $color-error;  
+        border: 1px solid $color-error;
     }
 }
 
 .feedback_error {
     @include nunito-400-size-14;
     line-height: 1.7;
-    color: #df4242; 
+    color: #df4242;
   }
 
 .feedback_button {

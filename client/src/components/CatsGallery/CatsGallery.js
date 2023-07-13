@@ -37,8 +37,7 @@ const CatsGallery = ({limit, displayIcon, select}) => {
             console.log(response.data);
             setCats(cats.filter((item) => item._id !== id));
         } catch (error) {
-            console.log(id);
-            console.error(error);
+            console.error(error.message);
         }
     };
 

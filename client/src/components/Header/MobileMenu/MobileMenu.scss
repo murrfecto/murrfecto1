@@ -1,12 +1,14 @@
 @import "../../../styles/_index.scss";
 
 .mobile_menu {
+  height: 80px;
   position: relative;
   margin: 0 auto;
-  z-index: 5;
+  z-index: 2;
 }
 
 .mobile_menu-wrapper {
+  height: 80px;
   @include position-center-na;
   justify-content: space-between;
   padding: 24px 16px;
@@ -17,11 +19,12 @@
 }
 
 .mobile_menu-btn {
+  z-index: 0;
   width: 42px;
   height: 42px;
   background-color: transparent;
   @include position-center-a;
-  padding: 0px;
+  padding: 0;
   border: transparent;
   border-radius: 8px;
   cursor: pointer;
@@ -35,11 +38,10 @@
 
 .mobile_navbar {
   position: absolute;
-  top: 88px;
   right: -100%;
   opacity: 0;
   pointer-events: none;
-  min-height: 410px;
+  max-height: 410px;
   width: 390px;
   background-color: $main-bg-color;
   overflow: hidden;
@@ -54,11 +56,9 @@
 
   @include flex-column-na;
   gap: 40px;
-  padding: 59px 0px 60px 110px;
+  padding: 59px 0 60px 110px;
 
-  @media screen and (min-width: 768px) {
-    top: 112px;
-  }
+
 }
 
 .mobile_nav-list {
