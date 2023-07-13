@@ -211,11 +211,21 @@ const sendReminderEmail = async (recipientEmail, orderId) => {
 
 
 const subscribeToCats = (req, res) => {
-    const {email} = req.body;
+    const { email } = req.body;
+
+    // Regular expression pattern to validate email address
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+        res.status(400).send('Invalid email address');
+        return;
+    }
+
     const recipientName = email.substring(0, email.indexOf('@'));
     sgMail.setApiKey(process.env.API_KEY);
     const headers = {
-        Authorization: `Bearer ${process.env.API_KEY}`, 'Content-Type2': 'application/json'
+        Authorization: `Bearer ${process.env.API_KEY}`,
+        'Content-Type2': 'application/json',
     };
     const templateId = process.env.TEMPLATE_ID;
 
@@ -225,11 +235,13 @@ const subscribeToCats = (req, res) => {
         subject: 'Допомога котикам!',
         templateId: templateId,
         dynamicTemplateData: {
-            name: recipientName, deliveryFrequency: 'every month'
-        }
+            name: recipientName,
+            deliveryFrequency: 'every month',
+        },
     };
 
-    sgMail.send({...msg, headers})
+    sgMail
+        .send({ ...msg, headers })
         .then(() => {
             res.send('Email sent');
         })
