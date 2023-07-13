@@ -65,24 +65,34 @@ const getCat = async (req, res) => {
 };
 
 
+import fs from 'fs';
+
 const deleteCatById = async (req, res) => {
     const collectionName = 'cats';
     const id = req.params.id;
-    const file = req.fileName;
-    const filePath = path.join(process.cwd(), 'images/');
+    const filePath = "/app/images";
     const { client, collection } = await connectToDatabase(collectionName);
     try {
-        await fs.unlink(filePath, () => {
-            console.log(`${file} deleted`)
-        })
-        const result = await collection.deleteOne({ _id: new ObjectId(id) });
-        res.send(result);
+        const cat = await collection.findOne({ _id: new ObjectId(id) });
+        if (cat) {
+            const imageUrls = cat.images; // Assuming the image URLs are stored in a field called "images"
+            for (const imageUrl of imageUrls) {
+                const fileName = imageUrl.split('/').pop();
+                const imagePath = filePath + '/' + fileName;
+                fs.unlinkSync(imagePath); // Delete the image file from the disk
+            }
+            const result = await collection.deleteOne({ _id: new ObjectId(id) });
+            res.send(result);
+        } else {
+            res.status(404).send('Cat not found');
+        }
     } catch (err) {
         console.error(err);
         res.status(500).send('Error deleting document');
     }
     await client.close();
 };
+
 
 const updateCatById = async (req, res) => {
     const {client, collection} = await connectToDatabase('cats');
