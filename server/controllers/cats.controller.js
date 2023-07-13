@@ -53,7 +53,7 @@ const getCat = async (req, res) => {
     try {
         const catId = req.params.id;
         if (!ObjectId.isValid(catId)) {
-            return res.status(400).send('Invalid cat ID');
+            return res.status(404).send('Invalid cat ID');
         }
         const result = await collection.findOne({ _id: new ObjectId(catId) });
 
