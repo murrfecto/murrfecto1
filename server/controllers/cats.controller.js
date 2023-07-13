@@ -64,9 +64,6 @@ const getCat = async (req, res) => {
     }
 };
 
-
-import fs from 'fs';
-
 const deleteCatById = async (req, res) => {
     const collectionName = 'cats';
     const id = req.params.id;
