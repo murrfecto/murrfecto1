@@ -36,6 +36,9 @@ app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
 
 //handling all non-existing routes
+app.all('/api/v1/*', (req, res) => {
+    res.status(404).send('Not Found');
+});
 
 // images
 app.use('/api/v1/images', express.static(path.join(process.cwd(), 'images/')));
