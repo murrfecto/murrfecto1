@@ -4,7 +4,6 @@ import sgMail from '@sendgrid/mail';
 import crypto from "crypto";
 import axios from "axios";
 import {connectToDatabase} from "../helpers/connectToDb.js";
-import path from "path";
 import * as fs from "fs";
 
 
@@ -50,13 +49,21 @@ const getCats = async (req, res) => {
 };
 
 const getCat = async (req, res) => {
-    const {client, collection} = await connectToDatabase('cats');
+    const { client, collection } = await connectToDatabase('cats');
     try {
-        const result = await collection.findOne({_id: new ObjectId(req.params.id)});
+        const catId = req.params.id;
+        if (!ObjectId.isValid(catId)) {
+            return res.status(400).send('Invalid cat ID');
+        }
+        const result = await collection.findOne({ _id: new ObjectId(catId) });
+
+        if (!result) {
+            return res.status(404).send('Cat not found');
+        }
         res.send(result);
     } catch (err) {
         console.error(err);
-        res.status(500).send('Error connecting to the database');
+        res.status(500).send('Internal server error');
     } finally {
         if (client) {
             await client.close();
@@ -64,13 +71,14 @@ const getCat = async (req, res) => {
     }
 };
 
+
 const deleteCatById = async (req, res) => {
     const collectionName = 'cats';
     const id = req.params.id;
     const filePath = "./images";
-    const { client, collection } = await connectToDatabase(collectionName);
+    const {client, collection} = await connectToDatabase(collectionName);
     try {
-        const cat = await collection.findOne({ _id: new ObjectId(id) });
+        const cat = await collection.findOne({_id: new ObjectId(id)});
         if (cat) {
             const imageUrls = cat.images;
             for (const imageUrl of imageUrls) {
@@ -78,7 +86,7 @@ const deleteCatById = async (req, res) => {
                 const imagePath = filePath + '/' + fileName;
                 fs.unlinkSync(imagePath);
             }
-            const result = await collection.deleteOne({ _id: new ObjectId(id) });
+            const result = await collection.deleteOne({_id: new ObjectId(id)});
             res.send(result);
         } else {
             res.status(404).send('Cat not found');
