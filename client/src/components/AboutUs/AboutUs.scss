@@ -2,9 +2,10 @@
 
 .about_container {
   @include position-center;
-  padding: 120px 80px;
+  padding: 120px 0;
   gap: 106px;
-
+  margin: 0 auto;
+  max-width: 1280px;
   @media screen and (max-width: 1280px){
     padding: 120px 0;
     gap: 65px;

@@ -1,6 +1,8 @@
 @import "../../styles/_index.scss";
 
 .support{
+  max-width: 1280px;
+  margin: 0 auto;
   h2 {
     @include nunito-700-size-40;
     @include position-center;
@@ -15,8 +17,7 @@
     @include position-center;
     gap: 25px;
     padding-top: 60px;
-    padding-left: 80px;
-    padding-right: 80px;
+
     @media screen and (max-width: 1112px) {
       padding-bottom: 0;
     @include flex-column-a;

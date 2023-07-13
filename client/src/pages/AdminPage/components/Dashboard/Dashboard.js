@@ -19,8 +19,8 @@ const Dashboard = () => {
     }, [navigate, location]);
 
     return (
-
-        <div className="dashboard">
+        <div className='container'>
+            <div className="dashboard">
                 <RootLayout>
                     <Routes>
                         <Route path="/cats/addCat" element={<AddCat/>}/>
@@ -29,7 +29,9 @@ const Dashboard = () => {
                         <Route path="/cats/editCat/:id/" element={<EditCat/>}/>
                     </Routes>
                 </RootLayout>
+            </div>
         </div>
+
     );
 };
 
