@@ -69,10 +69,10 @@ const deleteCatById = async (req, res) => {
     const collectionName = 'cats';
     const id = req.params.id;
     const file = req.fileName;
-    const path = `/app/images/${file}`
+    const filePath = path.join(process.cwd(), 'images/');
     const { client, collection } = await connectToDatabase(collectionName);
     try {
-        await fs.unlink(path, () => {
+        await fs.unlink(filePath, () => {
             console.log(`${file} deleted`)
         })
         const result = await collection.deleteOne({ _id: new ObjectId(id) });
