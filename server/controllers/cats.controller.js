@@ -67,16 +67,16 @@ const getCat = async (req, res) => {
 const deleteCatById = async (req, res) => {
     const collectionName = 'cats';
     const id = req.params.id;
-    const filePath = "/app/images";
+    const filePath = "./images";
     const { client, collection } = await connectToDatabase(collectionName);
     try {
         const cat = await collection.findOne({ _id: new ObjectId(id) });
         if (cat) {
-            const imageUrls = cat.images; // Assuming the image URLs are stored in a field called "images"
+            const imageUrls = cat.images;
             for (const imageUrl of imageUrls) {
                 const fileName = imageUrl.split('/').pop();
                 const imagePath = filePath + '/' + fileName;
-                fs.unlinkSync(imagePath); // Delete the image file from the disk
+                fs.unlinkSync(imagePath);
             }
             const result = await collection.deleteOne({ _id: new ObjectId(id) });
             res.send(result);
@@ -89,7 +89,6 @@ const deleteCatById = async (req, res) => {
     }
     await client.close();
 };
-
 
 const updateCatById = async (req, res) => {
     const {client, collection} = await connectToDatabase('cats');
