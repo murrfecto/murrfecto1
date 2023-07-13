@@ -35,11 +35,6 @@ app.use(cors({origin: '*'}));
 app.use(cookieParser())
 app.use(express.urlencoded({extended: false}))
 
-//handling all non-existing routes
-app.all('/api/v1/*', (req, res) => {
-    res.status(404).send('Not Found');
-});
-
 // images
 app.use('/api/v1/images', express.static(path.join(process.cwd(), 'images/')));
 app.use(express.static('build'));
@@ -47,6 +42,11 @@ app.use(express.static('build'));
 // Routes
 app.use('/api/v1', CatsRoutes);
 app.use('/api/v1', login)
+
+//handling all non-existing routes
+app.all('/api/v1/*', (req, res) => {
+    res.status(404).send('Not Found');
+});
 
 const PORT = process.env.PORT || 3000;
 // Connecting MongoDB and running server
