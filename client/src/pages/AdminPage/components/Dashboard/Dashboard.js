@@ -10,8 +10,6 @@ import Report from "../Report/Report";
 
 
 const Dashboard = () => {
-
-
     const navigate = useNavigate();
     const location = useLocation();
     useEffect(() => {

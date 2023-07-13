@@ -125,6 +125,7 @@ const AdminPage = () => {
     const dispatch = useDispatch()
     const isLoggedIn = useSelector((state) => state.isLoggedIn);
     const navigate = useNavigate();
+    console.log(isLoggedIn);
     useEffect(() => {
         const checkTokenValidity = async () => {
             const token = Cookies.get('token');
@@ -142,10 +143,10 @@ const AdminPage = () => {
                         dispatch(authActions.logout());
                     }
                 } catch (err) {
-                    console.log(err);
-                    dispatch(authActions.logout());
+                    dispatch(authActions.login());
                 }
             } else {
+
                 dispatch(authActions.logout());
             }
         };

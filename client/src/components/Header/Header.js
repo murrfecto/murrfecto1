@@ -6,19 +6,20 @@ import Navbar from "./Navbar/Navbar";
 
 const Header = () => {
     const isSmallScreen = useMediaQuery("(max-width: 925px)");
+  
+  return (
+      <div className='container'>
+          {isSmallScreen ?(
+              <MobileMenu/>
+          ):(
+              <div className="header">
+                  <Infobox />
+                  <Navbar />
+              </div>
+          )}
+      </div>
 
-    return (
-        <>
-            {isSmallScreen ? (
-                <MobileMenu/>
-            ) : (
-                <div className="header">
-                    <Infobox/>
-                    <Navbar/>
-                </div>
-            )}
-        </>
-    );
+  );
 };
 
 export default Header;
