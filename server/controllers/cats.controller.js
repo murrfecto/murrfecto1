@@ -5,6 +5,7 @@ import crypto from "crypto";
 import axios from "axios";
 import {connectToDatabase} from "../helpers/connectToDb.js";
 import * as fs from "fs";
+import * as yup from "yup";
 
 
 const addCat = async (req, res) => {
@@ -49,13 +50,13 @@ const getCats = async (req, res) => {
 };
 
 const getCat = async (req, res) => {
-    const { client, collection } = await connectToDatabase('cats');
+    const {client, collection} = await connectToDatabase('cats');
     try {
         const catId = req.params.id;
         if (!ObjectId.isValid(catId)) {
             return res.status(404).send('Invalid cat ID');
         }
-        const result = await collection.findOne({ _id: new ObjectId(catId) });
+        const result = await collection.findOne({_id: new ObjectId(catId)});
 
         if (!result) {
             return res.status(404).send('Cat not found');
@@ -211,43 +212,45 @@ const sendReminderEmail = async (recipientEmail, orderId) => {
 
 
 const subscribeToCats = (req, res) => {
-    const { email } = req.body;
+    const {email} = req.body;
+    // Define the schema for email validation using yup
+    const emailSchema = yup.string().email().required();
 
-    // Regular expression pattern to validate email address
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(email)) {
-        res.status(400).send('Invalid email address');
-        return;
-    }
-
-    const recipientName = email.substring(0, email.indexOf('@'));
-    sgMail.setApiKey(process.env.API_KEY);
-    const headers = {
-        Authorization: `Bearer ${process.env.API_KEY}`,
-        'Content-Type2': 'application/json',
-    };
-    const templateId = process.env.TEMPLATE_ID;
-
-    const msg = {
-        to: email,
-        from: 'murrfecto@gmail.com',
-        subject: 'Допомога котикам!',
-        templateId: templateId,
-        dynamicTemplateData: {
-            name: recipientName,
-            deliveryFrequency: 'every month',
-        },
-    };
-
-    sgMail
-        .send({ ...msg, headers })
+    // Validate the email against the schema
+    emailSchema
+        .validate(email)
         .then(() => {
-            res.send('Email sent');
+            const recipientName = email.substring(0, email.indexOf('@'));
+            sgMail.setApiKey(process.env.API_KEY);
+            const headers = {
+                Authorization: `Bearer ${process.env.API_KEY}`,
+                'Content-Type2': 'application/json',
+            };
+            const templateId = process.env.TEMPLATE_ID;
+
+            const msg = {
+                to: email,
+                from: 'murrfecto@gmail.com',
+                subject: 'Допомога котикам!',
+                templateId: templateId,
+                dynamicTemplateData: {
+                    name: recipientName,
+                    deliveryFrequency: 'every month',
+                },
+            };
+
+            sgMail
+                .send({...msg, headers})
+                .then(() => {
+                    res.send('Email sent');
+                })
+                .catch((error) => {
+                    console.error(error);
+                    res.status(500).send(error);
+                });
         })
         .catch((error) => {
-            console.error(error);
-            res.status(500).send(error);
+            res.status(400).send('Invalid email address');
         });
 };
 
