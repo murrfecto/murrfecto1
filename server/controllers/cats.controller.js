@@ -68,12 +68,14 @@ const getCat = async (req, res) => {
 const deleteCatById = async (req, res) => {
     const collectionName = 'cats';
     const id = req.params.id;
+    const file = req.fileName;
+    const path = `/app/images/${file}`
     const { client, collection } = await connectToDatabase(collectionName);
     try {
+        await fs.unlink(path, () => {
+            console.log(`${file} deleted`)
+        })
         const result = await collection.deleteOne({ _id: new ObjectId(id) });
-        const imageName = `image-${id}.png`;
-        const imagePath = `/var/lib/docker/volumes/murrfecto1_static-murrfecto/_data/${imageName}`;
-        fs.unlinkSync(imagePath);
         res.send(result);
     } catch (err) {
         console.error(err);
