@@ -5,6 +5,7 @@ import {Alert} from '@mui/material';
 import {BiTrash, BiUpload} from "react-icons/bi";
 import {AiOutlineEye} from "react-icons/ai";
 import {Link} from "react-router-dom";
+import {_ENDPOINT} from "../../../../variables/variables";
 
 const reportUrl = './images/report.pdf';
 const Report = () => {
@@ -12,9 +13,9 @@ const Report = () => {
     const [formStatus, setFormStatus] = useState(null);
     const [_, setIsLoading] = useState(false);
 
-    const openReportHandler = () => {
-        window.open(reportUrl, '_blank');
-    };
+    // const openReportHandler = () => {
+    //     window.open(reportUrl, '_blank');
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
