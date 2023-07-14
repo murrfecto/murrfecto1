@@ -1,5 +1,6 @@
 .rootLayout {
   display: flex;
+  padding-top: 12px;
   gap: 5px;
   &__children{
     max-width: 96rem;

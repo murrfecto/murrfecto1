@@ -2,6 +2,7 @@ import "./DonateForm.scss";
 import FormSelect from "../FormSelect/FormSelect";
 import axios from "axios";
 import { useState } from "react";
+import {_ENDPOINT} from "../../../variables/variables";
 
 const DonateForm = ({
   title,
@@ -21,7 +22,7 @@ const DonateForm = ({
     };
     try {
       const response = await axios.post(
-        "https://murrfecto.foradmin.fun/api/v1/payment",
+        `${_ENDPOINT}/payment`,
         orderBody
       );
       window.location.replace(response.data.checkoutUrl);

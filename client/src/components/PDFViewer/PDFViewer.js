@@ -31,7 +31,7 @@ const PDFViewer = () => {
         setLoading(true);
         const proxyUrl = "https://api.allorigins.win/raw?url=";
         const targetUrl =
-          "https://murrfecto.s3.eu-central-1.amazonaws.com/report.pdf";
+          "https://murrfecto.site/api/v1/images/report.pdf";
         const response = await axios.get(proxyUrl + targetUrl, {
           responseType: "blob",
         });

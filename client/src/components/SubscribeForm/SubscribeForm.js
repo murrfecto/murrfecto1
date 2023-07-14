@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './SubscribeForm.scss';
 import axios from 'axios';
 import { Alert } from '@mui/material';
+import {_ENDPOINT} from "../../variables/variables";
 
 const SubscribeForm = () => {
     const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ const SubscribeForm = () => {
             return;
         }
         try {
-            await axios.post('https://murrfecto.foradmin.fun/api/v1/cats/subscribe', {
+            await axios.post(`${_ENDPOINT}/cats/subscribe`, {
                 email,
             });
             setIsSent(true);

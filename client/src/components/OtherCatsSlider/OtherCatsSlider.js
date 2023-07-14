@@ -6,16 +6,16 @@ import CartItem from '../CatItem/CatItem';
 import './OtherCatsSlider.scss';
 import "swiper/css";
 import Spinner from "../../helpers/Spinner/Spinner";
+import {_ENDPOINT} from "../../variables/variables";
 
 const OtherCatsSlider = ({ cat }) => {
     const [cats, setCats] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [activeSlide, setActiveSlide] = useState(0);
 
     const getCats = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('https://murrfecto.foradmin.fun/api/v1/cats');
+            const response = await axios.get(`${_ENDPOINT}/cats`);
             setCats(response.data);
             setLoading(false);
         } catch (e) {

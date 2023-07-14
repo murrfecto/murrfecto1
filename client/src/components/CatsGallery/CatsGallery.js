@@ -6,17 +6,17 @@ import Notiflix from "notiflix";
 import Spinner from "../../helpers/Spinner/Spinner";
 import {motion} from "framer-motion";
 import {useNavigate} from "react-router-dom";
-import {_ENDPOINT} from "../../pages/AdminPage/components/AddCat/AddCat";
 import editIcon from "../../assets/admin/edit-icon.svg"
 import deleteIcon from "../../assets/admin/delete-icon.svg"
 import useCustomAxios from "../../hooks/useCustomAxios";
+import {_ENDPOINT} from "../../variables/variables";
 
 const CatsGallery = ({limit, displayIcon, select}) => {
     const [cats, setCats] = useState(null);
     const [shouldDisplayTrashIcon, setShouldDisplayTrashIcon] = useState(displayIcon)
     const [_, setShouldBeSelected] = useState(select)
     const navigate = useNavigate();
-    const { data, error, loading, get } = useCustomAxios();
+    const { data, loading, get } = useCustomAxios();
 
     useEffect(() => {
         get(`${_ENDPOINT}/cats`)
@@ -129,12 +129,12 @@ const CatsGallery = ({limit, displayIcon, select}) => {
                                             src={editIcon}
                                             className={'viewAll__edit'}
                                             onClick={() => handleEdit(cat._id)}
-                                        />
+                                         alt={'edit icon'}/>
                                         <img
                                             src={deleteIcon}
                                             className="viewAll__trash"
                                             onClick={() => confirmDelete(cat._id, cat.name)}
-                                        />
+                                         alt={'delete icon'}/>
                                     </div>
                                 ) : null
                             }
