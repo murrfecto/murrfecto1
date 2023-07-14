@@ -15,7 +15,7 @@
     .navbar_links {
       @include flex-only;
       gap: 24px;
-      @include nunito-700-size-18;
+      @include nunito-600-size-24;
 
       a {
         position: relative;
