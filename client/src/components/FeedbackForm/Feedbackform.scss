@@ -4,17 +4,16 @@
     width: 358px;
     @media (max-width: 375px) {
         width: 325px;
-
     }
     @media screen and (min-width: 768px) {
         width: calc((100% - 20px)/2);
     }
     @media screen and (min-width: 1280px) {
-    width: calc((100% - 20px)/2);
+    width: calc((100% - 44px)/2);
     padding: 0 24px;
     }
     @media screen and (min-width: 1440px) {
-    width: 522px;
+        width: 522px;
     min-height: 474px;
     padding: 0;
 }
