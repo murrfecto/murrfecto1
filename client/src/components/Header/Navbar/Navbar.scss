@@ -6,7 +6,6 @@
   width: 100%;
   justify-content: space-between;
 
-
   &_wrapper {
     @include flex-only;
     align-items: center;
@@ -19,9 +18,10 @@
 
       a {
         position: relative;
+        color: $color-blue;
 
         &:before {
-          content: '';
+          content: "";
           position: absolute;
           left: 0;
           bottom: -5px;
@@ -40,7 +40,7 @@
 
       .active_link {
         &:before {
-          content: '';
+          content: "";
           position: absolute;
           left: 0;
           bottom: -5px;
