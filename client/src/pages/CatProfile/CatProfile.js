@@ -13,9 +13,10 @@ import OtherCatsSlider from "../../components/OtherCatsSlider/OtherCatsSlider";
 import { Loading } from "notiflix";
 import ModalButton from "../../components/ModalButton/ModalButton";
 import ScrollToTop from "../../components/common/ScrollToTop/ScrollToTop";
+import {_ENDPOINT} from "../../variables/variables";
 
 const CatProfile = () => {
-  const [loading, setLoading] = useState(true);
+  const [_, setLoading] = useState(true);
   const { id } = useParams();
   const [cat, setCat] = useState(null);
   const [photos, setPhotos] = useState([]);
@@ -28,7 +29,7 @@ const CatProfile = () => {
         svgColor: "#4B3542",
       });
       const response = await axios.get(
-        `https://murrfecto.foradmin.fun/api/v1/cats/${id}`
+        `${_ENDPOINT}/cats/${id}`
       );
       setCat(response.data);
       const firstFourPhotos = chunk(response.data.images, 4)[0];

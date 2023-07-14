@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./FormSelect.scss";
 import Select from "react-select";
+import {_ENDPOINT} from "../../../variables/variables";
 
 const FormSelect = ({
   selectedCat,
@@ -13,7 +14,7 @@ const FormSelect = ({
   useEffect(() => {
     try {
       const fetchData = async () => {
-        const data = await fetch("https://murrfecto.foradmin.fun/api/v1/cats");
+        const data = await fetch(`${_ENDPOINT}/cats`);
         const json = await data.json();
         const catOptions = json.map((elem) => {
           return {

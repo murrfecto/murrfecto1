@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
         let extension = extArray[extArray.length - 1];
         let fileName = file.fieldname + '-' + Date.now() + '.' + extension;
         req.fileUrls = req.fileUrls || [];
-        req.fileUrls.push('https://murrfecto.foradmin.fun/api/v1/images/' + fileName);
+        req.fileUrls.push(`${process.env.BASE_URL}/images/` + fileName);
         cb(null, fileName);
     },
 });

@@ -5,6 +5,7 @@ import axios from "axios";
 
 import "./Feedbackform.scss";
 import ModalContacts from "../ModalContacts/ModalContacts";
+import {_ENDPOINT} from "../../variables/variables";
 
 const FeedbackForm = () => {
 
@@ -13,7 +14,7 @@ const FeedbackForm = () => {
     const onSubmit = async (values, {resetForm}) => {
 
         try {
-            await axios.post('https://murrfecto.foradmin.fun/api/v1/cats/send-message', values);
+            await axios.post(`${_ENDPOINT}/cats/send-message`, values);
             resetForm();
             console.log('Message sent successfully');
         } catch (error) {

@@ -3,8 +3,8 @@ import axios from 'axios';
 import './AddCat.scss';
 import {Alert} from "@mui/material";
 import {BiUpload} from "react-icons/bi";
+import {_ENDPOINT} from "../../../../variables/variables";
 
-export const _ENDPOINT = "https://murrfecto.foradmin.fun/api/v1";
 const AddCat = () => {
     const initialState = {
         name: '',
@@ -36,9 +36,9 @@ const AddCat = () => {
 
         try {
             const response = await axios.post(`${_ENDPOINT}/cats`, data);
-                setFormStatus("success");
-                setFormData(initialState);
-                setFiles(initialFilesState);
+            setFormStatus("success");
+            setFormData(initialState);
+            setFiles(initialFilesState);
         } catch (err) {
             console.error(err.message);
             setFormStatus("error");
@@ -52,7 +52,6 @@ const AddCat = () => {
         const selectedFiles = Array.from(e.target.files);
         setFiles(selectedFiles);
     };
-
 
 
     return (

@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {authActions} from "../../../store";
 import {BiLoaderAlt} from "react-icons/bi";
+import {_ENDPOINT} from "../../../variables/variables";
 
 const IsAdminForm = () => {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ const IsAdminForm = () => {
         const {email, password} = loginData;
         try {
             setLoading(true)
-            const response = await axios.post('https://murrfecto.foradmin.fun/api/v1/login', {
+            const response = await axios.post(`${_ENDPOINT}/login`, {
                 email,
                 password
             });
@@ -131,7 +132,7 @@ const AdminPage = () => {
             const token = Cookies.get('token');
             if (token) {
                 try {
-                    const response = await axios.get('https://murrfecto.foradmin.fun/api/v1/profile', {
+                    const response = await axios.get(`${_ENDPOINT}/profile`, {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }

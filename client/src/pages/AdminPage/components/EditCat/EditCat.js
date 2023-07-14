@@ -4,8 +4,8 @@ import {useNavigate, useParams} from "react-router-dom";
 import {Alert} from "@mui/material";
 import {BiUpload} from "react-icons/bi";
 import Spinner from "../../../../helpers/Spinner/Spinner";
+import {_ENDPOINT} from "../../../../variables/variables";
 
-const _ENDPOINT = "https://murrfecto.foradmin.fun/api/v1/cats";
 
 const EditCat = () => {
     const navigate = useNavigate()
