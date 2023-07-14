@@ -21,7 +21,6 @@
   @media screen and (min-width: 1280px) {
     padding: 100px 60px;
     width: 1280px;
-    gap: 44px;
     justify-content: center;
   }
 
@@ -75,13 +74,16 @@
   }
 
   @media screen and (min-width: 768px) {
-    padding: 20px 0 20px 12px;
+    padding-top: 20px;
+    padding-left: 12px;
+    height: 150px;
     &_wrapper {
         @include nunito-400-size-20;
       }
   }
     @media screen and (min-width: 1280px) {
       padding-left: 40px;
+      height: 160px;
     }
 }
 
@@ -115,7 +117,9 @@
     color: $color-card-text;
   }
   @media screen and (min-width: 768px) {
-    padding: 20px 0 20px 12px;
+    padding-top: 20px;
+    padding-left: 12px;
+    height: 140px;
     &_title {
       @include nunito-600-size-20;
     }
@@ -125,6 +129,7 @@
   }
     @media screen and (min-width: 1280px) {
       padding-left: 40px;
+      height: 152px;
     }
   @media screen and (min-width: 1440px) {
     padding-left: 40px;
@@ -148,7 +153,9 @@
     color: $color-card-text;
   }
   @media screen and (min-width: 768px) {
-    padding: 20px 0 20px 12px;
+    padding-top: 20px;
+    padding-left: 12px;
+    height: 170px;
     &_title {
       @include nunito-600-size-20;
     }
@@ -158,5 +165,6 @@
   }
   @media screen and (min-width: 1280px) {
     padding-left: 40px;
+    height: 152px;
   }
 }
