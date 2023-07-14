@@ -35,10 +35,11 @@
   border-radius: 12px;
 
   @media screen and (min-width: 390px) {
-    width: 359px;
+    min-width: 359px;
   }
 
   @media screen and (min-width: 768px) {
+    width: 359px;
     min-height: 230px;
     position: relative;
     top: 0px;
