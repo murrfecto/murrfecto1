@@ -62,6 +62,10 @@ const Contacts = () => {
         </div>
         <div className="contacts_registration">
           <p className="contacts_registration_title">Реєстраційні дані ГО</p>
+          <p className="contacts_registration_text">
+          ГО "Бі Ай Ті", код ЄДРПОУ 44993792
+           <br />м.Київ, вул.Петропавлівська, 15
+          </p>
         </div>
       </div>
       <FeedbackForm />

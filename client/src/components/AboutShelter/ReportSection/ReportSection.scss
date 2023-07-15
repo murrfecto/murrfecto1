@@ -25,7 +25,6 @@
 .report_link {
   position: absolute;
   top: -2px;
-  left: -0.5px;
   width: 100%;
   min-height: 76px;
   @include nunito-600-size-32;
@@ -35,10 +34,11 @@
   border-radius: 12px;
 
   @media screen and (min-width: 390px) {
-    width: 359px;
+    min-width: 359px;
   }
 
   @media screen and (min-width: 768px) {
+    width: 359px;
     min-height: 230px;
     position: relative;
     top: 0px;
@@ -73,6 +73,7 @@
 .report_text {
   text-align: center;
   color: $color-card-text;
+  min-width: 359px;
   @media screen and (min-width: 768px) {
     width: 359px;
     min-height: 220px;
