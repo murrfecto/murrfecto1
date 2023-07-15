@@ -90,8 +90,11 @@
     transition: background-color 300ms linear, color 300ms linear;
     cursor: pointer;
     @media (max-width: 375px) {
-      min-width: 330px;
+      
       width: 330px;
+    }
+    @media (max-width: 350px) {
+      max-width: 330px;
     }
   }
 
@@ -224,6 +227,10 @@
     margin-top: 10px;
 
   }
+  @media screen and (max-width: 390px) {
+    margin-top: 32px;
+
+  }
 }
 .social_icon:hover .main {
   fill: $color-icon-hover;
@@ -233,8 +240,8 @@
   @include flex-only;
   @include nunito-400-size-14;
   line-height: 1.47;
-  margin: 60px  auto 0 10px;
-  max-width: 1208px;
+  margin: 60px  auto;
+  max-width: 1280px;
 
   @media screen and (min-width: 768px) {
     margin-top: 40px;
@@ -243,4 +250,8 @@
   @media screen and (min-width: 1440px) {
     margin-top: 47px;
   }
+  @media screen and (max-width: 390px) {
+    margin: 32px auto 10px;
+  }
+
 }

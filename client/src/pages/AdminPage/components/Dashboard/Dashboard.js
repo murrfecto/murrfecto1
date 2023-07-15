@@ -20,7 +20,7 @@ const Dashboard = () => {
 
     return (
         <div className='container'>
-            <div className="dashboard">
+            <div className="dashboard" >
                 <RootLayout>
                     <Routes>
                         <Route path="/cats/addCat" element={<AddCat/>}/>

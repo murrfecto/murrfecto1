@@ -1,0 +1,45 @@
+@import "../../../../styles/index";
+
+.support_card {
+  background: $color-card-bg;
+  border: 2px solid $color-card;
+  border-radius: 12px;
+  width: 413px;
+  max-height: 466px;
+  @include flex-column-a;
+  @media screen and (max-width: 720px) {
+      width: 358px;
+  }
+  @media screen and (max-width: 395px) {
+    width: 97%;
+  }
+
+  &-wrapper {
+    color: $color-card-text;
+    height: 166px;
+    text-align: center;
+    width: 100%;
+    background: $color-card;
+    border-radius: 12px;
+  }
+
+  &-icon {
+    margin: 32px;
+    width: 226px;
+    height: 226px;
+  }
+
+  &-header {
+    padding-top: 16px;
+    padding-bottom: 8px;
+    @media screen and (max-width: 720px) {
+      @include nunito-600-size-24;
+      line-height: 33px;
+    }
+    @include nunito-600-size-32;
+  }
+
+  &-text {
+    @include nunito-400-size-20;
+  }
+}

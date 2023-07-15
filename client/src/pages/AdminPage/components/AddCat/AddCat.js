@@ -157,7 +157,7 @@ const AddCat = () => {
                     </div>
                 </div>
                 <div className="btn-group">
-                    <button className="submit" type="submit">Добавити</button>
+                    <button className="submit" type="submit">Додати</button>
                     <button onClick={() => setFormData(initialState)} className="cancel">Скасувати</button>
                 </div>
             </form>

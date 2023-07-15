@@ -1,14 +1,7 @@
 @import "../../styles/index";
 
 .main_about {
+  margin: 100px auto;
   @include flex-column-a;
-  padding-top: 32px;
-  padding-bottom: 80px;
-  background-color: $color-bg-about;
-  gap: 80px;
-  @media screen and (min-width: 1440px) {
-    padding-top: 100px;
-    padding-bottom: 100px;
-    gap: 100px;
-  }
+  max-width: 1113px ;
 }

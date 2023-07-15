@@ -10,7 +10,7 @@
         cursor: pointer;
         font-weight: 500;
         transition-duration: 300ms;
-
+        color: $color-blue;
 
         &_icon{
             min-width: max-content;
@@ -18,6 +18,7 @@
         &_name{
             text-transform: capitalize;
             flex: 1;
+
         }
         &_arrow{
             transform: rotate(270deg);

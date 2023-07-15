@@ -4,6 +4,7 @@
   width: 271px;
   height: 424px;
   perspective: 1000px;
+
 }
 
 .cat_card {
@@ -16,6 +17,8 @@
   width: 305px;
   height: 424px;
   transform-style: preserve-3d;
+  user-select: none;
+  outline: none;
   @media screen and (max-width: 1280px) {
     max-width: 275px;
   }

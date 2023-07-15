@@ -1,0 +1,168 @@
+@import "../../../../styles/index";
+
+.contacts_container {
+  width: 390px;
+  margin: 0 auto;
+  padding: 32px 0 80px;
+  @include flex-column-a;
+  gap: 80px;
+  background-color: $main-bg-color;
+  @media (max-width: 375px) {
+    width: 315px;
+}
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 40px 0 80px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding: 100px 0;
+    width: 1280px;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 1280px;
+    justify-content: center;
+    gap: 128px;
+  }
+}
+
+.contacts_wrapper {
+  @include flex-column-a;
+  gap: 16px;
+  width: 358px;
+  @media (max-width: 375px) {
+    width: 320px;
+  }
+  @media screen and (min-width: 768px) {
+    width: calc((100% - 20px)/2);
+    @include flex-column-na;
+    gap: 24px;
+  }
+@media screen and (min-width: 1280px) {
+  width: calc((100% - 20px)/2);
+   gap: 20px;
+}
+  @media screen and (min-width: 1440px) {
+    width: 414px;
+  }
+}
+
+.contacts_info {
+  @include flex-column-na;
+  gap: 20px;
+  width: 100%;
+  border: 0.5px solid $color-btn;
+  border-radius: 8px;
+  padding-top: 24px;
+  padding-left: 28px;
+  padding-bottom: 23px;
+  &_wrapper {
+    @include position-center-na;
+    justify-content: flex-start;
+    gap: 8px;
+    @include nunito-400-size-18;
+    line-height: 1.5;
+    color: $color-blue;
+  }
+  &_icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-left: 12px;
+    padding-bottom: 24px;
+    &_wrapper {
+        @include nunito-400-size-20;
+      }
+  }
+    @media screen and (min-width: 1280px) {
+      padding-left: 40px;
+      padding-bottom: 18px;
+    }
+  @media screen and (min-width: 1440px) {
+    padding-left: 40px;
+    padding-bottom: 20px;
+  }
+}
+
+.contacts_social {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  &_icon:hover .main {
+    fill: $color-card;
+  }
+  &_icon:hover .secondary {
+    fill: $color-btn;
+  }
+  }
+
+
+.contacts_np {
+  width: 100%;
+  min-height: 149px;
+  border: 0.5px solid $color-btn;
+  border-radius: 8px;
+  padding-top: 23px;
+  padding-left: 28px;
+  padding-bottom: 24px;
+  &_title {
+    margin-bottom: 16px;
+    @include nunito-600-size-18;
+    line-height: 1.5;
+    color: $color-blue;
+  }
+  &_text {
+    @include nunito-400-size-18;
+    line-height: 1.5;
+    color: $color-card-text;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-top: 24px;
+    padding-left: 12px;
+    &_title {
+      margin-bottom: 12px;
+      @include nunito-600-size-20;
+    }
+    &_text {
+      @include nunito-400-size-20;
+    }
+  }
+    @media screen and (min-width: 1280px) {
+      padding-left: 40px;
+      padding-bottom: 24px;
+    }
+  @media screen and (min-width: 1440px) {
+    padding-left: 40px;
+  }
+}
+
+.contacts_registration {
+  width: 100%;
+  min-height: 117px;
+  border: 0.5px solid $color-btn;
+  border-radius: 8px;
+  padding-top: 24px;
+  padding-left: 28px;
+  &_title {
+    @include nunito-600-size-18;
+    line-height: 1.5;
+    color: $color-blue;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: 12px;
+    &_title {
+      @include nunito-600-size-20;
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    padding-left: 40px;
+  }
+}

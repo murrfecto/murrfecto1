@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import './Report.scss';
 import {Alert} from '@mui/material';
-import {BiTrash, BiUpload} from "react-icons/bi";
-import {AiOutlineEye} from "react-icons/ai";
+import { BiUpload} from "react-icons/bi";
+
 import {Link} from "react-router-dom";
 import {_ENDPOINT} from "../../../../variables/variables";
+import {IoEyeOutline, IoTrashOutline} from "react-icons/io5";
+
 
 const reportUrl = './images/report.pdf';
 const Report = () => {
@@ -92,7 +94,7 @@ const Report = () => {
                                         <span className='selected-file-name'>{file.name}</span>
                                     </div>
                                 ) : 'Оберіть документ'}
-								</span> <BiUpload size={22} color='#4B3542'/>
+								</span> <BiUpload size={24} color='#4B3542'/>
                         </label>
                         <input
                             type='file'
@@ -109,11 +111,11 @@ const Report = () => {
                     </div>
                     <>
                         <div className='icons-group'>
-                            <Link to='/report'>
-                                <AiOutlineEye color='#4B3542' size={30} id={'data-report'}>
-                                </AiOutlineEye>
+                            <Link className='eye' to='/report'>
+                                <IoEyeOutline color='#4B3542' size={24} id={'data-report'}>
+                                </IoEyeOutline>
                             </Link>
-                            <BiTrash size={30} id={'data-report'} onClick={deleteReportHandler} color='#4B3542'/>
+                            <IoTrashOutline size={24} id={'data-report'} onClick={deleteReportHandler} color='#4B3542'/>
                         </div>
                     </>
                 </div>
