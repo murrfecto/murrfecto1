@@ -73,6 +73,7 @@
 .report_text {
   text-align: center;
   color: $color-card-text;
+  min-width: 359px;
   @media screen and (min-width: 768px) {
     width: 359px;
     min-height: 220px;
