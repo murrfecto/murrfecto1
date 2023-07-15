@@ -1,0 +1,85 @@
+@import "../../../../styles/index";
+
+.report_container {
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 24px;
+  border: 1px solid $color-card;
+  border-radius: 12px;
+
+  @include nunito-600-size-24;
+  line-height: 1.38;
+
+  @media screen and (min-width: 768px) {
+    @include position-center-na;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 32px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    gap: 20px;
+  }
+}
+
+.report_link {
+  position: absolute;
+  top: -2px;
+  left: -0.5px;
+  width: 100%;
+  min-height: 76px;
+  @include nunito-600-size-32;
+  @include position-center-a;
+  color: $color-subscribe-btn;
+  background-color: $color-white;
+  border-radius: 12px;
+
+  @media screen and (min-width: 390px) {
+    width: 359px;
+  }
+
+  @media screen and (min-width: 768px) {
+    min-height: 230px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 521px;
+  }
+
+  &::after {
+    content: "PDF";
+    position: absolute;
+    right: 0;
+    top: 24px;
+    width: 76px;
+    height: 28px;
+    @include position-center-a;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 1.25;
+    background-color: $color-card;
+
+    @media screen and (min-width: 768px) {
+      top: 19px;
+      width: 88px;
+    }
+  }
+}
+
+.report_text {
+  text-align: center;
+  color: $color-card-text;
+  @media screen and (min-width: 768px) {
+    width: 359px;
+    min-height: 220px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 522px;
+    padding: 50px 0px;
+  }
+}

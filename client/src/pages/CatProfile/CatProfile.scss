@@ -17,13 +17,13 @@
 
     &_images {
       width: 636px;
-      height: 689px;
-
-      img {
-        height: 300px;
+      height: auto;
+      img{
+        border-radius: 12px;
+        cursor: pointer;
+      }
+      &_first{
         width: 100%;
-        object-fit: cover;
-        -webkit-user-drag: none;
       }
 
       @media (max-width: 1245px) {
@@ -34,88 +34,33 @@
         margin: 0 auto;
         padding-left: 15px;
         width: 720px;
-        height: 788px;
       }
       @media (max-width: 740px) {
         width: 359px;
-        max-height: 399px;
         height: auto;
         padding: 0;
       }
 
-      @media (max-width: 375px) {
+      @media (max-width: 395px) {
         width: 95%;
-        height: auto;
         padding: 0;
       }
 
+      > .grouped-images {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
 
-      img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 12px;
-      }
-
-      img:first-child {
-        width: 580px;
-        height: 472px;
-        @media (max-width: 1000px) {
-          width: 706px;
-          height: 540px;
-        }
-        @media (max-width: 740px) {
-          width: 359px;
-          height: 290px;
-        }
-        @media (max-width: 375px) {
-
-          width: 100%;
+        > img {
+          width: calc((100% - 24px) / 3);
           height: auto;
-          padding: 0;
-        }
-      }
-
-      img:not(:first-child) {
-        margin-top: 15px;
-        width: 183px;
-        height: 169px;
-        @media (max-width: 1000px) {
-          width: 221px;
-          height: 228px;
-        }
-        @media (max-width: 740px) {
-          width: 113px;
-          height: 114px;
-        }
-
-        @media (max-width: 375px) {
-          margin-top: 5px;
-          width: 107px;
-          height: 111px;
-        }
-        @media (max-width: 369px) {
-          margin-top: 5px;
-          width: 90px;
-          height: 90px;
-        }
-
-      }
-
-      img:nth-child(3) {
-        margin: 0 15px 0 15px;
-        @media (max-width: 1000px) {
-          margin: 0 19px 0 19px;
-        }
-        @media (max-width: 740px) {
-          margin: 0 10px 0 10px;
-        }
-        @media (max-width: 375px) {
-          margin:0 5px;
         }
       }
     }
 
     &_info {
+      max-width: 525px;
       margin-left: 25px;
       align-items: flex-start;
       @media (max-width: 1000px) {
@@ -136,6 +81,7 @@
       }
 
       .info__wrapper {
+
         @media (max-width: 1000px) {
           margin-top: 32px;
         }

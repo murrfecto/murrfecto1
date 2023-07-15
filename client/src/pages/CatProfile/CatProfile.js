@@ -5,7 +5,7 @@ import { chunk } from "lodash";
 import { motion } from "framer-motion";
 import Title from "../../components/Title/Title";
 import "./CatProfile.scss";
-import PersonalInfo from "./components/PersonalInfo";
+import PersonalInfo from "./components/personalInfo/PersonalInfo";
 import paw from "../../assets/paw.svg";
 import calendar from "../../assets/calendar.svg";
 import infoRounded from "../../assets/info-rounded.svg";
@@ -58,13 +58,13 @@ const CatProfile = () => {
   };
 
   const container = {
-    hidden: { opacity: 1, scale: 0 },
+    hidden: { opacity: 1, scale: 0.95 },
     visible: {
       opacity: 1,
       scale: 1,
       transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
+        delayChildren: 0.7,
+        staggerChildren: 0.7,
       },
     },
   };
@@ -81,57 +81,74 @@ const CatProfile = () => {
     <div ref={targetRef}>
       <title>{cat?.name}</title>
       <Title text={cat?.name} />
-      <div className="profile">
-        <div className='container'>
-          <section className="profile__wrapper">
-          <motion.div
-              className="profile__wrapper_images"
-              variants={container}
-              initial="hidden"
-              animate="visible"
-          >
-            {photos.map((photo, index) => (
+      <motion.div variants={container}
+                  initial='hidden'
+                  animate='visible'>
+        <div className="profile">
+          <div className='container'>
+            <section className="profile__wrapper">
+              <motion.div
+                  className="profile__wrapper_images"
+                  variants={container}
+                  initial="hidden"
+                  animate="visible"
+              >
                 <motion.img
-                    key={index}
+                    key={0}
                     variants={item}
-                    src={photo}
+                    src={photos[0]}
                     alt=""
-                    onClick={() => handlePhotoClick(index)}
+                    className='profile__wrapper_images_first'
+                    onClick={() => handlePhotoClick(0)}
                 />
-            ))}
-          </motion.div>
-          <div className="profile__wrapper_info">
-            <h2 className="info__title">Ти можеш допомогти {cat?.name}</h2>
-            <div className="info__wrapper">
-              <PersonalInfo type={"Стать"} title={cat?.gender} icon={paw} />
-              <PersonalInfo type={"Вік"} title={cat?.age} icon={calendar} />
-              <PersonalInfo
-                  type={"Наявність чіпа"}
-                  title={cat?.chipped}
-                  icon={infoRounded}
-              />
-            </div>
-            <div className="info__subtitle">
-              <h3>Інформація</h3>
-              <hr />
-            </div>
-            <p className="info__desc">{cat?.description}</p>
-            <div className={"info__help"}>
-              <ModalButton title={"Допомогти"} style={'footer_donation-catProfile'} />
-            </div>
-          </div>
-        </section></div>
 
-        <section className="profile__others">
-          <h2 className="profile__others_title">Інші пухнастики</h2>
-          <div className="profile__others_slider">
-            <OtherCatsSlider cat={cat} />
-          </div>
-        </section>
-        <Link to={"/tails"} className="profile__all">
-          Переглянути усіх
-        </Link>
-      </div>
+                <div className="grouped-images">
+                  {photos.slice(1).map((photo, index) => (
+                      <motion.img
+                          className='grouped-images_item'
+                          key={index + 1}
+                          variants={item}
+                          src={photo}
+                          alt=""
+                          onClick={() => handlePhotoClick(index + 1)}
+                      />
+                  ))}
+                </div>
+              </motion.div>
+              <div className="profile__wrapper_info">
+                <h2 className="info__title">Ти можеш допомогти {cat?.name}</h2>
+                <div className="info__wrapper">
+                  <PersonalInfo type={"Стать"} title={cat?.gender} icon={paw} />
+                  <PersonalInfo type={"Вік"} title={cat?.age} icon={calendar} />
+                  <PersonalInfo
+                      type={"Наявність чіпа"}
+                      title={cat?.chipped}
+                      icon={infoRounded}
+                  />
+                </div>
+                <div className="info__subtitle">
+                  <h3>Інформація</h3>
+                  <hr />
+                </div>
+                <p className="info__desc">{cat?.description}</p>
+                <div className={"info__help"}>
+                  <ModalButton title={"Допомогти"} style={'footer_donation-catProfile'} />
+                </div>
+              </div>
+            </section></div>
+
+          <section className="profile__others">
+            <h2 className="profile__others_title">Інші пухнастики</h2>
+            <div className="profile__others_slider">
+              <OtherCatsSlider cat={cat} />
+            </div>
+          </section>
+          <Link to={"/tails"} className="profile__all">
+            Переглянути усіх
+          </Link>
+        </div>
+      </motion.div>
+
       <ScrollToTop />
     </div>
   );

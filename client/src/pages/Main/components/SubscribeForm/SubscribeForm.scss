@@ -1,0 +1,142 @@
+@import "../../../../styles/index";
+
+.subscribe_form {
+
+  @include flex-column-a;
+  margin: 0 auto;
+  padding: 120px 20px 102px 20px;
+
+  &-header {
+    padding-bottom: 24px;
+    @include nunito-700-size-40;
+    line-height: 55px;
+    color: $color-subscribe-header;
+    @media screen and (max-width: 720px) {
+      text-align: center;
+      @include nunito-600-size-32;
+    }
+  }
+
+  &-label {
+    @media screen and (max-width: 720px) {
+      width: 100%;
+      @include flex-column-a;
+    }
+  }
+
+  &-form {
+    padding-bottom: 28px;
+    @include flex-only;
+    align-items: center;
+    @media screen and (max-width: 390px) {
+      width: 90%;
+    }
+  }
+
+  &-label {
+    @include position-center-a;
+  }
+
+  &-text {
+    padding-bottom: 48px;
+    @include nunito-600-size-24;
+    line-height: 120%;
+    text-align: center;
+    color: $color-card-text;
+  }
+
+  &-input {
+    outline: black;
+    @include nunito-600-size-20;
+    font-weight: 600;
+    line-height: 120%;
+    width: 512px;
+    height: 58px;
+    margin: 0px -9px;
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+    border-color: #aeaeae;
+    border-radius: 8px 0 0 8px;
+    color: $color-blue;
+    padding: 13px 8px 13px 12px;
+    gap: 10px;
+    &:focus {
+      background: $color-bg-focused;
+    }
+    &:hover {
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    }
+    &:active {
+      outline: none;
+      background: $full-white;
+    }
+    @media screen and (max-width: 720px) {
+      border-width: 1px;
+      border-radius: 8px;
+      width: 357px;
+    }
+    @media screen and (max-width: 390px) {
+      width: 100%;
+    }
+  }
+
+  &-alert {
+    width: 752px;
+    @media screen and (max-width: 720px) {
+      width: 357px;
+    }
+    &-danger {
+      background-color: red;
+    }
+  }
+
+  &-button {
+    border: 3px solid $color-btn;
+    cursor: pointer;
+    color: $color-btn;
+    transition: background-color 300ms linear, color 300ms linear;
+
+
+
+    &:hover {
+      border: 3px solid $color-btn;
+      background: $color-card;
+      color: $color-btn;
+    }
+
+    &:active {
+      border: 3px solid $color-btn;
+      background: $color-card;
+      color: $color-btn;
+    }
+
+    &:focus {
+      background: $color-card;
+      color: $color-btn;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    &:disabled {
+      background: $color-placeholder;
+      border: 3px solid $color-border;
+      color: $color-input-form;
+    }
+
+    @include nunito-700-size-16;
+    text-align: center;
+    line-height: 147%;
+    background: $full-white;
+    width: 240px;
+    height: 60px;
+    border-radius: 8px;
+    @media screen and (max-width: 720px) {
+      margin-top: 16px;
+      @include nunito-700-size-16;
+      width: 357px;
+    }
+    @media screen and (max-width: 390px) {
+      width: 100%;
+    }
+  }
+
+}

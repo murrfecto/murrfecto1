@@ -1,0 +1,72 @@
+@import "../../../../styles/index";
+.hero {
+  background-color: $main-bg-color;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.main_bg {
+  @include flex-column-a;
+  max-width: 1420px;
+  height: 552px;
+  padding: 28px 0;
+  background-image: url("../../../../assets/hero/hero-desktop.jpg");
+  background-size: 1420px 552px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @media screen and (max-width: 768px) {
+
+    height: 626px;
+    padding: 40px 0;
+    background-image: url("../../../../assets/hero/hero-tablet.jpg");
+    background-size: 720px 626px;
+    justify-content: space-between;
+  }
+
+  //justify-content: space-between;
+  //
+  //max-width: 390px;
+  //height: 765px;
+  //padding: 28px 0;
+  //background-image: url("../../assets/hero/hero-mob.jpg");
+  //background-size: 390px 765px;
+
+
+  //@media screen and (min-width: 768px) {
+  //  max-width: 720px;
+  //  height: 626px;
+  //  padding: 40px 0;
+  //  background-image: url("../../assets/hero/hero-tablet.jpg");
+  //  background-size: 720px 626px;
+  //}
+  //
+
+}
+
+h1 {
+  max-width: 1208px;
+  @include nunito-700-size-50;
+  line-height: 1.36;
+  color: $color-white;
+  margin: 0 45px;
+  @media screen and (max-width: 768px) {
+    @include nunito-700-size-50;
+  }
+
+  @media screen and (max-width: 390px) {
+    @include nunito-700-size-40;
+    margin: 0 17px;
+  }
+  /*max-width: 352px;
+
+
+  @media screen and (min-width: 768px) {
+    @include nunito-700-size-50;
+    max-width: 656px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1208px;
+  }*/
+}

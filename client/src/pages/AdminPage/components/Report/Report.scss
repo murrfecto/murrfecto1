@@ -22,6 +22,9 @@
 			align-items: center;
 			gap: 24px;
 			cursor: pointer;
+			.eye{
+				transform: translateY(3px);
+			}
 		}
 	}
 	&__wrapper{

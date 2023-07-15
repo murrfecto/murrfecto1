@@ -1,0 +1,68 @@
+@import "../../../../styles/index";
+
+.about_container {
+  @include position-center;
+  padding: 120px 0;
+  gap: 106px;
+  margin: 0 auto;
+  max-width: 1280px;
+  @media screen and (max-width: 1280px){
+    padding: 120px 0;
+    gap: 65px;
+  }
+  @media screen and (max-width: 1085px){
+   flex-direction: column;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 720px){
+    padding: 80px 16px 83px 17px;
+  }
+}
+
+.about_collage {
+  width: 652px;
+  height: 656px;
+  @media screen and (max-width: 780px){
+    display: none;
+  }
+}
+
+.about_info {
+  @include flex-only;
+  flex-direction: column;
+  gap: 40px;
+  @include nunito-400-size-20;
+  line-height: 150%;
+  color: $color-blue;
+
+  &-block {
+    max-width: 523px;
+    @include position-center-na;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  &-icon {
+
+    width: 32px;
+    height: 32px;
+  }
+
+  h2 {
+    @include nunito-700-size-40;
+    line-height: 55px;
+    text-align: center;
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+    color: $color-card-text;
+    @media screen and (max-width: 720px){
+      padding-bottom: 0;
+      font-size: 18px;
+    }
+  }
+}

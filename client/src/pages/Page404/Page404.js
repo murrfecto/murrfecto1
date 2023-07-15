@@ -1,4 +1,4 @@
-import NotFoundBox from "../../components/NotFoundBox/NotFoundBox";
+import NotFoundBox from "./components/NotFoundBox/NotFoundBox";
 
 const Page404 = () => {
     return <NotFoundBox/>;
