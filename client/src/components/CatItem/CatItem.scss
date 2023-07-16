@@ -19,6 +19,8 @@
   transform-style: preserve-3d;
   user-select: none;
   outline: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
   @media screen and (max-width: 1280px) {
     max-width: 275px;
   }
