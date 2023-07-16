@@ -249,7 +249,7 @@ const subscribeToCats = (req, res) => {
                     res.status(500).send(error);
                 });
         })
-        .catch((error) => {
+        .catch(() => {
             res.status(400).send('Invalid email address');
         });
 };
@@ -276,7 +276,7 @@ const sendMessage = (req, res) => {
 
 
 const sendPayment = async (req, res) => {
-    const fondyPassword = 'UMlmJSsXiLLDcVLxAMwhlS69A1GbBEq2';
+    const fondyPassword = process.env.FONDY_PASSWORD;
     const orderId = `order-${new Date().toLocaleString('en-GB', {
         day: '2-digit',
         month: '2-digit',
@@ -287,7 +287,7 @@ const sendPayment = async (req, res) => {
 
     const orderBody = {
         order_id: orderId,
-        merchant_id: '1525375',
+        merchant_id: process.env.MERCHANT_ID,
         order_desc: 'Допомога котикам',
         amount: req.body.amount,
         currency: 'UAH',

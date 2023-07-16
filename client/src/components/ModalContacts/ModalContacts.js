@@ -1,6 +1,6 @@
 import React from "react";
 import {createPortal} from "react-dom";
-import closeBtn from "../../assets/modal-close.svg";
+import closeBtn from "../../assets/modal-close.png";
 import "./ModalContacts.scss";
 
 const ModalContacts = ({toggleModal}) => {
