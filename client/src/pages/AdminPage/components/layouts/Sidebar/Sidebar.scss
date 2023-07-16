@@ -45,12 +45,18 @@
       @include nunito-600-size-16;
       cursor: pointer;
       border-radius: 8px;
+      border: none;
       width: 105px;
       height: 40px;
       margin: 40px 0 0 10px;
       @include flex-only;
       align-items: center;
       justify-content: space-around;
+      transition: all 0.3s;
+      &:hover {
+        background: $color-btn-hover;
+        border: none;
+      }
 
     }
   }

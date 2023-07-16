@@ -36,15 +36,23 @@ const CatItem = ({
   };
 
   const handleMouseEnter = () => {
-    if (!isAdminPage) {
+    if (!isAdminPage && !isMobileOrTablet()) {
       setIsCardRotate(false);
     }
   };
 
   const handleMouseLeave = () => {
-    if (!isAdminPage) {
+    if (!isAdminPage && !isMobileOrTablet()) {
       setIsCardRotate(true);
     }
+  };
+
+  const isMobileOrTablet = () => {
+    return (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+        ) || window.innerWidth <= 768
+    );
   };
 
   return (
