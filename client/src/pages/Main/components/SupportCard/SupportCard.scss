@@ -7,13 +7,17 @@
   width: 413px;
   max-height: 466px;
   @include flex-column-a;
+  cursor: pointer;
+  transition: all 0.3s;
   @media screen and (max-width: 720px) {
       width: 358px;
   }
   @media screen and (max-width: 395px) {
     width: 97%;
   }
-
+  &:hover{
+    transform: scale(1.03);
+  }
   &-wrapper {
     color: $color-card-text;
     height: 166px;
