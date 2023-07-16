@@ -1,11 +1,11 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {motion} from "framer-motion";
 import './Sidebar.scss';
 import SubMenu from "./SubMenu";
 import {RxExit} from "react-icons/rx";
 
 import {useDispatch} from "react-redux";
-import {authActions} from "../../../../../store";
+import {logout} from "../../../../../store/LoginSlice";
 import Cookies from 'js-cookie';
 import {useNavigate} from "react-router-dom";
 
@@ -32,9 +32,9 @@ const Sidebar = () => {
         },
     ];
 
-    const logout = () => {
+    const logoutAdmin = () => {
         Cookies.remove('token');
-        dispatch(authActions.logout());
+        dispatch(logout());
         navigate('/admin');
     };
 
@@ -54,7 +54,7 @@ const Sidebar = () => {
                                     </div>
                                 ))}
                             </div>
-                            <button className="logoutBtn" onClick={logout}>
+                            <button className="logoutBtn" onClick={logoutAdmin}>
                                 Вийти<RxExit size={20}/>
                             </button>
                         </ul>
