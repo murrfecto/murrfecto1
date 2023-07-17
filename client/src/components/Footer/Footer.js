@@ -16,7 +16,7 @@ const Footer = () => {
   return (
 
     <footer className={"footer"}>
-      <div className='container'>
+      <div className='layout-container'>
         <div className="footer_container">
           <div className="wrapper">
             <Link to={"/"} className={"footer_logo-link"} onClick={scrollToTop}>

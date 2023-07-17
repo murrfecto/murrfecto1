@@ -1,6 +1,8 @@
 @import "../../styles/_index.scss";
 
 .footer {
+  max-width: 1440px;
+  margin: 0 auto;
   background-color: $color-footer-bg;
   color: $color-card-bg;
   padding: 40px 70px;

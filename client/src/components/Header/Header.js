@@ -8,7 +8,7 @@ const Header = () => {
     const isSmallScreen = useMediaQuery("(max-width: 925px)");
   
   return (
-      <div className='container'>
+      <div className='layout-container'>
           {isSmallScreen ?(
               <MobileMenu/>
           ):(

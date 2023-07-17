@@ -4,7 +4,7 @@ import React from "react";
 
 const ReportSection = () => {
   return (
-    <div className="about_wrapper container">
+    <div className="about_wrapper">
       <div className=" report_container">
         <Link to={"/report"} className="report_link">
           Звітність

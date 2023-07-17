@@ -7,6 +7,10 @@ import mobFirst from "../../../../assets/about-page/mobile/mobFirst.jpg";
 import mobSecond from "../../../../assets/about-page/mobile/mobSecond.jpg";
 import mobThird from "../../../../assets/about-page/mobile/mobThird.jpg";
 
+import noteFirst from "../../../../assets/about-page/1280/first_1280.jpg";
+import noteSecond from "../../../../assets/about-page/1280/second_1280.jpg";
+import noteThird from "../../../../assets/about-page/1280/third_1280.jpg";
+
 const AboutDescription = () => {
   return (
     <section>
@@ -14,9 +18,9 @@ const AboutDescription = () => {
         <ul className="list">
           <li className="item">
             <picture>
-              <source srcSet={mobFirst} media="(min-width: 390px)" />
               <source srcSet={deskFirst} media="(min-width: 1440px)" />
-
+              <source srcSet={noteFirst} media="(min-width: 1280px)" />
+              <source srcSet={mobFirst} media="(min-width: 390px)" />
               <img
                 className="img"
                 src={mobFirst}
@@ -31,8 +35,9 @@ const AboutDescription = () => {
           </li>
           <li className="item">
             <picture>
-              <source srcSet={mobSecond} media="(min-width: 390px)" />
               <source srcSet={deskSecond} media="(min-width: 1440px)" />
+              <source srcSet={noteSecond} media="(min-width: 1280px)" />
+              <source srcSet={mobSecond} media="(min-width: 390px)" />
 
               <img className="img" src={mobSecond} alt="Три коти" width={359} />
             </picture>
@@ -44,9 +49,9 @@ const AboutDescription = () => {
           </li>
           <li className="item">
             <picture>
-              <source srcSet={mobThird} media="(min-width: 390px)" />
               <source srcSet={deskThird} media="(min-width: 1440px)" />
-
+              <source srcSet={noteThird} media="(min-width: 1280px)" />
+              <source srcSet={mobThird} media="(min-width: 390px)" />
               <img
                 className="img"
                 src={mobThird}
