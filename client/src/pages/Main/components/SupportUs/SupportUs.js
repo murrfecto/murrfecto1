@@ -1,8 +1,8 @@
 import React from 'react';
 import './SupportUs.scss'
 import SupportCard from "../SupportCard/SupportCard";
-import oneTimeFood from '../../../../assets/one-time-food.svg'
-import plates from '../../../../assets/plates.svg'
+import oneTimeFood from '../../../../assets/one-time-food.png'
+import plates from '../../../../assets/plates.png'
 import treatsAndMeds from '../../../../assets/toys.png'
 
 const SupportUs = () => {

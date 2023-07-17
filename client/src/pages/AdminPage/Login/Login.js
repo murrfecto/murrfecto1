@@ -6,7 +6,7 @@ import Dashboard from "../components/Dashboard/Dashboard";
 import Cookies from 'js-cookie';
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {authActions} from "../../../store";
+import {login, logout} from "../../../store/LoginSlice";
 import {BiLoaderAlt} from "react-icons/bi";
 import {_ENDPOINT} from "../../../variables/variables";
 
@@ -33,7 +33,7 @@ const IsAdminForm = () => {
             if (response.status === 200) {
                 const token = response.data.token;
                 Cookies.set('token', token, {expires: 7});
-                dispatch(authActions.login());
+                dispatch(login());
                 navigate('/admin/cats/viewAllCats');
                 setLoading(false)
             }
@@ -124,7 +124,7 @@ const IsAdminForm = () => {
 
 const AdminPage = () => {
     const dispatch = useDispatch()
-    const isLoggedIn = useSelector((state) => state.isLoggedIn);
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const navigate = useNavigate();
     console.log(isLoggedIn);
     useEffect(() => {
@@ -138,17 +138,17 @@ const AdminPage = () => {
                         }
                     });
                     if (response.status === 200) {
-                        dispatch(authActions.login());
+                        dispatch(login());
                         navigate('/admin/cats/viewAllCats');
                     } else {
-                        dispatch(authActions.logout());
+                        dispatch(logout());
                     }
                 } catch (err) {
-                    dispatch(authActions.login());
+                    dispatch(login());
                 }
             } else {
 
-                dispatch(authActions.logout());
+                dispatch(logout());
             }
         };
 
