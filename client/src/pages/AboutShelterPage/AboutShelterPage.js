@@ -24,7 +24,7 @@ const AboutShelterPage = () => {
               <Title text="Про притулок" />
               <motion.div variants={container}
                           initial='hidden'
-                          animate='visible' className='container'>
+                          animate='visible' className='pages-container'>
                   <div className="main_about">
                       <AboutDescription />
                       <StatisticDatas />

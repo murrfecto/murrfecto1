@@ -1,34 +1,27 @@
 @import "../../../../styles/index";
 
 .contacts_container {
-  width: 390px;
-  margin: 0 auto;
-  padding: 32px 16px 80px;
+  padding: 32px 0 80px;
   @include flex-column-a;
   gap: 56px;
   background-color: $main-bg-color;
-  @media (max-width: 375px) {
-    width: 315px;
-}
 
   @media screen and (min-width: 768px) {
-    width: 768px;
-    padding: 40px 24px 70px;
+    padding: 40px 0 70px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 20px;
   }
   @media screen and (min-width: 1280px) {
-    padding: 100px 60px;
-    width: 1280px;
+    padding: 100px 0;
     gap: 44px;
     justify-content: center;
   }
 
-  @media screen and (min-width: 1440px) {
-    width: 1440px;
+  @media screen and (min-width: 1440px) { 
     justify-content: center;
-    padding: 80px 188px 100px;
+    padding: 80px 0 100px;
     gap: 128px;
   }
 }
@@ -41,12 +34,12 @@
     width: 320px;
   }
   @media screen and (min-width: 768px) {
-    width: calc((100% - 20px)/2);
+    width: 350px;
     @include flex-column-na;
     gap: 16px;
   }
 @media screen and (min-width: 1280px) {
-  width: calc((100% - 44px)/2);
+  width: 570px;
    gap: 20px;
 }
   @media screen and (min-width: 1440px) {

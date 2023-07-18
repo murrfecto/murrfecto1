@@ -7,7 +7,6 @@ import { ReactComponent as HandsIcon } from "../../../../../assets/about-page/st
 const StatisticDatas = () => {
   return (
     <section className="about_section">
-      <div className="about_wrapper">
         <ul className="statistic_list">
           <li className="statistic_item">
             <div className="icon_wrapper">
@@ -34,7 +33,6 @@ const StatisticDatas = () => {
             </p>
           </li>
         </ul>
-      </div>
     </section>
   );
 };

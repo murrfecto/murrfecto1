@@ -56,16 +56,15 @@ const Contacts = () => {
         <div className="contacts_np">
           <p className="contacts_np_title">Наше відділення НП для посилок</p>
           <p className="contacts_np_text">
-            №225 м.Київ пр.С.Бандери
+            №225 м.Київ пр. С.Бандери
             <br /> +38 063 628 6630
           </p>
         </div>
         <div className="contacts_registration">
           <p className="contacts_registration_title">Реєстраційні дані ГО</p>
           <p className="contacts_registration_text">
-            ГО "Бі Ай Ті", код ЄДРПОУ
-            <br />44993792, м.Київ,
-            <br /> вул.Петропавлівська, 15
+            ГО "Бі Ай Ті", код ЄДРПОУ 44993792,
+            <br />м.Київ, вул.Петропавлівська, 15
           </p>
         </div>
       </div>
