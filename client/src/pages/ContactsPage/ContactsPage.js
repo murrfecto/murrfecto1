@@ -21,7 +21,7 @@ export const ContactsPage = () => {
       <Title text="Контакти" />
         <motion.div variants={container}
                     initial='hidden'
-                    animate='visible' className='container'>
+                    animate='visible' className='pages-container'>
             <Contacts />
             <ScrollToTop />
         </motion.div>

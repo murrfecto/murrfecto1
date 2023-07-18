@@ -14,7 +14,6 @@ import noteThird from "../../../../assets/about-page/1280/third_1280.jpg";
 const AboutDescription = () => {
   return (
     <section>
-      <div className="about_wrapper">
         <ul className="list">
           <li className="item">
             <picture>
@@ -66,7 +65,6 @@ const AboutDescription = () => {
             </p>
           </li>
         </ul>
-      </div>
     </section>
   );
 };

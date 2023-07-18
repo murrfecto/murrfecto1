@@ -85,7 +85,7 @@ const CatProfile = () => {
                   initial='hidden'
                   animate='visible'>
         <div className="profile">
-          <div className='layout-container'>
+          <div className='container'>
             <section className="profile__wrapper">
               <motion.div
                   className="profile__wrapper_images"

@@ -7,7 +7,7 @@ import treatsAndMeds from '../../../../assets/toys.png'
 
 const SupportUs = () => {
     return (
-        <div className='layout-container'>
+        <div className='container'>
             <aside className={'support'}>
                 <h2>Як підтримати котиків</h2>
                 <div className={'support-container'}>
