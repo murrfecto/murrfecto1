@@ -2,12 +2,12 @@ import multer from 'multer';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
+let maxSize = 1000 * 1000;
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './images/');
     },
-
     filename: function (req, file, cb) {
         let extArray = file.mimetype.split('/');
         let extension = extArray[extArray.length - 1];
@@ -26,7 +26,7 @@ const fileFilter = function (req, file, cb) {
         file.mimetype === 'image/svg' ||
         file.mimetype === 'image/webp' ||
         file.mimetype === 'application/pdf'
-    )  {
+    ) {
         // Accept the file
         cb(null, true);
     } else {
@@ -35,6 +35,6 @@ const fileFilter = function (req, file, cb) {
     }
 };
 
-const upload = multer({storage, fileFilter});
+const upload = multer({storage, limits: {fileSize: maxSize}, fileFilter});
 
 export {upload};

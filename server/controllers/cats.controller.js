@@ -313,7 +313,7 @@ const sendPayment = async (req, res) => {
                 checkoutUrl
             })
         } else {
-            res.status(500).send('Unable to retrieve checkout URL from SendGrid');
+            res.status(500).send('Unable to retrieve checkout URL from Fondy');
         }
     } catch (error) {
         console.error(error);

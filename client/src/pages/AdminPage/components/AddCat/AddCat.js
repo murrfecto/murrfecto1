@@ -63,7 +63,9 @@ const AddCat = () => {
             )}
             {formStatus === 'error' && (
                 <Alert className={'alert-failure'} severity="error">
-                    Помилка створення картки.
+                    Помилка створення картки. <br/>
+                    Вибраний невірний формат картинки. <br/>
+                    Доступні формати: .png, .svg, .jpeg, .jpg, .webp,
                 </Alert>
             )}
             <h2 className="formAdding__title">Додайте кота!</h2>

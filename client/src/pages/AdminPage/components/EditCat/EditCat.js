@@ -29,7 +29,7 @@ const EditCat = () => {
     useEffect(() => {
         if (id) {
             axios
-                .get(`${_ENDPOINT}/${id}`)
+                .get(`${_ENDPOINT}/cats/${id}`)
                 .then((response) => {
                     const catData = response.data;
                     setFormData({
@@ -40,6 +40,7 @@ const EditCat = () => {
                         age: catData.age || '',
                         gender: catData.gender || '',
                     });
+
                     setLoading(false);
                     console.log(catData.images)
                 })
@@ -64,7 +65,7 @@ const EditCat = () => {
         data.append('gender', formData.gender);
 
         try {
-            await axios.put(`${_ENDPOINT}/${id}`, data);
+            await axios.put(`${_ENDPOINT}/cats/${id}`, data);
             setFormStatus('success');
             if (formStatus === 'success') {
                 navigate('/admin/cats/ViewAllCats');
