@@ -64,7 +64,7 @@ const AddCat = () => {
             {formStatus === 'error' && (
                 <Alert className={'alert-failure'} severity="error">
                     Помилка створення картки. <br/>
-                    Вибраний невірний формат картинки. <br/>
+                    Вибраний невірний формат або вага картинки. <br/>
                     Доступні формати: .png, .svg, .jpeg, .jpg, .webp,
                 </Alert>
             )}

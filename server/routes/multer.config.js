@@ -1,7 +1,9 @@
 import multer from 'multer';
 import * as dotenv from 'dotenv';
+import { v4 as uuidv4 } from 'uuid';
 
 dotenv.config();
+
 let maxSize = 1000 * 1000;
 
 const storage = multer.diskStorage({
@@ -11,7 +13,7 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         let extArray = file.mimetype.split('/');
         let extension = extArray[extArray.length - 1];
-        let fileName = file.fieldname + '-' + Date.now() + '.' + extension;
+        let fileName = file.fieldname + '-' + uuidv4() + '.' + extension; // Use uuidv4() to generate a UUID filename
         req.fileUrls = req.fileUrls || [];
         req.fileUrls.push(`${process.env.BASE_URL}/images/` + fileName);
         cb(null, fileName);
@@ -35,6 +37,6 @@ const fileFilter = function (req, file, cb) {
     }
 };
 
-const upload = multer({storage, limits: {fileSize: maxSize}, fileFilter});
+const upload = multer({ storage, limits: { fileSize: maxSize }, fileFilter });
 
-export {upload};
+export { upload };

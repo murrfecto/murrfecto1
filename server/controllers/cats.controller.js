@@ -89,6 +89,11 @@ const deleteCatById = async (req, res) => {
             }
             const result = await collection.deleteOne({_id: new ObjectId(id)});
             res.send(result);
+            // If card doesn`t have image
+            if (!imageUrls) {
+                const result = await collection.deleteOne({_id: new ObjectId(id)});
+                res.send(result);
+            }
         } else {
             res.status(404).send('Cat not found');
         }
