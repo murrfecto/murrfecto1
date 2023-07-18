@@ -112,8 +112,7 @@ const updateCatById = async (req, res) => {
             return res.status(400).send(error.details[0].message);
         }
         const id = req.params.id;
-
-        const images = req.files ? req.files.map((file) => file.location) : [];
+        const images = req.files ? req.files.map((file) => file.filename) : [];
 
         const result = await collection.updateOne(
             {_id: new ObjectId(id)},
