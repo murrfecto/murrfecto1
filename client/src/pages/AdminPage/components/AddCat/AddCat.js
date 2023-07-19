@@ -26,7 +26,7 @@
 
             const data = new FormData();
             files.forEach((file, index) => {
-                data.append("image", file, `image${index}`);
+                data.append("images", file, `image${index}`);
             });
             data.append("name", formData.name);
             data.append("description", formData.description);
@@ -52,11 +52,6 @@
         const handleFileUpload = (e) => {
             const selectedFiles = Array.from(e.target.files);
             setFiles(selectedFiles);
-            const data = new FormData();
-            selectedFiles.forEach((file, index) => {
-                data.append("image", file, `image${index}`);
-            });
-            setFormData({ ...formData, images: data });
         };
 
         return (
@@ -103,7 +98,7 @@
                                     type="file"
                                     id="fileInput"
                                     multiple
-                                    name="image"
+                                    name="images"
                                     onChange={handleFileUpload}
                                     className="input__file_none"
                                 />

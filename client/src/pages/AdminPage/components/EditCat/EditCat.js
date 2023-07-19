@@ -13,7 +13,7 @@ const EditCat = () => {
 
     const initialState = {
         name: '',
-        image: [],
+        images: [],
         description: '',
         chipped: '',
         age: '',
@@ -34,7 +34,7 @@ const EditCat = () => {
                     const catData = response.data;
                     setFormData({
                         name: catData.name || '',
-                        image: catData.images || [],
+                        images: catData.images || [],
                         description: catData.description || '',
                         chipped: catData.chipped || '',
                         age: catData.age || '',
@@ -56,7 +56,7 @@ const EditCat = () => {
 
         const data = new FormData();
         if (files.length > 0) {
-            data.append('image', files[0]);
+            data.append('images', files[0]);
         }
         data.append('name', formData.name);
         data.append('description', formData.description);
@@ -120,7 +120,6 @@ const EditCat = () => {
                                 <label className="photo__selected"
                                        htmlFor="fileInput">{files.length > 0 ? (<div>
                                     <h4>Обрані фото:</h4>
-
                                     <ul>
                                         {files.map((file, index) => (<li key={index}>{file.name}</li>))}
                                     </ul>
@@ -130,14 +129,13 @@ const EditCat = () => {
                                     type="file"
                                     id="fileInput"
                                     multiple
-                                    name="image"
+                                    name="images"
                                     accept=".png, .jpeg, .jpg"
                                     onChange={handleFileUpload}
                                     required
                                     className="input__file_none"
                                 />
                             </div>
-
                         </div>
                         <div className="formAdding__wrapper_rightSection">
                             <div className="ageAndGender">
