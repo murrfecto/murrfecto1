@@ -33,6 +33,45 @@ const addCat = async (req, res) => {
     }
 };
 
+const updateCatById = async (req, res) => {
+    const {client, collection} = await connectToDatabase('cats');
+    const id = req.params.id;
+    const filePath = "./images";
+    const cat = await collection.findOne({_id: new ObjectId(id)});
+    if (cat) {
+        const imageUrls = cat.images;
+        for (const imageUrl of imageUrls) {
+            const fileName = imageUrl.split('/').pop();
+            const imagePath = filePath + '/' + fileName;
+            fs.unlinkSync(imagePath);
+        }
+        try {
+            const {error} = catsModel.validate(req.body);
+            if (error) {
+                return res.status(400).send(error.details[0].message);
+            }
+            const images = req.files ? req.files.map((file) => `${process.env.BASE_URL}/images/${file.filename}`) : [];
+
+            const result = await collection.updateOne(
+                {_id: new ObjectId(id)},
+                {
+                    $set: {
+                        ...req.body,
+                        images: images,
+                    },
+                }
+            );
+            res.send(result);
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Error connecting to the database');
+        } finally {
+            if (client) {
+                await client.close();
+            }
+        }
+    }
+}
 
 const getCats = async (req, res) => {
     const {client, collection} = await connectToDatabase('cats');
@@ -104,45 +143,7 @@ const deleteCatById = async (req, res) => {
     await client.close();
 };
 
-const updateCatById = async (req, res) => {
-    const {client, collection} = await connectToDatabase('cats');
-    const id = req.params.id;
-    const filePath = "./images";
-    const cat = await collection.findOne({_id: new ObjectId(id)});
-    if (cat) {
-        const imageUrls = cat.images;
-        for (const imageUrl of imageUrls) {
-            const fileName = imageUrl.split('/').pop();
-            const imagePath = filePath + '/' + fileName;
-            fs.unlinkSync(imagePath);
-        }
-        try {
-            const {error} = catsModel.validate(req.body);
-            if (error) {
-                return res.status(400).send(error.details[0].message);
-            }
-            const images = req.files ? req.files.map((file) => `${process.env.BASE_URL}/images/${file.filename}`) : [];
 
-            const result = await collection.updateOne(
-                {_id: new ObjectId(id)},
-                {
-                    $set: {
-                        ...req.body,
-                        images: images,
-                    },
-                }
-            );
-            res.send(result);
-        } catch (err) {
-            console.error(err);
-            res.status(500).send('Error connecting to the database');
-        } finally {
-            if (client) {
-                await client.close();
-            }
-        }
-    }
-}
 
 
 const handleCallBack = async (req, res) => {

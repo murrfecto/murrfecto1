@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 const catsModel = Joi.object({
-    images: Joi.any(),
+    images: Joi.string().required(),
     name: Joi.string().required(),
     description: Joi.string().required(),
     chipped: Joi.string().required(),

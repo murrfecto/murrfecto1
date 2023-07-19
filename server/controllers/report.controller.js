@@ -1,5 +1,5 @@
-
-import { upload } from '../routes/multer.config.js';
+import * as fs from "fs";
+import path from "path";
 
 const addReport = async (req, res) => {
 	try {
@@ -15,21 +15,27 @@ const addReport = async (req, res) => {
 };
 
 const deleteReport = async (req, res) => {
-	// const deleteParams = {
-	// 	Bucket: 'murrfecto',
-	// 	Key: req.headers['filename'],
-	// };
-	//
-	// const deleteCommand = new DeleteObjectCommand(deleteParams);
-	//
-	// upload.send(deleteCommand)
-	// 	.then(() => {
-	// 		res.sendStatus(204);
-	// 	})
-	// 	.catch((error) => {
-	// 		console.error('Error deleting file from AWS S3:', error);
-	// 		res.status(500).json({ error: 'Failed to delete the file.' });
-	// 	});
+	try {
+		const filename = req.headers['filename'];
+
+		if (!filename) {
+			return res.status(400).send({ message: 'Filename not provided.' });
+		}
+
+		const filePath = path.join(__dirname, 'images', filename);
+
+		fs.unlink(filePath, (err) => {
+			if (err) {
+				console.error('Error deleting file:', err);
+				return res.status(500).send({ message: 'Failed to delete the file.' });
+			}
+
+			res.sendStatus(204);
+		});
+	} catch (err) {
+		console.error(err);
+		res.status(500).send({ message: 'Failed to delete the file.' });
+	}
 };
 
 export { addReport, deleteReport };
