@@ -99,6 +99,7 @@
                                     id="fileInput"
                                     multiple
                                     name="images"
+                                    required
                                     onChange={handleFileUpload}
                                     className="input__file_none"
                                 />
