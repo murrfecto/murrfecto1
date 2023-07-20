@@ -3,31 +3,39 @@ import FormSelect from "../FormSelect/FormSelect";
 import axios from "axios";
 import {useState} from "react";
 import {_ENDPOINT} from "../../../variables/variables";
+import {useSelector} from "react-redux";
+import Spinner from "../../../helpers/Spinner/Spinner";
 
 const DonateForm = ({
                         title,
                         optionIdPrefix = "",
                         hasDonateTypeButtons = false,
                         menuPortalTarget = null,
-                    }) => {
-    const [donationAmount, setDonationAmount] = useState("");
-    const [selectedOption, setSelectedOption] = useState(null);
-    const [selectedCat, setSelectedCat] = useState(null);
 
+                    }) => {
+    const donationType = useSelector((state) => state.modal.donationType);
+    const [donationAmount, setDonationAmount] = useState("");
+    const [selectedOption, setSelectedOption] = useState(donationType);
+    const [selectedCat, setSelectedCat] = useState(null);
+    const [loading, setLoading] = useState(false);
     const handleSubmit = async (e) => {
+
         e.preventDefault();
         const orderBody = {
             amount: donationAmount * 100,
             catLabel: selectedCat ? selectedCat.label : "",
         };
         try {
+            setLoading(true);
             const response = await axios.post(
                 `${_ENDPOINT}/payment`,
                 orderBody
             );
             window.location.replace(response.data.checkoutUrl);
+            setLoading(false);
         } catch (error) {
             console.error("An error occurred while processing the payment", error);
+            setLoading(false);
         }
     };
     const handlePresetDonationSelect = (amount) => {
@@ -92,7 +100,8 @@ const DonateForm = ({
                                 }`}
                                 onClick={() => handlePresetDonationSelect(option)}
                             >
-                                <span className="donate-form_number">{option}</span>
+                                <span
+                                    className="donate-form_number">{option}</span>
                             </label>
                         </div>
                     ))}
@@ -116,7 +125,13 @@ const DonateForm = ({
                     menuPortalTarget={menuPortalTarget}
                 />
                 <div>
-                    <input className="donate-form_btn" type="submit" value="Допомогти"/>
+                    <button
+                        className="donate-form_btn"
+                        type="submit"
+                        value="Допомогти"
+                        disabled={!selectedOption || !selectedCat || !donationAmount}
+                    >{loading ?
+                        <Spinner/> : 'Допомогти'}</button>
                 </div>
             </form>
         </div>

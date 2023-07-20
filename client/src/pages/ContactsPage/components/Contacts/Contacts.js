@@ -53,7 +53,7 @@ const Contacts = () => {
             </a>
           </div>
         </div>
-        <div className="contacts_np">
+        <div className="contacts_np" id={'contacts_np'}>
           <p className="contacts_np_title">Наше відділення НП для посилок</p>
           <p className="contacts_np_text">
             №225 м.Київ пр. С.Бандери

@@ -28,7 +28,7 @@ const CatItem = ({
     navigate(`/cat/${id}/`);
   };
   const handleClick = () => {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 2000) {
       if (!isAdminPage) {
         setIsCardRotate(!isCardRotate);
       }
@@ -51,7 +51,7 @@ const CatItem = ({
     return (
         /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
             navigator.userAgent
-        ) || window.innerWidth <= 768
+        ) || window.innerWidth <= 2000
     );
   };
 
