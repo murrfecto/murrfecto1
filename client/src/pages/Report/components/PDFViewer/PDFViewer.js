@@ -29,10 +29,10 @@ const PDFViewer = () => {
     const fetchPDF = async () => {
       try {
         setLoading(true);
-        const proxyUrl = "https://api.allorigins.win/raw?url=";
+
         const targetUrl =
-          "https://murrfecto.site/api/v1/images/report.pdf";
-        const response = await axios.get(proxyUrl + targetUrl, {
+          "https://murrfecto.site/api/v1/images/report-d48577dc-9202-4d89-90d9-e0821185526d.pdf";
+        const response = await axios.get(targetUrl, {
           responseType: "blob",
         });
         const url = URL.createObjectURL(response.data);
