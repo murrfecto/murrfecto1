@@ -8,6 +8,7 @@
 }
 
 .formAdding {
+  padding-top: 20px;
   margin: 20px auto 0;
   padding-bottom: 35px;
   flex-wrap: wrap;
@@ -122,6 +123,7 @@
   .btn-group {
     gap: 20px;
     @include flex-only;
+    justify-content: center;
 
     button {
       margin-top: 10px;

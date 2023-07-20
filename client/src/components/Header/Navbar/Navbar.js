@@ -20,7 +20,7 @@ const Navbar = () => {
     const adminPage = /^\/admin\//.test(location.pathname);
     return (
         <nav className={`navbar ${adminPage ? 'admin-page' : ''}`}
-             style={{position : adminPage ?'relative' : 'static'}}>
+             style={{position: adminPage ? 'relative' : 'static'}}>
             <div className="navbar_logo">
                 <Link to="/">
                     <img src={logo} alt="murfecto logo"/>
