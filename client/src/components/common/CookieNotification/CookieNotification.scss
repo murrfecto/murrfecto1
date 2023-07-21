@@ -9,7 +9,7 @@
   background-color: $color-white;
 
   @media screen and (min-width: 390px) {
-    left: calc((100vw - 390px) / 2);
+    left: calc((96vw - 390px) / 2);
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439.9px) {

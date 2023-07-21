@@ -18,7 +18,7 @@
   }
 
   &-label {
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: 780px) {
       width: 100%;
       @include flex-column-a;
     }
@@ -70,7 +70,7 @@
       outline: none;
       background: $full-white;
     }
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: 780px) {
       border-width: 1px;
       border-radius: 8px;
       width: 357px;
@@ -129,7 +129,7 @@
     width: 240px;
     height: 60px;
     border-radius: 8px;
-    @media screen and (max-width: 720px) {
+    @media screen and (max-width: 780px) {
       margin-top: 16px;
       @include nunito-700-size-16;
       width: 357px;
