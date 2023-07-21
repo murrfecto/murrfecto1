@@ -54,10 +54,11 @@
         display: flex;
         justify-content: space-between;
         gap: 12px;
-
-        > img {
-          width: calc((100% - 24px) / 3);
-          height: auto;
+        img {
+          object-position: top center;
+          object-fit: cover;
+          width: 196px;
+          height: 197px;
         }
       }
     }
@@ -67,6 +68,7 @@
       margin-left: 25px;
       align-items: flex-start;
       @media (max-width: 1000px) {
+        padding-top: 16px;
         margin: 0;
         @include flex-column-a;
       }
@@ -84,7 +86,6 @@
       }
 
       .info__wrapper {
-
         @media (max-width: 1000px) {
           margin-top: 32px;
         }
