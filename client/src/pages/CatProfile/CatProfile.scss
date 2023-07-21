@@ -16,7 +16,7 @@
 
 
     &_images {
-      width: 636px;
+      width: 630px;
       height: auto;
 
       img{
@@ -25,7 +25,7 @@
       }
       &_first{
         object-fit: cover;
-        height: 472px;
+        height: 630px;
         width: 100%;
       }
 
@@ -54,16 +54,15 @@
         display: flex;
         justify-content: space-between;
         gap: 12px;
-        img {
-          object-position: top center;
-          object-fit: cover;
-          width: 196px;
-          height: 197px;
+        > img {
+          width: calc((100% - 24px) / 3);
+          height: auto;
         }
       }
     }
 
     &_info {
+      padding-top: 100px;
       max-width: 525px;
       margin-left: 25px;
       align-items: flex-start;
@@ -74,6 +73,7 @@
       }
 
       .info__title {
+
         margin-bottom: 12px;
         text-align: center;
         line-height: 55px;
