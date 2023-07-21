@@ -7,7 +7,6 @@
   &__wrapper {
     margin-top: 89px;
     @include flex-only;
-    justify-content: space-between;
     @media (max-width: 1245px) {
       margin: 30px auto auto;
       flex-direction: column;
@@ -52,7 +51,6 @@
       > .grouped-images {
         margin-top: 20px;
         display: flex;
-        justify-content: space-between;
         gap: 12px;
         > img {
           width: calc((100% - 24px) / 3);
