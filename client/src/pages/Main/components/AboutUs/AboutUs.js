@@ -1,7 +1,7 @@
 import React from 'react';
 import './AboutUs.scss'
 import collage from '../../../../assets/collage.png'
-import paw from '../../../../assets/paw.png'
+import paw from '../../../../assets/paw.svg'
 
 const AboutUs = () => {
     return (

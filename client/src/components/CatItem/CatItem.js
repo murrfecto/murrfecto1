@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./CatItem.scss";
 import "./FlipTransition.scss";
-import paw from "../../assets/paw.png";
-import info from "../../assets/info-rounded.png";
+import paw from "../../assets/paw.svg";
+import info from "../../assets/info-rounded.svg";
 import { Skeleton } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
