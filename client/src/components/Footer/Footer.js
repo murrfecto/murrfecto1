@@ -11,6 +11,7 @@ import { scrollToTop } from "../../helpers/scrollToTop";
 import ModalButton from "../ModalButton/ModalButton";
 
 import PrivacyPolicyPdf from "../../assets/dataDocs/privacy-policy.pdf";
+import rules from "../../assets/dataDocs/rules.pdf";
 
 const Footer = () => {
   return (
@@ -82,8 +83,9 @@ const Footer = () => {
           <div className={"footer_documents-wrapper"}>
             <a
                 className={"footer_link"}
-                href="#"
+                href={rules + "#toolbar=0"}
                 target="_blank"
+                aria-readonly
                 rel="nofollow noreferrer noopener"
             >
               Правила користування сайтом

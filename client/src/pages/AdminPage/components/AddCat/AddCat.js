@@ -46,13 +46,13 @@ const AddCat = () => {
     };
 
     function handleAlerts(status, values) {
-        if (status === 'success') {
+        if (status && status.status === 'success') {
             return (
                 <Alert className={'alert-failure'} severity={'success'}>
                     Картка створена!
                 </Alert>
             );
-        } else if (status === 'error') {
+        } else if (status  && status.status === 'error') {
             return (
                 <Alert className={'alert-failure'} severity={'error'}>
                     Помилка створення картки, будь ласка оберіть доступний формат
@@ -177,7 +177,9 @@ const AddCat = () => {
                                     <Field as="select" name="chipped" required>
                                         <option disabled value="">Вкажіть наявність чіпу</option>
                                         <option value="чипований">чипований</option>
-                                        <option value="не чипований">не чипований</option>
+                                        <option value="чипована">чипована</option>
+                                        <option value="нечипований">нечипований</option>
+                                        <option value="нечипована">нечипована</option>
                                     </Field>
                                 </div>
                                 <div className="info">

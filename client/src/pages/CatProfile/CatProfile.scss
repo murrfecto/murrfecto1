@@ -18,11 +18,14 @@
     &_images {
       width: 636px;
       height: auto;
+
       img{
         border-radius: 12px;
         cursor: pointer;
       }
       &_first{
+        object-fit: cover;
+        height: 472px;
         width: 100%;
       }
 

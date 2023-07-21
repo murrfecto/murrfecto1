@@ -42,11 +42,10 @@
     top: 0;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
   }
 
   &-back {
+
     transform: rotateY(180deg);
     &__wrapper {
       @include flex-column-a;
