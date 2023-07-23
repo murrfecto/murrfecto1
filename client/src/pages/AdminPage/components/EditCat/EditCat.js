@@ -42,7 +42,6 @@ const EditCat = () => {
                     });
 
                     setLoading(false);
-                    console.log(catData.images)
                 })
                 .catch((error) => {
                     console.error(error);
