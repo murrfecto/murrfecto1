@@ -11,7 +11,6 @@ const SubscribeForm = () => {
     try {
     await axios.post(`${_ENDPOINT}/cats/subscribe`, values);
      resetForm(); 
-      console.log("Message sent successfully", values);
     } catch (error) {
       console.error("Error sending message:", error);
     }
