@@ -3,13 +3,14 @@ import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
 import {Alert} from "@mui/material";
 import {BiUpload} from "react-icons/bi";
-import Spinner from "../../../../helpers/Spinner/Spinner";
+import Spinner from "../../../../helpers/spinner/Spinner";
 import {_ENDPOINT} from "../../../../variables/variables";
 
 
 const EditCat = () => {
     const navigate = useNavigate()
     const {id} = useParams();
+
 
     const initialState = {
         name: '',
@@ -118,7 +119,8 @@ const EditCat = () => {
                             <div className="photo">
                                 <label>Фото</label>
                                 <label className="photo__selected"
-                                       htmlFor="fileInput">{files.length > 0 ? (<div>
+                                       htmlFor="fileInput">
+                                    {files.length > 0 ? (<div>
                                     <h4>Обрані фото:</h4>
                                     <ul>
                                         {files.map((file, index) => (<li key={index}>{file.name}</li>))}

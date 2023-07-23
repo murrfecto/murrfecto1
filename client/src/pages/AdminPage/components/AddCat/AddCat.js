@@ -4,8 +4,8 @@ import './AddCat.scss';
 import {BiUpload} from "react-icons/bi";
 import {_ENDPOINT} from "../../../../variables/variables";
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import {Alert} from "@mui/material";
 import {useNavigate} from "react-router-dom";
+import {handleAlerts} from "../../../../helpers/formAlertHandler/formAlertHandler";
 
 const AddCat = () => {
     const navigate = useNavigate();
@@ -50,29 +50,7 @@ const AddCat = () => {
         }
     };
 
-    function handleAlerts(status, values) {
-        if (status && status.status === 'success') {
-            return (
-                <Alert className={'alert-failure'} severity={'success'}>
-                    Картка створена!
-                </Alert>
-            );
-        } else if (status && status.status === 'error') {
-            return (
-                <Alert className={'alert-failure'} severity={'error'}>
-                    Помилка створення картки, будь ласка оберіть доступний формат
-                    P.S: Вага картинок не може перевищувати 1 мб
-                </Alert>
-            );
-        } else if (values.images.length === 0) {
-            return (
-                <Alert className={'alert-failure'} severity={'error'}>
-                    Будь ласка, додайте картинки
-                </Alert>
-            );
-        }
-        return null;
-    }
+
 
     const handleCancel = (resetForm) => {
         resetForm();
@@ -163,7 +141,7 @@ const AddCat = () => {
                                                 handleSelectChange('age', e);
                                                 setFieldValue('age', e.target.value);
                                             }}
-                                            style={{color: selectedStyle.age ? 'black' :  '#4f5a69'}}
+                                            style={{color: selectedStyle.age ? 'black' : '#4f5a69'}}
                                         >
                                             <option className="age__placeholder" disabled value="">
                                                 Вкажіть вік кота
@@ -174,7 +152,7 @@ const AddCat = () => {
                                                 <option
                                                     value={`${num} роки`}
                                                     key={num}
-                                                    style={{color: selectedStyle.age === `${num} роки` ? 'black' :  '#4f5a69'}}
+                                                    style={{color: selectedStyle.age === `${num} роки` ? 'black' : '#4f5a69'}}
                                                 >
                                                     {num} роки
                                                 </option>
@@ -183,7 +161,7 @@ const AddCat = () => {
                                                 <option
                                                     value={`${num} років`}
                                                     key={num}
-                                                    style={{color: selectedStyle.age === `${num} років` ? 'black' :  '#4f5a69'}}
+                                                    style={{color: selectedStyle.age === `${num} років` ? 'black' : '#4f5a69'}}
                                                 >
                                                     {num} років
                                                 </option>
@@ -200,7 +178,7 @@ const AddCat = () => {
                                                 handleSelectChange('gender', e);
                                                 setFieldValue('gender', e.target.value);
                                             }}
-                                            style={{color: selectedStyle.gender ? 'black' :  '#4f5a69'}}
+                                            style={{color: selectedStyle.gender ? 'black' : '#4f5a69'}}
                                         >
                                             <option selected value="" disabled>
                                                 Оберіть стать
@@ -220,7 +198,7 @@ const AddCat = () => {
                                             handleSelectChange('chipped', e);
                                             setFieldValue('chipped', e.target.value);
                                         }}
-                                        style={{color: selectedStyle.chipped ? 'black' :  '#4f5a69'}}
+                                        style={{color: selectedStyle.chipped ? 'black' : '#4f5a69'}}
                                     >
                                         <option disabled value="">
                                             Вкажіть наявність чіпу

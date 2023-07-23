@@ -4,7 +4,7 @@ import axios from "axios";
 import {useState} from "react";
 import {_ENDPOINT} from "../../../variables/variables";
 import {useSelector} from "react-redux";
-import Spinner from "../../../helpers/Spinner/Spinner";
+import Spinner from "../../../helpers/spinner/Spinner";
 
 const DonateForm = ({
                         title,

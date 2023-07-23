@@ -3,7 +3,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 import axios from "axios";
 import "./PDFViewer.scss";
 import { useMediaQuery } from "@mui/material";
-import Spinner from "../../../../helpers/Spinner/Spinner";
+import Spinner from "../../../../helpers/spinner/Spinner";
 
 // Встановіть URL робітника pdfjs
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;

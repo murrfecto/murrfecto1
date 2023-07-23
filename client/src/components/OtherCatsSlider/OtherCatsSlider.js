@@ -5,7 +5,7 @@ import axios from "axios";
 import CartItem from '../CatItem/CatItem';
 import './OtherCatsSlider.scss';
 import "swiper/css";
-import Spinner from "../../helpers/Spinner/Spinner";
+import Spinner from "../../helpers/spinner/Spinner";
 import {_ENDPOINT} from "../../variables/variables";
 
 const OtherCatsSlider = ({ cat }) => {
