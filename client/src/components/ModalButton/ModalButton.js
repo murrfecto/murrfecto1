@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Modal from "react-modal";
 import "./ModalButton.scss";
 import cats from "../../assets/modal/donate_cats.png";
@@ -11,8 +11,9 @@ const ModalButton = ({title, style}) => {
     const isOpen = useSelector(state => state.modal.isOpen);
     const dispatch = useDispatch();
 
-    const handleOpenModal = () => {
-        dispatch(openModal()); // Виклик диспетчера для відкриття модального вікна
+    const handleOpenModal = (selectedOption) => {
+        dispatch(openModal(selectedOption)); // Виклик диспетчера для відкриття
+        // модального вікна
     };
     const handleCloseModal = () => {
         dispatch(closeModal()); // Диспетчер closeModal
@@ -20,7 +21,7 @@ const ModalButton = ({title, style}) => {
     return (
         <div id={"donation"}>
             <a className={`navbar_links ${style}`}
-               onClick={handleOpenModal}>
+               onClick={()=>handleOpenModal('onetime')}>
                 {title}
             </a>
             <Modal
