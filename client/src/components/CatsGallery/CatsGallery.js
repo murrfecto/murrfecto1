@@ -1,22 +1,26 @@
 import React, {useEffect, useState} from 'react';
-import "./CatsGallery.scss";
-import CatItem from "../CatItem/CatItem";
 import axios from "axios";
 import Notiflix from "notiflix";
-import Spinner from "../../helpers/Spinner/Spinner";
 import {motion} from "framer-motion";
 import {useNavigate} from "react-router-dom";
-import editIcon from "../../assets/admin/edit-icon.svg"
-import deleteIcon from "../../assets/admin/delete-icon.svg"
+
+import Spinner from "../../helpers/spinner/Spinner";
+import CatItem from "../CatItem/CatItem";
 import useCustomAxios from "../../hooks/useCustomAxios";
 import {_ENDPOINT} from "../../variables/variables";
 
-const CatsGallery = ({limit, displayIcon, select}) => {
+import editIcon from "../../assets/admin/edit-icon.svg"
+import deleteIcon from "../../assets/admin/delete-icon.svg"
+
+import "./CatsGallery.scss";
+
+
+const CatsGallery = ({limit, displayIcon, select, pawCursor}) => {
     const [cats, setCats] = useState(null);
     const [shouldDisplayTrashIcon, setShouldDisplayTrashIcon] = useState(displayIcon)
     const [_, setShouldBeSelected] = useState(select)
     const navigate = useNavigate();
-    const { data, loading, get } = useCustomAxios();
+    const {data, loading, get} = useCustomAxios();
 
     useEffect(() => {
         get(`${_ENDPOINT}/cats`)
@@ -24,11 +28,15 @@ const CatsGallery = ({limit, displayIcon, select}) => {
 
     useEffect(() => {
 
-       if (data){
-           setCats(data)
-       }
+        if (data) {
+            setCats(data)
+        }
     }, [data]);
 
+    useEffect(() => {
+        setShouldDisplayTrashIcon(displayIcon)
+        setShouldBeSelected(select)
+    }, []);
 
 
     const handleDelete = async (id) => {
@@ -59,45 +67,39 @@ const CatsGallery = ({limit, displayIcon, select}) => {
                 titleColor: 'orangered',
                 okButtonBackground: 'orangered',
                 cssAnimationStyle: 'zoom',
-            },{
+            }, {
                 cancelButtonColor: '#DF4242',
                 cancelButtonBackground: 'none',
                 okButtonColor: '#29CA56',
                 okButtonBackground: 'none',
                 width: '385px',
-                messageFontSize:'20px'
+                messageFontSize: '20px'
             },
         );
     };
 
-    useEffect(() => {
-        setShouldDisplayTrashIcon(displayIcon)
-        setShouldBeSelected(select)
-
-    }, []);
-
-    if (loading) {
-        return <Spinner/>;
-    }
-
     const container = {
-        hidden :{opacity:1, scale:0},
+        hidden: {opacity: 1, scale: 0},
         visible: {
             opacity: 1,
             scale: 1,
-            transition:{
-                delayChildren:0.2,
-                staggerChildren:0.1
+            transition: {
+                delayChildren: 0.2,
+                staggerChildren: 0.1
             }
         }
     }
 
-    const items ={
-        hidden: { y:20,opacity:0},
+    const items = {
+        hidden: {y: 20, opacity: 0},
         visible: {
-            y:0,
-            opacity:1
+            y: 0,
+            opacity: 1
         }
+    }
+
+    if (loading) {
+        return <Spinner/>;
     }
 
     return (
@@ -125,15 +127,17 @@ const CatsGallery = ({limit, displayIcon, select}) => {
                                 shouldDisplayTrashIcon ? (
                                     <div className={'viewAll__icons'}>
                                         <img
+                                            style={{cursor: "pointer"}}
                                             src={editIcon}
                                             className={'viewAll__edit'}
                                             onClick={() => handleEdit(cat._id)}
-                                         alt={'edit icon'}/>
+                                            alt={'edit icon'}/>
                                         <img
+                                            style={{cursor: "pointer"}}
                                             src={deleteIcon}
                                             className="viewAll__trash"
                                             onClick={() => confirmDelete(cat._id, cat.name)}
-                                         alt={'delete icon'}/>
+                                            alt={'delete icon'}/>
                                     </div>
                                 ) : null
                             }

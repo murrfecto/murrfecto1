@@ -37,6 +37,8 @@
     }
 
     &_leftSection {
+      @include flex-column-a;
+      gap: 10px;
       margin-right: 11px;
 
       .name {
@@ -60,6 +62,7 @@
           @include admin-input-placeholder;
           justify-content: space-between;
           background: #ffffff;
+
         }
 
         input {
@@ -70,7 +73,9 @@
 
     &_rightSection {
       margin-left: 11px;
-
+      @include flex-column-a;
+      gap: 10px;
+      padding-bottom: 10px;
       .ageAndGender {
         @include flex-only;
 
@@ -146,6 +151,10 @@
       background: $full-white;
       color: $color-card-text;
     }
+  }
+
+  .selected {
+    color: black;
   }
 
 }

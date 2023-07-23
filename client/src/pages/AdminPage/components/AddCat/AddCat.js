@@ -4,12 +4,17 @@ import './AddCat.scss';
 import {BiUpload} from "react-icons/bi";
 import {_ENDPOINT} from "../../../../variables/variables";
 import {ErrorMessage, Field, Form, Formik} from "formik";
-import {Alert, AlertTitle} from "@mui/material";
-import {redirect, useNavigate} from "react-router-dom";
-
+import {useNavigate} from "react-router-dom";
+import {handleAlerts} from "../../../../helpers/formAlertHandler/formAlertHandler";
 
 const AddCat = () => {
     const navigate = useNavigate();
+    const [selectedStyle, setSelectedStyle] = useState({
+        age: '',
+        gender: '',
+        chipped: '',
+    });
+
 
     const initialValues = {
         name: '',
@@ -35,7 +40,7 @@ const AddCat = () => {
             data.append('age', values.age);
             data.append('gender', values.gender);
 
-            const response = await axios.post(`${_ENDPOINT}/cats`, data);
+            await axios.post(`${_ENDPOINT}/cats`, data);
             setStatus({status: 'success', message: 'Картка створена!'});
             setSubmitting(false);
         } catch (err) {
@@ -45,33 +50,18 @@ const AddCat = () => {
         }
     };
 
-    function handleAlerts(status, values) {
-        if (status && status.status === 'success') {
-            return (
-                <Alert className={'alert-failure'} severity={'success'}>
-                    Картка створена!
-                </Alert>
-            );
-        } else if (status  && status.status === 'error') {
-            return (
-                <Alert className={'alert-failure'} severity={'error'}>
-                    Помилка створення картки, будь ласка оберіть доступний формат
-                    P.S: Вага картинок не може перевищувати 1 мб
-                </Alert>
-            );
-        } else if (values.images.length === 0) {
-            return (
-                <Alert className={'alert-failure'} severity={'error'}>
-                    Будь ласка, додайте картинки
-                </Alert>
-            );
-        }
-        return null;
-    }
+
 
     const handleCancel = (resetForm) => {
         resetForm();
         navigate('/admin/cats/ViewAllCats');
+    };
+
+    const handleSelectChange = (field, e) => {
+        setSelectedStyle((prevState) => ({
+            ...prevState,
+            [field]: e.target.value,
+        }));
     };
 
     const handleFileUpload = (e, setFieldValue) => {
@@ -101,7 +91,8 @@ const AddCat = () => {
                                 </div>
                                 <div className="photo">
                                     <label>Фото</label>
-                                    <label className="photo__selected" htmlFor="fileInput">
+                                    <label className={`photo__selected ${values.images.length > 0 ? 'selected' : ''}`}
+                                           htmlFor="fileInput">
                                         {values.images.length > 0 ? (
                                                 <div>
                                                     <h4>Обрані фото:</h4>
@@ -146,16 +137,34 @@ const AddCat = () => {
                                             as="select"
                                             name="age"
                                             required
+                                            onChange={(e) => {
+                                                handleSelectChange('age', e);
+                                                setFieldValue('age', e.target.value);
+                                            }}
+                                            style={{color: selectedStyle.age ? 'black' : '#4f5a69'}}
                                         >
-                                            <option className="age__placeholder" disabled value="">Вкажіть вік кота
+                                            <option className="age__placeholder" disabled value="">
+                                                Вкажіть вік кота
                                             </option>
                                             <option value="до року">До року</option>
                                             <option value="1 рік">1 рік</option>
                                             {Array.from({length: 3}, (_, i) => i + 2).map((num) => (
-                                                <option value={`${num} роки`} key={num}>{num} роки</option>
+                                                <option
+                                                    value={`${num} роки`}
+                                                    key={num}
+                                                    style={{color: selectedStyle.age === `${num} роки` ? 'black' : '#4f5a69'}}
+                                                >
+                                                    {num} роки
+                                                </option>
                                             ))}
                                             {Array.from({length: 13}, (_, i) => i + 5).map((num) => (
-                                                <option value={`${num} років`} key={num}>{num} років</option>
+                                                <option
+                                                    value={`${num} років`}
+                                                    key={num}
+                                                    style={{color: selectedStyle.age === `${num} років` ? 'black' : '#4f5a69'}}
+                                                >
+                                                    {num} років
+                                                </option>
                                             ))}
                                         </Field>
                                     </div>
@@ -165,8 +174,15 @@ const AddCat = () => {
                                             as="select"
                                             name="gender"
                                             required
+                                            onChange={(e) => {
+                                                handleSelectChange('gender', e);
+                                                setFieldValue('gender', e.target.value);
+                                            }}
+                                            style={{color: selectedStyle.gender ? 'black' : '#4f5a69'}}
                                         >
-                                            <option selected value="" disabled>Оберіть стать</option>
+                                            <option selected value="" disabled>
+                                                Оберіть стать
+                                            </option>
                                             <option value="кіт">Кіт</option>
                                             <option value="кішка">Кішка</option>
                                         </Field>
@@ -174,8 +190,19 @@ const AddCat = () => {
                                 </div>
                                 <div className="chipped">
                                     <label>Наявність чіпу</label>
-                                    <Field as="select" name="chipped" required>
-                                        <option disabled value="">Вкажіть наявність чіпу</option>
+                                    <Field
+                                        as="select"
+                                        name="chipped"
+                                        required
+                                        onChange={(e) => {
+                                            handleSelectChange('chipped', e);
+                                            setFieldValue('chipped', e.target.value);
+                                        }}
+                                        style={{color: selectedStyle.chipped ? 'black' : '#4f5a69'}}
+                                    >
+                                        <option disabled value="">
+                                            Вкажіть наявність чіпу
+                                        </option>
                                         <option value="чипований">чипований</option>
                                         <option value="чипована">чипована</option>
                                         <option value="нечипований">нечипований</option>
@@ -197,7 +224,11 @@ const AddCat = () => {
                             <button className="submit" type="submit" disabled={isSubmitting}>
                                 Додати
                             </button>
-                            <button className="cancel" disabled={isSubmitting} onClick={() => handleCancel(resetForm)}>
+                            <button
+                                className="cancel"
+                                disabled={isSubmitting}
+                                onClick={() => handleCancel(resetForm)}
+                            >
                                 Скасувати
                             </button>
                         </div>
