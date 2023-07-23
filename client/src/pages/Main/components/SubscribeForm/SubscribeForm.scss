@@ -1,65 +1,100 @@
 @import "../../../../styles/index";
 
 .subscribe_form {
-
   @include flex-column-a;
   margin: 0 auto;
-  padding: 120px 20px 102px 20px;
+  padding: 104px 16px;
+  @media screen and (min-width: 768px) {
+      padding: 116px 24px;
+    }
+   @media screen and (min-width: 1280px) { 
+  padding: 120px 60px;
+  }
+  @media screen and (min-width: 1440px) {
+      padding: 120px 168px 144px;
+    }
 
   &-header {
-    padding-bottom: 24px;
-    @include nunito-700-size-40;
-    line-height: 55px;
-    color: $color-subscribe-header;
-    @media screen and (max-width: 720px) {
+margin-bottom: 32px;
       text-align: center;
       @include nunito-600-size-32;
-    }
+      color: $color-subscribe-header;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 24px;
+    }    
+@media screen and (min-width: 1440px) {
+    margin-bottom: 20px;
+    @include nunito-700-size-40;
+    line-height: 1.4;
+    
+}  
+   
   }
 
-  &-label {
-    @media screen and (max-width: 780px) {
-      width: 100%;
-      @include flex-column-a;
-    }
+  &-text {
+line-height: 1.5;
+    text-align: center;
+    color: $color-card-text;
+@include nunito-400-size-18;
+    margin-bottom: 40px;
+@media screen and (min-width: 768px) {
+      margin-bottom: 32px;
+      }
+ @media screen and (min-width: 1440px) {
+      @include nunito-400-size-20;
+ }
   }
 
   &-form {
-    padding-bottom: 28px;
     @include flex-only;
-    align-items: center;
-    @media screen and (max-width: 390px) {
+    flex-direction: column;
+    width: 357px;
+    @media screen and (max-width: 389px) {
       width: 90%;
     }
   }
 
-  &-label {
-    @include position-center-a;
-  }
-
-  &-text {
-    padding-bottom: 48px;
-    @include nunito-600-size-24;
-    line-height: 120%;
-    text-align: center;
-    color: $color-card-text;
-  }
+&-wrapper {
+ width: 100%;
+      @include flex-column-a;
+      gap: 16px;
+    }
+@media screen and (min-width: 768px) {
+  position: relative;
+  width: 637px;
+}
+  @media screen and (min-width: 1280px) {
+  width: 744px;
+}
 
   &-input {
+    width: 90%;
+    border-width: 1px;
+    border-radius: 8px;
     outline: black;
+    margin: 0 auto;
     @include nunito-600-size-20;
     font-weight: 600;
     line-height: 120%;
-    width: 512px;
+    
     height: 58px;
-    margin: 0px -9px;
-    border-width: 1px 0 1px 1px;
+    // border-width: 1px 0 1px 1px;
     border-style: solid;
     border-color: #aeaeae;
-    border-radius: 8px 0 0 8px;
+    // border-radius: 8px 0 0 8px;
     color: $color-blue;
-    padding: 13px 8px 13px 12px;
-    gap: 10px;
+    // padding: 13px 8px 13px 12px;
+    // gap: 10px;
+    border-width: 1px;
+      border-radius: 8px;
+    @media screen and (min-width: 390px) {
+      width: 357px;
+    }
+        @media screen and (min-width: 768px) {
+    width: 512px;
+  }
+    
+    
     &:focus {
       background: $color-bg-focused;
     }
@@ -70,34 +105,35 @@
       outline: none;
       background: $full-white;
     }
-    @media screen and (max-width: 780px) {
-      border-width: 1px;
-      border-radius: 8px;
-      width: 357px;
-    }
-    @media screen and (max-width: 390px) {
-      width: 100%;
-    }
   }
 
-  &-alert {
-    width: 752px;
-    @media screen and (max-width: 720px) {
-      width: 357px;
-    }
-    &-danger {
-      background-color: red;
-    }
-  }
-
+    
   &-button {
+    width: 90%;
     border: 3px solid $color-btn;
+     @include nunito-700-size-16;
+    text-align: center;
+    line-height: 147%;
+    background: $full-white;
+    height: 60px;
+    border-radius: 8px;
     cursor: pointer;
     color: $color-btn;
     transition: background-color 300ms linear, color 300ms linear;
-
-
-
+@media screen and (min-width: 390px) {
+  width: 100%;
+}
+    @media screen and (min-width: 768px) {
+    position: absolute;
+    top: 0;
+    left: 504px;
+    width: 240px;
+}   
+@media screen and (min-width: 1280px) {
+        left: 397px;
+}
+    
+    
     &:hover {
       border: 3px solid $color-btn;
       background: $color-card;
@@ -121,22 +157,26 @@
       border: 3px solid $color-border;
       color: $color-input-form;
     }
-
-    @include nunito-700-size-16;
-    text-align: center;
-    line-height: 147%;
-    background: $full-white;
-    width: 240px;
-    height: 60px;
-    border-radius: 8px;
-    @media screen and (max-width: 780px) {
-      margin-top: 16px;
-      @include nunito-700-size-16;
-      width: 357px;
-    }
-    @media screen and (max-width: 390px) {
-      width: 100%;
-    }
   }
-
 }
+
+.email_error {
+      @extend .subscribe_form-input;
+      border-color: $color-error;
+      color: $color-error;
+      height: 58px;
+  
+      &:focus {
+        border: 1px solid $color-error;
+        background-color: $color-input-hover;
+      }
+    }
+.text_error {
+          @include nunito-400-size-14;
+          color: #df4242;
+          margin-left: 12px;
+          margin-top: 5px;
+          @media screen and (min-width: 768px) {
+              margin-top: 0;
+            }
+        }

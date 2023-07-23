@@ -1,73 +1,68 @@
-import React, { useState } from 'react';
-import './SubscribeForm.scss';
-import axios from 'axios';
-import { Alert } from '@mui/material';
-import {_ENDPOINT} from "../../../../variables/variables";
+import React, {useState} from "react";
+import { Formik, Form, Field } from "formik";
+import "./SubscribeForm.scss";
+import axios from "axios";
+import { _ENDPOINT } from "../../../../variables/variables";
+import { subscribeSchema } from "./schema";
+
 
 const SubscribeForm = () => {
-    const [email, setEmail] = useState('');
-    const [isSent, setIsSent] = useState(false);
-    const [error, setError] = useState(false);
+  const onSubmit = async (values, { resetForm }) => {
+    try {
+    await axios.post(`${_ENDPOINT}/cats/subscribe`, values);
+     resetForm(); 
+      console.log("Message sent successfully", values);
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
+    resetForm();
+  };
 
-    const sendEmailHandler = async (e) => {
-        e.preventDefault();
-        if (!validateEmail(email)) {
-            setError(true);
-            return;
-        }
-        try {
-            await axios.post(`${_ENDPOINT}/cats/subscribe`, {
-                email,
-            });
-            setIsSent(true);
-            setTimeout(() => {
-                setIsSent(false);
-            }, 10000);
-        } catch (error) {
-            console.log(error);
-            setError(true);
-        }
-    };
+  return (
+    <div className={"subscribe_form"}>
+      <h3 className={"subscribe_form-header"}>
+        Стежте за останніми подіями притулку
+      </h3>
+      <p className={"subscribe_form-text"}>
+        Залиште свій email, і ми вам надішлемо новини про життя притулку
+      </p>
 
-    const validateEmail = (email) => {
-        const re = /^[\w-]+(?:\.[\w-]+)*@(?!.*\.ru)(?:[\w-]+\.)+[a-zA-Z]{2,7}$/i;
-        return re.test(email);
-    };
+      <Formik
+        initialValues={{ email: "" }}
+        validationSchema={subscribeSchema}
+        onSubmit={onSubmit}
+      >
 
-    return (
-        <div className={'subscribe_form'}>
-            <h3 className={'subscribe_form-header'}>Стежте за останніми подіями притулку</h3>
-            <p className={'subscribe_form-text'}>
-                Залиште свій email, і ми вам надішлемо новини про життя притулку
-            </p>
-            <div className={'subscribe_form-alert'}>
-                {isSent ? (
-                    <Alert onClose={() => setIsSent(false)}>Повідомлення надіслано, мяв!</Alert>
-                ) : error ? (
-                    <Alert onClose={() => setError(false)} severity="error">
-                        Щось пішло не так, спробуйте ще раз!
-                    </Alert>
-                ) : null}
+        {({ errors, touched }) => (
+          <Form id={"data-form"} className={"subscribe_form-form"} noValidate>
+            
+              
+             <div className={"subscribe_form-wrapper"}>
+              <Field
+                className={errors.email && touched.email ? "email_error" : "subscribe_form-input"}
+                name="email"
+                placeholder="Ваш email"
+                type="email"
+              />
+        
+              <button
+                id={"data-form-btn"}
+                type="submit"
+                className={"subscribe_form-button"}
+              >
+                Надіслати
+              </button>
+
             </div>
-            <form id={'data-form'} method={'POST'} onSubmit={sendEmailHandler} className={'subscribe_form-form'}>
-                <label htmlFor="subscribe" className={'subscribe_form-label'}>
-                    <input
-                        disabled={error && null}
-                        maxLength={40}
-                        name={'subscribe'}
-                        placeholder={'Ваш email'}
-                        className={'subscribe_form-input'}
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <button id={'data-form-btn'} className={'subscribe_form-button'}>
-                        Надіслати
-                    </button>
-                </label>
-            </form>
-        </div>
-    );
+            {errors.email && touched.email && (
+                <p className="text_error">{errors.email}</p>
+                )}
+           
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
 };
 
 export default SubscribeForm;
