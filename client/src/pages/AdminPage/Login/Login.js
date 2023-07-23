@@ -52,8 +52,6 @@ const IsAdminForm = () => {
         }
     };
 
-    console.log(loading);
-
     const handleSubmit = (e) => {
         e.preventDefault();
         setEmailError(false);
@@ -126,7 +124,6 @@ const AdminPage = () => {
     const dispatch = useDispatch()
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const navigate = useNavigate();
-    console.log(isLoggedIn);
     useEffect(() => {
         const checkTokenValidity = async () => {
             const token = Cookies.get('token');

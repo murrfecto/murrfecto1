@@ -42,7 +42,6 @@ const CatsGallery = ({limit, displayIcon, select, pawCursor}) => {
     const handleDelete = async (id) => {
         try {
             const response = await axios.delete(`${_ENDPOINT}/cats/${id}`);
-            console.log(response.data);
             setCats(cats.filter((item) => item._id !== id));
         } catch (error) {
             console.error(error.message);

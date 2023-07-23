@@ -8,24 +8,32 @@ import {useNavigate, useLocation} from "react-router-dom";
 import {CSSTransition} from "react-transition-group";
 
 const CatItem = ({
-                     src,
-                     srcBack,
-                     alt,
-                     name,
-                     chippedInfo,
-                     id,
-                     trash,
-                     select,
-                     gender,
-                     age,
-                 }) => {
-    const [isCardRotate, setIsCardRotate] = useState(true);
-    const navigate = useNavigate();
-    const location = useLocation();
-    const isAdminPage = location.pathname.startsWith("/admin");
-    const handleNavigateToCat = () => {
-        navigate(`/cat/${id}/`);
-    };
+  src,
+  srcBack,
+  alt,
+  name,
+  description,
+  chippedInfo,
+  id,
+  trash,
+  select,
+  gender,
+  age,
+}) => {
+  const [isCardRotate, setIsCardRotate] = useState(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith("/admin");
+  const handleNavigateToCat = () => {
+    navigate(`/cat/${id}/`);
+  };
+  const handleClick = () => {
+    if (window.innerWidth <= 1024) {
+      if (!isAdminPage) {
+        setIsCardRotate(!isCardRotate);
+      }
+    }
+  };
 
     const pawCursor = isAdminPage ? 'auto' : `url("${paw}"), auto`;
 
@@ -61,8 +69,7 @@ const CatItem = ({
         <div
             className="flippable-card-container"
             onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        >
+            onMouseLeave={handleMouseLeave}>
             <li key={id} onClick={handleClick}>
                 <CSSTransition style={{ cursor: pawCursor }} in={isCardRotate} timeout={500} classNames="front-flip">
                     <div className="cat_card cat_card-front">
