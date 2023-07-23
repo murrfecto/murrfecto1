@@ -27,13 +27,6 @@ const CatItem = ({
   const handleNavigateToCat = () => {
     navigate(`/cat/${id}/`);
   };
-  const handleClick = () => {
-    if (window.innerWidth <= 1024) {
-      if (!isAdminPage) {
-        setIsCardRotate(!isCardRotate);
-      }
-    }
-  };
 
     const pawCursor = isAdminPage ? 'auto' : `url("${paw}"), auto`;
 
