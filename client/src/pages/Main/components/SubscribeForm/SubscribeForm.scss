@@ -5,44 +5,43 @@
   margin: 0 auto;
   padding: 104px 16px;
   @media screen and (min-width: 768px) {
-      padding: 116px 24px;
-    }
-   @media screen and (min-width: 1280px) { 
-  padding: 120px 60px;
+    padding: 116px 24px;
+  }
+  @media screen and (min-width: 1280px) {
+    padding: 120px 60px;
   }
   @media screen and (min-width: 1440px) {
-      padding: 120px 168px 144px;
-    }
+    padding: 120px 168px 144px;
+  }
 
   &-header {
-margin-bottom: 32px;
-      text-align: center;
-      @include nunito-600-size-32;
-      color: $color-subscribe-header;
-  @media screen and (min-width: 768px) {
-    margin-bottom: 24px;
-    }    
-@media screen and (min-width: 1440px) {
-    margin-bottom: 20px;
-    @include nunito-700-size-40;
-    line-height: 1.4;
-    
-}  
-   
+    margin-bottom: 32px;
+    text-align: center;
+    @include nunito-600-size-32;
+    color: $color-subscribe-header;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 24px;
+    }
+    @media screen and (min-width: 1280px) {
+      margin-bottom: 20px;
+      @include nunito-700-size-40;
+      line-height: 1.4;
+    }
   }
 
   &-text {
-line-height: 1.5;
+    line-height: 1.5;
     text-align: center;
     color: $color-card-text;
-@include nunito-400-size-18;
-    margin-bottom: 40px;
-@media screen and (min-width: 768px) {
-      margin-bottom: 32px;
-      }
- @media screen and (min-width: 1440px) {
+    @include nunito-400-size-18;
+    margin-bottom: 32px;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 36px;
       @include nunito-400-size-20;
- }
+    }
+    @media screen and (min-width: 1280px) {
+      margin-bottom: 40px;
+    }
   }
 
   &-form {
@@ -52,51 +51,48 @@ line-height: 1.5;
     @media screen and (max-width: 389px) {
       width: 90%;
     }
+    @media screen and (min-width: 768px) {
+      width: 637px;
+    }
+    @media screen and (min-width: 1280px) {
+      width: 744px;
+    }
   }
 
-&-wrapper {
- width: 100%;
-      @include flex-column-a;
-      gap: 16px;
+  &-wrapper {
+    width: 100%;
+    @include flex-column-a;
+    gap: 16px;
+    @media screen and (min-width: 768px) {
+      position: relative;
+      align-items: flex-start;
     }
-@media screen and (min-width: 768px) {
-  position: relative;
-  width: 637px;
-}
-  @media screen and (min-width: 1280px) {
-  width: 744px;
-}
+  }
 
   &-input {
     width: 90%;
-    border-width: 1px;
+    height: 56px;
+    padding-left: 12px;
     border-radius: 8px;
     outline: black;
-    margin: 0 auto;
     @include nunito-600-size-20;
     font-weight: 600;
     line-height: 120%;
-    
-    height: 58px;
-    // border-width: 1px 0 1px 1px;
     border-style: solid;
-    border-color: #aeaeae;
-    // border-radius: 8px 0 0 8px;
+    border-color: $color-bg-focused;
     color: $color-blue;
-    // padding: 13px 8px 13px 12px;
-    // gap: 10px;
     border-width: 1px;
-      border-radius: 8px;
+    border-radius: 8px;
     @media screen and (min-width: 390px) {
       width: 357px;
     }
-        @media screen and (min-width: 768px) {
-    width: 512px;
-  }
-    
-    
+    @media screen and (min-width: 768px) {
+      width: 512px;
+    }
+
     &:focus {
       background: $color-bg-focused;
+      border-color: $color-subscribe-btn;
     }
     &:hover {
       box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
@@ -107,33 +103,30 @@ line-height: 1.5;
     }
   }
 
-    
   &-button {
     width: 90%;
     border: 3px solid $color-btn;
-     @include nunito-700-size-16;
-    text-align: center;
+    @include nunito-700-size-16;
     line-height: 147%;
     background: $full-white;
-    height: 60px;
+    height: 56px;
     border-radius: 8px;
     cursor: pointer;
     color: $color-btn;
     transition: background-color 300ms linear, color 300ms linear;
-@media screen and (min-width: 390px) {
-  width: 100%;
-}
+    @media screen and (min-width: 390px) {
+      width: 100%;
+    }
     @media screen and (min-width: 768px) {
-    position: absolute;
-    top: 0;
-    left: 504px;
-    width: 240px;
-}   
-@media screen and (min-width: 1280px) {
-        left: 397px;
-}
-    
-    
+      position: absolute;
+      top: 0;
+      left: 397px;
+      width: 240px;
+    }
+    @media screen and (min-width: 1280px) {
+      left: 504px;
+    }
+
     &:hover {
       border: 3px solid $color-btn;
       background: $color-card;
@@ -161,22 +154,18 @@ line-height: 1.5;
 }
 
 .email_error {
-      @extend .subscribe_form-input;
-      border-color: $color-error;
-      color: $color-error;
-      height: 58px;
-  
-      &:focus {
-        border: 1px solid $color-error;
-        background-color: $color-input-hover;
-      }
-    }
+  @extend .subscribe_form-input;
+  border-color: $color-error;
+  color: $color-error;
+
+  &:focus {
+    border: 1px solid $color-error;
+    background-color: $color-input-hover;
+  }
+}
 .text_error {
-          @include nunito-400-size-14;
-          color: #df4242;
-          margin-left: 12px;
-          margin-top: 5px;
-          @media screen and (min-width: 768px) {
-              margin-top: 0;
-            }
-        }
+  @include nunito-400-size-14;
+  color: #df4242;
+  margin-left: 12px;
+  margin-top: 5px;
+}
