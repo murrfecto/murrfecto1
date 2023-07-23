@@ -21,7 +21,6 @@ const CatProfile = () => {
   const [cat, setCat] = useState(null);
   const [photos, setPhotos] = useState([]);
   const targetRef = useRef(null);
-
   const getData = async () => {
     try {
       Loading.standard({
@@ -116,7 +115,7 @@ const CatProfile = () => {
                 </div>
               </motion.div>
               <div className="profile__wrapper_info">
-                <h2 className="info__title">Ти можеш допомогти {cat?.name}</h2>
+                <h2 className="info__title">Ви можете допомогти {cat?.name}</h2>
                 <div className="info__wrapper">
                   <PersonalInfo type={"Стать"} title={cat?.gender} icon={paw} />
                   <PersonalInfo type={"Вік"} title={cat?.age} icon={calendar} />
@@ -130,7 +129,9 @@ const CatProfile = () => {
                   <h3>Інформація</h3>
                   <hr />
                 </div>
-                <p className="info__desc">{cat?.description}</p>
+                <p className="info__desc">
+                  { cat?.description.trim() === '' ? 'Наразі інформації про кота немає' : cat?.description }
+                </p>
                 <div className={"info__help"}>
                   <ModalButton title={"Допомогти"} style={'footer_donation-catProfile'} />
                 </div>

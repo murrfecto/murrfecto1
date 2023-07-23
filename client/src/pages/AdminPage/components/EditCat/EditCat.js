@@ -169,7 +169,7 @@ const EditCat = () => {
                                 </div>
                             </div>
                             <div className="chipped">
-                                <label>Наявність чіпу</label>
+                                <label>Наявність чипа</label>
                                 <select name="chipped" value={formData.chipped}
                                         onChange={handleInputChange} required>
                                     <option disabled value="">Вкажіть наявність
