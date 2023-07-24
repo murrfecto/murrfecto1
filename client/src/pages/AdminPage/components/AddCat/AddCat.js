@@ -5,7 +5,7 @@ import {BiUpload} from "react-icons/bi";
 import {_ENDPOINT} from "../../../../variables/variables";
 import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useNavigate} from "react-router-dom";
-import {handleAlerts} from "../../../../helpers/formAlertHandler/formAlertHandler";
+import {HandleAlerts, handleAlerts} from "../../../../helpers/formAlertHandler/formAlertHandler";
 
 const AddCat = () => {
     const navigate = useNavigate();
@@ -45,7 +45,7 @@ const AddCat = () => {
             setSubmitting(false);
         } catch (err) {
             console.error(err.message);
-            setStatus({status: 'error', message: 'Error creating the cat card.'});
+            setStatus({status: 'error', message: 'Помилка створення картки.'});
             setSubmitting(false);
         }
     };
@@ -74,9 +74,9 @@ const AddCat = () => {
             <Formik initialValues={initialValues} onSubmit={handleSubmit}>
                 {({isSubmitting, status, setFieldValue, values, resetForm}) => (
                     <Form>
-                        <>
-                            {handleAlerts(status, values)}
-                        </>
+                        <div className={'alerts'}>
+                            {HandleAlerts(status, values)}
+                        </div>
                         <h2 className="formAdding__title">Додайте кота!</h2>
                         <div className="formAdding__wrapper">
                             <div className="formAdding__wrapper_leftSection">
@@ -117,6 +117,7 @@ const AddCat = () => {
                                         id="fileInput"
                                         multiple
                                         name="images"
+                                        accept=".png, .jpeg, .jpg"
                                         required
                                         onChange={(e) => handleFileUpload(e, setFieldValue)}
                                         className="input__file_none"

@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 import "./CatItem.scss";
 import "./FlipTransition.scss";
 import paw from "../../assets/paw.svg";
@@ -8,25 +8,25 @@ import {useNavigate, useLocation} from "react-router-dom";
 import {CSSTransition} from "react-transition-group";
 
 const CatItem = ({
-  src,
-  srcBack,
-  alt,
-  name,
-  description,
-  chippedInfo,
-  id,
-  trash,
-  select,
-  gender,
-  age,
-}) => {
-  const [isCardRotate, setIsCardRotate] = useState(true);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const isAdminPage = location.pathname.startsWith("/admin");
-  const handleNavigateToCat = () => {
-    navigate(`/cat/${id}/`);
-  };
+                     src,
+                     srcBack,
+                     alt,
+                     name,
+                     description,
+                     chippedInfo,
+                     id,
+                     trash,
+                     select,
+                     gender,
+                     age,
+                 }) => {
+    const [isCardRotate, setIsCardRotate] = useState(true);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const isAdminPage = location.pathname.startsWith("/admin");
+    const handleNavigateToCat = () => {
+        navigate(`/cat/${id}/`);
+    };
 
     const pawCursor = isAdminPage ? 'auto' : `url("${paw}"), auto`;
 
@@ -64,7 +64,7 @@ const CatItem = ({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}>
             <li key={id} onClick={handleClick}>
-                <CSSTransition style={{ cursor: pawCursor }} in={isCardRotate} timeout={500} classNames="front-flip">
+                <CSSTransition style={{cursor: pawCursor}} in={isCardRotate} timeout={500} classNames="front-flip">
                     <div className="cat_card cat_card-front">
                         {select ? (
                             <div>
@@ -84,7 +84,7 @@ const CatItem = ({
                                 )}
                                 <div className="cat_card-wrapper">
                                     <div className="cat_card-name">
-                                        <p>{name}</p>
+                                        <p>{name.length > 10 ? `${name.slice(0, 12)}...` : name}</p>
                                     </div>
                                     <div className="cat_card-description">
                                         <img src={paw} alt="paw"/>
@@ -135,7 +135,7 @@ const CatItem = ({
                         )}
                     </div>
                 </CSSTransition>
-                <CSSTransition style={{ cursor: pawCursor }}  in={!isCardRotate} timeout={500} classNames="back-flip">
+                <CSSTransition style={{cursor: pawCursor}} in={!isCardRotate} timeout={500} classNames="back-flip">
                     <div className="cat_card cat_card-back">
                         {select ? (
                             <div className="cat_card-back__wrapper">

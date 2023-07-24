@@ -159,3 +159,21 @@
 
 }
 
+@keyframes slideInRight {
+  0% {
+    right: -400px;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+.alerts {
+  z-index: 2;
+  position: fixed;
+  right: 0;
+  padding: 20px;
+  width: 400px;
+  height: 60px;
+  animation: slideInRight 1s;
+}
