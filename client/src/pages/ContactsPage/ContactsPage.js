@@ -3,6 +3,7 @@ import Title from "../../components/Title/Title";
 import Contacts from "./components/Contacts/Contacts";
 import ScrollToTop from "../../components/common/ScrollToTop/ScrollToTop";
 import {motion} from "framer-motion";
+import contactsBanner from "../../assets/banners/contacts.jpg";
 
 export const ContactsPage = () => {
     const container = {
@@ -18,7 +19,7 @@ export const ContactsPage = () => {
     }
   return (
     <main>
-      <Title text="Контакти" />
+      <Title text="Контакти" backgroundImage={contactsBanner}/>
         <motion.div variants={container}
                     initial='hidden'
                     animate='visible' className='pages-container'>

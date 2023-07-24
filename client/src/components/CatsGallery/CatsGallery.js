@@ -117,7 +117,7 @@ const CatsGallery = ({limit, displayIcon, select, pawCursor}) => {
                             src={cat?.images && cat.images.length > 0 ? cat.images[0] : null}
                             srcBack={cat?.images && cat.images.length > 0 ? cat.images[1] || cat.images[0] : null}
                             alt={cat.name}
-                            name={cat.name}
+                            name={cat.name.length > 12 ? cat.name.slice(0, 12) + '...' : cat.name}
                             age={cat.age}
                             gender={cat.gender}
                             chippedInfo={cat?.chipped}

@@ -6,7 +6,7 @@ import StatisticDatas from "./components/AboutGallery/StatisticDatas/StatisticDa
 import ReportSection from "./components/ReportSection/ReportSection";
 import ScrollToTop from "../../components/common/ScrollToTop/ScrollToTop";
 import {motion} from "framer-motion";
-
+import aboutShelterBanner from '../../assets/banners/aboutShelter.jpg'
 const AboutShelterPage = () => {
     const container = {
         hidden :{opacity:1, scale:0.95},
@@ -21,7 +21,7 @@ const AboutShelterPage = () => {
     }
   return (
           <main>
-              <Title text="Про притулок" />
+              <Title text="Про притулок" backgroundImage={aboutShelterBanner}/>
               <motion.div variants={container}
                           initial='hidden'
                           animate='visible' className='pages-container'>

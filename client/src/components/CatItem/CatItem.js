@@ -84,7 +84,7 @@ const CatItem = ({
                                 )}
                                 <div className="cat_card-wrapper">
                                     <div className="cat_card-name">
-                                        <p>{name.length > 10 ? `${name.slice(0, 12)}...` : name}</p>
+                                        <p>{name.length > 16 ? `${name.slice(0, 16)}...` : name}</p>
                                     </div>
                                     <div className="cat_card-description">
                                         <img src={paw} alt="paw"/>
