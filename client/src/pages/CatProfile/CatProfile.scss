@@ -55,7 +55,8 @@
         gap: 12px;
         > img {
           width: calc((100% - 24px) / 3);
-          height: auto;
+          height: 190px;
+          object-fit: cover;
         }
       }
     }
