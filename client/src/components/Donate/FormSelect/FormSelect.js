@@ -6,10 +6,10 @@ import {_ENDPOINT} from "../../../variables/variables";
 const FormSelect = ({
                         selectedCat,
                         setSelectedCat,
+                        menuPortalTarget
                     }) => {
     const [cats, setCats] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const menuPortalTarget = document.getElementById('root');
     useEffect(() => {
         try {
             const fetchData = async () => {
@@ -131,6 +131,7 @@ const FormSelect = ({
             <Select
                 placeholder="Оберіть пухнастика"
                 options={cats}
+                isSearchable={false}
                 isLoading={isLoading}
                 styles={styledSelect}
                 value={selectedCat}

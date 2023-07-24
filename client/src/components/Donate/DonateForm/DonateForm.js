@@ -10,6 +10,8 @@ const DonateForm = ({
                         title,
                         optionIdPrefix = "",
                         hasDonateTypeButtons = false,
+                        menuPortalTarget = null,
+
                     }) => {
     const donationType = useSelector((state) => state.modal.donationType);
     const [donationAmount, setDonationAmount] = useState("");
@@ -120,6 +122,7 @@ const DonateForm = ({
                 <FormSelect
                     selectedCat={selectedCat}
                     setSelectedCat={setSelectedCat}
+                    menuPortalTarget={menuPortalTarget}
                 />
                 <div>
                     <button

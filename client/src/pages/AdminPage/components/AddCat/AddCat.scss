@@ -3,8 +3,12 @@
 .alert-success, .alert-failure {
   @include position-center-a;
   width: 300px;
+  border: 1px red solid;
   margin: 0 auto;
   text-align: center;
+}
+.alert-success {
+  border: 1px solid green !important;
 }
 
 .formAdding {

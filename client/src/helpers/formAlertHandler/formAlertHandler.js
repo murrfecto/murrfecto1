@@ -7,8 +7,8 @@ export const HandleAlerts = (status, values) => {
     if (status && status.status === 'success') {
         return (
             <Collapse in={open}>
-            <Alert className={'alert-failure'} severity={'success'}>
-                Картка створена!
+            <Alert className={'alert-success'} severity={'success'}>
+                Картка створена | оновлена!
             </Alert>
             </Collapse>
         );
