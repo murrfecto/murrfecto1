@@ -26,7 +26,7 @@ const MobileMenu = () => {
 
   return (
     <div className="mobile_menu container">
-      <div className="mobile_menu-wrapper">
+      <div className="mobile_menu-wrapper" id='mobile_header'>
         <Link to="/">
           <img src={logo} alt="murfecto logo" width={width} height={height} />
         </Link>

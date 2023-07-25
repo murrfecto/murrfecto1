@@ -13,11 +13,10 @@ const SupportUs = () => {
     const dispatch = useDispatch();
     const navigate=useNavigate()
     const handleOpenModal = (selectedOption) => {
-        dispatch(openModal(selectedOption)); // Виклик диспетчера для відкриття
-        // модального вікна
+        dispatch(openModal(selectedOption));
     };
     const handleNavigateContacts = ()=>{
-        navigate('/contacts/#contacts_np')
+        navigate('/contacts')
     }
 
     return (

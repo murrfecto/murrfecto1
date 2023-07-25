@@ -3,7 +3,19 @@
 #donation {
   color: $full-white;
 }
-
+.box{
+  display: flex;
+  @media (max-width: 767px) {
+   flex-direction: column-reverse;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    justify-content: center;
+    scrollbar-width: none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
 .modal {
   line-height: 33px;
   @include nunito-600-size-24;
