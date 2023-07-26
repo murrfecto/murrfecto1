@@ -29,8 +29,7 @@ const ModalButton = ({title, style}) => {
             transition: {
                 type: 'spring',
                 duration: .5,
-                mass: 2,
-                damping: 10,
+                mass: 1.2,
                 delay: .4
             }
         },
@@ -40,8 +39,7 @@ const ModalButton = ({title, style}) => {
             transition: {
                 type: 'spring',
                 duration: .5,
-                mass: 2,
-                damping: 10,
+                mass: 1.2,
                 delay: .2
             }
         },
@@ -65,7 +63,7 @@ const ModalButton = ({title, style}) => {
                             outline: "none",
                         },
                     }}
-                    closeTimeoutMS={800}
+                    closeTimeoutMS={500}
                     className={"modal"}
                     isOpen={isOpen}
                     aria-label="Donate to feed a cat"

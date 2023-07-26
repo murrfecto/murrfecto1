@@ -79,24 +79,18 @@ const CatsGallery = ({limit, displayIcon, select, pawCursor}) => {
     };
 
     const container = {
-        hidden: {opacity: 1, scale: 0},
+        hidden :{opacity:1, scale:0.95},
         visible: {
             opacity: 1,
             scale: 1,
-            transition: {
-                delayChildren: 0.2,
-                staggerChildren: 0.1
+            transition:{
+                delayChildren:0.2,
+                staggerChildren:0.1
             }
         }
     }
 
-    const items = {
-        hidden: {y: 20, opacity: 0},
-        visible: {
-            y: 0,
-            opacity: 1
-        }
-    }
+
 
     if (loading) {
         return <Spinner/>;
@@ -110,9 +104,7 @@ const CatsGallery = ({limit, displayIcon, select, pawCursor}) => {
         >
             <ul className="cats_cards">
                 {cats?.slice(0, limit).map((cat) => (
-                    <motion.div key={cat._id}
-                                variants={items}
-                    >
+
                         <CatItem
                             src={cat?.images && cat.images.length > 0 ? cat.images[0] : null}
                             srcBack={cat?.images && cat.images.length > 0 ? cat.images[1] || cat.images[0] : null}
@@ -142,7 +134,6 @@ const CatsGallery = ({limit, displayIcon, select, pawCursor}) => {
                                 ) : null
                             }
                         />
-                    </motion.div>
                 ))}
             </ul>
         </motion.div>
