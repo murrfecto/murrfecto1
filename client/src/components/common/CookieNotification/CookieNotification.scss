@@ -1,24 +1,26 @@
 @import "../../../styles/index";
 
-.cookie_section {
+
+.cookie_backdrop {
+  z-index: 3;
+  position: fixed;
+  top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.cookie_section {
   position: fixed;
   bottom: 20%;
   z-index: 5;
   border-radius: 8px;
   background-color: $color-white;
 
-  @media screen and (min-width: 390px) {
-    left: calc((95.5vw - 390px) / 2);
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1439.9px) {
+  @media screen and (min-width: 768px) {
     bottom: 10%;
-    left: calc((100vw - 762px) / 2);
-  }
-
-  @media screen and (min-width: 1440px) {
-    left: calc((100vw - 949px) / 2);
   }
 }
 

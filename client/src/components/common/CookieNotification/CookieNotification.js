@@ -17,6 +17,7 @@ const CookieNotification = () => {
   }
 
   return (
+    <div className="cookie_backdrop">
     <section className="cookie_section">
       <div className="cookie_notification container">
         <Info className="info-icon" />
@@ -47,6 +48,7 @@ const CookieNotification = () => {
         </button>
       </div>
     </section>
+    </div>
   );
 };
 
