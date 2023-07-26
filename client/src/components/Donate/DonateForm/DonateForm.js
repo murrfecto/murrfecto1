@@ -123,7 +123,7 @@ const DonateForm = ({
             className="donate-form_btn"
             type="submit"
             value="Допомогти"
-            // disabled={!selectedOption || !selectedCat || !donationAmount}
+            disabled={!selectedOption || !selectedCat || !donationAmount}
           >
             {loading ? <Spinner /> : "Допомогти"}
           </button>
