@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Title from "../../components/Title/Title";
 import Contacts from "./components/Contacts/Contacts";
 import ScrollToTop from "../../components/common/ScrollToTop/ScrollToTop";
@@ -17,6 +17,10 @@ export const ContactsPage = () => {
             }
         }
     }
+    useEffect(() => {
+       window.scrollTo(0,0)
+    }, []);
+
   return (
     <main>
       <Title text="Контакти" backgroundImage={contactsBanner}/>
