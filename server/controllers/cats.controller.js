@@ -314,24 +314,29 @@ const sendPayment = async (req, res) => {
             currency: 'UAH',
         };
 
-        const orderedKeys = Object.keys(orderBody).sort();
-        const signatureRaw = orderedKeys.map((key) => orderBody[key]).join('|');
-        const signatureString = `${signatureRaw}${wayForPayPass}`;
-        const merchantSignature = crypto.createHmac('sha1', wayForPayPass).update(signatureString).digest('hex');
+        const orderedKeys = [
+            'merchantAccount', 'merchantDomainName', 'orderReference', 'orderDate', 'amount',
+            'currency', 'productName', 'productCount'
+        ];
+        const signatureRaw = orderedKeys.map((key) => {
+            if (Array.isArray(orderBody[key])) {
+                return orderBody[key].join(';');
+            }
+            return orderBody[key];
+        }).join(';'); // Use ';' separator as in the example
 
-        console.log(orderBody, merchantSignature)
+        const signatureString = `${signatureRaw};${wayForPayPass}`; // Use ';' separator
+        const merchantSignature = crypto.createHmac('md5', wayForPayPass).update(signatureString).digest('hex'); // Use 'md5' algorithm
+
+        console.log(orderBody, merchantSignature);
 
         const { data } = await axios.post('https://secure.wayforpay.com/pay', {
-            orderReference: orderBody.orderReference,
-            orderDate: orderBody.orderDate,
-            merchantAccount: orderBody.merchantAccount,
-            merchantDomainName: orderBody.merchantDomainName,
-            productName: orderBody.productName,
-            productCount: orderBody.productCount,
-            amount: orderBody.amount,
-            currency: orderBody.currency,
-            merchantSignature,
+            ...orderBody,
+            productPrice: [orderBody.amount],
+            merchantSignature: merchantSignature,
         });
+
+        console.log(data);
 
         const checkoutUrl = data.response && data.response.payment_url;
         if (checkoutUrl) {
