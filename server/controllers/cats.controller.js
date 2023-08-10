@@ -316,8 +316,8 @@ const sendPayment = async (req, res) => {
         const signatureRaw = orderedKeys.map((key) => orderBody[key]).join('|');
         const signatureString = `${signatureRaw}${wayForPayPass}`;
         const merchantSignature = crypto.createHmac('sha1', wayForPayPass).update(signatureString).digest('hex');
-
-        const { data } = await axios.post('https://api.wayforpay.com/api/', {
+        console.log(orderBody, merchantSignature)
+        const { data } = await axios.post('https://secure.wayforpay.com/pay', {
             orderReference: orderBody.orderReference,
             orderDate: orderBody.orderDate,
             merchantAccount: orderBody.merchantAccount,
