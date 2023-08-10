@@ -293,6 +293,8 @@ const sendMessage = (req, res) => {
 const sendPayment = async (req, res) => {
     try {
         const wayForPayPass = process.env.SECRET_KEY;
+        const productName = ['Допомога котикам'];
+        const productCount = [1];
         const orderId = `order-${new Date().toLocaleString('en-GB', {
             day: '2-digit',
             month: '2-digit',
@@ -303,11 +305,11 @@ const sendPayment = async (req, res) => {
 
         const orderBody = {
             orderReference: orderId,
-            orderDate: Math.floor(Date.now() / 1000), // Convert to seconds
+            orderDate: Math.floor(Date.now() / 1000),
             merchantAccount: process.env.MERCHANT_ACCOUNT,
             merchantDomainName: process.env.MERCHANT_DOMAIN_NAME,
-            productName: 'Допомога котикам',
-            productCount: [1], // Assuming only one product
+            productName: productName,
+            productCount: productCount,
             amount: req.body.amount,
             currency: 'UAH',
         };
@@ -316,7 +318,9 @@ const sendPayment = async (req, res) => {
         const signatureRaw = orderedKeys.map((key) => orderBody[key]).join('|');
         const signatureString = `${signatureRaw}${wayForPayPass}`;
         const merchantSignature = crypto.createHmac('sha1', wayForPayPass).update(signatureString).digest('hex');
+
         console.log(orderBody, merchantSignature)
+
         const { data } = await axios.post('https://secure.wayforpay.com/pay', {
             orderReference: orderBody.orderReference,
             orderDate: orderBody.orderDate,
