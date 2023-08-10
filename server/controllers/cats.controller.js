@@ -159,9 +159,9 @@ const handleCallBack = async (req, res) => {
         maximumFractionDigits: 2
     }).format(rawAmount).replace('.', ',')
 
-    const donationStatus = req.body.order_status;
+    const donationStatus = req.body.transactionStatus;
 
-    if (donationStatus === 'approved') {
+    if (donationStatus === 'Approved') {
         try {
             sgMail.setApiKey(process.env.API_KEY);
             const headers = {
@@ -291,44 +291,51 @@ const sendMessage = (req, res) => {
 
 
 const sendPayment = async (req, res) => {
-    const fondyPassword = process.env.FONDY_PASSWORD;
-    const orderId = `order-${new Date().toLocaleString('en-GB', {
-        day: '2-digit',
-        month: '2-digit',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-    }).replace(/\//g, '.').replace(', ', ':')}`;
-
-    const orderBody = {
-        order_id: orderId,
-        merchant_id: process.env.MERCHANT_ID,
-        order_desc: 'Допомога котикам',
-        amount: req.body.amount,
-        currency: 'UAH',
-    };
-    const orderedKeys = Object.keys(orderBody).sort((a, b) => {
-        if (a < b) return -1;
-        if (a > b) return 1;
-        return 0;
-    });
-    const signatureRaw = orderedKeys.map((key) => orderBody[key]).join('|');
-    const signatureString = `${fondyPassword}|${signatureRaw}`;
-    const signature = crypto.createHash('sha1').update(signatureString)
     try {
-        const {data} = await axios.post('https://pay.fondy.eu/api/checkout/url/', {
-            request: {
-                ...orderBody,
-                signature: signature.digest('hex')
-            },
+        const wayForPayPass = process.env.SECRET_KEY;
+        const orderId = `order-${new Date().toLocaleString('en-GB', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        }).replace(/\//g, '.').replace(', ', ':')}`;
+
+        const orderBody = {
+            orderReference: orderId,
+            orderDate: Math.floor(Date.now() / 1000), // Convert to seconds
+            merchantAccount: process.env.MERCHANT_ACCOUNT,
+            merchantDomainName: process.env.MERCHANT_DOMAIN_NAME,
+            productName: 'Допомога котикам',
+            productCount: [1], // Assuming only one product
+            amount: req.body.amount,
+            currency: 'UAH',
+        };
+
+        const orderedKeys = Object.keys(orderBody).sort();
+        const signatureRaw = orderedKeys.map((key) => orderBody[key]).join('|');
+        const signatureString = `${signatureRaw}${wayForPayPass}`;
+        const merchantSignature = crypto.createHmac('sha1', wayForPayPass).update(signatureString).digest('hex');
+
+        const { data } = await axios.post('https://api.wayforpay.com/api/', {
+            orderReference: orderBody.orderReference,
+            orderDate: orderBody.orderDate,
+            merchantAccount: orderBody.merchantAccount,
+            merchantDomainName: orderBody.merchantDomainName,
+            productName: orderBody.productName,
+            productCount: orderBody.productCount,
+            amount: orderBody.amount,
+            currency: orderBody.currency,
+            merchantSignature,
         });
-        const checkoutUrl = data.response && data.response.checkout_url;
+
+        const checkoutUrl = data.response && data.response.payment_url;
         if (checkoutUrl) {
             res.status(200).json({
-                checkoutUrl
-            })
+                checkoutUrl,
+            });
         } else {
-            res.status(500).send('Unable to retrieve checkout URL from Fondy');
+            res.status(500).send('Unable to retrieve checkout URL from WayForPay');
         }
     } catch (error) {
         console.error(error);
