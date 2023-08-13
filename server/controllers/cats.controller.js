@@ -291,16 +291,9 @@ const sendMessage = (req, res) => {
 const sendPayment = async (req, res) => {
     try {
         const wayForPayPass = process.env.SECRET_KEY;
+
         const productName = ['Допомога котикам'];
         const productCount = [1];
-        const orderId = `order-${new Date().toLocaleString('en-GB', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-        }).replace(/\//g, '.').replace(', ', ':')}`;
-
         const orderReference = "DH1691924723";
         const orderDate = Math.floor(Date.now() / 1000);
         const merchantAccount = process.env.MERCHANT_ACCOUNT;
@@ -309,16 +302,16 @@ const sendPayment = async (req, res) => {
         const currency = 'UAH';
         const productPrice = [Math.floor(amount / 1000) * 1000, amount % 1000];
 
-        const signatureString = `${process.env.MERCHANT_ACCOUNT};${process.env.MERCHANT_DOMAIN_NAME};${orderId};${orderReference};${amount};${currency};${productName};${productCount};${productPrice}`;
+        const signatureString = `${process.env.MERCHANT_ACCOUNT};${process.env.MERCHANT_DOMAIN_NAME};${orderDate};${orderReference};${amount};${currency};${productName};${productCount};${productPrice}`;
 
-        const hash = crypto.createHmac('md5', wayForPayPass).update(signatureString).digest('hex');
-        console.log(hash)
+        const merchantSignature = crypto.createHmac('md5', wayForPayPass).update(signatureString).digest('hex');
+        console.log(merchantSignature)
 
         const result = await axios.post('https://secure.wayforpay.com/pay', {
-            signatureString,
+            ...signatureString,
             merchantAuthType: "SimpleSignature",
             defaultPaymentSystem: "card",
-            merchantSignature: hash,
+            merchantSignature,
         });
 
         return result.data
