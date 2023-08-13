@@ -6,6 +6,7 @@ import axios from "axios";
 import {connectToDatabase} from "../helpers/connectToDb.js";
 import * as fs from "fs";
 import * as yup from "yup";
+import {makeWayforPayAPICall} from "../helpers/wayForPay.js";
 
 
 const addCat = async (req, res) => {
@@ -291,37 +292,38 @@ const sendMessage = (req, res) => {
 const sendPayment = async (req, res) => {
     try {
         const wayForPayPass = process.env.SECRET_KEY;
+        const { amount } = req.body;
 
-        const productName = ['Допомога котикам'];
-        const productCount = [1];
-        const orderReference = "DH1691924723";
-        const orderDate = Math.floor(Date.now() / 1000);
-        const merchantAccount = process.env.MERCHANT_ACCOUNT;
-        const merchantDomainName = process.env.MERCHANT_DOMAIN_NAME;
-        const amount = req.body.amount;
-        const currency = 'UAH';
-        const productPrice = [Math.floor(amount / 1000) * 1000, amount % 1000];
+        const paymentData = {
+            productName: ['Допомога котикам'],
+            productCount: [1],
+            productPrice: [Math.floor(amount / 1000) * 1000, amount % 1000],
+            orderReference: "DH1691924723",
+            orderDate: Math.floor(Date.now() / 1000),
+            merchantAccount: process.env.MERCHANT_ACCOUNT,
+            merchantDomainName: process.env.MERCHANT_DOMAIN_NAME,
+            amount: amount,
+            currency: 'UAH',
+        };
 
-        const signatureString = `${process.env.MERCHANT_ACCOUNT};${process.env.MERCHANT_DOMAIN_NAME};${orderDate};${orderReference};${amount};${currency};${productName};${productCount};${productPrice}`;
+        const signatureString = `${paymentData.merchantAccount};${paymentData.merchantDomainName};${paymentData.orderDate};${paymentData.orderReference};${paymentData.amount};${paymentData.currency};${paymentData.productName[0]};${paymentData.productCount[0]};${paymentData.productPrice[0]};${paymentData.productPrice[1]}`;
 
         const merchantSignature = crypto.createHmac('md5', wayForPayPass).update(signatureString).digest('hex');
-        console.log(merchantSignature)
 
-        return await axios.post('https://secure.wayforpay.com/pay', {
-            ...signatureString,
+        const wayForPayResponse = await makeWayforPayAPICall({
+            ...paymentData,
             merchantAuthType: "SimpleSignature",
             defaultPaymentSystem: "card",
             merchantSignature,
-        }, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
+        });
+
+        console.log("Payment successful:", wayForPayResponse);
+
+        res.json({ paymentUrl: wayForPayResponse.paymentUrl });
 
     } catch (error) {
-        res.status(500)
-        console.log(error.message)
-        throw new Error(error.message)
+        console.error("Error processing payment:", error.message);
+        res.status(500).json({ error: "Failed to process payment" });
     }
 };
 
