@@ -314,22 +314,12 @@ const sendPayment = async (req, res) => {
         const hash = crypto.createHmac('md5', wayForPayPass).update(signatureString).digest('hex');
         console.log(hash)
 
-        const {data} = await axios.post('https://secure.wayforpay.com/pay', {
+        return  await axios.post('https://secure.wayforpay.com/pay', {
             signatureString,
             merchantAuthType: "SimpleSignature",
             defaultPaymentSystem: "card",
             merchantSignature: hash,
         });
-        console.log("API Response:", data);
-
-        const payment_url = data.response && data.response.payment_url;
-        if (payment_url) {
-            res.status(200).json({
-                payment_url,
-            });
-        } else {
-            res.status(500).send('Unable to retrieve checkout URL from WayForPay')
-        }
     } catch (error) {
         res.status(500)
         console.log(error.message)
