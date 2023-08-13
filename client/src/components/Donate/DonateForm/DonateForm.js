@@ -26,8 +26,8 @@ const DonateForm = ({
             try {
                 setLoading(true);
                 const response = await axios.post(`${_ENDPOINT}/payment`, orderBody);
-                const { paymentUrl } = response.data;
-                window.location.location = paymentUrl;
+                const { paymenturl } = response.data;
+                window.location.replace(paymenturl);
             } catch
                 (error) {
                 console.error("An error occurred while processing the payment", error);

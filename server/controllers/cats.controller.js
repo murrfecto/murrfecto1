@@ -319,7 +319,7 @@ const sendPayment = async (req, res) => {
 
         console.log("Payment successful:", wayForPayResponse);
 
-        res.json({ paymentUrl: wayForPayResponse.paymentUrl });
+        res.json({ paymenturl: wayForPayResponse.paymenturl });
 
     } catch (error) {
         console.error("Error processing payment:", error.message);
