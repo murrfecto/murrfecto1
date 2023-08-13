@@ -307,14 +307,16 @@ const sendPayment = async (req, res) => {
         const merchantSignature = crypto.createHmac('md5', wayForPayPass).update(signatureString).digest('hex');
         console.log(merchantSignature)
 
-        const result = await axios.post('https://secure.wayforpay.com/pay', {
+        return await axios.post('https://secure.wayforpay.com/pay', {
             ...signatureString,
             merchantAuthType: "SimpleSignature",
             defaultPaymentSystem: "card",
             merchantSignature,
-        });
-
-        return result.data
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
 
     } catch (error) {
         res.status(500)
