@@ -301,7 +301,7 @@ const sendPayment = async (req, res) => {
             minute: '2-digit',
         }).replace(/\//g, '.').replace(', ', ':')}`;
 
-        const orderReference = orderId;
+        const orderReference = "DH1691924723";
         const orderDate = Math.floor(Date.now() / 1000);
         const merchantAccount = process.env.MERCHANT_ACCOUNT;
         const merchantDomainName = process.env.MERCHANT_DOMAIN_NAME;
@@ -316,7 +316,8 @@ const sendPayment = async (req, res) => {
 
         const {data} = await axios.post('https://secure.wayforpay.com/pay', {
             signatureString,
-            merchantAuthType: "Auto",
+            merchantAuthType: "SimpleSignature",
+            defaultPaymentSystem: "card",
             merchantSignature: hash,
         });
         console.log("API Response:", data);

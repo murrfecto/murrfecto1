@@ -2,7 +2,7 @@ import "./DonateForm.scss";
 import FormSelect from "../FormSelect/FormSelect";
 import axios from "axios";
 import { useState } from "react";
-import { _ENDPOINT } from "../../../variables/variables";
+import {_ENDPOINT, _TEST_ENDPOINT} from "../../../variables/variables";
 import { useSelector } from "react-redux";
 import Spinner from "../../../helpers/spinner/Spinner";
 
@@ -128,6 +128,7 @@ const DonateForm = ({
           >
             {loading ? <Spinner /> : "Допомогти"}
           </button>
+
         </div>
       </form>
     </div>
