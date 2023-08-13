@@ -26,6 +26,7 @@ const DonateForm = ({
     try {
       setLoading(true);
       const response = await axios.post(`${_ENDPOINT}/payment`, orderBody);
+      console.log(response)
       window.location.replace(response.data.checkoutUrl);
       setLoading(false);
     } catch (error) {

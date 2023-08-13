@@ -144,8 +144,6 @@ const deleteCatById = async (req, res) => {
 };
 
 
-
-
 const handleCallBack = async (req, res) => {
     const collectionName = 'donations';
     const {client, collection} = await connectToDatabase(collectionName);
@@ -303,52 +301,38 @@ const sendPayment = async (req, res) => {
             minute: '2-digit',
         }).replace(/\//g, '.').replace(', ', ':')}`;
 
-        const orderBody = {
-            orderReference: orderId,
-            orderDate: Math.floor(Date.now() / 1000),
-            merchantAccount: process.env.MERCHANT_ACCOUNT,
-            merchantDomainName: process.env.MERCHANT_DOMAIN_NAME,
-            productName: productName,
-            productCount: productCount,
-            amount: req.body.amount,
-            currency: 'UAH',
-        };
+        const orderReference = orderId;
+        const orderDate = Math.floor(Date.now() / 1000);
+        const merchantAccount = process.env.MERCHANT_ACCOUNT;
+        const merchantDomainName = process.env.MERCHANT_DOMAIN_NAME;
+        const amount = req.body.amount;
+        const currency = 'UAH';
+        const productPrice = [Math.floor(amount / 1000) * 1000, amount % 1000];
 
-        const orderedKeys = [
-            'merchantAccount', 'merchantDomainName', 'orderReference', 'orderDate', 'amount',
-            'currency', 'productName', 'productCount'
-        ];
-        const signatureRaw = orderedKeys.map((key) => {
-            if (Array.isArray(orderBody[key])) {
-                return orderBody[key].join(';');
-            }
-            return orderBody[key];
-        }).join(';'); // Use ';' separator as in the example
+        const signatureString = `${process.env.MERCHANT_ACCOUNT};${process.env.MERCHANT_DOMAIN_NAME};${orderId};${orderReference};${amount};${currency};${productName};${productCount};${productPrice}`;
 
-        const signatureString = `${signatureRaw};${wayForPayPass}`; // Use ';' separator
-        const merchantSignature = crypto.createHmac('md5', wayForPayPass).update(signatureString).digest('hex'); // Use 'md5' algorithm
+        const hash = crypto.createHmac('md5', wayForPayPass).update(signatureString).digest('hex');
+        console.log(hash)
 
-        console.log(orderBody, merchantSignature);
-
-        const { data } = await axios.post('https://secure.wayforpay.com/pay', {
-            ...orderBody,
-            productPrice: [orderBody.amount],
-            merchantSignature: merchantSignature,
+        const {data} = await axios.post('https://secure.wayforpay.com/pay', {
+            signatureString,
+            merchantAuthType: "Auto",
+            merchantSignature: hash,
         });
+        console.log("API Response:", data);
 
-        console.log(data);
-
-        const checkoutUrl = data.response && data.response.payment_url;
-        if (checkoutUrl) {
+        const payment_url = data.response && data.response.payment_url;
+        if (payment_url) {
             res.status(200).json({
-                checkoutUrl,
+                payment_url,
             });
         } else {
-            res.status(500).send('Unable to retrieve checkout URL from WayForPay');
+            res.status(500).send('Unable to retrieve checkout URL from WayForPay')
         }
     } catch (error) {
-        console.error(error);
-        res.status(500).send('An error occurred while processing the payment');
+        res.status(500)
+        console.log(error.message)
+        throw new Error(error.message)
     }
 };
 
