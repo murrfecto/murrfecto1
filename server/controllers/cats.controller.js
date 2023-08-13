@@ -317,9 +317,9 @@ const sendPayment = async (req, res) => {
             merchantSignature,
         });
 
-        console.log("Payment successful:", wayForPayResponse);
-
-        res.json({ paymenturl: wayForPayResponse.paymenturl });
+        const paymenturl = wayForPayResponse.paymenturl;
+        console.log(paymenturl)
+        res.json({ paymenturl });
 
     } catch (error) {
         console.error("Error processing payment:", error.message);
