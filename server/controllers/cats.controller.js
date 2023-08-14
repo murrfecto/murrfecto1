@@ -295,6 +295,7 @@ const sendPayment = async (req, res) => {
         const url = `https://api.wayforpay.com/api`;
         const body = {
             ...req.body,
+            merchantAccount: process.env.MERCHANT_ACCOUNT,
             merchantSignature,
         };
 
