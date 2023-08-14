@@ -35,7 +35,7 @@ const DonateForm = ({
                 productName: ['Baza trainee support'],
                 productCount: [1],
                 productPrice: [Number(orderBody.amount)],
-                serviceUrl: 'https://baza-trainee.tech/api/v1/payment/complete',
+                serviceUrl: 'https://murrfecto.site/api/v1/payment/',
             };
 
             if (Number(orderBody.amount)) {
