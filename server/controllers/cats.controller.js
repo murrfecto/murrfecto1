@@ -290,13 +290,11 @@ const sendMessage = (req, res) => {
 
 
 const sendPayment = async (req, res) => {
-    const merchantAccount = process.env.MERCHANT_ACCOUNT;
     try {
         const merchantSignature = paymentSignatureGenerator(req.body);
         const url = `https://api.wayforpay.com/api`;
         const body = {
             ...req.body,
-            merchantAccount,
             merchantSignature,
         };
 
