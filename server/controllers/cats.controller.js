@@ -6,7 +6,7 @@ import axios from "axios";
 import {connectToDatabase} from "../helpers/connectToDb.js";
 import * as fs from "fs";
 import * as yup from "yup";
-import {makeWayforPayAPICall} from "../helpers/wayForPay.js";
+import {paymentSignatureGenerator} from "../helpers/signatureGenerator.js";
 
 
 const addCat = async (req, res) => {
@@ -290,40 +290,28 @@ const sendMessage = (req, res) => {
 
 
 const sendPayment = async (req, res) => {
+    const merchantAccount = process.env.MERCHANT_ACCOUNT;
     try {
-        const wayForPayPass = process.env.SECRET_KEY;
-        const { amount } = req.body;
-
-        const paymentData = {
-            productName: ['Допомога котикам'],
-            productCount: [1],
-            productPrice: [Math.floor(amount / 1000) * 1000, amount % 1000],
-            orderReference: "DH1691924723",
-            orderDate: Math.floor(Date.now() / 1000),
-            merchantAccount: process.env.MERCHANT_ACCOUNT,
-            merchantDomainName: process.env.MERCHANT_DOMAIN_NAME,
-            amount: amount,
-            currency: 'UAH',
+        const merchantSignature = paymentSignatureGenerator(req.body);
+        const url = `https://api.wayforpay.com/api`;
+        const body = {
+            ...req.body,
+            merchantAccount,
+            merchantSignature,
         };
 
-        const signatureString = `${paymentData.merchantAccount};${paymentData.merchantDomainName};${paymentData.orderDate};${paymentData.orderReference};${paymentData.amount};${paymentData.currency};${paymentData.productName[0]};${paymentData.productCount[0]};${paymentData.productPrice[0]};${paymentData.productPrice[1]}`;
+        const response = (await axios.post(url, body)).data;
 
-        const merchantSignature = crypto.createHmac('md5', wayForPayPass).update(signatureString).digest('hex');
-
-        const wayForPayResponse = await makeWayforPayAPICall({
-            ...paymentData,
-            merchantAuthType: "SimpleSignature",
-            defaultPaymentSystem: "card",
-            merchantSignature,
-        });
-
-        const paymenturl = wayForPayResponse.paymenturl;
-        console.log(paymenturl)
-        res.json({ paymenturl });
-
+        if (response.invoiceUrl) {
+            res.status(200).json(response);
+        } else {
+            res
+                .status(500)
+                .send('Request failed with error ' + response);
+        }
     } catch (error) {
-        console.error("Error processing payment:", error.message);
-        res.status(500).json({ error: "Failed to process payment" });
+        console.error(error);
+        res.status(500).json({message: `Can't get payment url`, error});
     }
 };
 

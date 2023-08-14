@@ -23,18 +23,36 @@ const DonateForm = ({
                 amount: donationAmount * 100,
                 catLabel: selectedCat ? selectedCat.label : "",
             };
-            try {
-                setLoading(true);
-                const response = await axios.post(`${_ENDPOINT}/payment`, orderBody);
-                const { paymenturl } = response.data;
-                window.location.replace(paymenturl);
-            } catch
-                (error) {
-                console.error("An error occurred while processing the payment", error);
-                setLoading(false);
+            const paymentData = {
+                transactionType: 'CREATE_INVOICE',
+                merchantDomainName: window.location.hostname,
+                apiVersion: 1,
+                orderReference: Date.now().toString(),
+                orderDate: Date.now(),
+                amount: Number(orderBody.amount),
+                language: 'UA', //fix
+                currency: 'UAH',
+                productName: ['Baza trainee support'],
+                productCount: [1],
+                productPrice: [Number(orderBody.amount)],
+                serviceUrl: 'https://baza-trainee.tech/api/v1/payment/complete',
+            };
+
+            if (Number(orderBody.amount)) {
+                try {
+                    const response = await axios.post(`${_ENDPOINT}/payment`, paymentData);
+                    const checkoutUrl = response.data?.invoiceUrl;
+
+                    if (checkoutUrl) {
+                        window.location.href = checkoutUrl;
+                    }
+                } catch (error) {
+                    console.log('Error occurred while processing payment');
+                }
+            } else {
+                console.log('Please enter a valid payment amount');
             }
-        }
-    ;
+    };
     const handlePresetDonationSelect = (amount) => {
         setDonationAmount(amount);
     };
