@@ -20,7 +20,7 @@ const DonateForm = ({
     const handleSubmit = async (e) => {
             e.preventDefault();
             const orderBody = {
-                amount: donationAmount * 100,
+                amount: donationAmount,
                 catLabel: selectedCat ? selectedCat.label : "",
             };
             const paymentData = {
@@ -32,7 +32,7 @@ const DonateForm = ({
                 amount: Number(orderBody.amount),
                 language: 'UA', //fix
                 currency: 'UAH',
-                productName: ['Baza trainee support'],
+                productName: ['Допомога котикам'],
                 productCount: [1],
                 productPrice: [Number(orderBody.amount)],
                 serviceUrl: 'https://murrfecto.site/api/v1/payment/',
