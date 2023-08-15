@@ -42,7 +42,7 @@ const DonateForm = ({
                 try {
                     const response = await axios.post(`${_ENDPOINT}/payment`, paymentData);
                     const checkoutUrl = response.data?.invoiceUrl;
-
+                    console.log(checkoutUrl)
                     if (checkoutUrl) {
                         window.location.href = checkoutUrl;
                     }
