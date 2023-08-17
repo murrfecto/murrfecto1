@@ -143,7 +143,7 @@ const DonateForm = ({
                         className="donate-form_btn"
                         type="submit"
                         value="Допомогти"
-                        disabled={!selectedCat || !donationAmount}
+                        disabled={!donationAmount}
                     >
                         {loading ? <Spinner/> : "Допомогти"}
                     </button>
